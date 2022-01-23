@@ -1,0 +1,4 @@
+pane	0	1	:vim	1	:*	1	:/home/pablo951_br	0	zsh	:
+pane	0	1	:vim	1	:*	2	:/mnt/PABLO/android_repo/HOME/org	1	vim	:
+window	0	1	1	:*	f389,240x75,0,0{191x75,0,0,0,48x75,192,0,2}
+state	0	

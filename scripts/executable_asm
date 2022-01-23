@@ -1,0 +1,52 @@
+#!/bin/sh
+
+LINKER="ld"
+LINKER_FLAGS=""
+ASM="nasm"
+ASM_FLAGS="-g -f elf64 -F dwarf"
+
+usage() {
+    echo "Usage: $(basename "${0}") [-l <ld|gcc>] [-a <assembler flags>] [-f <linker flags>] <files>" 1>&2
+    exit 1
+}
+
+while getopts ":hl:a:f:" o; do
+    case "${o}" in
+    h)
+        usage
+        exit 1
+        ;;
+    l)
+        if [ "${OPTARG}" = "gcc" ]; then
+            LINKER="gcc -fno-pie -no-pie -g"
+        elif [ "${OPTARG}" = "ld" ]; then
+            LINKER="ld"
+        else
+            usage
+        fi
+        ;;
+    a)
+        ASM_FLAGS="${ASM_FLAGS} ${OPTARG}"
+        ;;
+
+    f)
+        LINKER_FLAGS="${LINKER_FLAGS} ${OPTARG}"
+        ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+# número de parâmetros dif. de zero
+if [ ${#} -ne 0 ]; then
+    for ARQUIVO in "${@}"; do
+        if [ ! -f "${ARQUIVO}" ]; then
+            echo "[!] Arquivo ${ARQUIVO} não encontrado."
+        else
+            BASENAME=${ARQUIVO%%.asm}
+            ${ASM} ${ASM_FLAGS} "${ARQUIVO}" && ${LINKER} ${LINKER_FLAGS} "${BASENAME}".o -o "${BASENAME}".out
+            # rm "${BASENAME}".o
+        fi
+    done
+else
+    echo "[!] Arquivo(s) não fornecidos."
+fi

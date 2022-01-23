@@ -1,0 +1,67 @@
+#!/usr/bin/bash
+
+# NOTA: O linux reconhece o ds3 nativamente, e para usá-lo como um controle
+# de xbox é só iniciar o xboxdrv.
+# Porém, para usá-lo via bluetooth é preciso de umas gambiarras:
+#1) criar a regra udev /etc/udev/rules.d/99-dualshock.rules com o conteúdo:  ' KERNEL=="event*", SUBSYSTEM=="input", ATTRS{uniq}=="04:76:6e:9b:aa:4a", SYMLINK+="input/dualshock3" '
+#2)Recarregar as regras udev: sudo udevadm control --reload-rules && udevadm trigger
+#3)configurar o controle pelo bluetoothctl:
+#	sudo bluetoothctl
+#	power on
+#	discoverable on
+#	pairable on
+#	trust <MAC_DO_CONTROLE>
+#Apertando o botão ps o bluetoothctl irá pedir por uma confirmação
+#
+#4)Iniciar o xboxdrv com os maps diferenciados de ~/.config/xboxdrv/ds3_bt.sh
+
+BT_PC=$(echo list | bluetoothctl | grep default | awk '{ print $2 }')
+BT_CEL="70:8b:cd:b8:78:83"
+
+usage(){
+	printf "bt.sh: seta o endereço mestre de um controle de PS3.\n"
+	printf "\nUso:\n\n\
+bt.sh -o : Liga o serviço(bluetooth, xboxdrv).\n\
+bt.sh -f : desliga o serviço(bluetooth, xboxdrv).\n\
+bt.sh -p : Seta o endereço para o endereço do computador(obtido automaticamente).\n\
+bt.sh -c : Seta o endereço para o endereço do celular hardcodado em \$BT_CEL.\n\
+bt.sh -a \$END : Seta o endereço para \$END.\n\
+bt.sh -h : Mostra essa ajuda.\n\n"
+}
+
+set_addr(){
+	sixpair "$1"
+}
+
+while getopts 'pca:hof' ARG; do
+	case $ARG in
+		'o')
+			sudo bluetooth on &>/dev/null
+			echo -e "power on\npairable on\ndiscoverable on" | sudo bluetoothctl &>/dev/null
+			sudo systemctl start xboxdrv &>/dev/null
+			;;
+		'f')
+			sudo bluetooth off &>/dev/null
+			echo -e "power off\npairable off\ndiscoverable off" | sudo bluetoothctl &>/dev/null
+			sudo systemctl stop xboxdrv &>/dev/null
+			;;
+
+		'p')
+			set_addr "$BT_PC"
+			;;
+		'c')
+			set_addr "$BT_CEL"
+			;;
+		'a')
+			set_addr "$OPTARG"
+			;;&
+		'h')
+			usage
+			exit 1
+			;;
+		*)
+			usage
+			exit 1
+			;;
+	esac
+done

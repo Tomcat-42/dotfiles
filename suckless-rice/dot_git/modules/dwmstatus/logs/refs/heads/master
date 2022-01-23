@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 4f60e9d5165b746c0ef4ffb30c0f6d8a921b61a1 Pablo Hugen <pablohuggem@gmail.com> 1579318198 -0300	clone: from git@github.com:Tomcat-42/dwmstatus.git
+4f60e9d5165b746c0ef4ffb30c0f6d8a921b61a1 752c1d3d2ba0edf4c36331c3cb92e9a73b1a3d4d Pablo Hugen <pablohuggem@gmail.com> 1581633484 -0300	commit: Change Song function
+752c1d3d2ba0edf4c36331c3cb92e9a73b1a3d4d 62d8e430a9377fcd344cb787cdb43d8077134692 Pablo Hugen <pablohuggem@gmail.com> 1581634601 -0300	commit: Fix a string delimiter and loagavg icon
+62d8e430a9377fcd344cb787cdb43d8077134692 a291ae67fddec0706a545f9b2c1925e83619d4d8 Pablo Hugen <pablohuggem@gmail.com> 1581634621 -0300	commit (amend): Fix a string delimiter and loadavg icon
+a291ae67fddec0706a545f9b2c1925e83619d4d8 b17d4b0a2a6746827b7ffb8450045cbeb835dadf Pablo Hugen <pablohuggem@gmail.com> 1581635977 -0300	commit (amend): Fix a string delimiter and change loadavg icon
+b17d4b0a2a6746827b7ffb8450045cbeb835dadf 371884a5fecdecdb3c32b6bb7e25a23aee5a81e4 Pablo Hugen <pablohuggem@gmail.com> 1581636000 -0300	commit (amend): Fix a string delimiter and change loadavg icon
+371884a5fecdecdb3c32b6bb7e25a23aee5a81e4 d8c64b6dfc42d510995b7928718aa47686356308 Pablo Hugen <pablohuggem@gmail.com> 1581656922 -0300	commit (amend): Fix a string delimiter and change loadavg icon
+d8c64b6dfc42d510995b7928718aa47686356308 79a08fe4ace14462f2fcdbafadd530059f45542d Pablo Hugen <pablohuggem@gmail.com> 1604551200 -0300	commit: Change ip function
+79a08fe4ace14462f2fcdbafadd530059f45542d a22647384f7cb7e050a4f321484e49f073601281 Pablo Hugen <pablohuggem@gmail.com> 1613104954 -0300	commit: Change battery device
+a22647384f7cb7e050a4f321484e49f073601281 838b68430b13a97f768eb6e09162bc724706d508 Pablo Hugen <pablohuggem@gmail.com> 1618013869 -0300	commit: Add second battery status
+838b68430b13a97f768eb6e09162bc724706d508 3bb2ab74d26a3374f1deaf6e4ba81c8cb0baae57 Pablo Hugen <pablohuggem@gmail.com> 1619715984 -0300	commit (amend): Add second battery status
+3bb2ab74d26a3374f1deaf6e4ba81c8cb0baae57 2068122989d235506c996c060511e7f513a05b81 Pablo Hugen <pablohuggem@gmail.com> 1629020299 -0300	commit: Add networkspeed component
+2068122989d235506c996c060511e7f513a05b81 9ac3f6fe195dbad802958b1db99c67c11673386f Pablo Hugen <pablohuggem@gmail.com> 1642961924 -0300	commit: minor changes

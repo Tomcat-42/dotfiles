@@ -1,0 +1,23 @@
+{
+  "slack_token": "xoxp-2160696312948-2449373670659-2541894555313-1fc537bb794f0e33730f277f1ca7f927",
+   "theme": {
+          "view": {
+              "fg": "blue",
+              "bg": "default",
+              "border_fg": "blue",
+              "border_bg": "black",
+              "label_fg": "green,bold"
+          },
+          "channel": {
+              "prefix": "",
+              "icon": "",
+              "text": ""
+          },
+          "message": {
+              "time": "",
+              "name": "",
+              "text": ""
+          }
+      },
+  "emoji": true
+}

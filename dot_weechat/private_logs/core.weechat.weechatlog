@@ -1,0 +1,346 @@
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-1;5P => /bar scroll buflist * -100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-meta-OQ => /bar scroll buflist * e
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-1;3Q => /bar scroll buflist * e
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-1;3P => /bar scroll buflist * b
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-meta-OP => /bar scroll buflist * b
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-B => /buflist toggle
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-OQ => /bar scroll buflist * +100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-OP => /bar scroll buflist * -100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-meta2-12~ => /bar scroll buflist * e
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta-meta2-11~ => /bar scroll buflist * b
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-12^ => /bar scroll buflist * +100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-12~ => /bar scroll buflist * +100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-11^ => /bar scroll buflist * -100%
+2020-09-12 17:59:29		Novo atalho de teclado (contexto "default"): meta2-11~ => /bar scroll buflist * -100%
+2020-09-12 17:59:29		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 17:59:31	=!=	Não pode escrever texto neste buffer
+2020-09-12 17:59:33		fifo: pipe fechado
+2020-09-12 17:59:39		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 17:59:45	=!=	Não pode escrever texto neste buffer
+2020-09-12 17:59:46	=!=	Poucos argumentos para o comando "/query" (ajuda do comando: /help query)
+2020-09-12 17:59:48		fifo: pipe fechado
+2020-09-12 18:00:17		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:00:22		script: a transferir a lista de scripts...
+2020-09-12 18:00:24		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:00:25		perl: carregando script "/home/pablo951_br/.weechat/perl/perlexec.pl"
+2020-09-12 18:00:25		perl: script "perlexec" registrado, versão 0.1 (Execute perl code)
+2020-09-12 18:00:26		python: carregando script "/home/pablo951_br/.weechat/python/buffer_autoclose.py"
+2020-09-12 18:00:26		python: script "buffer_autoclose" registrado, versão 0.5 (Automatically close inactive private message buffers)
+2020-09-12 18:00:27		python: carregando script "/home/pablo951_br/.weechat/python/go.py"
+2020-09-12 18:00:27		python: script "go" registrado, versão 2.6 (Quick jump to buffers)
+2020-09-12 18:00:28		python: carregando script "/home/pablo951_br/.weechat/python/colorize_nicks.py"
+2020-09-12 18:00:28		python: script "colorize_nicks" registrado, versão 27 (Use the weechat nick colors in the chat area)
+2020-09-12 18:00:30		python: carregando script "/home/pablo951_br/.weechat/python/autosort.py"
+2020-09-12 18:00:30		python: script "autosort" registrado, versão 3.8 (Flexible automatic (or manual) buffer sorting based on eval expressions.)
+2020-09-12 18:00:31		python: carregando script "/home/pablo951_br/.weechat/python/zerotab.py"
+2020-09-12 18:00:31		python: script "zerotab" registrado, versão 1.5 (Will tab complete the last nick in channel without typing anything first. This is good for rapid conversations.)
+2020-09-12 18:00:39		Opção mudada: weechat.bar.status.color_bg = 8  (padrão: blue)
+2020-09-12 18:00:45		Opção mudada: weechat.bar.title.color_bg = 0  (padrão: blue)
+2020-09-12 18:00:52		Opção mudada: weechat.bar.title.color_bg = 8  (padrão: blue)
+2020-09-12 18:00:59		Opção mudada: weechat.color.chat_nick_colors = "1,2,3,4,5,6"  (padrão: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2020-09-12 18:01:06		Opção mudada: weechat.color.chat_highlight = 7  (padrão: yellow)
+2020-09-12 18:01:11		Opção mudada: buflist.format.hotlist_message = "${color:7}"  (padrão: "${color:brown}")
+2020-09-12 18:01:20		Opção mudada: buflist.format.buffer_current = "${color:,8}${format_buffer}"  (padrão: "${color:,blue}${format_buffer}")
+2020-09-12 18:01:25		Opção mudada: buflist.format.buffer_current = "${color:,9}${format_buffer}"  (padrão: "${color:,blue}${format_buffer}")
+2020-09-12 18:01:33		Opção mudada: weechat.bar.buflist.position = top  (padrão: left)
+2020-09-12 18:01:43		Opção mudada: weechat.bar.buflist.items = "buflist"  (padrão: "")
+2020-09-12 18:01:47		autosort: Sorting rules:
+2020-09-12 18:01:47		    0: ${core_first}
+2020-09-12 18:01:47		    1: ${info:autosort_order,${info:autosort_escape,${script_or_plugin}},core,*,irc,bitlbee,matrix,slack}
+2020-09-12 18:01:47		    2: ${script_or_plugin}
+2020-09-12 18:01:47		    3: ${irc_raw_first}
+2020-09-12 18:01:47		    4: ${server}
+2020-09-12 18:01:47		    5: ${info:autosort_order,${type},server,*,channel,private}
+2020-09-12 18:01:47		    6: ${hashless_name}
+2020-09-12 18:01:47		    7: ${buffer.full_name}
+2020-09-12 18:01:47		    8: irc.server.*.&* = 0
+2020-09-12 18:01:53		autosort: Sorting rules:
+2020-09-12 18:01:53		    0: ${core_first}
+2020-09-12 18:01:53		    1: ${info:autosort_order,${info:autosort_escape,${script_or_plugin}},core,*,irc,bitlbee,matrix,slack}
+2020-09-12 18:01:53		    2: ${script_or_plugin}
+2020-09-12 18:01:53		    3: ${irc_raw_first}
+2020-09-12 18:01:53		    4: ${server}
+2020-09-12 18:01:53		    5: ${info:autosort_order,${type},server,*,channel,private}
+2020-09-12 18:01:53		    6: ${hashless_name}
+2020-09-12 18:01:53		    7: ${buffer.full_name}
+2020-09-12 18:01:53		    8: irc.server.*.&* = 0
+2020-09-12 18:01:53		    9: irc.server.*.#* = 1
+2020-09-12 18:01:59		autosort: Sorting rules:
+2020-09-12 18:01:59		    0: ${core_first}
+2020-09-12 18:01:59		    1: ${info:autosort_order,${info:autosort_escape,${script_or_plugin}},core,*,irc,bitlbee,matrix,slack}
+2020-09-12 18:01:59		    2: ${script_or_plugin}
+2020-09-12 18:01:59		    3: ${irc_raw_first}
+2020-09-12 18:01:59		    4: ${server}
+2020-09-12 18:01:59		    5: ${info:autosort_order,${type},server,*,channel,private}
+2020-09-12 18:01:59		    6: ${hashless_name}
+2020-09-12 18:01:59		    7: ${buffer.full_name}
+2020-09-12 18:01:59		    8: irc.server.*.&* = 0
+2020-09-12 18:01:59		    9: irc.server.*.#* = 1
+2020-09-12 18:01:59		    10: irc.server.*.\*status = 2
+2020-09-12 18:02:06		Opção mudada: irc.look.server_buffer = independent  (padrão: merge_with_core)
+2020-09-12 18:02:29		Opção mudada: weechat.look.hotlist_add_conditions = "${away} || ${buffer} != ${window.buffer}"  (padrão: "${away} || ${buffer.num_displayed} == 0 || ${info:relay_client_count,weechat,connected} > 0")
+2020-09-12 18:02:42		Opção mudada: weechat.look.prefix_same_nick = "⤷"  (padrão: "")
+2020-09-12 18:02:51		Opção mudada: weechat.look.prefix_error = "⚠"  (padrão: "=!=")
+2020-09-12 18:02:56		Opção mudada: weechat.look.prefix_network = "ℹ "  (padrão: "--")
+2020-09-12 18:03:04		Opção mudada: weechat.look.prefix_action = "⚡"  (padrão: " *")
+2020-09-12 18:03:09		Opção mudada: weechat.look.bar_more_down = "▼▼"  (padrão: "++")
+2020-09-12 18:03:14		Opção mudada: weechat.look.bar_more_left = "◀◀"  (padrão: "<<")
+2020-09-12 18:03:19		Opção mudada: weechat.look.bar_more_right = "▶▶"  (padrão: ">>")
+2020-09-12 18:03:24		Opção mudada: weechat.look.bar_more_up = "▲▲"  (padrão: "--")
+2020-09-12 18:03:29		Opção mudada: weechat.look.prefix_suffix = "╡"  (padrão: "|")
+2020-09-12 18:04:20		perl: descarregando script "perlexec"
+2020-09-12 18:04:20		perl: script removido: /home/pablo951_br/.weechat/perl/autoload/perlexec.pl
+2020-09-12 18:04:20		perl: script removido: /home/pablo951_br/.weechat/perl/perlexec.pl
+2020-09-12 18:04:20		python: descarregando script "buffer_autoclose"
+2020-09-12 18:04:20		python: script removido: /home/pablo951_br/.weechat/python/autoload/buffer_autoclose.py
+2020-09-12 18:04:20		python: script removido: /home/pablo951_br/.weechat/python/buffer_autoclose.py
+2020-09-12 18:04:46	⚠	irc: não foi possível adicionar o servidor temporário "freenode" porque a adição de servidores temporários pelo comando /connect está atualmente desativada
+2020-09-12 18:04:46	⚠	irc: se deseja adicionar um servidor normal, use o comando "/server add" (ver /help server); se deseja mesmo adicionar um servidor temporário (NÃO GUARDADO), ative a opção irc.look.temporary_servers
+2020-09-12 18:05:23		Opção mudada: buflist.format.buffer_current = "${color:,8}${format_buffer}"  (padrão: "${color:,blue}${format_buffer}")
+2020-09-12 18:07:49		fifo: pipe fechado
+2020-09-12 18:07:49		python: scripts descarregados
+2020-09-12 18:10:23		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:10:23		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:10:23		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:10:28		Mouse habilitado
+2020-09-12 18:10:38		fifo: pipe fechado
+2020-09-12 18:10:38		python: scripts descarregados
+2020-09-12 18:15:30		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:15:31		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:15:31		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:15:34	⚠	Poucos argumentos para o comando "/query" (ajuda do comando: /help query)
+2020-09-12 18:15:38		fifo: pipe fechado
+2020-09-12 18:15:38		python: scripts descarregados
+2020-09-12 18:17:32		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:17:32		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:17:32		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:17:45	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:17:49		fifo: pipe fechado
+2020-09-12 18:17:49		python: scripts descarregados
+2020-09-12 18:18:06		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:18:06		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:18:06		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:18:10		fifo: pipe fechado
+2020-09-12 18:18:10		python: scripts descarregados
+2020-09-12 18:18:36		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:18:36		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:18:36		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:18:37	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:18:45	⚠ 	Erro: comando desconhecido: "/quir" (escreva /help para obter ajuda)
+2020-09-12 18:18:49		fifo: pipe fechado
+2020-09-12 18:18:49		python: scripts descarregados
+2020-09-12 18:19:13		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:19:13		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:19:13		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:19:22	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:19:25		fifo: pipe fechado
+2020-09-12 18:19:25		python: scripts descarregados
+2020-09-12 18:20:06		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:20:06		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:20:06		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:20:14		fifo: pipe fechado
+2020-09-12 18:20:14		python: scripts descarregados
+2020-09-12 18:20:54		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:20:54		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:20:54		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:20:56	⚠ 	Erro: comando desconhecido: "/quir" (escreva /help para obter ajuda)
+2020-09-12 18:20:59		fifo: pipe fechado
+2020-09-12 18:20:59		python: scripts descarregados
+2020-09-12 18:21:44		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:21:44		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:21:44		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:21:47		fifo: pipe fechado
+2020-09-12 18:21:47		python: scripts descarregados
+2020-09-12 18:22:00		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:22:00		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:22:00		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:22:05		fifo: pipe fechado
+2020-09-12 18:22:05		python: scripts descarregados
+2020-09-12 18:22:19		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:22:19		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:22:19		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:22:24		fifo: pipe fechado
+2020-09-12 18:22:24		python: scripts descarregados
+2020-09-12 18:22:40		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:22:40		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:22:40		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:22:50		fifo: pipe fechado
+2020-09-12 18:22:50		python: scripts descarregados
+2020-09-12 18:23:02		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:23:02		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:23:02		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:23:07		fifo: pipe fechado
+2020-09-12 18:23:07		python: scripts descarregados
+2020-09-12 18:23:22		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:23:22		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:23:22		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:23:32		fifo: pipe fechado
+2020-09-12 18:23:32		python: scripts descarregados
+2020-09-12 18:23:55		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:23:55		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:23:55		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:23:59	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:24:02		fifo: pipe fechado
+2020-09-12 18:24:02		python: scripts descarregados
+2020-09-12 18:24:51		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:24:51		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:24:51		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:24:56		fifo: pipe fechado
+2020-09-12 18:24:56		python: scripts descarregados
+2020-09-12 18:24:57		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:24:58		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:24:58		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:25:13		irc: server added: freenode
+2020-09-12 18:25:20		Opção mudada: irc.server.freenode.nicks = "ninja"  (predefinição se for nulo: "pablo951_br,pablo951_br1,pablo951_br2,pablo951_br3,pablo951_br4")
+2020-09-12 18:25:47		fifo: pipe fechado
+2020-09-12 18:25:48		python: scripts descarregados
+2020-09-12 18:27:09		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:27:09		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:27:09		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:27:48		fifo: pipe fechado
+2020-09-12 18:27:48		python: scripts descarregados
+2020-09-12 18:28:36		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:28:36		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:28:36		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, xfer
+2020-09-12 18:30:05		Opção mudada: irc.server.freenode.sasl_mechanism = ecdsa-nist256p-challenge  (predefinição se for nulo: plain)
+2020-09-12 18:30:18		Opção mudada: irc.server.freenode.sasl_username = "Tomcat_42"  (predefinição se for nulo: "")
+2020-09-12 18:30:26		Opção mudada: irc.server.freenode.sasl_key = "%h/certs/ecdsa.pem"  (predefinição se for nulo: "")
+2020-09-12 18:31:16	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:31:20		Opção mudada: irc.server.freenode.addresses = "ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion"  (predefinição se for nulo: "")
+2020-09-12 18:31:32		Proxy "tor" adicionado
+2020-09-12 18:31:37		Opção mudada: irc.server.freenode.proxy = "tor"  (predefinição se for nulo: "")
+2020-09-12 18:32:19		Opção mudada: irc.server_default.msg_part = ""  (padrão: "WeeChat ${info:version}")
+2020-09-12 18:32:24		Opção mudada: irc.server_default.msg_quit = ""  (padrão: "WeeChat ${info:version}")
+2020-09-12 18:32:30		Opção criada: irc.ctcp.clientinfo = ""  (padrão: "$clientinfo")
+2020-09-12 18:32:35		Opção criada: irc.ctcp.finger = ""  (padrão: "WeeChat $versiongit")
+2020-09-12 18:32:40		Opção criada: irc.ctcp.source = ""  (padrão: "$download")
+2020-09-12 18:32:46		Opção criada: irc.ctcp.time = ""  (padrão: "$time")
+2020-09-12 18:32:51		Opção criada: irc.ctcp.userinfo = ""  (padrão: "$username ($realname)")
+2020-09-12 18:32:56		Opção criada: irc.ctcp.version = ""  (padrão: "WeeChat $versiongit ($compilation)")
+2020-09-12 18:33:02		Opção criada: irc.ctcp.ping = ""
+2020-09-12 18:33:08		Plugin "xfer" removido
+2020-09-12 18:33:13		Opção mudada: weechat.plugin.autoload = "*,!xfer"  (padrão: "*")
+2020-09-12 18:33:24		Opções salvas para sec.conf
+2020-09-12 18:33:24		Opções salvas para weechat.conf
+2020-09-12 18:33:24		Opções salvas para plugins.conf
+2020-09-12 18:33:24		Opções salvas para charset.conf
+2020-09-12 18:33:24		Opções salvas para logger.conf
+2020-09-12 18:33:24		Opções salvas para exec.conf
+2020-09-12 18:33:24		Opções salvas para trigger.conf
+2020-09-12 18:33:24		Opções salvas para spell.conf
+2020-09-12 18:33:24		Opções salvas para alias.conf
+2020-09-12 18:33:24		Opções salvas para buflist.conf
+2020-09-12 18:33:24		Opções salvas para fifo.conf
+2020-09-12 18:33:24		Opções salvas para irc.conf
+2020-09-12 18:33:24		Opções salvas para relay.conf
+2020-09-12 18:33:24		Opções salvas para tcl.conf
+2020-09-12 18:33:24		Opções salvas para python.conf
+2020-09-12 18:33:24		Opções salvas para colorize_nicks.conf
+2020-09-12 18:33:24		Opções salvas para autosort.conf
+2020-09-12 18:33:24		Opções salvas para guile.conf
+2020-09-12 18:33:24		Opções salvas para lua.conf
+2020-09-12 18:33:24		Opções salvas para ruby.conf
+2020-09-12 18:33:24		Opções salvas para perl.conf
+2020-09-12 18:33:24		Opções salvas para script.conf
+2020-09-12 18:33:24		Opções salvas para fset.conf
+2020-09-12 18:36:02		Opção mudada: weechat.color.separator = 8  (padrão: blue)
+2020-09-12 18:36:04		fifo: pipe fechado
+2020-09-12 18:36:04		python: scripts descarregados
+2020-09-12 18:37:15		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:37:15		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:37:15		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:37:30		fifo: pipe fechado
+2020-09-12 18:37:30		python: scripts descarregados
+2020-09-12 18:37:56		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:37:56		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:37:56		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:38:03		fifo: pipe fechado
+2020-09-12 18:38:03		python: scripts descarregados
+2020-09-12 18:38:16		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:38:16		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:38:16		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:39:08		fifo: pipe fechado
+2020-09-12 18:39:08		python: scripts descarregados
+2020-09-12 18:39:22		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:39:22		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:39:22		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:39:26	⚠ 	Erro: comando desconhecido: "/qui" (escreva /help para obter ajuda)
+2020-09-12 18:39:36	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:39:39	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:39:43		fifo: pipe fechado
+2020-09-12 18:39:43		python: scripts descarregados
+2020-09-12 18:39:55		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:39:55		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:39:55		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:39:58		fifo: pipe fechado
+2020-09-12 18:39:58		python: scripts descarregados
+2020-09-12 18:42:04		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:42:04		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:42:04		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:43:04	⚠ 	Não pode escrever texto neste buffer
+2020-09-12 18:43:09		irc: server added: freenode_plain
+2020-09-12 18:43:24		Opção mudada: irc.server.freenode.nicks = "Tomcat_42"  (predefinição se for nulo: "")
+2020-09-12 18:43:45	⚠ 	irc: o servidor "freenode_plain" já existe, não é possível adicioná-lo!
+2020-09-12 18:44:04		Opção mudada: irc.server.freenode_plain.nicks = "Tomcat_42"  (predefinição se for nulo: "")
+2020-09-12 18:45:33		Opção mudada: irc.server.freenode_plain.sasl_mechanism = ecdsa-nist256p-challenge  (predefinição se for nulo: plain)
+2020-09-12 18:45:53		Opção mudada: irc.server.freenode_plain.sasl_username = "Tomcat_42"  (predefinição se for nulo: "")
+2020-09-12 18:46:15		Opção mudada: irc.server.freenode_plain.sasl_key = "%h/certs/ecdsa.pem"  (predefinição se for nulo: "")
+2020-09-12 18:47:29		Opções salvas para sec.conf
+2020-09-12 18:47:29		Opções salvas para weechat.conf
+2020-09-12 18:47:29		Opções salvas para plugins.conf
+2020-09-12 18:47:29		Opções salvas para charset.conf
+2020-09-12 18:47:29		Opções salvas para logger.conf
+2020-09-12 18:47:29		Opções salvas para exec.conf
+2020-09-12 18:47:29		Opções salvas para trigger.conf
+2020-09-12 18:47:29		Opções salvas para spell.conf
+2020-09-12 18:47:29		Opções salvas para alias.conf
+2020-09-12 18:47:29		Opções salvas para buflist.conf
+2020-09-12 18:47:29		Opções salvas para fifo.conf
+2020-09-12 18:47:29		Opções salvas para irc.conf
+2020-09-12 18:47:29		Opções salvas para relay.conf
+2020-09-12 18:47:29		Opções salvas para tcl.conf
+2020-09-12 18:47:29		Opções salvas para python.conf
+2020-09-12 18:47:29		Opções salvas para colorize_nicks.conf
+2020-09-12 18:47:29		Opções salvas para autosort.conf
+2020-09-12 18:47:29		Opções salvas para guile.conf
+2020-09-12 18:47:29		Opções salvas para lua.conf
+2020-09-12 18:47:29		Opções salvas para ruby.conf
+2020-09-12 18:47:29		Opções salvas para perl.conf
+2020-09-12 18:47:29		Opções salvas para script.conf
+2020-09-12 18:47:29		Opções salvas para fset.conf
+2020-09-12 18:47:41		Opções salvas para sec.conf
+2020-09-12 18:47:41		Opções salvas para weechat.conf
+2020-09-12 18:47:41		Opções salvas para plugins.conf
+2020-09-12 18:47:41		Opções salvas para charset.conf
+2020-09-12 18:47:41		Opções salvas para logger.conf
+2020-09-12 18:47:41		Opções salvas para exec.conf
+2020-09-12 18:47:41		Opções salvas para trigger.conf
+2020-09-12 18:47:41		Opções salvas para spell.conf
+2020-09-12 18:47:41		Opções salvas para alias.conf
+2020-09-12 18:47:41		Opções salvas para buflist.conf
+2020-09-12 18:47:41		Opções salvas para fifo.conf
+2020-09-12 18:47:41		Opções salvas para irc.conf
+2020-09-12 18:47:41		Opções salvas para relay.conf
+2020-09-12 18:47:41		Opções salvas para tcl.conf
+2020-09-12 18:47:41		Opções salvas para python.conf
+2020-09-12 18:47:41		Opções salvas para colorize_nicks.conf
+2020-09-12 18:47:41		Opções salvas para autosort.conf
+2020-09-12 18:47:41		Opções salvas para guile.conf
+2020-09-12 18:47:41		Opções salvas para lua.conf
+2020-09-12 18:47:41		Opções salvas para ruby.conf
+2020-09-12 18:47:41		Opções salvas para perl.conf
+2020-09-12 18:47:41		Opções salvas para script.conf
+2020-09-12 18:47:41		Opções salvas para fset.conf
+2020-09-12 18:47:52		fifo: pipe fechado
+2020-09-12 18:47:52		python: scripts descarregados
+2020-09-12 18:50:18		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:50:18		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:50:18		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:50:30		fifo: pipe fechado
+2020-09-12 18:50:30		python: scripts descarregados
+2020-09-12 18:50:41		scripts python carregados: autosort, colorize_nicks, go, zerotab
+2020-09-12 18:50:41		script: 364 scripts do WeeChat 2.9
+2020-09-12 18:50:41		Plugins carregados: alias, buflist, charset, exec, fifo, fset, guile, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger
+2020-09-12 18:51:45		fifo: pipe fechado
+2020-09-12 18:51:45		python: scripts descarregados

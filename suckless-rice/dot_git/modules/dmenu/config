@@ -1,0 +1,18 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	worktree = ../../../dmenu
+[remote "origin"]
+	url = git@github.com:Tomcat-42/dmenu.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "upstream"]
+	url = https://git.suckless.org/dmenu
+	fetch = +refs/heads/*:refs/remotes/upstream/*
+[branch "vanilla"]
+	remote = origin
+	merge = refs/heads/vanilla

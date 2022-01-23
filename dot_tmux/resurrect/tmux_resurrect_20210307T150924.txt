@@ -1,0 +1,4 @@
+pane	0	1	:vim	1	:*	1	:/home/pablo951_br	1	vim	:vim .tmux.conf
+pane	0	1	:vim	1	:*	2	:/home/pablo951_br	0	man	:man tmux
+window	0	1	1	:*	d3c6,240x75,0,0{120x75,0,0,0,119x75,121,0,1}
+state	0	

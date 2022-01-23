@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Gives a dmenu prompt to search DuckDuckGo.
+# Without input, will open DuckDuckGo.com.
+# URLs will be directly handed to the browser.
+# Anything else, it search it.
+#browser=${BROWSER:-firefox}
+# browser=surf
+#source ~/.cache/wal/colors.sh
+
+#DMENU_ARGS="-nf #ffffff -nb #222222 -sb $color1 -sf $color15 -fn envypn-9"
+DMENU_ARGS=""
+
+
+pgrep -x dmenu && exit
+
+choice=$(echo "🦆" | dmenu $DMENU_ARGS -i -p "Search DuckDuckGo:") || exit 1
+browser=$(printf "firefox\nsurf" | dmenu -p 'Browser:')
+
+if [ "$choice" = "🦆"  ]; then
+    $browser "https://duckduckgo.com"
+else
+    # Detect if url
+    if [[ "$choice" =~ ^(http:\/\/|https:\/\/)?[a-zA-Z0-9]+\.[a-zA-Z]+(/)?.*$ ]]; then
+        $browser "$choice"
+    else
+        $browser "https://duckduckgo.com/?q=$choice&t=ffab&atb=v1-1"
+    fi
+fi

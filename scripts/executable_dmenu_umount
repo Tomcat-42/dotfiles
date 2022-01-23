@@ -1,0 +1,62 @@
+#!/bin/sh
+# A dmenu prompt to unmount drives.
+# Provides you with mounted partitions, select one to unmount.
+# Drives mounted at /, /boot and /home will not be options to unmount.
+#source ~/.cache/wal/colors.sh
+
+#DMENU_ARGS="-nf #ffffff -nb #222222 -sb $color1 -sf $color15 -fn envypn-9"
+DMENU_ARGS=""
+
+
+unmountusb() {
+	[ -z "$drives" ] && exit
+	chosen=$(echo "$drives" | dmenu $DMENU_ARGS -i -p "Unmount which drive?" | awk '{print $1}')
+	[ -z "$chosen" ] && exit
+	name=$(echo $chosen | sed 's!/*$!!' | sed 's/\/mnt\///')
+	exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo -S umount "$chosen" && pgrep -x dunst && notify-send "$chosen unmounted."
+	if [ "$TIPO" = "CRIPTOGRAFADA" ]
+	then
+		sudo cryptsetup luksClose $name
+	fi
+	}
+
+unmountandroid() { \
+	chosen=$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | dmenu $DMENU_ARGS -i -p "Unmount which device?")
+	[ -z "$chosen" ] && exit
+	fusermount -u "$chosen" && pgrep -x dunst && notify-send "$chosen unmounted."
+	}
+
+asktype() { \
+	case $(printf "USB\\nAndroid" | dmenu $DMENU_ARGS -i -p "Unmount a USB drive or Android device?") in
+		USB) unmountusb ;;
+		Android) unmountandroid ;;
+	esac
+	}
+
+
+TIPO=$(printf 'CRIPTOGRAFADA\nCOMUM' | dmenu $DMENU_ARGS -i -p "Tipo de drive/partição:")
+
+if [ "$TIPO" = "CRIPTOGRAFADA" ]
+         then
+		drives=$(lsblk -nrpo "name,type,size,mountpoint" | awk '$2=="crypt"&&$4!~/\/boot|\/home$|SWAP/&&length($4)>1{printf "%s (%s)\n",$4,$3}')
+      		   	
+	 elif [ "$TIPO" = "COMUM"  ]
+         then
+		drives=$(lsblk -nrpo "name,type,size,mountpoint" | awk '$2=="part"&&$4!~/\/boot|\/home$|SWAP/&&length($4)>1{printf "%s (%s)\n",$4,$3}')
+                 
+         fi
+
+if ! grep simple-mtpfs /etc/mtab; then
+	[ -z "$drives" ] && echo "No drives to unmount." &&  exit
+	echo "Unmountable USB drive detected."
+	unmountusb
+else
+	if [ -z "$drives" ]
+	then
+		echo "Unmountable Android device detected."
+	       	unmountandroid
+	else
+		echo "Unmountable USB drive(s) and Android device(s) detected."
+		asktype
+	fi
+fi

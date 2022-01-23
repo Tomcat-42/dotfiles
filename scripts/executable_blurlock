@@ -1,0 +1,11 @@
+#!/bin/bash
+import -window root /tmp/screenshot.png
+#convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+#convert /tmp/screenshot.png -blur 0x5 /tmp/screenshotblur.png
+convert /tmp/screenshot.png -blur 0x3 -strokewidth 0 -fill "rgba( 33, 33, 33,0.8 )" -draw "rectangle 30, 650 330,743" /tmp/screenshotblur.png
+rm /tmp/screenshot.png
+#copia o screenshot para o cache do blurlock para ser mair apidomrm 
+rm ~/.cache/i3lock/* ; cp -av /tmp/screenshotblur.png ~/.cache/i3lock/l_blur.png
+betterlockscreen  -l blur
+
+

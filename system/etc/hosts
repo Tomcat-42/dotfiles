@@ -1,0 +1,9 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+192.168.1.101 server
+192.168.1.102 lan.thinkpad
+192.168.1.103 wlan.thinkpad
+192.168.1.107 phone
+192.168.1.111 work
+
+

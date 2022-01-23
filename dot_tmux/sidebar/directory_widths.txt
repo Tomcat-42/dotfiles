@@ -1,0 +1,14 @@
+/home/pablo951_br	40
+/home/pablo951_br/transmission	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	140
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br	40
+/home/pablo951_br/.vim/plugin	40

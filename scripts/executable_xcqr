@@ -1,0 +1,26 @@
+#!/bin/sh
+
+VIEWER=${1:-"sxiv"}
+ARGS="-f -b -Z"
+#VIEWER="feh --zoom max --force-aliasing --image-bg white -F"
+TMPFILE=$(mktemp)
+
+qrencode -o - -s 27 "$(xclip -out -selection clipboard)" -o "$TMPFILE"
+sxiv $TMPFILE \
+	-f \
+	-b \
+	-Z
+
+
+rm "$TMPFILE"
+
+# Oldscript
+#!/bin/sh
+# Credit to Maddison Hellstrom (@b0o on Github)
+#qrencode -o - -s 1 \
+#	"$(xclip -out -selection clipboard)" |
+#	feh --zoom max \
+#		-F \
+#		--force-aliasing \
+#		--image-bg white \
+#		-

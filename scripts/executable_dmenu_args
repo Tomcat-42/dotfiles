@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.cache/wal/colors.sh
+
+echo " -nf '#ffffff' -nb '#222222' -sb '$color1' -sf '$color15' -fn envypn-9 "

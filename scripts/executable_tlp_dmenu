@@ -1,0 +1,69 @@
+#!/bin/sh
+
+source ~/.cache/wal/colors.sh
+
+#DMENU_ARGS="-nf #ffffff -nb #222222 -sb $color1 -sf $color15 -fn terminus-12"
+DMENU_ARGS=""
+
+start_tlp=" Start/Restart TLP"
+bat=" Set powersave mode (BAT)"
+ac=" Set performance mode (AC)"
+usb_susp="  Autosuspend USB devices"
+bay_susp=" Poweroff optical drive"
+tune=" Tune battery threshold/calibration"
+
+ask=$(printf "$start_tlp\n$bat\n$ac\n$usb_susp\n$bay_susp\n$tune" | dmenu $DMENU_ARGS -l 6 -p "TLP quick config: ")
+ 
+if [ "$ask" = "$start_tlp" ] 
+then
+	notify-send "$(sudo tlp start)"
+elif [ "$ask" = "$bat" ] 
+then
+	notify-send "$(sudo tlp bat)"
+elif [ "$ask" = "$ac" ] 
+then
+	notify-send "$(sudo tlp ac)"
+elif [ "$ask" = "$usb_susp" ] 
+then
+	notify-send "$(sudo tlp usb)"
+elif [ "$ask" = "$bay_susp" ] 
+then
+	notify-send "$(sudo tlp bayoff)"
+elif [ "$ask" = "$tune" ] 
+then
+	fullcharge=" Charge battery once to full capacity"
+	chargeonce=" Charge battery once to upper threshold"
+	discharge=" Apply a full discharge to a battery"
+	recalibrate="<->  Recalibrate: full discharge then charge battery"
+	threshold="->  Change baterries charge thresholds"
+
+	ask2=$(printf "$fullcharge\n$chargeonce\n$discharge\n$recalibrate\n$threshold" | dmenu $DMENU_ARGS -l 5 -p "Batteries options: ")
+
+	if [ "$ask2" = "$fullcharge" ]
+	then
+		device=$(printf "BAT1\nBAT0" | dmenu $DMENU_ARGS -p "Device: ")
+			notify-send "$(sudo tlp fullcharge $(device))"
+	elif [ "$ask2" = "$chargeonce" ]
+	then
+		device=$(printf "BAT1\nBAT0" | dmenu $DMENU_ARGS -p "Device: ")
+			notify-send "$(sudo tlp chargeonce $(device))"
+	elif [ "$ask2" = "$discharge" ]
+	then
+		device=$(printf "BAT1\nBAT0" | dmenu $DMENU_ARGS -p "Device: ")
+			notify-send -u critical -t 0 "Battery discharging, wait..."
+			sudo tlp discharge $(device)
+			notify-send -u critical -t 0 "Battery discharged, completed!"
+	elif [ "$ask2" = "$recalibrate" ]
+	then
+		device=$(printf "BAT1\nBAT0" | dmenu $DMENU_ARGS -p "Device: ")
+			notify-send -u critical -t 0 "Battery recalibrating, wait..."
+			sudo tlp recalibrate $(device)
+			notify-send -u critical -t 0 "Battery recalibrated, completed!"
+	elif [ "$ask2" = "$threshold" ]
+	then
+		device=$(printf "BAT1\nBAT0" | dmenu $DMENU_ARGS -p "Device: ")
+		start_threshold=$(printf "" | dmenu $DMENU_ARGS -p "Start threshold: ")
+		stop_threshold=$(printf "" | dmenu $DMENU_ARGS -p "Stop threshold: ")
+		notify-send "$(sudo tlp setcharge $(stop_threshold) $(stop_threshold) $(device))"
+	fi
+fi

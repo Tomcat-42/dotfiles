@@ -1,0 +1,767 @@
+2020-09-12 18:25:26	ℹ 	irc: a conectar ao servidor chat.freenode.net/6667...
+2020-09-12 18:25:26	ℹ 	irc: conectado a chat.freenode.net/6667 (193.10.255.100)
+2020-09-12 18:25:26	ℹ 	wolfe.freenode.net: *** Looking up your hostname...
+2020-09-12 18:25:27	ℹ 	wolfe.freenode.net: *** Checking Ident
+2020-09-12 18:25:27	ℹ 	wolfe.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:25:36	ℹ 	wolfe.freenode.net: *** No Ident response
+2020-09-12 18:25:36	ℹ 	irc: o nick "ninja" já está a ser usado, a tentar com o nick "ninja_"
+2020-09-12 18:25:36	ℹ 	Welcome to the freenode Internet Relay Chat Network ninja_
+2020-09-12 18:25:36	ℹ 	Your host is wolfe.freenode.net[193.10.255.100/6667], running version ircd-seven-1.1.9
+2020-09-12 18:25:36	ℹ 	This server was created Sun Jul 12 2020 at 20:42:38 UTC
+2020-09-12 18:25:36	ℹ 	wolfe.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:25:36	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:25:36	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 KNOCK SAFELIST ELIST=CTU :are supported by this server
+2020-09-12 18:25:36	ℹ 	WHOX CPRIVMSG CNOTICE MONITOR=100 ETRACE :are supported by this server
+2020-09-12 18:25:36	ℹ 	There are 100 users and 78664 invisible on 31 servers
+2020-09-12 18:25:36	ℹ 	43 :IRC Operators online
+2020-09-12 18:25:36	ℹ 	31 :unknown connection(s)
+2020-09-12 18:25:36	ℹ 	46200 :channels formed
+2020-09-12 18:25:36	ℹ 	I have 3470 clients and 1 servers
+2020-09-12 18:25:36	ℹ 	3470 6823 :Current local users 3470, max 6823
+2020-09-12 18:25:36	ℹ 	78764 86974 :Current global users 78764, max 86974
+2020-09-12 18:25:36	ℹ 	Highest connection count: 6824 (6823 clients) (223071 connections received)
+2020-09-12 18:25:36	ℹ 	- wolfe.freenode.net Message of the Day -
+2020-09-12 18:25:36	ℹ 	- Welcome to wolfe.freenode.net in Stockholm, SE.
+2020-09-12 18:25:36	ℹ 	- Thanks to http://nordu.net/ for sponsoring
+2020-09-12 18:25:36	ℹ 	- this server!
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- WOLFE, GENE [1931-2019].  Prolific writer of short stories
+2020-09-12 18:25:36	ℹ 	- and novels. His best-known work is the multi-volume novel The
+2020-09-12 18:25:36	ℹ 	- Book of the New Sun. He has won multiple awards including
+2020-09-12 18:25:36	ℹ 	- the Nebula Award, the World Fantasy Award, The Campell
+2020-09-12 18:25:36	ℹ 	- Memorial Award and the Locus Award. He was awarded the World
+2020-09-12 18:25:36	ℹ 	- Fantasy Award for lifetime achievement in 1996.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:25:36	ℹ 	- software communities since 1998.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:25:36	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:25:36	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:25:36	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:25:36	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:25:36	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:25:36	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:25:36	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:25:36	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:25:36	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:25:36	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:25:36	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:25:36	ℹ 	- of the volunteer staff team.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:25:36	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:25:36	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:25:36	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:25:36	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:25:36	ℹ 	- global notices.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:25:36	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:25:36	ℹ 	- network going for close to two decades.
+2020-09-12 18:25:36	ℹ 	-
+2020-09-12 18:25:36	ℹ 	- Thank you for using freenode!
+2020-09-12 18:25:36	ℹ 	End of /MOTD command.
+2020-09-12 18:25:36	ℹ 	Modo de utilizador [+i] por ninja_
+2020-09-12 18:25:37	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:25:37	ℹ 	CTCP requisitado por freenode-connect: VERSION
+2020-09-12 18:25:37	ℹ 	resposta CTCP para freenode-connect: VERSION WeeChat 2.9 (Jul 19 2020 06:32:47)
+2020-09-12 18:25:47	ℹ 	irc: desconectado do servidor
+2020-09-12 18:27:09	ℹ 	irc: a conectar ao servidor chat.freenode.net/6667...
+2020-09-12 18:27:09	ℹ 	irc: conectado a chat.freenode.net/6667 (130.239.18.119)
+2020-09-12 18:27:09	ℹ 	leguin.freenode.net: *** Looking up your hostname...
+2020-09-12 18:27:10	ℹ 	leguin.freenode.net: *** Checking Ident
+2020-09-12 18:27:10	ℹ 	leguin.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:27:16	ℹ 	leguin.freenode.net: *** No Ident response
+2020-09-12 18:27:16	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:27:16	ℹ 	Your host is leguin.freenode.net[130.239.18.119/6667], running version ircd-seven-1.1.9
+2020-09-12 18:27:16	ℹ 	This server was created Wed Feb 19 2020 at 12:18:38 UTC
+2020-09-12 18:27:16	ℹ 	leguin.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:27:16	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:27:16	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 CPRIVMSG CNOTICE KNOCK :are supported by this server
+2020-09-12 18:27:16	ℹ 	MONITOR=100 ETRACE SAFELIST ELIST=CTU WHOX :are supported by this server
+2020-09-12 18:27:16	ℹ 	There are 100 users and 78647 invisible on 31 servers
+2020-09-12 18:27:16	ℹ 	43 :IRC Operators online
+2020-09-12 18:27:16	ℹ 	47 :unknown connection(s)
+2020-09-12 18:27:16	ℹ 	46193 :channels formed
+2020-09-12 18:27:16	ℹ 	I have 2787 clients and 1 servers
+2020-09-12 18:27:16	ℹ 	2787 5844 :Current local users 2787, max 5844
+2020-09-12 18:27:16	ℹ 	78747 90930 :Current global users 78747, max 90930
+2020-09-12 18:27:16	ℹ 	Highest connection count: 5845 (5844 clients) (126474 connections received)
+2020-09-12 18:27:16	ℹ 	- leguin.freenode.net Message of the Day -
+2020-09-12 18:27:16	ℹ 	- Welcome to leguin.freenode.net in Umeå, Sweden, EU! Thanks to
+2020-09-12 18:27:16	ℹ 	- the Academic Computer Club at Umeå University for sponsoring
+2020-09-12 18:27:16	ℹ 	- this server!
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- LE GUIN, URSULA K. (1929-2018) Born in Berkeley, California,
+2020-09-12 18:27:16	ℹ 	- Ursula Le Guin was an American author primarily known for
+2020-09-12 18:27:16	ℹ 	- her Science Fiction and Fantasy. She was awarded the Hugo
+2020-09-12 18:27:16	ℹ 	- and Nebula awards, and was best known for her Earthsea
+2020-09-12 18:27:16	ℹ 	- and Hainish series.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:27:16	ℹ 	- software communities since 1998.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:27:16	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:27:16	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:27:16	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:27:16	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:27:16	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:27:16	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:27:16	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:27:16	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:27:16	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:27:16	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:27:16	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:27:16	ℹ 	- of the volunteer staff team.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:27:16	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:27:16	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:27:16	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:27:16	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:27:16	ℹ 	- global notices.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:27:16	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:27:16	ℹ 	- network going for close to two decades.
+2020-09-12 18:27:16	ℹ 	-
+2020-09-12 18:27:16	ℹ 	- Thank you for using freenode!
+2020-09-12 18:27:16	ℹ 	End of /MOTD command.
+2020-09-12 18:27:16	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:27:16	ℹ 	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2020-09-12 18:27:17	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:27:17	ℹ 	CTCP requisitado por freenode-connect: VERSION
+2020-09-12 18:27:17	ℹ 	resposta CTCP para freenode-connect: VERSION WeeChat 2.9 (Jul 19 2020 06:32:47)
+2020-09-12 18:27:48	ℹ 	irc: desconectado do servidor
+2020-09-12 18:28:36	ℹ 	irc: a conectar ao servidor chat.freenode.net/6667...
+2020-09-12 18:28:37	ℹ 	irc: conectado a chat.freenode.net/6667 (130.185.232.126)
+2020-09-12 18:28:37	ℹ 	hitchcock.freenode.net: *** Looking up your hostname...
+2020-09-12 18:28:37	ℹ 	hitchcock.freenode.net: *** Checking Ident
+2020-09-12 18:28:38	ℹ 	hitchcock.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:28:44	ℹ 	hitchcock.freenode.net: *** No Ident response
+2020-09-12 18:28:44	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:28:44	ℹ 	Your host is hitchcock.freenode.net[130.185.232.126/6667], running version ircd-seven-1.1.9
+2020-09-12 18:28:44	ℹ 	This server was created Wed Dec 18 2019 at 01:00:47 UTC
+2020-09-12 18:28:44	ℹ 	hitchcock.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:28:44	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:28:44	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 WHOX SAFELIST ELIST=CTU :are supported by this server
+2020-09-12 18:28:44	ℹ 	ETRACE CPRIVMSG CNOTICE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:28:44	ℹ 	There are 100 users and 78637 invisible on 31 servers
+2020-09-12 18:28:44	ℹ 	43 :IRC Operators online
+2020-09-12 18:28:44	ℹ 	45 :unknown connection(s)
+2020-09-12 18:28:44	ℹ 	46199 :channels formed
+2020-09-12 18:28:44	ℹ 	I have 3513 clients and 1 servers
+2020-09-12 18:28:44	ℹ 	3513 5789 :Current local users 3513, max 5789
+2020-09-12 18:28:44	ℹ 	78737 90930 :Current global users 78737, max 90930
+2020-09-12 18:28:44	ℹ 	Highest connection count: 5790 (5789 clients) (1749098 connections received)
+2020-09-12 18:28:44	ℹ 	- hitchcock.freenode.net Message of the Day -
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- Welcome to hitchcock.freenode.net in Sofia, Bulgaria, EU, kindly sponsored by
+2020-09-12 18:28:44	ℹ 	- Elemental TV (www.elemental.tv)
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- HITCHCOCK, SIR ALFRED [1899 - 1980] Born in Essex,
+2020-09-12 18:28:44	ℹ 	- England, Sir Alfred Hitchcock was a noted film director
+2020-09-12 18:28:44	ℹ 	- and producer. Over a long career he pioneered many modern
+2020-09-12 18:28:44	ℹ 	- techniques in film-making, made more than 50 feature films,
+2020-09-12 18:28:44	ℹ 	- and influenced many present-day directors and producers.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:28:44	ℹ 	- software communities since 1998.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:28:44	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:28:44	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:28:44	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:28:44	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:28:44	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:28:44	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:28:44	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:28:44	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:28:44	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:28:44	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:28:44	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:28:44	ℹ 	- of the volunteer staff team.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:28:44	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:28:44	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:28:44	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:28:44	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:28:44	ℹ 	- global notices.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:28:44	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:28:44	ℹ 	- network going for close to two decades.
+2020-09-12 18:28:44	ℹ 	-
+2020-09-12 18:28:44	ℹ 	- Thank you for using freenode!
+2020-09-12 18:28:44	ℹ 	End of /MOTD command.
+2020-09-12 18:28:44	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:28:44	ℹ 	NickServ (NickServ@services.): This nickname is registered. Please choose a different nickname, or identify via /msg NickServ identify <password>.
+2020-09-12 18:28:45	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:28:45	ℹ 	CTCP requisitado por freenode-connect: VERSION
+2020-09-12 18:28:45	ℹ 	resposta CTCP para freenode-connect: VERSION WeeChat 2.9 (Jul 19 2020 06:32:47)
+2020-09-12 18:29:04	ℹ 	MSG(nickserv): set pubkey AsOqM/pCqaRmEAkjki7pE4SJ+l0JECblEcOl+z56A2ks
+2020-09-12 18:29:04	ℹ 	NickServ (NickServ@services.): You are not logged in.
+2020-09-12 18:29:46	ℹ 	MSG(nickserv): identify ****************
+2020-09-12 18:29:46	ℹ 	NickServ (NickServ@services.): You are now identified for Tomcat_42.
+2020-09-12 18:29:50	ℹ 	MSG(nickserv): set pubkey AsOqM/pCqaRmEAkjki7pE4SJ+l0JECblEcOl+z56A2ks
+2020-09-12 18:29:50	ℹ 	NickServ (NickServ@services.): Your public key is now set to AsOqM/pCqaRmEAkjki7pE4SJ+l0JECblEcOl+z56A2ks.
+2020-09-12 18:30:38	ℹ 	irc: desconectado do servidor
+2020-09-12 18:30:38	ℹ 	irc: a conectar ao servidor chat.freenode.net/6667...
+2020-09-12 18:30:39	ℹ 	irc: conectado a chat.freenode.net/6667 (130.185.232.126)
+2020-09-12 18:30:39	ℹ 	hitchcock.freenode.net: *** Looking up your hostname...
+2020-09-12 18:30:39	ℹ 	hitchcock.freenode.net: *** Checking Ident
+2020-09-12 18:30:39	ℹ 	hitchcock.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:30:49	ℹ 	hitchcock.freenode.net: *** No Ident response
+2020-09-12 18:30:49	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:30:49	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:30:50	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:30:50	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:30:51	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@187.120.231.212)
+2020-09-12 18:30:51	ℹ 	SASL authentication successful
+2020-09-12 18:30:52	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:30:52	ℹ 	Your host is hitchcock.freenode.net[130.185.232.126/6667], running version ircd-seven-1.1.9
+2020-09-12 18:30:52	ℹ 	This server was created Wed Dec 18 2019 at 01:00:47 UTC
+2020-09-12 18:30:52	ℹ 	hitchcock.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:30:52	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:30:52	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 WHOX SAFELIST ELIST=CTU :are supported by this server
+2020-09-12 18:30:52	ℹ 	ETRACE CPRIVMSG CNOTICE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:30:52	ℹ 	There are 100 users and 78637 invisible on 31 servers
+2020-09-12 18:30:52	ℹ 	43 :IRC Operators online
+2020-09-12 18:30:52	ℹ 	47 :unknown connection(s)
+2020-09-12 18:30:52	ℹ 	46232 :channels formed
+2020-09-12 18:30:52	ℹ 	I have 3518 clients and 1 servers
+2020-09-12 18:30:52	ℹ 	3518 5789 :Current local users 3518, max 5789
+2020-09-12 18:30:52	ℹ 	78737 90930 :Current global users 78737, max 90930
+2020-09-12 18:30:52	ℹ 	Highest connection count: 5790 (5789 clients) (1749115 connections received)
+2020-09-12 18:30:52	ℹ 	- hitchcock.freenode.net Message of the Day -
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- Welcome to hitchcock.freenode.net in Sofia, Bulgaria, EU, kindly sponsored by
+2020-09-12 18:30:52	ℹ 	- Elemental TV (www.elemental.tv)
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- HITCHCOCK, SIR ALFRED [1899 - 1980] Born in Essex,
+2020-09-12 18:30:52	ℹ 	- England, Sir Alfred Hitchcock was a noted film director
+2020-09-12 18:30:52	ℹ 	- and producer. Over a long career he pioneered many modern
+2020-09-12 18:30:52	ℹ 	- techniques in film-making, made more than 50 feature films,
+2020-09-12 18:30:52	ℹ 	- and influenced many present-day directors and producers.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:30:52	ℹ 	- software communities since 1998.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:30:52	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:30:52	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:30:52	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:30:52	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:30:52	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:30:52	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:30:52	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:30:52	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:30:52	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:30:52	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:30:52	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:30:52	ℹ 	- of the volunteer staff team.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:30:52	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:30:52	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:30:52	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:30:52	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:30:52	ℹ 	- global notices.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:30:52	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:30:52	ℹ 	- network going for close to two decades.
+2020-09-12 18:30:52	ℹ 	-
+2020-09-12 18:30:52	ℹ 	- Thank you for using freenode!
+2020-09-12 18:30:52	ℹ 	End of /MOTD command.
+2020-09-12 18:30:52	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:30:52	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:30:53	ℹ 	CTCP requisitado por freenode-connect: VERSION
+2020-09-12 18:30:53	ℹ 	resposta CTCP para freenode-connect: VERSION WeeChat 2.9 (Jul 19 2020 06:32:47)
+2020-09-12 18:31:08	⚠ 	irc: este buffer não é um canal!
+2020-09-12 18:31:47	ℹ 	irc: desconectado do servidor
+2020-09-12 18:31:47	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:31:51	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:31:51	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:31:51	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:31:51	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:31:51	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:31:52	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:31:54	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:31:55	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:31:55	ℹ 	SASL authentication successful
+2020-09-12 18:31:56	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:31:56	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:31:56	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:31:56	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:31:56	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:31:56	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:31:56	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:31:56	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:31:56	ℹ 	There are 100 users and 78628 invisible on 31 servers
+2020-09-12 18:31:56	ℹ 	43 :IRC Operators online
+2020-09-12 18:31:56	ℹ 	4 :unknown connection(s)
+2020-09-12 18:31:56	ℹ 	46219 :channels formed
+2020-09-12 18:31:56	ℹ 	I have 285 clients and 1 servers
+2020-09-12 18:31:56	ℹ 	285 319 :Current local users 285, max 319
+2020-09-12 18:31:56	ℹ 	78728 90930 :Current global users 78728, max 90930
+2020-09-12 18:31:56	ℹ 	Highest connection count: 320 (319 clients) (140688 connections received)
+2020-09-12 18:31:56	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:31:56	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:31:56	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:31:56	ℹ 	- software communities since 1998.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:31:56	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:31:56	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:31:56	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:31:56	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:31:56	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:31:56	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:31:56	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:31:56	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:31:56	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:31:56	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:31:56	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:31:56	ℹ 	- of the volunteer staff team.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:31:56	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:31:56	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:31:56	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:31:56	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:31:56	ℹ 	- global notices.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:31:56	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:31:56	ℹ 	- network going for close to two decades.
+2020-09-12 18:31:56	ℹ 	-
+2020-09-12 18:31:56	ℹ 	- Thank you for using freenode!
+2020-09-12 18:31:56	ℹ 	End of /MOTD command.
+2020-09-12 18:31:56	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:31:57	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:31:57	ℹ 	CTCP requisitado por freenode-connect: VERSION
+2020-09-12 18:31:57	ℹ 	resposta CTCP para freenode-connect: VERSION WeeChat 2.9 (Jul 19 2020 06:32:47)
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] (~Tomcat_42@gateway/tor-sasl/tomcat42/x-92790710): Tomcat_42
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] zettel.freenode.net (Tor)
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] is connecting from *@gateway/tor-sasl/tomcat42/x-92790710 255.255.255.255
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] inativo: 00 hora 00 minuto 11 segundos, iniciou sessão a: sáb, 12 set 2020 18:31:55
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] is logged in as Tomcat_42
+2020-09-12 18:32:07	ℹ 	[Tomcat_42] End of /WHOIS list.
+2020-09-12 18:33:31	ℹ 	irc: desconectado do servidor
+2020-09-12 18:33:31	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:33:32	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:33:32	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:33:32	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:33:32	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:33:32	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:33:33	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:33:35	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:33:36	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:33:36	ℹ 	SASL authentication successful
+2020-09-12 18:33:36	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:33:36	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:33:36	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:33:36	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:33:36	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:33:36	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:33:36	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:33:36	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:33:36	ℹ 	There are 100 users and 78629 invisible on 31 servers
+2020-09-12 18:33:36	ℹ 	43 :IRC Operators online
+2020-09-12 18:33:36	ℹ 	46224 :channels formed
+2020-09-12 18:33:36	ℹ 	I have 285 clients and 1 servers
+2020-09-12 18:33:36	ℹ 	285 319 :Current local users 285, max 319
+2020-09-12 18:33:36	ℹ 	78729 90930 :Current global users 78729, max 90930
+2020-09-12 18:33:36	ℹ 	Highest connection count: 320 (319 clients) (140690 connections received)
+2020-09-12 18:33:36	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:33:36	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:33:36	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:33:36	ℹ 	- software communities since 1998.
+2020-09-12 18:33:36	ℹ 	-
+2020-09-12 18:33:36	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:33:36	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:33:36	ℹ 	-
+2020-09-12 18:33:36	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:33:36	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:33:36	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:33:36	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:33:36	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:33:36	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:33:36	ℹ 	-
+2020-09-12 18:33:36	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:33:36	ℹ 	-
+2020-09-12 18:33:36	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:33:36	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:33:36	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:33:37	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:33:37	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:33:37	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:33:37	ℹ 	- of the volunteer staff team.
+2020-09-12 18:33:37	ℹ 	-
+2020-09-12 18:33:37	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:33:37	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:33:37	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:33:37	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:33:37	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:33:37	ℹ 	- global notices.
+2020-09-12 18:33:37	ℹ 	-
+2020-09-12 18:33:37	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:33:37	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:33:37	ℹ 	-
+2020-09-12 18:33:37	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:33:37	ℹ 	- network going for close to two decades.
+2020-09-12 18:33:37	ℹ 	-
+2020-09-12 18:33:37	ℹ 	- Thank you for using freenode!
+2020-09-12 18:33:37	ℹ 	End of /MOTD command.
+2020-09-12 18:33:37	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:33:37	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:33:37	ℹ 	CTCP requisitado por freenode-connect: VERSION (bloqueado)
+2020-09-12 18:34:03	ℹ 	MSG(alis): list *brasil*
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): Returning maximum of 60 channel names matching '*brasil*'
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): ##allybrasil                                         3 :Friendly group.
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): ##brasil                                             9 :Seja bem-vindo(a) ao ##Brasil - O ponto de encontro dos brasileiros(as) na rede freenode. | Welcome to ##Brasil :) | Painel Coronavírus: https://covid.saude.gov.br/
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #brasileirinhos                                      2 :BRASILEIRINHOS - https://www.youtube.com/channel/UCBIubFOWKC-HRGxQHl4BP7g - vai ficar de perguntinha?
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #ccppbrasil                                          4 :Grupo de Usuários de C e C++ do Brasil
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #kde-brasil                                         27 :Comunidade KDE no Brasil! Regras básicas: Somente damos suporte ao KDE e Qt, não toleramos machismo, racismo, homofobia e xenofobia Código de conduta do KDE: https://br.kde.org/node/299/
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #kissbrasil                                          1
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #linux-brasil                                        2 :Bem Vindo ao #linux-brasil ; Canal para discussão sobre linux em geral.
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): #ubuntu_brasil                                       0
+2020-09-12 18:34:04	ℹ 	alis (alis@services.): End of output
+2020-09-12 18:34:16	ℹ 	kde-brasil: No such channel
+2020-09-12 18:36:04	ℹ 	irc: desconectado do servidor
+2020-09-12 18:37:15	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:37:16	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:37:16	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:37:16	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:37:17	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:37:17	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:37:17	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:37:19	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:37:20	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:37:20	ℹ 	SASL authentication successful
+2020-09-12 18:37:21	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:37:21	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:37:21	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:37:21	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:37:21	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:37:21	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:37:21	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:37:21	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:37:21	ℹ 	There are 100 users and 78629 invisible on 31 servers
+2020-09-12 18:37:21	ℹ 	43 :IRC Operators online
+2020-09-12 18:37:21	ℹ 	1 :unknown connection(s)
+2020-09-12 18:37:21	ℹ 	46215 :channels formed
+2020-09-12 18:37:21	ℹ 	I have 285 clients and 1 servers
+2020-09-12 18:37:21	ℹ 	285 319 :Current local users 285, max 319
+2020-09-12 18:37:21	ℹ 	78729 90930 :Current global users 78729, max 90930
+2020-09-12 18:37:21	ℹ 	Highest connection count: 320 (319 clients) (140692 connections received)
+2020-09-12 18:37:21	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:37:21	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:37:21	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:37:21	ℹ 	- software communities since 1998.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:37:21	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:37:21	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:37:21	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:37:21	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:37:21	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:37:21	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:37:21	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:37:21	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:37:21	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:37:21	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:37:21	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:37:21	ℹ 	- of the volunteer staff team.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:37:21	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:37:21	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:37:21	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:37:21	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:37:21	ℹ 	- global notices.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:37:21	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:37:21	ℹ 	- network going for close to two decades.
+2020-09-12 18:37:21	ℹ 	-
+2020-09-12 18:37:21	ℹ 	- Thank you for using freenode!
+2020-09-12 18:37:21	ℹ 	End of /MOTD command.
+2020-09-12 18:37:21	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:37:22	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:37:22	ℹ 	CTCP requisitado por freenode-connect: VERSION (bloqueado)
+2020-09-12 18:37:30	ℹ 	irc: desconectado do servidor
+2020-09-12 18:37:56	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:37:56	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:37:56	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:37:56	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:37:57	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:37:57	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:37:58	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:38:00	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:38:01	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:38:01	ℹ 	SASL authentication successful
+2020-09-12 18:38:01	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:38:01	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:38:01	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:38:01	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:38:01	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:38:01	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:38:01	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:38:01	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:38:01	ℹ 	There are 100 users and 78626 invisible on 31 servers
+2020-09-12 18:38:01	ℹ 	43 :IRC Operators online
+2020-09-12 18:38:01	ℹ 	2 :unknown connection(s)
+2020-09-12 18:38:01	ℹ 	46168 :channels formed
+2020-09-12 18:38:01	ℹ 	I have 284 clients and 1 servers
+2020-09-12 18:38:01	ℹ 	284 319 :Current local users 284, max 319
+2020-09-12 18:38:01	ℹ 	78726 90930 :Current global users 78726, max 90930
+2020-09-12 18:38:01	ℹ 	Highest connection count: 320 (319 clients) (140693 connections received)
+2020-09-12 18:38:01	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:38:01	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:38:01	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:38:01	ℹ 	- software communities since 1998.
+2020-09-12 18:38:01	ℹ 	-
+2020-09-12 18:38:01	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:38:01	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:38:01	ℹ 	-
+2020-09-12 18:38:01	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:38:01	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:38:01	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:38:01	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:38:01	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:38:01	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:38:01	ℹ 	-
+2020-09-12 18:38:01	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:38:01	ℹ 	-
+2020-09-12 18:38:01	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:38:01	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:38:02	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:38:02	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:38:02	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:38:02	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:38:02	ℹ 	- of the volunteer staff team.
+2020-09-12 18:38:02	ℹ 	-
+2020-09-12 18:38:02	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:38:02	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:38:02	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:38:02	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:38:02	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:38:02	ℹ 	- global notices.
+2020-09-12 18:38:02	ℹ 	-
+2020-09-12 18:38:02	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:38:02	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:38:02	ℹ 	-
+2020-09-12 18:38:02	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:38:02	ℹ 	- network going for close to two decades.
+2020-09-12 18:38:02	ℹ 	-
+2020-09-12 18:38:02	ℹ 	- Thank you for using freenode!
+2020-09-12 18:38:02	ℹ 	End of /MOTD command.
+2020-09-12 18:38:02	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:38:02	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:38:02	ℹ 	CTCP requisitado por freenode-connect: VERSION (bloqueado)
+2020-09-12 18:38:03	ℹ 	irc: desconectado do servidor
+2020-09-12 18:38:16	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:38:16	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:38:17	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:38:17	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:38:18	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:38:18	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:38:19	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:38:20	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:38:21	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:38:22	ℹ 	SASL authentication successful
+2020-09-12 18:38:22	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:38:22	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:38:22	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:38:22	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:38:22	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:38:22	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:38:22	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:38:22	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:38:22	ℹ 	There are 100 users and 78631 invisible on 31 servers
+2020-09-12 18:38:22	ℹ 	43 :IRC Operators online
+2020-09-12 18:38:22	ℹ 	46220 :channels formed
+2020-09-12 18:38:22	ℹ 	I have 284 clients and 1 servers
+2020-09-12 18:38:22	ℹ 	284 319 :Current local users 284, max 319
+2020-09-12 18:38:22	ℹ 	78731 90930 :Current global users 78731, max 90930
+2020-09-12 18:38:22	ℹ 	Highest connection count: 320 (319 clients) (140694 connections received)
+2020-09-12 18:38:22	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:38:22	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:38:22	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:38:22	ℹ 	- software communities since 1998.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:38:22	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:38:22	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:38:22	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:38:22	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:38:22	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:38:22	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:38:22	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:38:22	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:38:22	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:38:22	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:38:22	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:38:22	ℹ 	- of the volunteer staff team.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:38:22	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:38:22	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:38:22	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:38:22	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:38:22	ℹ 	- global notices.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:38:22	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:38:22	ℹ 	- network going for close to two decades.
+2020-09-12 18:38:22	ℹ 	-
+2020-09-12 18:38:22	ℹ 	- Thank you for using freenode!
+2020-09-12 18:38:22	ℹ 	End of /MOTD command.
+2020-09-12 18:38:22	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:38:23	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:38:23	ℹ 	CTCP requisitado por freenode-connect: VERSION (bloqueado)
+2020-09-12 18:39:08	ℹ 	irc: desconectado do servidor
+2020-09-12 18:39:22	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:39:23	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:39:23	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:39:23	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:39:23	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:39:23	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:39:24	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:39:26	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:39:27	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:39:27	ℹ 	SASL authentication successful
+2020-09-12 18:39:27	ℹ 	zettel.freenode.net: *** Spoofing your IP
+2020-09-12 18:39:27	ℹ 	Welcome to the freenode Internet Relay Chat Network Tomcat_42
+2020-09-12 18:39:27	ℹ 	Your host is zettel.freenode.net[127.0.6.10/17109], running version ircd-seven-1.1.9
+2020-09-12 18:39:27	ℹ 	This server was created Thu Dec 19 2019 at 20:31:25 UTC
+2020-09-12 18:39:27	ℹ 	zettel.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+2020-09-12 18:39:27	ℹ 	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+2020-09-12 18:39:28	ℹ 	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 SAFELIST ELIST=CTU CPRIVMSG :are supported by this server
+2020-09-12 18:39:28	ℹ 	CNOTICE WHOX ETRACE KNOCK MONITOR=100 :are supported by this server
+2020-09-12 18:39:28	ℹ 	There are 100 users and 78620 invisible on 31 servers
+2020-09-12 18:39:28	ℹ 	43 :IRC Operators online
+2020-09-12 18:39:28	ℹ 	1 :unknown connection(s)
+2020-09-12 18:39:28	ℹ 	46220 :channels formed
+2020-09-12 18:39:28	ℹ 	I have 284 clients and 1 servers
+2020-09-12 18:39:28	ℹ 	284 319 :Current local users 284, max 319
+2020-09-12 18:39:28	ℹ 	78720 90930 :Current global users 78720, max 90930
+2020-09-12 18:39:28	ℹ 	Highest connection count: 320 (319 clients) (140695 connections received)
+2020-09-12 18:39:28	ℹ 	- zettel.freenode.net Message of the Day -
+2020-09-12 18:39:28	ℹ 	- Welcome to zettel.freenode.net, our tor hidden service.
+2020-09-12 18:39:28	ℹ 	- Welcome to freenode - supporting the free and open source
+2020-09-12 18:39:28	ℹ 	- software communities since 1998.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- By connecting to freenode you indicate that you have read and
+2020-09-12 18:39:28	ℹ 	- accept our policies and guidelines as set out on https://freenode.net
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- In the event that you observe behaviour that contravenes our policies,
+2020-09-12 18:39:28	ℹ 	- please notify a volunteer staff member via private message, or send us an
+2020-09-12 18:39:28	ℹ 	- e-mail to complaints@freenode.net -- we will do our best to address the
+2020-09-12 18:39:28	ℹ 	- situation within a reasonable period of time, and we may request further
+2020-09-12 18:39:28	ℹ 	- information or, as appropriate, involve other parties such as channel operators
+2020-09-12 18:39:28	ℹ 	- Group Contacts representing an on-topic group.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- freenode runs an open proxy scanner.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- If you are looking for assistance, you may be able to find a list of
+2020-09-12 18:39:28	ℹ 	- volunteer staff on '/stats p' (shows only on-call staff) or by joining
+2020-09-12 18:39:28	ℹ 	- #freenode and using the '/who freenode/staff/*' command. You may message
+2020-09-12 18:39:28	ℹ 	- any of us at any time. Please note that freenode predominantly provides
+2020-09-12 18:39:28	ℹ 	- assistance via private message, and while we have a network channel the
+2020-09-12 18:39:28	ℹ 	- primary venue for support requests is via private message to a member
+2020-09-12 18:39:28	ℹ 	- of the volunteer staff team.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- From time to time, volunteer staff may send server-wide notices relating to
+2020-09-12 18:39:28	ℹ 	- the project, or the communities that we host. The majority of such notices
+2020-09-12 18:39:28	ℹ 	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+2020-09-12 18:39:28	ℹ 	- do not miss them. Important messages relating to the freenode project, including
+2020-09-12 18:39:28	ℹ 	- notices of upcoming maintenance and other scheduled downtime will be issued as
+2020-09-12 18:39:28	ℹ 	- global notices.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- Representing an on-topic project? Don't forget to register, more information
+2020-09-12 18:39:28	ℹ 	- can be found on the https://freenode.net website under "Group Registration".
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- Thank you also to our server sponsors for the sustained support in keeping the
+2020-09-12 18:39:28	ℹ 	- network going for close to two decades.
+2020-09-12 18:39:28	ℹ 	-
+2020-09-12 18:39:28	ℹ 	- Thank you for using freenode!
+2020-09-12 18:39:28	ℹ 	End of /MOTD command.
+2020-09-12 18:39:28	ℹ 	Modo de utilizador [+i] por Tomcat_42
+2020-09-12 18:39:28	ℹ 	freenode-connect (frigg@freenode/utility-bot/frigg): Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+2020-09-12 18:39:28	ℹ 	CTCP requisitado por freenode-connect: VERSION (bloqueado)
+2020-09-12 18:39:43	ℹ 	irc: desconectado do servidor
+2020-09-12 18:39:55	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:39:56	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:39:56	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:39:56	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:39:57	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:39:57	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:39:57	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:39:58	ℹ 	irc: desconectado do servidor
+2020-09-12 18:42:04	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:42:07	⚠ 	irc: proxy falhou ao estabelecer conexão com o servidor (verifique nome de usuário/senha (se utilizados) e se a porta e o endereço do servidor são permitidos pelo proxy
+2020-09-12 18:42:07	ℹ 	irc: a reconectar ao servidor dentro de 10 segundos
+2020-09-12 18:42:16		irc: a reconexão automática foi cancelada
+2020-09-12 18:42:16	ℹ 	irc: desconectado do servidor

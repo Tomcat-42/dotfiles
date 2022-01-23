@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Display contents of selection via dunst if running.
+# Separate script for i3.
+
+! pgrep -x dunst >/dev/null && echo "dunst not running." && exit
+
+clip=$(xclip -o -selection clipboard)
+
+prim=$(xclip -o -selection primary)
+
+[ "$prim" != "" ] && notify-send \
+	"Clipboard:" "$clip" \
+	-u critical \
+	-t 0
+
+[ "$clip" != "" ] && notify-send \
+	"Primary:" "$prim" \
+	-u critical \
+	-t 0

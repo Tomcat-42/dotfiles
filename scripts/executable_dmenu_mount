@@ -1,0 +1,97 @@
+#!/bin/bash
+# Gives a dmenu prompt to mount unmounted drives.
+# If they're in /etc/fstab, they'll be mounted automatically.
+# Otherwise, you'll be prompted to give a mountpoint from already existsing directories.
+# If you input a novel directory, it will prompt you to create that directory.
+
+#source ~/.cache/wal/colors.sh
+
+#DMENU_ARGS="-nf #ffffff -nb #222222 -sb $color1 -sf $color15 -fn envypn-9"
+DMENU_ARGS=""
+
+pgrep -x dmenu && exit
+STATUS=0
+
+getmount() { \
+	[ -z "$chosen" ] && exit 1
+	mp="$(find $1 | dmenu $DMENU_ARGS -i -p "Type in mount point.")"
+	[ "$mp" = "" ] && exit 1
+	if [ ! -d "$mp" ]; then
+		mkdiryn=$(printf "No\\nYes" | dmenu $DMENU_ARGS -i -p "$mp does not exist. Create it?")
+		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo -S mkdir -p "$mp")
+	fi
+	}
+
+mountusb() { \
+	chosen="$(echo "$usbdrives" | dmenu $DMENU_ARGS -i -p "Mount which drive?" | awk '{print $1}')"
+	#sudo -S mount "$chosen" && notify-send "$chosen mounted." && exit 0
+	getmount "/mnt /media /mount /home -maxdepth 5 -type d"
+	notify-send "Escolha o tipo de drive/partição:"	
+	TIPO=$(printf 'CRIPTOGRAFADA\nCOMUM' | dmenu $DMENU_ARGS -i -p "Mount which drive?")
+	echo $TIPO	
+	comum() { \
+		notify-send "Insira a senha de root" 
+		exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo -S mount "$chosen" "$mp" && notify-send "$chosen mounted to $mp."
+		}
+	
+	cripto() { \
+		name=$(printf 'PABLO\nHD_JOGOS\nBACKUP' | dmenu $DMENU_ARGS -i -p "Mount which drive?" | awk '{print $1}')
+		notify-send "Digite a senha de root: "
+		exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo -S ls > /dev/null
+		notify-send "Insira a senha da unidade: "  
+		exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo cryptsetup luksOpen $chosen $name - && sudo mount /dev/mapper/$name /mnt/$name && notify-send "$chosen mounted to $mp as $name.";  
+		}
+
+	if [ "$TIPO" = "CRIPTOGRAFADA" ]
+	then
+		cripto
+	elif [ "$TIPO" = "COMUM"  ] 
+	then	
+		comum
+	fi 	
+	
+}
+
+
+#mountusb() { \
+#	chosen="$(echo "$usbdrives" | dmenu -i -p "Mount which drive?" | awk '{print $1}')"
+#	#sudo -S mount "$chosen" && notify-send "$chosen mounted." && exit 0
+#	getmount "/mnt /media /mount /home -maxdepth 5 -type d"
+# 	echo $chosen
+#	notify-send "Insira a senha de root" && exec /home/pablo951_br/Downloads/scripts/dmenu_pass | sudo -S mount "$chosen" "$mp" && STATUS=1 ; notify-send "$chosen mounted to $mp." ; if [ STATUS==1 ]; then exit;  fi || nome="$(echo PABLO\nHD_JOGOS\nBACKUP | dmenu -i -p "Mount which drive?" | awk '{print $1}')" ; notify-send "Insira a senha da unidade: " ; exec /home/pablo951_br/Downloads/scripts/dmenu_pass | cryptsetup luksOpen $choosen $name - && notify-send "$chosen mounted to $mp as $name." 
+#	}
+
+
+
+mountandroid() { \
+	chosen=$(echo "$anddrives" | dmenu $DMENU_ARGS -i -p "Which Android device?" | cut -d : -f 1)
+	getmount "/mnt $HOME -maxdepth 3 -type d"
+	simple-mtpfs --device "$chosen" "$mp"
+	notify-send "Android device mounted to $mp."
+	}
+
+asktype() { \
+	case $(printf "USB\\nAndroid" | dmenu $DMENU_ARGS -i -p "Mount a USB drive or Android device?") in
+		USB) mountusb ;;
+		Android) mountandroid ;;
+	esac
+	}
+
+anddrives=$(simple-mtpfs -l 2>/dev/null)
+usbdrives="$(lsblk -rpo "name,type,size,mountpoint" | tail -n+2)"
+
+#PASSWD=$('exec /home/pablo951_br/Downloads/scripts/dmenu_pass')
+
+if [ -z "$usbdrives" ]; then
+	[ -z "$anddrives" ] && echo "No USB drive or Android device detected" && exit
+	echo "Android device(s) detected."
+	mountandroid
+else
+	if [ -z "$anddrives" ]; then
+		echo "USB drive(s) detected."
+	       	mountusb
+	else
+		echo "Mountable USB drive(s) and Android device(s) detected."
+		asktype
+	fi
+fi

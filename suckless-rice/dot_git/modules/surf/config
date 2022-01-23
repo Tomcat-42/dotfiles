@@ -1,0 +1,15 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	worktree = ../../../surf
+[remote "origin"]
+	url = git@github.com:Tomcat-42/surf.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "surf-webkit2"]
+	remote = origin
+	merge = refs/heads/surf-webkit2
+[remote "upstream"]
+	url = https://git.suckless.org/surf
+	fetch = +refs/heads/*:refs/remotes/upstream/*

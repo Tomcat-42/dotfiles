@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# toggle touchpad status
+
+device="Synaptics TM3276-022"
+enabled=$(xinput --list-props "$device" | grep "Device Enabled" | awk '{print $NF}')
+
+if [[ "$enabled" == "1" ]]; then
+    xinput --disable "$device"
+else
+    xinput --enable "$device"
+fi

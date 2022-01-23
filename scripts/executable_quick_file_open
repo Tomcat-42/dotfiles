@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+FILE="$(fzf)"
+detach xdg-open "$FILE"

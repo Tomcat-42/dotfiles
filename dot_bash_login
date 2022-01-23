@@ -1,0 +1,68 @@
+#
+# ~/.bashrc
+#
+
+[[ $- != *i* ]] && return
+
+colors() {
+	local fgc bgc vals seq0
+
+	printf "Color escapes are %s\n" '\e[${value};...;${value}m'
+	printf "Values 30..37 are \e[33mforeground colors\e[m\n"
+	printf "Values 40..47 are \e[43mbackground colors\e[m\n"
+	printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
+
+	# foreground colors
+	for fgc in {30..37}; do
+		# background colors
+		for bgc in {40..47}; do
+			fgc=${fgc#37} # white
+			bgc=${bgc#40} # black
+
+			vals="${fgc:+$fgc;}${bgc}"
+			vals=${vals%%;}
+
+			seq0="${vals:+\e[${vals}m}"
+			printf "  %-9s" "${seq0:-(default)}"
+			printf " ${seq0}TEXT\e[m"
+			printf " \e[${vals:+${vals+$vals;}}1mBOLD\e[m"
+		done
+		echo; echo
+	done
+}
+
+[[ -f ~/.extend.bashrc ]] && . ~/.extend.bashrc
+
+[ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
+
+clear
+echo
+neofetch #--w3m Nyan-Cat-PNG.png
+
+export TERM=xterm-256color
+PS1='\[\033[01;36m\][\u@\h \W]\[\e[m\]$ '
+
+alias ls='ls -c --color'
+alias histv='cat /dev/null > ~/.bash_history && history -c && clear'
+alias mountp='sudo cryptsetup luksOpen /dev/sda3 PABLO && sudo mount /dev/mapper/PABLO /mnt/PABLO'
+alias umountp='sudo umount /dev/mapper/PABLO && sudo cryptsetup luksClose PABLO'
+alias mountb='sudo cryptsetup luksOpen /dev/sdb BACKUP && sudo mount /dev/mapper/BACKUP /mnt/BACKUP'
+alias umountb='sudo umount /dev/mapper/BACKUP && sudo cryptsetup luksClose BACKUP'
+alias pingle='ping www.google.com'
+alias vpnup='sudo bash /etc/openvpn/regras_openvpn.sh && sudo systemctl restart iptables'
+alias vncup='sudo systemctl start x0vncserver'
+alias ps3split='split -a 5 -b 4294967295 -d --numeric-suffixes=66600'
+alias sshd_log='sudo journalctl _COMM=sshd'
+alias openvpn_log='sudo cat /etc/openvpn/openvpn.log'
+alias sshr='ssh root@192.168.1.1'
+alias x='startx'
+alias playlists='python ~/Downloads/scripts/mpd_playlists.py'
+alias py_sys='python ~/Downloads/backup/rsync_sys.py'
+#alias ls='ls -a'
+#setxkbmap -model abnt2 -layout br
+
+export TERMINAL="termite"
+
+#if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then 
+#	exec startx 
+#fi 

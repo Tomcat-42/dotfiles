@@ -1,0 +1,21 @@
+[submodule "st"]
+	path = st
+	url = git@github.com:Tomcat-42/st.git
+[submodule "dwm"]
+	path = dwm
+	url = git@github.com:Tomcat-42/dwm.git
+[submodule "dwmstatus"]
+	path = dwmstatus
+	url = git@github.com:Tomcat-42/dwmstatus.git
+[submodule "surf"]
+	path = surf
+	url = git@github.com:Tomcat-42/surf.git
+[submodule "dmenu"]
+	path = dmenu
+	url = git@github.com:Tomcat-42/dmenu.git
+[submodule "slock"]
+	path = slock
+	url = git@github.com:Tomcat-42/slock.git
+[submodule "slstatus"]
+	path = slstatus
+	url = ./slstatus

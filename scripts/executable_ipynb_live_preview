@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+PREVIEW_FILE="/tmp/vim-ipynb-preview.pdf"
+INPUT_FILE=${1}
+INPUT_FORMAT=${2}
+
+if [ ! -f "${1}" ]; then
+    echo "[!] file ${1} not found"
+    exit 2
+fi
+
+echo "[+] Vigiando arquivo"
+# entr -s "pandoc -f gfm -t pdf --pdf-engine=xelatex -V linkcolor:blue -V geometry:a4paper -V geometry:margin=2cm -V mainfont='DejaVu Sans' -V monofont='DejaVu Sans Mono' -o ${PREVIEW_FILE} ${INPUT_FILE}" <<<"${INPUT_FILE}"
+entr -s "jupyter nbconvert --execute --allow-errors ${INPUT_FILE} --to pdf  --output ${PREVIEW_FILE} " <<<"${INPUT_FILE}"

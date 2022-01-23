@@ -1,0 +1,11 @@
+2020-09-12 18:50:18	ℹ 	irc: a conectar ao servidor ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 pelo proxy socks5 127.0.0.1/9050...
+2020-09-12 18:50:24	ℹ 	irc: conectado a ajnvpgl6prmkb7yktvue6im5wiedlz2w32uhcwaamdiecdrfpwwgnlqd.onion/6667 (127.0.0.1)
+2020-09-12 18:50:24	ℹ 	zettel.freenode.net: *** Looking up your hostname...
+2020-09-12 18:50:24	ℹ 	zettel.freenode.net: *** Couldn't look up your hostname
+2020-09-12 18:50:25	ℹ 	irc: client capability, server supports: extended-join tls multi-prefix identify-msg account-notify chghost sasl cap-notify away-notify
+2020-09-12 18:50:25	ℹ 	irc: capacidade do cliente, a efetuar pedido: sasl
+2020-09-12 18:50:26	ℹ 	irc: capacidade do cliente, ativado: sasl
+2020-09-12 18:50:28	ℹ 	irc: a assinar o desafio com a chave ECC pública: AgDDqjP6QqmkZhAJI5Iu6ROEifpdCRAm5RHDpfs+egNpLA==
+2020-09-12 18:50:29	ℹ 	You are now logged in as Tomcat_42. (Tomcat_42!Tomcat_42@127.0.6.10)
+2020-09-12 18:50:29	ℹ 	SASL authentication successful
+2020-09-12 18:50:30	ℹ 	irc: desconectado do servidor

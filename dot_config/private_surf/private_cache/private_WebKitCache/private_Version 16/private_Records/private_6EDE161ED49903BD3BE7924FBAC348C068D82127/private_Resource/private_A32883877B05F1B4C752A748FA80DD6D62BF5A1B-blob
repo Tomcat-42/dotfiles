@@ -1,0 +1,1562 @@
+<!DOCTYPE HTML>
+
+<html lang="en/">
+
+<head>
+	<meta name="generator" content="Hugo 0.61.0" />
+    
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=H-ItcuNVhUEYsNQhXxT-vg&gtm_preview=env-2&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NK2TW8L');
+</script>
+
+
+
+
+<link rel="stylesheet" href="../sass/style.css">
+<link rel="stylesheet" href="https://cdn.arduino.cc/header-footer/prod/index.v2.css">
+<link rel="icon" href="../favicon.ico">
+
+<meta name="description" content="The Arduino programming language Reference, organized into Functions, Variable and Constant, and Structure keywords.">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+<meta charset="UTF-8">
+
+<title>Arduino Reference - Arduino Reference</title>
+</head>
+<body>
+  
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK2TW8L&gtm_auth=H-ItcuNVhUEYsNQhXxT-vg&gtm_preview=env-2&gtm_cookies_win=x"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+<div id="header" class="temporary">
+</div>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<div class="language-selector">
+  <div class="container">
+    <div class="language-selector-how-many">
+      This page is also available in <strong>2</strong> other languages
+    </div>
+    <div class="language-selector-select">
+      Change language <div class="select-wrapper">
+        <a class="select-current" href="../en/">English</a>
+        <ul>
+          
+            
+          
+            
+          
+            
+          
+            
+            <li><a href="../de/">Deutsch</a></li>
+            
+          
+            
+            <li><a href="../pt/">Português (Brasil)</a></li>
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div id="reference">
+	  <div class="container row">
+  <div class="first-column">
+    <div class="sidebar-nav">
+      <ul class="documentation-page-nav">
+    <li class="has-submenu">
+        <div class="bullet-icon">
+            <span class="icon"></span>
+            <span class="line"></span>
+        </div>
+        <a class="parent" href="../en/">Language</a>
+        <ul class="reference-menu">
+            <li><a class="functions" href="../en/#functions">functions</a></li>
+            <li><a class="variables" href="../en/#variables">variables</a></li>
+            <li><a class="structure" href="../en/#structure">structure</a></li>
+        </ul>
+    </li>
+    <li>
+        <div class="bullet-icon">
+            <span class="icon"></span>
+            <span class="line"></span>
+        </div>
+        <a href="../en/libraries/">Libraries</a>
+    </li>
+    <li>
+        <div class="bullet-icon">
+            <span class="icon"></span>
+            <span class="line"></span>
+        </div>
+        <a href="https://www.arduino.cc/reference/en/iot/api/">IoT Cloud API</a>
+    </li>
+    <li>
+        <div class="bullet-icon">
+            <span class="icon"></span>
+            <span class="line"></span>
+        </div>
+        <a href="https://www.arduino.cc/glossary/en">Glossary</a>
+    </li>
+</ul>
+
+<div class="licence">
+    
+
+    
+    <p>
+        The Arduino Reference text is licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">Creative Commons Attribution-Share Alike 3.0 License</a>.
+    </p>
+    <p>
+    Find anything that can be improved? <a href="https://github.com/arduino/reference-en" target="_blank" rel="noopener">Suggest corrections and new documentation via GitHub.</a>
+    </p>
+    <p>
+    Doubts on how to use Github? Learn everything you need to know in <a href="https://create.arduino.cc/projecthub/Arduino_Genuino/contribute-to-the-arduino-reference-af7c37" target="_blank" rel="noopener">this tutorial</a>.
+    </p>
+    
+
+</div>
+<div id="ad_container_zone" class="adv-banner"></div>
+
+    </div>
+  </div>
+
+  <div class="main-content-column">
+    <div id="page-title">
+      <h1>Language Reference</h1>
+      <p>
+        Arduino programming language can be divided in three main parts: functions, values (variables and constants), and structure.
+      </p>
+    </div>
+    </hr>
+
+    
+    <hr>
+    <div id="functions">
+      <h2>functions</h2>
+      <p>For controlling the Arduino board and performing computations.</p>
+
+      <div class="category">
+        <div class="category-content">
+          
+          <div id="digital-io" class="subcategory">
+            <h5>Digital I/O</h5>
+            
+            
+              
+                <a href="../en/language/functions/digital-io/digitalread/">
+                digitalRead()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/digital-io/digitalwrite/">
+                digitalWrite()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/digital-io/pinmode/">
+                pinMode()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="analog-io" class="subcategory">
+            <h5>Analog I/O</h5>
+            
+            
+              
+                <a href="../en/language/functions/analog-io/analogread/">
+                analogRead()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/analog-io/analogreference/">
+                analogReference()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/analog-io/analogwrite/">
+                analogWrite()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="zero-due-mkr-family" class="subcategory">
+            <h5>Zero, Due &amp; MKR Family</h5>
+            
+            
+              
+                <a href="../en/language/functions/zero-due-mkr-family/analogreadresolution/">
+                analogReadResolution()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/zero-due-mkr-family/analogwriteresolution/">
+                analogWriteResolution()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="advanced-io" class="subcategory">
+            <h5>Advanced I/O</h5>
+            
+            
+              
+                <a href="../en/language/functions/advanced-io/notone/">
+                noTone()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/advanced-io/pulsein/">
+                pulseIn()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/advanced-io/pulseinlong/">
+                pulseInLong()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/advanced-io/shiftin/">
+                shiftIn()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/advanced-io/shiftout/">
+                shiftOut()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/advanced-io/tone/">
+                tone()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="time" class="subcategory">
+            <h5>Time</h5>
+            
+            
+              
+                <a href="../en/language/functions/time/delay/">
+                delay()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/time/delaymicroseconds/">
+                delayMicroseconds()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/time/micros/">
+                micros()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/time/millis/">
+                millis()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="math" class="subcategory">
+            <h5>Math</h5>
+            
+            
+              
+                <a href="../en/language/functions/math/abs/">
+                abs()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/constrain/">
+                constrain()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/map/">
+                map()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/max/">
+                max()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/min/">
+                min()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/pow/">
+                pow()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/sq/">
+                sq()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/math/sqrt/">
+                sqrt()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="trigonometry" class="subcategory">
+            <h5>Trigonometry</h5>
+            
+            
+              
+                <a href="../en/language/functions/trigonometry/cos/">
+                cos()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/trigonometry/sin/">
+                sin()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/trigonometry/tan/">
+                tan()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="characters" class="subcategory">
+            <h5>Characters</h5>
+            
+            
+              
+                <a href="../en/language/functions/characters/isalpha/">
+                isAlpha()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isalphanumeric/">
+                isAlphaNumeric()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isascii/">
+                isAscii()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/iscontrol/">
+                isControl()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isdigit/">
+                isDigit()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isgraph/">
+                isGraph()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/ishexadecimaldigit/">
+                isHexadecimalDigit()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/islowercase/">
+                isLowerCase()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isprintable/">
+                isPrintable()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/ispunct/">
+                isPunct()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isspace/">
+                isSpace()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/isuppercase/">
+                isUpperCase()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/characters/iswhitespace/">
+                isWhitespace()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="random-numbers" class="subcategory">
+            <h5>Random Numbers</h5>
+            
+            
+              
+                <a href="../en/language/functions/random-numbers/random/">
+                random()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/random-numbers/randomseed/">
+                randomSeed()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="bits-and-bytes" class="subcategory">
+            <h5>Bits and Bytes</h5>
+            
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/bit/">
+                bit()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/bitclear/">
+                bitClear()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/bitread/">
+                bitRead()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/bitset/">
+                bitSet()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/bitwrite/">
+                bitWrite()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/highbyte/">
+                highByte()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/bits-and-bytes/lowbyte/">
+                lowByte()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="external-interrupts" class="subcategory">
+            <h5>External Interrupts</h5>
+            
+            
+              
+                <a href="../en/language/functions/external-interrupts/attachinterrupt/">
+                attachInterrupt()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/external-interrupts/detachinterrupt/">
+                detachInterrupt()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="interrupts" class="subcategory">
+            <h5>Interrupts</h5>
+            
+            
+              
+                <a href="../en/language/functions/interrupts/interrupts/">
+                interrupts()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/interrupts/nointerrupts/">
+                noInterrupts()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="communication" class="subcategory">
+            <h5>Communication</h5>
+            
+            
+              
+                <a href="../en/language/functions/communication/serial/">
+                Serial
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/communication/stream/">
+                Stream
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="usb" class="subcategory">
+            <h5>USB</h5>
+            
+            
+              
+                <a href="../en/language/functions/usb/keyboard/">
+                Keyboard
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/functions/usb/mouse/">
+                Mouse
+                
+                </a><br>
+              
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    <div id="variables">
+      <h2>variables</h2>
+      <p>Arduino data types and constants.</p>
+
+      <div class="category">
+        <div class="category-content">
+          
+          <div id="constants" class="subcategory">
+            <h5>Constants</h5>
+            
+            
+              
+                
+                <a href="../en/language/variables/constants/constants/">HIGH</a> | <a href="../en/language/variables/constants/constants/">LOW</a>
+                <br>
+                <a href="../en/language/variables/constants/constants/">INPUT</a> | <a href="../en/language/variables/constants/constants/">OUTPUT</a> | <a href="../en/language/variables/constants/constants/">INPUT_PULLUP</a>
+                <br>
+                <a href="../en/language/variables/constants/constants/">LED_BUILTIN</a>
+                <br>
+                <a href="../en/language/variables/constants/constants/">true</a> | <a href="../en/language/variables/constants/constants/">false</a>
+                <br>
+              
+            
+              
+                <a href="../en/language/variables/constants/floatingpointconstants/">
+                Floating Point Constants
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/constants/integerconstants/">
+                Integer Constants
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="conversion" class="subcategory">
+            <h5>Conversion</h5>
+            
+            
+              
+                <a href="../en/language/variables/conversion/unsignedintcast/">
+                (unsigned int)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/unsignedlongcast/">
+                (unsigned long)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/bytecast/">
+                byte()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/charcast/">
+                char()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/floatcast/">
+                float()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/intcast/">
+                int()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/longcast/">
+                long()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/conversion/wordcast/">
+                word()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="data-types" class="subcategory">
+            <h5>Data Types</h5>
+            
+            
+              
+                <a href="../en/language/variables/data-types/array/">
+                array
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/bool/">
+                bool
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/boolean/">
+                boolean
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/byte/">
+                byte
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/char/">
+                char
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/double/">
+                double
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/float/">
+                float
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/int/">
+                int
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/long/">
+                long
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/short/">
+                short
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/size_t/">
+                size_t
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/string/">
+                string
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/stringobject/">
+                String()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/unsignedchar/">
+                unsigned char
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/unsignedint/">
+                unsigned int
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/unsignedlong/">
+                unsigned long
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/void/">
+                void
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/data-types/word/">
+                word
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="variable-scope-qualifiers" class="subcategory">
+            <h5>Variable Scope &amp; Qualifiers</h5>
+            
+            
+              
+                <a href="../en/language/variables/variable-scope-qualifiers/const/">
+                const
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/variable-scope-qualifiers/scope/">
+                scope
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/variable-scope-qualifiers/static/">
+                static
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/variable-scope-qualifiers/volatile/">
+                volatile
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="utilities" class="subcategory">
+            <h5>Utilities</h5>
+            
+            
+              
+                <a href="../en/language/variables/utilities/progmem/">
+                PROGMEM
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/variables/utilities/sizeof/">
+                sizeof()
+                
+                </a><br>
+              
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+    <div id="structure">
+      <h2>structure</h2>
+      <p>The elements of Arduino (C&#43;&#43;) code.</p>
+
+      <div class="category">
+        <div class="category-content">
+          
+          <div id="sketch" class="subcategory">
+            <h5>Sketch</h5>
+            
+            
+              
+                <a href="../en/language/structure/sketch/loop/">
+                loop()
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/sketch/setup/">
+                setup()
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="control-structure" class="subcategory">
+            <h5>Control Structure</h5>
+            
+            
+              
+                <a href="../en/language/structure/control-structure/break/">
+                break
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/continue/">
+                continue
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/dowhile/">
+                do...while
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/else/">
+                else
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/for/">
+                for
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/goto/">
+                goto
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/if/">
+                if
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/return/">
+                return
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/switchcase/">
+                switch...case
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/control-structure/while/">
+                while
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="further-syntax" class="subcategory">
+            <h5>Further Syntax</h5>
+            
+            
+              
+                <a href="../en/language/structure/further-syntax/define/">
+                #define
+                
+                  (define)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/further-syntax/include/">
+                #include
+                
+                  (include)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/further-syntax/blockcomment/">
+                /* */
+                
+                  (block comment)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/further-syntax/singlelinecomment/">
+                //
+                
+                  (single line comment)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/further-syntax/semicolon/">
+                ;
+                
+                  (semicolon)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/further-syntax/curlybraces/">
+                {}
+                
+                  (curly braces)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="arithmetic-operators" class="subcategory">
+            <h5>Arithmetic Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/remainder/">
+                %
+                
+                  (remainder)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/multiplication/">
+                *
+                
+                  (multiplication)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/addition/">
+                &#43;
+                
+                  (addition)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/subtraction/">
+                -
+                
+                  (subtraction)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/division/">
+                /
+                
+                  (division)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/arithmetic-operators/assignment/">
+                =
+                
+                  (assignment operator)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="comparison-operators" class="subcategory">
+            <h5>Comparison Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/comparison-operators/notequalto/">
+                !=
+                
+                  (not equal to)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/comparison-operators/lessthan/">
+                &lt;
+                
+                  (less than)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/comparison-operators/lessthanorequalto/">
+                &lt;=
+                
+                  (less than or equal to)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/comparison-operators/equalto/">
+                ==
+                
+                  (equal to)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/comparison-operators/greaterthan/">
+                &gt;
+                
+                  (greater than)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/comparison-operators/greaterthanorequalto/">
+                &gt;=
+                
+                  (greater than or equal to)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="boolean-operators" class="subcategory">
+            <h5>Boolean Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/boolean-operators/logicalnot/">
+                !
+                
+                  (logical not)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/boolean-operators/logicaland/">
+                &amp;&amp;
+                
+                  (logical and)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/boolean-operators/logicalor/">
+                ||
+                
+                  (logical or)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="pointer-access-operators" class="subcategory">
+            <h5>Pointer Access Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/pointer-access-operators/reference/">
+                &amp;
+                
+                  (reference operator)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/pointer-access-operators/dereference/">
+                *
+                
+                  (dereference operator)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="bitwise-operators" class="subcategory">
+            <h5>Bitwise Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitwiseand/">
+                &amp;
+                
+                  (bitwise and)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitshiftleft/">
+                &lt;&lt;
+                
+                  (bitshift left)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitshiftright/">
+                &gt;&gt;
+                
+                  (bitshift right)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitwisexor/">
+                ^
+                
+                  (bitwise xor)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitwiseor/">
+                |
+                
+                  (bitwise or)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/bitwise-operators/bitwisenot/">
+                ~
+                
+                  (bitwise not)
+                
+                </a><br>
+              
+            
+          </div>
+          
+          <div id="compound-operators" class="subcategory">
+            <h5>Compound Operators</h5>
+            
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundremainder/">
+                %=
+                
+                  (compound remainder)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundbitwiseand/">
+                &amp;=
+                
+                  (compound bitwise and)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundmultiplication/">
+                *=
+                
+                  (compound multiplication)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/increment/">
+                &#43;&#43;
+                
+                  (increment)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundaddition/">
+                &#43;=
+                
+                  (compound addition)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/decrement/">
+                --
+                
+                  (decrement)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundsubtraction/">
+                -=
+                
+                  (compound subtraction)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compounddivision/">
+                /=
+                
+                  (compound division)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundbitwisexor/">
+                ^=
+                
+                  (compound bitwise xor)
+                
+                </a><br>
+              
+            
+              
+                <a href="../en/language/structure/compound-operators/compoundbitwiseor/">
+                |=
+                
+                  (compound bitwise or)
+                
+                </a><br>
+              
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+  </div>
+  
+<div>
+  <div id="newsletter-modal"></div>
+  <div id="footer"></div>
+</div>
+
+  <script src="https://cdn.arduino.cc/header-footer/prod/index.v2.js"
+        type="text/javascript"></script>
+<script>
+    function scrollToTargetAdjusted(id) {
+        var element = document.getElementById(id);
+        if(!element) return;
+        var headerOffset = 60;
+        var elementPosition = element.getBoundingClientRect().top;
+        var offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
+
+    window.addEventListener('load', (event) => {
+        var hash = window.location.hash;
+        history.pushState("", document.title, window.location.pathname + window.location.search);
+        if(hash) {
+            scrollToTargetAdjusted(hash.replace('#', ''))
+        }
+    });
+
+    var bootTracking = function bootIntercom(auth0) {
+        var consents = auth0.approvals;
+        if (!consents.tracking) {
+            return;
+        }
+
+        window.auth.getProfile().then(function (profile) {
+            if (window.Intercom) {
+                return window.Intercom('boot', {
+                    app_id: 'sv6pf2jo',
+                    user_id: profile['http://arduino.cc/id'],
+                    user_hash: consents.identity_hash,
+                });
+            }
+        });
+    };
+
+    window.auth = new arduinoHF.Auth0({
+        domain: 'login.arduino.cc',
+        client_id: '30sUI1PHsoXzwJ9KiDqYIdMmIjsqxiHX',
+        redirect_uri: 'https://www.arduino.cc/reference/en/',
+        audience: 'https://api.arduino.cc',
+        scope: 'openid profile'
+    });
+
+    var header = new window.arduinoHF.Header(document.getElementById('header'), window.auth, { env: 'prod', style: 'arduino', search: { tab: 'reference'} });
+    new window.arduinoHF.Footer(document.getElementById('footer'), { env: 'prod', style: 'arduino' });
+    header.init().then(function(auth0) {
+        bootTracking(auth0);
+        return auth0;
+    });
+
+    
+    var arduinoAdvOptions = {
+        breakpointDesktop: 768,
+        breakpointMobile: 768,
+        zoneIdDesktop: 564,
+        zoneIdTablet: 563,
+        zoneIdMobile: 563
+    };
+</script>
+<script src="../js/scripts.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
+<script type="text/javascript"
+        src="https://content.arduino.cc/banner/banner.js"></script>
+
+</body>
+</html>

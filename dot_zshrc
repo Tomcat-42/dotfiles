@@ -1,0 +1,294 @@
+# zmodload zsh/zprof
+#executar comandos no tty
+#if [[ $DISPLAY ]]; then
+#    # If not running interactively, do not do anything
+#	echo a > /dev/null
+#else
+#	setcolors ~/.config/setcolors/config || clear
+#	pulseaudio --start
+#fi
+
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=/home/pablo951_br/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="bullet-train"
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="lambda"
+#ZSH_THEME="minimal"
+#ZSH_THEME="nanotech"
+#ZSH_THEME="flazz"
+#ZSH_THEME="wdgh"
+#ZSH_THEME="squanchy"
+#ZSH_THEME="refined"
+#ZSH_THEME="min"
+#  ZSH_THEME="spaceship"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+plugins=(
+  zsh-autosuggestions
+  autojump
+  zsh-completions
+  npm
+  git
+  colored-man-pages
+  command-not-found
+  docker
+  pip
+  zsh_reload
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  #  sudo
+  zsh-nvm
+  #zsh-pyenv
+  evalcache
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=pt_BR.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#echo
+#neofetch --ascii /home/pablo951_br/.config/neofetch/tux_dab.txt --ascii_colors 7 7 7 7 7 7
+#source ~/.cache/wal/colors.sh
+#source ~/.cache/wal/colors-tty.sh
+export TERM=tmux-256color
+export EDITOR=nvim
+export SHELL=zsh
+
+
+#[[ -z "$TMUX" ]] && exec tmux
+
+#[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
+
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+    tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi
+#&& exit ;
+
+
+#&& exit;}
+#importar cores do pywal
+#(cat ~/.cache/wal/sequences &)
+#"" para o tty
+
+# TMUX, remover o [ -n "$DIPLAY" ] para iniciar quando sair do Xorg
+if  [ -n "$DISPLAY" ] && which tmux >/dev/null 2>&1; then
+    # if no session is started, start a new session
+    test -z ${TMUX} && tmux
+
+    # when quitting tmux, try to attach
+    while test -z ${TMUX}; do
+        tmux attach || break
+    done
+fi
+
+alias ls='exa'
+# alias histv='cat /dev/null > ~/.zsh_history && clear'
+alias mountp='sudo cryptsetup luksOpen /dev/sda3 PABLO && sudo mount /dev/mapper/PABLO /mnt/PABLO'
+alias umountp='sudo umount /dev/mapper/PABLO && sudo cryptsetup luksClose PABLO'
+alias mountb='sudo cryptsetup luksOpen /dev/sdc BACKUP && sudo mount /dev/mapper/BACKUP /mnt/BACKUP'
+alias umountb='sudo umount /dev/mapper/BACKUP && sudo cryptsetup luksClose BACKUP'
+alias pingle='ping www.google.com'
+alias vpnup='sudo bash /etc/openvpn/regras_openvpn.sh && sudo systemctl restart iptables'
+alias vncup='sudo systemctl start x0vncserver'
+alias ps3split='split -a 5 -b 4294967295 -d --numeric-suffixes=66600'
+alias sshd_log='sudo journalctl _COMM=sshd'
+alias openvpn_log='sudo cat /etc/openvpn/openvpn.log'
+alias sshr='ssh root@192.168.1.1'
+alias py80='python -m http.server 60957'
+alias sshs='ssh 192.168.1.102 -p 8022'
+alias sshp='ssh 192.168.1.101 -p 60951 -l pablo951_br'
+alias sftpp='sftp -P 60951 pablo951_br@192.168.1.101'
+alias x='startx'
+alias playlists='python ~/Downloads/scripts/mpd_playlists.py'
+alias py_sys='python ~/Downloads/backup/rsync_sys.py'
+alias py_bk='python ~/Downloads/backup/rsync_backup.py'
+alias adbfwd='adb forward tcp:8022 tcp:8022'
+alias mux='tmuxinator'
+alias ic='vim ~/.config/i3/config'
+# alias disasm='objdump -drwC -Mintel'
+
+#alias ls='ls -a'
+#setxkbmap -model abnt2 -layout br
+
+##cores
+alias ls='ls -hN --color=auto --group-directories-first'
+alias grep="grep --color=auto"
+alias diff="diff --color=auto"
+alias ccat="highlight --out-format=ansi" # Color cat - print file with syntax highlighting.
+alias v="nvim"
+alias vim="nvim"
+alias gitsc="git commit -S -s --amend --no-edit"
+gitaam() {
+  git add $(git status | grep -E "modified:|deleted:" | awk '{print $2}')
+}
+
+#alias vi="vim"
+alias vc="nvim -p ~/.config/nvim/init.vim ~/.config/nvim/"
+alias vo="nvim /mnt/PABLO/android_repo/HOME/org"
+
+export VISUAL="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+export COLORTERM="truecolor"
+export npm_config_prefix=~/.node_modules
+export PATH="$(du "$HOME/Downloads/scripts/" | cut -f2 | tr '\n' ':')$HOME/.local/bin:$HOME/.node_modules/bin:$PATH"
+export PATH="$HOME/.node_modules/bin:$PATH"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.local/share/gem/ruby/3.0.0/bin"
+# export BROWSER="firefox-developer-edition"
+export READER="zathura"
+export CHROME_EXECUTABLE="chromium"
+export CHROME_FLAGS=""
+export CMAKE_EXPORT_COMPILE_COMMANDS
+export EXPORT_COMPILE_COMMANDS
+
+unset npm_config_prefix
+
+
+# dracula
+export FZF_DEFAULT_OPTS='--height=20% 
+--preview="head -100 {}" 
+--preview-window=right:30%:wrap 
+--border 
+--inline-info 
+--layout=reverse
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
+
+# # nord
+# export FZF_DEFAULT_OPTS='--height=20% 
+# --preview="head -100 {}" 
+# --preview-window=right:30%:wrap 
+# --border 
+# --inline-info 
+# --layout=reverse
+# --color=fg:-1,bg:-1,hl:#5e81ac,fg+:-1,bg+:-1,hl+:#5e81ac
+# --color=info:#5e81ac,prompt:#5e81ac,pointer:#5e81ac,marker:#5e81ac,spinner:#5e81ac'
+# 
+# # --color fg:7,bg:0,hl:1,fg+:232,bg+:1,hl+:255
+# # --color info:7,prompt:2,spinner:1,pointer:232,marker:1
+# # --color=dark'
+# # --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+# # --color=info:#5e81ac,prompt:#a3be8c,pointer:#ebcb8b,marker:#bf616a,spinner:#8fbcbb'
+export FZF_DIRS="/home/pablo951_br/ /mnt/PABLO/ /usr/ /etc/"
+export FZF_DEFAULT_COMMAND="rg --files --hidden -l --sort path --no-messages --no-ignore -g \"!{.git,*node_modules*}\" . $FZF_DIRS"
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_ALT_C_COMMAND="fd --type d --hidden -I -E \"{.git,*node_modules*}\" . $FZF_DIRS"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ 
+export LS_COLORS="${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"
+
+
+
+#bindkey -v
+#clear
+
+#vi mode
+# bindkey -v
+
+# autocompletions
+# source ~/.cache/wal/colors.sh
+fpath=(~/.zsh/completions $fpath)
+autoload -U  +X compinit && compinit -d
+autoload -U +X bashcompinit && bashcompinit
+
+eval "$(register-python-argcomplete cz)"
+# eval "$(stack --bash-completion-script stack)"
+# eval "$(pyenv init -)"
+
+# node version manager
+#source /usr/share/nvm/init-nvm.sh
+
+[[ -s /home/pablo951_br/.autojump/etc/profile.d/autojump.sh ]] && source /home/pablo951_br/.autojump/etc/profile.d/autojump.sh
+eval "$(starship init zsh)"
