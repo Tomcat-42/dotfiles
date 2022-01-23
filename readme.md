@@ -5,12 +5,13 @@ My dotfiles for Arch Linux 🐧
 </p>
 
 > Thanks to @Daniel-Boll for helping me create this life-saving dotfiles
-> Thanks to [chezmoi](devs)
+
+> Thanks to [chezmoi](https://www.chezmoi.io) devs
 
 ---
 
 <p align="center">
-<img src="https://github.com/Tomcat-42/.dotfiles/blob/main/screenshot.png" width=800>
+<img src="https://github.com/Tomcat-42/dotfiles/blob/main/screenshot.png" width=800>
 </p>
 
 ---
