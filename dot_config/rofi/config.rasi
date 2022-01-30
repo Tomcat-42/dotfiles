@@ -1,3 +1,8 @@
 configuration {
-	theme: "~/.cache/wal/colors-rofi-dark.rasi";
+  show-icons:         true;
+  icon-theme:         "Zafiro";
+  terminal:           "alacritty";
+  cycle:              false;
+  hide-scrollbar:     true;
+  disable-history:    false;
 }

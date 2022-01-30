@@ -159,7 +159,7 @@ function s:get_version(bin)
   if has_key(s:versions, a:bin)
     return s:versions[a:bin]
   end
-  let command = a:bin . ' --version'
+  let command = a:bin . ' --version --no-height'
   let output = systemlist(command)
   if v:shell_error || empty(output)
     return ''
@@ -419,13 +419,13 @@ function! fzf#wrap(...)
   endif
 
   " Action: g:fzf_action
-  if !s:has_any(opts, ['sink', 'sink*'])
+  if !s:has_any(opts, ['sink', 'sinklist', 'sink*'])
     let opts._action = get(g:, 'fzf_action', s:default_action)
     let opts.options .= ' --expect='.join(keys(opts._action), ',')
-    function! opts.sink(lines) abort
+    function! opts.sinklist(lines) abort
       return s:common_sink(self._action, a:lines)
     endfunction
-    let opts['sink*'] = remove(opts, 'sink')
+    let opts['sink*'] = opts.sinklist " For backward compatibility
   endif
 
   return opts
@@ -442,6 +442,12 @@ function! s:use_sh()
     set shell=sh
   endif
   return [shell, shellslash, shellcmdflag, shellxquote]
+endfunction
+
+function! s:writefile(...)
+  if call('writefile', a:000) == -1
+    throw 'Failed to write temporary file. Check if you can write to the path tempname() returns.'
+  endif
 endfunction
 
 function! fzf#run(...) abort
@@ -465,19 +471,19 @@ try
   endif
 
   if has_key(dict, 'source')
-    let source = dict.source
+    let source = remove(dict, 'source')
     let type = type(source)
     if type == 1
-      let prefix = '( '.source.' )|'
+      let source_command = source
     elseif type == 3
       let temps.input = s:fzf_tempname()
-      call writefile(source, temps.input)
-      let prefix = (s:is_win ? 'type ' : 'cat ').fzf#shellescape(temps.input).'|'
+      call s:writefile(source, temps.input)
+      let source_command = (s:is_win ? 'type ' : 'cat ').fzf#shellescape(temps.input)
     else
       throw 'Invalid source type'
     endif
   else
-    let prefix = ''
+    let source_command = ''
   endif
 
   let prefer_tmux = get(g:, 'fzf_prefer_tmux', 0) || has_key(dict, 'tmux')
@@ -487,20 +493,24 @@ try
   let has_vim8_term = has('terminal') && has('patch-8.0.995')
   let has_nvim_term = has('nvim-0.2.1') || has('nvim') && !s:is_win
   let use_term = has_nvim_term ||
-    \ has_vim8_term && !has('win32unix') && (has('gui_running') || s:is_win || !use_height && s:present(dict, 'down', 'up', 'left', 'right', 'window'))
+    \ has_vim8_term && !has('win32unix') && (has('gui_running') || s:is_win || s:present(dict, 'down', 'up', 'left', 'right', 'window'))
   let use_tmux = (has_key(dict, 'tmux') || (!use_height && !use_term || prefer_tmux) && !has('win32unix') && s:splittable(dict)) && s:tmux_enabled()
   if prefer_tmux && use_tmux
     let use_height = 0
     let use_term = 0
   endif
-  if use_height
+  if use_term
+    let optstr .= ' --no-height'
+  elseif use_height
     let height = s:calc_size(&lines, dict.down, dict)
     let optstr .= ' --height='.height
-  elseif use_term
-    let optstr .= ' --no-height'
   endif
   let optstr .= s:border_opt(get(dict, 'window', 0))
-  let command = prefix.(use_tmux ? s:fzf_tmux(dict) : fzf_exec).' '.optstr.' > '.temps.result
+  let prev_default_command = $FZF_DEFAULT_COMMAND
+  if len(source_command)
+    let $FZF_DEFAULT_COMMAND = source_command
+  endif
+  let command = (use_tmux ? s:fzf_tmux(dict) : fzf_exec).' '.optstr.' > '.temps.result
 
   if use_term
     return s:execute_term(dict, command, temps)
@@ -511,6 +521,14 @@ try
   call s:callback(dict, lines)
   return lines
 finally
+  if exists('source_command') && len(source_command)
+    if len(prev_default_command)
+      let $FZF_DEFAULT_COMMAND = prev_default_command
+    else
+      let $FZF_DEFAULT_COMMAND = ''
+      silent! execute 'unlet $FZF_DEFAULT_COMMAND'
+    endif
+  endif
   let [&shell, &shellslash, &shellcmdflag, &shellxquote] = [shell, shellslash, shellcmdflag, shellxquote]
 endtry
 endfunction
@@ -540,8 +558,8 @@ function! s:fzf_tmux(dict)
       endif
     endfor
   endif
-  return printf('LINES=%d COLUMNS=%d %s %s %s --',
-    \ &lines, &columns, fzf#shellescape(s:fzf_tmux), size, (has_key(a:dict, 'source') ? '' : '-'))
+  return printf('LINES=%d COLUMNS=%d %s %s - --',
+    \ &lines, &columns, fzf#shellescape(s:fzf_tmux), size)
 endfunction
 
 function! s:splittable(dict)
@@ -648,7 +666,7 @@ function! s:execute(dict, command, use_height, temps) abort
   endif
   if s:is_win
     let batchfile = s:fzf_tempname().'.bat'
-    call writefile(s:wrap_cmds(command), batchfile)
+    call s:writefile(s:wrap_cmds(command), batchfile)
     let command = batchfile
     let a:temps.batchfile = batchfile
     if has('nvim')
@@ -666,13 +684,12 @@ function! s:execute(dict, command, use_height, temps) abort
     endif
   elseif has('win32unix') && $TERM !=# 'cygwin'
     let shellscript = s:fzf_tempname()
-    call writefile([command], shellscript)
+    call s:writefile([command], shellscript)
     let command = 'cmd.exe /C '.fzf#shellescape('set "TERM=" & start /WAIT sh -c '.shellscript)
     let a:temps.shellscript = shellscript
   endif
   if a:use_height
-    let stdin = has_key(a:dict, 'source') ? '' : '< /dev/tty'
-    call system(printf('tput cup %d > /dev/tty; tput cnorm > /dev/tty; %s %s 2> /dev/tty', &lines, command, stdin))
+    call system(printf('tput cup %d > /dev/tty; tput cnorm > /dev/tty; %s < /dev/tty 2> /dev/tty', &lines, command))
   else
     execute 'silent !'.command
   endif
@@ -866,7 +883,7 @@ function! s:execute_term(dict, command, temps) abort
     call s:pushd(a:dict)
     if s:is_win
       let fzf.temps.batchfile = s:fzf_tempname().'.bat'
-      call writefile(s:wrap_cmds(a:command), fzf.temps.batchfile)
+      call s:writefile(s:wrap_cmds(a:command), fzf.temps.batchfile)
       let command = fzf.temps.batchfile
     else
       let command = a:command
@@ -933,6 +950,8 @@ function! s:callback(dict, lines) abort
     endif
     if has_key(a:dict, 'sink*')
       call a:dict['sink*'](a:lines)
+    elseif has_key(a:dict, 'sinklist')
+      call a:dict['sinklist'](a:lines)
     endif
   catch
     if stridx(v:exception, ':E325:') < 0
@@ -978,13 +997,13 @@ function! s:popup(opts) abort
 
   " Use current window size for positioning relatively positioned popups
   let columns = relative ? winwidth(0) : &columns
-  let lines = relative ? winheight(0) : &lines
+  let lines = relative ? winheight(0) : (&lines - has('nvim'))
 
   " Size and position
   let width = min([max([8, a:opts.width > 1 ? a:opts.width : float2nr(columns * a:opts.width)]), columns])
-  let height = min([max([4, a:opts.height > 1 ? a:opts.height : float2nr(lines * a:opts.height)]), lines - has('nvim')])
-  let row = float2nr(yoffset * (lines - height)) + (relative ? win_screenpos(0)[0] : 0)
-  let col = float2nr(xoffset * (columns - width)) + (relative ? win_screenpos(0)[1] : 0)
+  let height = min([max([4, a:opts.height > 1 ? a:opts.height : float2nr(lines * a:opts.height)]), lines])
+  let row = float2nr(yoffset * (lines - height)) + (relative ? win_screenpos(0)[0] - 1 : 0)
+  let col = float2nr(xoffset * (columns - width)) + (relative ? win_screenpos(0)[1] - 1 : 0)
 
   " Managing the differences
   let row = min([max([0, row]), &lines - has('nvim') - height])

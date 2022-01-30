@@ -1,6 +1,0 @@
-# pack-refs with: peeled fully-peeled sorted 
-b3668cda4ac66dea431ada7c97d6b11480517fb9 refs/remotes/origin/cleanup
-80b710bd03d18959f18c0e751047974a95678f08 refs/remotes/origin/fix_ac
-b4cfb5a45592a61ad4342e24448b43638aa93f6c refs/remotes/origin/fix_install
-b416c2142179d1e932618b3c72000a0f3ce8d1ef refs/remotes/origin/mac_spacing
-8d1a7fa41b773d4f7b53dfff2d9fc5166d34f104 refs/remotes/origin/master

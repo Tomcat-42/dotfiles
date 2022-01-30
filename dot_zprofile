@@ -2,7 +2,7 @@
 #	startx 
 #fi
 
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export MPD_HOST="localhost"
 export MPD_PORT="60960"
 export MPC_FORMAT="%file%"
@@ -17,12 +17,12 @@ export FZF_DEFAULT_OPTS='--height=20%
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
 
-export FZF_DIRS="/home/pablo951_br/ /mnt/PABLO/ /usr/ /etc/"
+export FZF_DIRS="/home/pablo/ /mnt/PABLO/ /usr/ /etc/"
 export FZF_DEFAULT_COMMAND="rg --files --hidden -l --sort path --no-messages --no-ignore -g \"!{.git,*node_modules*}\" . $FZF_DIRS"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND="fd --type d --hidden -I -E \"{.git,*node_modules*}\" . $FZF_DIRS"
 
-export PATH="$HOME/Downloads/scripts:$PATH"
+export PATH="$HOME/scripts:$PATH"
 
 # if [[ "$(tty)" = "/dev/tty1" ]] then
 # 	startx
@@ -38,4 +38,4 @@ export PATH="$HOME/Downloads/scripts:$PATH"
 #export PATH=$PATH:$ANDROID_HOME/tools/
 #PATH=$ANDROID_HOME/emulator:$PATH
 
-[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt &> /dev/null
+# [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt &> /dev/null
