@@ -1,2 +1,1 @@
-# Dark theme.
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.theme: ~/.config/rofi/themes/screenshot.rasi

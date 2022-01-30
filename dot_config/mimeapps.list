@@ -1,0 +1,19 @@
+[Added Associations]
+image/png=viewnior.desktop;
+image/jpeg=viewnior.desktop;
+image/gif=viewnior.desktop;
+image/svg+xml=viewnior.desktop;
+text/x-csrc=geany.desktop;
+text/plain=geany.desktop;
+application/x-shellscript=geany.desktop;
+application/x-theme=geany.desktop;
+application/json=geany.desktop;
+
+[Default Applications]
+image/gif=viewnior.desktop
+image/svg+xml=viewnior.desktop
+application/pdf=firefox-developer-edition.desktop
+application/xhtml+xml=firefox-developer-edition.desktop
+application/json=firefox-developer-edition.desktop
+application/x-xpinstall=firefox-developer-edition.desktop
+application/xml=firefox-developer-edition.desktop
