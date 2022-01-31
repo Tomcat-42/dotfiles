@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-autorandr -l wide-dual
+autorandr -l work-home
