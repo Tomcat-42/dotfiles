@@ -143,7 +143,10 @@ xsetroot -cursor_name left_ptr
 
 bspmon
 caffeine -a &
-syncthing --wait &
+syncthingtray --wait &
+plank &
+nm-tray &
+
 # Restore wallpaper
 bash $HOME/.fehbg
 

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-autorandr -l work-home
+autorandr --change
