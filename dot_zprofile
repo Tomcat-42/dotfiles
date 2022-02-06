@@ -4,7 +4,7 @@
 
 export TERMINAL="alacritty"
 export MPD_HOST="localhost"
-export MPD_PORT="60960"
+export MPD_PORT="6600"
 export MPC_FORMAT="%file%"
 
 export FZF_DEFAULT_OPTS='--height=20% 
