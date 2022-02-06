@@ -239,8 +239,8 @@ if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
 fi
 
 # TMUX, remover o [ -n "$DIPLAY" ] para iniciar quando sair do Xorg
-if  [ -n "$DISPLAY" ] && which tmux >/dev/null 2>&1; then
-    # if no session is started, start a new session
+if which tmux >/dev/null 2>&1; then
+     # if no session is started, start a new session
     test -z ${TMUX} && tmux
 
     # when quitting tmux, try to attach
@@ -255,3 +255,4 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+clear

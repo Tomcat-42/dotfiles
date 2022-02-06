@@ -1,4 +1,3 @@
-
 [Default Applications]
 application/x-xpinstall=firefox-developer-edition.desktop
 application/json=firefox-developer-edition.desktop
@@ -75,3 +74,7 @@ audio/ogg=mpv.desktop
 audio/aac=mpv.desktop
 audio/vnd.rn-realaudio=mpv.desktop
 x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-9I07G1.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-9I07G1.desktop;
