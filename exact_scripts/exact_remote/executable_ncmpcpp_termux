@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 HOST=$(hosts | choose_termux "Host")
 
 if [[ $HOST ]]; then
