@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+TITLE=${1:-"CHOOSE A OPTION"}
+HINT=${2:-"y/n"}
+JSON_OUT="$(termux-dialog confirm -t "$TITLE" -i "$HINT")"
+TEXT_OUT="$(jq .text <<<$JSON_OUT)"
+echo "$TEXT_OUT" | tr -d '"'

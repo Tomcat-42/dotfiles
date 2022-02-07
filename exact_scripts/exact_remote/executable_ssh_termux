@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+
+EXECUTE=$(confirm_termux "Execute actions?")
+
+if [ "$EXECUTE" = '"no"' ]; then
+    HOST=$(hosts | choose_termux "Host")
+	ssh $HOST
+elif [ "$EXECUTE" = yes ]; then
+    HOST=$(hosts | multiple_termux "Host")
+	SCRIPTS=~/scripts/remote/actions
+	NAMES=$(basename -a $SCRIPTS/*)
+	CHOOSE=$(multiple_termux "Script"<<<"$NAMES")
+    for i in $HOST; do
+        for j in $CHOOSE; do
+            ssh "$i" '/bin/bash -s' <"$SCRIPTS"/"$j"
+        done
+    done
+fi

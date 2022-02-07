@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+TITLE=${1:-"choose a option"}
+
+readarray -t HOSTS <&0
+IFS=","
+OPTIONS="${HOSTS[*]}"
+IFS=" "
+
+JSON_OUT="$(termux-dialog radio -t $TITLE -v $OPTIONS)"
+TEXT_OUT=$(jq .text <<<$JSON_OUT)
+echo $TEXT_OUT | tr -d '"'

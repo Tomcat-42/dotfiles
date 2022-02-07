@@ -1,0 +1,12 @@
+#!/bin/bash
+HOST=$(hosts | choose_rofi "Host")
+EXECUTE=$(confirm_rofi "Execute actions?")
+
+if [[ $EXECUTE == "no" ]]; then
+	ssh $HOST
+elif [[ $EXECUTE == "yes" ]]; then
+	SCRIPTS=~/scripts/remote/actions/
+	NAMES=$(basename -a $SCRIPTS/*)
+	CHOOSE=$(choose_rofi "Scripts" <<<"$NAMES")
+	ssh $HOST 'bash -s' <"$SCRIPTS"/"$CHOOSE" >/dev/null
+fi

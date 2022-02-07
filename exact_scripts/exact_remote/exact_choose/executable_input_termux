@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+TITLE=${1:-"input"}
+HINT=${2:-"text"}
+termux-dialog text -t "$TITLE" -i "$HINT"

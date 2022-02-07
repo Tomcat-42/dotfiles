@@ -1,0 +1,6 @@
+#!/bin/bash
+HOST=$(hosts | choose_termux "Host")
+
+if [[ $HOST ]]; then
+	ncmpcpp -h $HOST -p 6600
+fi
