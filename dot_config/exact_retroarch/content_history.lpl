@@ -1,0 +1,131 @@
+{
+  "version": "1.5",
+  "default_core_path": "",
+  "default_core_name": "",
+  "label_display_mode": 0,
+  "right_thumbnail_mode": 0,
+  "left_thumbnail_mode": 0,
+  "sort_mode": 2,
+  "items": [
+    {
+      "path": "/mnt/server/mnt/files/games/PS2/Crash Twinsanity (USA)/Crash Twinsanity (USA).iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/pcsx2_libretro.so",
+      "core_name": "Sony - PlayStation 2 (PCSX2)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/PSP/Need For Speed Most Wanted/Need For Speed Most Wanted.cso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/ppsspp_libretro.so",
+      "core_name": "Sony - PlayStation Portable (PPSSPP)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/PSP/the Sims 2 castaway/The sims 2 Castaway.iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/ppsspp_libretro.so",
+      "core_name": "Sony - PlayStation Portable (PPSSPP)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/PSP/Ben 10 alien Force/ben10.cso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/ppsspp_libretro.so",
+      "core_name": "Sony - PlayStation Portable (PPSSPP)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/home/pablo/World championship cards/World Championship Cards.iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/ppsspp_libretro.so",
+      "core_name": "Sony - PlayStation Portable (PPSSPP)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/home/pablo/World championship cards/World Championship Cards.iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/pcsx2_libretro.so",
+      "core_name": "Sony - PlayStation 2 (PCSX2)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/home/pablo/readme.md",
+      "label": "",
+      "core_path": "/usr/lib/libretro/genesis_plus_gx_libretro.so",
+      "core_name": "Sega - MS/GG/MD/CD (Genesis Plus GX)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/home/pablo/Medal of Honor - Vanguard (USA)/Medal of Honor - Vanguard (USA).iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/pcsx2_libretro.so",
+      "core_name": "Sony - PlayStation 2 (PCSX2)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/PS2/Medal of Honor - Vanguard (USA)/Medal of Honor - Vanguard (USA).iso",
+      "label": "",
+      "core_path": "/usr/lib/libretro/pcsx2_libretro.so",
+      "core_name": "Sony - PlayStation 2 (PCSX2)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/PSX/MGS1_dual-disc/Metal Gear Solid (USA) (Disc 1) (v1.1).cue",
+      "label": "",
+      "core_path": "/usr/lib/libretro/mednafen_psx_libretro.so",
+      "core_name": "Sony - PlayStation (Beetle PSX)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/GENESIS/Sonic The Hedgehog/Sonic the Hedgehog.bin",
+      "label": "",
+      "core_path": "/usr/lib/libretro/genesis_plus_gx_libretro.so",
+      "core_name": "Sega - MS/GG/MD/CD (Genesis Plus GX)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/NDS/Kingdom Hearts - 358-2 Days (US)(M2)(XenoPhobia).nds",
+      "label": "",
+      "core_path": "/usr/lib/libretro/desmume_libretro.so",
+      "core_name": "Nintendo - DS (DeSmuME)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/N64/GoldenEye 007 (U) [!].zip",
+      "label": "",
+      "core_path": "/usr/lib/libretro/mupen64plus_next_libretro.so",
+      "core_name": "Nintendo - Nintendo 64 (Mupen64Plus-Next)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/3DS/Kingdom Hearts 3D - Dream Drop Distance EUR Decrypted.3ds",
+      "label": "",
+      "core_path": "/usr/lib/libretro/citra_libretro.so",
+      "core_name": "Nintendo - 3DS (Citra)",
+      "crc32": "",
+      "db_name": ""
+    },
+    {
+      "path": "/mnt/server/mnt/files/games/SNES/snes900/Castlevania - Vampire's Kiss (E).smc",
+      "label": "",
+      "core_path": "/usr/lib/libretro/snes9x_libretro.so",
+      "core_name": "Nintendo - SNES / SFC (Snes9x - Current)",
+      "crc32": "",
+      "db_name": ""
+    }
+  ]
+}
