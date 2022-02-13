@@ -1,7 +1,10 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+SCRIPTS_PATH="/data/data/com.termux/files/home/scripts/remote/choose"
+CONFIRM_CMD="$SCRIPTS_PATH/confirm_termux"
+CHOOSE_CMD="$SCRIPTS_PATH/confirm_termux"
 
-EXECUTE=$(confirm_termux "Execute actions?")
+EXECUTE=$($CONFIRM_CMD "Execute actions?")
 
 if [ "$EXECUTE" = '"no"' ]; then
     HOST=$(hosts | choose_termux "Host")
