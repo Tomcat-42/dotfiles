@@ -1,4 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 TITLE=${1:-"input"}
 HINT=${2:-"text"}
-termux-dialog text -t "$TITLE" -i "$HINT"
+JSON_OUT="$(termux-dialog text -t "$TITLE" -i "$HINT")"
+TEXT_OUT=$(jq .text <<<"$JSON_OUT")
+echo $TEXT_OUT | tr -d '"'

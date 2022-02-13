@@ -6,6 +6,6 @@ IFS=","
 OPTIONS="${HOSTS[*]}"
 IFS=" "
 
-JSON_OUT="$(termux-dialog radio -t $TITLE -v $OPTIONS)"
-TEXT_OUT=$(jq .text <<<$JSON_OUT)
+JSON_OUT="$(termux-dialog radio -t "$TITLE" -v "$OPTIONS")"
+TEXT_OUT=$(jq .text <<<"$JSON_OUT")
 echo $TEXT_OUT | tr -d '"'
