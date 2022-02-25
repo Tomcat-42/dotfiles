@@ -1,0 +1,147 @@
+[
+	{
+		"name": "TEXT",
+		"value": "Preparing request to http://localhost:3000/tenants",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Current time is 2022-02-24T15:33:48.344Z",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Using libcurl/7.73.0 OpenSSL/1.1.1i zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.2 libssh2/1.9.0 nghttp2/1.42.0",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Using default HTTP version",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Disable timeout",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable automatic URL encoding",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable SSL validation",
+		"timestamp": 1645716828344
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable cookie sending with jar of 2 cookies",
+		"timestamp": 1645716828346
+	},
+	{
+		"name": "TEXT",
+		"value": "Too old connection (158 seconds), disconnect it\n",
+		"timestamp": 1645716828348
+	},
+	{
+		"name": "TEXT",
+		"value": "Connection 1 seems to be dead!\n",
+		"timestamp": 1645716828348
+	},
+	{
+		"name": "TEXT",
+		"value": "Closing connection 1\n",
+		"timestamp": 1645716828348
+	},
+	{
+		"name": "TEXT",
+		"value": "Hostname in DNS cache was stale, zapped\n",
+		"timestamp": 1645716828348
+	},
+	{
+		"name": "TEXT",
+		"value": "  Trying ::1:3000...\n",
+		"timestamp": 1645716828349
+	},
+	{
+		"name": "TEXT",
+		"value": "Connected to localhost (::1) port 3000 (#2)\n",
+		"timestamp": 1645716828349
+	},
+	{
+		"name": "HEADER_OUT",
+		"value": "POST /tenants HTTP/1.1\r\nHost: localhost:3000\r\nUser-Agent: insomnia/2021.7.2\r\nContent-Type: application/json\r\nAccept: */*\r\nContent-Length: 112\r\n\r\n",
+		"timestamp": 1645716828349
+	},
+	{
+		"name": "DATA_OUT",
+		"value": "{\n  \"subdomain\": \"pablo\",\n  \"name\": \"description?\",\n  \"active\": false,\n  \"ownerEmail\": \"pablohuggem@gmail.com\"\n}",
+		"timestamp": 1645716828349
+	},
+	{
+		"name": "TEXT",
+		"value": "upload completely sent off: 112 out of 112 bytes\n",
+		"timestamp": 1645716828349
+	},
+	{
+		"name": "TEXT",
+		"value": "Mark bundle as not supporting multiuse\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "HTTP/1.1 201 Created\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "X-Powered-By: Express\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Content-Type: application/json; charset=utf-8\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Content-Length: 214\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "ETag: W/\"d6-ASOjUHcrbp3AHmHg0e8sPtfFAwI\"\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Date: Thu, 24 Feb 2022 15:33:48 GMT\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Connection: keep-alive\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Keep-Alive: timeout=5\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "\r\n",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "TEXT",
+		"value": "Received 214 B chunk",
+		"timestamp": 1645716828424
+	},
+	{
+		"name": "TEXT",
+		"value": "Connection #2 to host localhost left intact\n",
+		"timestamp": 1645716828424
+	}
+]

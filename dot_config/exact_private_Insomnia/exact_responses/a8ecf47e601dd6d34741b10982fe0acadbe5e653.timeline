@@ -1,0 +1,127 @@
+[
+	{
+		"name": "TEXT",
+		"value": "Preparing request to http://daniel.localhost:3000/account/activate/daniel",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Current time is 2022-02-24T15:35:28.060Z",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Using libcurl/7.73.0 OpenSSL/1.1.1i zlib/1.2.11 brotli/1.0.9 zstd/1.5.2 libidn2/2.3.2 libssh2/1.9.0 nghttp2/1.42.0",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Using default HTTP version",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Disable timeout",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable automatic URL encoding",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable SSL validation",
+		"timestamp": 1645716928060
+	},
+	{
+		"name": "TEXT",
+		"value": "Enable cookie sending with jar of 2 cookies",
+		"timestamp": 1645716928062
+	},
+	{
+		"name": "TEXT",
+		"value": "  Trying ::1:3000...\n",
+		"timestamp": 1645716928065
+	},
+	{
+		"name": "TEXT",
+		"value": "Connected to daniel.localhost (::1) port 3000 (#7)\n",
+		"timestamp": 1645716928065
+	},
+	{
+		"name": "HEADER_OUT",
+		"value": "POST /account/activate/daniel HTTP/1.1\r\nHost: daniel.localhost:3000\r\nUser-Agent: insomnia/2021.7.2\r\nCookie: REFRESH_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjExNGY2NTA5MzljMGMwYjkwY2NhYTUiLCJpYXQiOjE2NDUzMTQ4NzgsImV4cCI6MTY0NTQwMTI3OH0.TMM_dUqcr44MFyMYLjL3ApX9FgYFf6fB4RvptbqRoSo; ACCESS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjExNGY2NTA5MzljMGMwYjkwY2NhYTUiLCJkYXRhIjp7InN1YmRvbWFpbiI6ImRhbmllbCIsIm5hbWUiOiJEYW5pZWwgQm9sbCIsImVtYWlsIjoiZGFuaWVsYm9sbC5hY2FkZW1pY29AZ21haWwuY29tIn0sImlhdCI6MTY0NTMxNDg3OCwiZXhwIjoxNjQ1MzE0OTM4fQ.7a2XE7t6688xi-Nrz2v88biHG81e2XXh6LUdGiLSiYw\r\nContent-Type: application/json\r\nAuthorization: daniel\r\nAccept: */*\r\nContent-Length: 64\r\n\r\n",
+		"timestamp": 1645716928065
+	},
+	{
+		"name": "DATA_OUT",
+		"value": "{\n\t\"user\": {\n\t\t\"name\": \"pablo\",\n\t\t\"masterPassword\": \"pablo\"\n\t}\n}",
+		"timestamp": 1645716928065
+	},
+	{
+		"name": "TEXT",
+		"value": "upload completely sent off: 64 out of 64 bytes\n",
+		"timestamp": 1645716928065
+	},
+	{
+		"name": "TEXT",
+		"value": "Mark bundle as not supporting multiuse\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "HTTP/1.1 404 Not Found\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "X-Powered-By: Express\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Content-Type: application/json; charset=utf-8\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Content-Length: 70\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "ETag: W/\"46-s6rKevwWdjBYbISMhQvKEbf61WQ\"\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Date: Thu, 24 Feb 2022 15:35:28 GMT\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Connection: keep-alive\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "Keep-Alive: timeout=5\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "HEADER_IN",
+		"value": "\r\n",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "TEXT",
+		"value": "Received 70 B chunk",
+		"timestamp": 1645716928142
+	},
+	{
+		"name": "TEXT",
+		"value": "Connection #7 to host daniel.localhost left intact\n",
+		"timestamp": 1645716928142
+	}
+]

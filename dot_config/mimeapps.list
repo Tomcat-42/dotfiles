@@ -1,14 +1,12 @@
 [Added Associations]
 x-scheme-handler/tg=userapp-Telegram Desktop-9I07G1.desktop;
+application/x-mswinurl=vim.desktop;neovide.desktop;firefox-developer-edition.desktop;
+text/csv=libreoffice-calc.desktop;
 
 [Default Applications]
-application/x-xpinstall=firefox-developer-edition.desktop
-application/json=firefox-developer-edition.desktop
-application/xhtml+xml=firefox-developer-edition.desktop
 application/x-php=nvim.desktop
 application/x-shellscript=nvim.desktop
 application/epub+zip=org.pwmt.zathura.desktop
-application/x-fictionbook+xml=org.pwmt.zathura.desktop
 application/oxps=org.pwmt.zathura.desktop
 video/3gpp2=mpv.desktop
 video/vnd.rn-realvideo=mpv.desktop
@@ -77,4 +75,8 @@ audio/aac=mpv.desktop
 audio/vnd.rn-realaudio=mpv.desktop
 x-scheme-handler/msteams=teams.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-9I07G1.desktop
-application/pdf=org.pwmt.zathura.desktop
+application/json=firefox.desktop
+application/x-xpinstall=firefox.desktop
+application/xml=firefox.desktop
+application/pdf=firefox.desktop
+application/xhtml+xml=firefox.desktop

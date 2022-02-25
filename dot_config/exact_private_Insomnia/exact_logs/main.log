@@ -1,0 +1,23 @@
+[2022-02-24 12:29:11.754] [info]  Running version 2021.7.2
+[2022-02-24 12:29:11.782] [error] [electron client protocol] FAILED to set default protocol 'insomnia://'
+[2022-02-24 12:29:11.807] [info]  [electron client protocol] the current executable is not the default protocol for 'insomnia://'
+[2022-02-24 12:29:11.856] [info]  [electron client protocol] the default application set for 'insomnia://' is 'insomnia.desktop
+'
+[2022-02-24 12:29:12.043] [info]  [fix] Running database repairs
+[2022-02-24 12:29:12.225] [info]  [db] Initialized DB at /home/pablo/.config/Insomnia/insomnia.$TYPE.db
+[2022-02-24 12:29:12.226] [info]  [db] Init responses DB
+[2022-02-24 12:29:12.233] [info]  [localstorage] Initialized at /home/pablo/.config/Insomnia/localStorage
+[2022-02-24 12:29:12.291] [info]  [main] Loading file:///opt/Insomnia/resources/app.asar/renderer.html
+[2022-02-24 12:29:12.305] [info]  [ga] Non-interactive General, Launched, 2021.7.2
+[2022-02-24 12:29:12.316] [info]  [ga] Queued event [
+  { name: 't', value: 'event' },
+  { name: 'ec', value: 'General' },
+  { name: 'ea', value: 'Launched' },
+  { name: 'ni', value: '1' },
+  { name: 'el', value: '2021.7.2' }
+]
+[2022-02-24 12:29:12.806] [info]  [updater] Updater not running platform=linux dev=false
+[2022-02-24 12:30:55.763] [error] (node:213628) electron: The default of contextIsolation is deprecated and will be changing from false to true in a future release of Electron.  See https://github.com/electron/electron/issues/23506 for more information
+[2022-02-24 12:35:21.885] [error] (node:213628) electron: The default of contextIsolation is deprecated and will be changing from false to true in a future release of Electron.  See https://github.com/electron/electron/issues/23506 for more information
+[2022-02-24 15:29:12.916] [info]  [updater] Updater not running platform=linux dev=false
+[2022-02-24 18:29:13.127] [info]  [updater] Updater not running platform=linux dev=false

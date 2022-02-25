@@ -71,16 +71,24 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export NVM_LAZY_LOAD=true
-export NVM_COMPLETION=true
+# export NVM_LAZY_LOAD=true
+# export NVM_COMPLETION=true
 plugins=(
+  #fasd
+  nvm
+  fzf
+  frontend-search
+  flutter
+  copybuffer
+  autojump
   npm
   git
+  gh
   colored-man-pages
   command-not-found
   docker
+  docker-compose
   pip
-  nvm
   gitignore
   node
 )
@@ -154,7 +162,8 @@ alias pingle='ping www.google.com'
 alias py80='python -m http.server 60957'
 
 ##cores
-alias ls='ls -hN --color=auto --group-directories-first'
+#alias ls='ls -hN --color=auto --group-directories-first'
+alias ls='exa -h --color=auto --group-directories-first'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi" # Color cat - print file with syntax highlighting.
@@ -163,6 +172,10 @@ alias ccat="highlight --out-format=ansi" # Color cat - print file with syntax hi
 alias gitsc="git commit -S -s --amend --no-edit"
 gitaam() {
   git add $(git status | grep -E "modified:|deleted:" | awk '{print $2}')
+}
+
+yS () {
+    yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print [}")' | xargs -ro yay -S
 }
 
 export TERM=tmux-256color
@@ -255,4 +268,4 @@ eval "$(starship init zsh)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-clear
+# clear

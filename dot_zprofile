@@ -24,6 +24,8 @@ export FZF_ALT_C_COMMAND="fd --type d --hidden -I -E \"{.git,*node_modules*}\" .
 
 export PATH="$HOME/scripts:$PATH"
 
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
 # if [[ "$(tty)" = "/dev/tty1" ]] then
 # 	startx
 # fi

@@ -1,0 +1,11 @@
+[2022-02-24 09:25:02.880] [info]  [db] Initialized DB client
+[2022-02-24 09:25:03.111] [info]  [plugin] Loaded /home/pablo/.config/Insomnia/plugins/insomnia-plugin-theme-dracula
+[2022-02-24 09:25:03.826] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
+[2022-02-24 09:25:03.828] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
+[2022-02-24 09:25:03.829] [info]  [sync] checking for collections which need to be moved into a remote project
+[2022-02-24 09:25:03.867] [info]  [ga] Event Activity, Change, debug
+[2022-02-24 09:25:03.868] [info]  [ga] Page /debug
+[2022-02-24 09:25:06.403] [info]  [ga] Event Modals, Show, SettingsModal
+[2022-02-24 09:25:14.371] [info]  [toast] Received notification upgrade-teams
+[2022-02-24 09:25:25.660] [info]  [toast] Received notification upgrade-teams
+[2022-02-24 09:25:25.662] [info]  [toast] Not showing notification upgrade-teams because has already been seen

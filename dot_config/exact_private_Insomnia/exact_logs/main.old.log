@@ -1,0 +1,19 @@
+[2022-02-24 09:25:00.001] [info]  Running version 2021.7.2
+[2022-02-24 09:25:00.025] [error] [electron client protocol] FAILED to set default protocol 'insomnia://'
+[2022-02-24 09:25:00.047] [info]  [electron client protocol] the current executable is not the default protocol for 'insomnia://'
+[2022-02-24 09:25:00.093] [info]  [electron client protocol] the default application set for 'insomnia://' is 'insomnia.desktop
+'
+[2022-02-24 09:25:00.294] [info]  [fix] Running database repairs
+[2022-02-24 09:25:00.447] [info]  [db] Initialized DB at /home/pablo/.config/Insomnia/insomnia.$TYPE.db
+[2022-02-24 09:25:00.449] [info]  [db] Init responses DB
+[2022-02-24 09:25:00.459] [info]  [localstorage] Initialized at /home/pablo/.config/Insomnia/localStorage
+[2022-02-24 09:25:00.521] [info]  [main] Loading file:///opt/Insomnia/resources/app.asar/renderer.html
+[2022-02-24 09:25:00.539] [info]  [ga] Non-interactive General, Launched, 2021.7.2
+[2022-02-24 09:25:00.563] [info]  [ga] Queued event [
+  { name: 't', value: 'event' },
+  { name: 'ec', value: 'General' },
+  { name: 'ea', value: 'Launched' },
+  { name: 'ni', value: '1' },
+  { name: 'el', value: '2021.7.2' }
+]
+[2022-02-24 09:25:01.041] [info]  [updater] Updater not running platform=linux dev=false
