@@ -1,0 +1,14 @@
+# pack-refs with: peeled fully-peeled sorted 
+168a715621e8a31fad8d28256fbb5ce8a4745380 refs/remotes/origin/add-tests
+9aaf6f2f3420668e529fb48c1cee0a4dacc2ede3 refs/remotes/origin/alankshum-adjustments
+db772bc8c39e20c781c61ae9f2e967d33d4dec6a refs/remotes/origin/fix-zsh-opt-markdirs
+dd0d373dcef5a66523c3fd30a72ffbef00ccd94b refs/remotes/origin/gh-pages
+ddfe85bb60190a26e07d7774582a26c7eee64f88 refs/remotes/origin/improve-color-handling
+e2bfbaf3b8ca92d6ffc4280211805ce4b8a8c19e refs/remotes/origin/master
+c953b459723dd588086838c90f2827e5907d3b3c refs/remotes/origin/posix
+dea46c3c48b03d8517a0640241be3c6280a091b5 refs/remotes/origin/use-lscolors-on-osx
+81a1b5c535782b1a466c08ef3ca0f358a0d1046c refs/tags/0.0.2
+4f7058bee0cfadc2a9c026feff3fb01a3d4514bf refs/tags/0.0.3
+63f9ec54640b8b8e8133b442c1aea4932037aefb refs/tags/0.0.4
+844ddf8d52902786f657cb2f3c1872ae233392d1 refs/tags/0.0.5
+8ad3e25c3002a52c8dfe6d7568e7a7650b74d34f refs/tags/v0.0.1
