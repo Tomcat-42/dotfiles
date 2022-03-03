@@ -1,19 +1,27 @@
-[2022-02-24 09:25:00.001] [info]  Running version 2021.7.2
-[2022-02-24 09:25:00.025] [error] [electron client protocol] FAILED to set default protocol 'insomnia://'
-[2022-02-24 09:25:00.047] [info]  [electron client protocol] the current executable is not the default protocol for 'insomnia://'
-[2022-02-24 09:25:00.093] [info]  [electron client protocol] the default application set for 'insomnia://' is 'insomnia.desktop
+[2022-02-28 23:55:03.648] [info]  Running version 2021.7.2
+[2022-02-28 23:55:03.694] [error] [electron client protocol] FAILED to set default protocol 'insomnia://'
+[2022-02-28 23:55:03.741] [info]  [electron client protocol] the current executable is not the default protocol for 'insomnia://'
+[2022-02-28 23:55:03.839] [info]  [electron client protocol] the default application set for 'insomnia://' is 'insomnia.desktop
 '
-[2022-02-24 09:25:00.294] [info]  [fix] Running database repairs
-[2022-02-24 09:25:00.447] [info]  [db] Initialized DB at /home/pablo/.config/Insomnia/insomnia.$TYPE.db
-[2022-02-24 09:25:00.449] [info]  [db] Init responses DB
-[2022-02-24 09:25:00.459] [info]  [localstorage] Initialized at /home/pablo/.config/Insomnia/localStorage
-[2022-02-24 09:25:00.521] [info]  [main] Loading file:///opt/Insomnia/resources/app.asar/renderer.html
-[2022-02-24 09:25:00.539] [info]  [ga] Non-interactive General, Launched, 2021.7.2
-[2022-02-24 09:25:00.563] [info]  [ga] Queued event [
+[2022-02-28 23:55:04.077] [info]  [fix] Running database repairs
+[2022-02-28 23:55:04.144] [info]  [db] Initialized DB at /home/pablo/.config/Insomnia/insomnia.$TYPE.db
+[2022-02-28 23:55:04.144] [info]  [db] Init responses DB
+[2022-02-28 23:55:04.162] [info]  [localstorage] Initialized at /home/pablo/.config/Insomnia/localStorage
+[2022-02-28 23:55:04.212] [info]  [main] Loading file:///opt/Insomnia/resources/app.asar/renderer.html
+[2022-02-28 23:55:04.231] [info]  [ga] Non-interactive General, Launched, 2021.7.2
+[2022-02-28 23:55:04.243] [info]  [ga] Queued event [
   { name: 't', value: 'event' },
   { name: 'ec', value: 'General' },
   { name: 'ea', value: 'Launched' },
   { name: 'ni', value: '1' },
   { name: 'el', value: '2021.7.2' }
 ]
-[2022-02-24 09:25:01.041] [info]  [updater] Updater not running platform=linux dev=false
+[2022-02-28 23:55:04.734] [info]  [updater] Updater not running platform=linux dev=false
+[2022-02-28 23:55:10.761] [info]  [response] Delete body /home/pablo/.config/Insomnia/responses/521a4b66-a8e4-43f3-a619-31d5c5f31e5e.response
+[2022-02-28 23:55:10.762] [info]  [response] Delete timeline /home/pablo/.config/Insomnia/responses/0f90c33d6c0106b1eeca5b6b28358eef8b60a32e.timeline
+[2022-02-28 23:55:10.838] [info]  [response] Delete body /home/pablo/.config/Insomnia/responses/6e669dc8-95dc-4a53-9753-0872e5121de4.response
+[2022-02-28 23:55:10.839] [info]  [response] Delete timeline /home/pablo/.config/Insomnia/responses/632aa04e2316072ba4d32de6d455137005a2785c.timeline
+[2022-02-28 23:55:18.240] [info]  [response] Delete body /home/pablo/.config/Insomnia/responses/1d48c840-8f74-4c4c-b345-96cacdd041cc.response
+[2022-02-28 23:55:18.241] [info]  [response] Delete timeline /home/pablo/.config/Insomnia/responses/b988828d2abe2b97e859114a5bb13edff10f3fa2.timeline
+[2022-02-28 23:55:26.959] [info]  [response] Delete timeline /home/pablo/.config/Insomnia/responses/749fd98d11d47625d219f0db851ba528aa540373.timeline
+[2022-02-28 23:55:26.960] [info]  [response] Delete body /home/pablo/.config/Insomnia/responses/aa5ab7a0-40c9-4609-abdf-751eba94e7a2.response

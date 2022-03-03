@@ -1,11 +1,23 @@
-[2022-02-24 09:25:02.880] [info]  [db] Initialized DB client
-[2022-02-24 09:25:03.111] [info]  [plugin] Loaded /home/pablo/.config/Insomnia/plugins/insomnia-plugin-theme-dracula
-[2022-02-24 09:25:03.826] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
-[2022-02-24 09:25:03.828] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
-[2022-02-24 09:25:03.829] [info]  [sync] checking for collections which need to be moved into a remote project
-[2022-02-24 09:25:03.867] [info]  [ga] Event Activity, Change, debug
-[2022-02-24 09:25:03.868] [info]  [ga] Page /debug
-[2022-02-24 09:25:06.403] [info]  [ga] Event Modals, Show, SettingsModal
-[2022-02-24 09:25:14.371] [info]  [toast] Received notification upgrade-teams
-[2022-02-24 09:25:25.660] [info]  [toast] Received notification upgrade-teams
-[2022-02-24 09:25:25.662] [info]  [toast] Not showing notification upgrade-teams because has already been seen
+[2022-02-28 23:55:07.136] [info]  [db] Initialized DB client
+[2022-02-28 23:55:07.440] [info]  [plugin] Loaded /home/pablo/.config/Insomnia/plugins/insomnia-plugin-theme-dracula
+[2022-02-28 23:55:08.690] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
+[2022-02-28 23:55:08.695] [info]  [FileSystemDriver] Initialized in "/home/pablo/.config/Insomnia/version-control"
+[2022-02-28 23:55:08.696] [info]  [sync] checking for collections which need to be moved into a remote project
+[2022-02-28 23:55:08.743] [info]  [ga] Event Activity, Change, debug
+[2022-02-28 23:55:08.744] [info]  [ga] Page /debug
+[2022-02-28 23:55:10.435] [info]  [network] Sending req=req_23a28071a99a49aba1238df17d7f42b8 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:10.540] [info]  [network] Sending req=req_23a28071a99a49aba1238df17d7f42b8 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:10.720] [info]  [network] Response succeeded req=req_23a28071a99a49aba1238df17d7f42b8 status=403
+[2022-02-28 23:55:10.745] [info]  [network] Response succeeded req=req_23a28071a99a49aba1238df17d7f42b8 status=403
+[2022-02-28 23:55:13.756] [info]  [network] Sending req=req_c06bb0da97844cebb471d3803a546ed6 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:13.914] [info]  [network] Response succeeded req=req_c06bb0da97844cebb471d3803a546ed6 status=202
+[2022-02-28 23:55:18.140] [info]  [network] Sending req=req_23a28071a99a49aba1238df17d7f42b8 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:18.223] [info]  [network] Response succeeded req=req_23a28071a99a49aba1238df17d7f42b8 status=200
+[2022-02-28 23:55:22.366] [info]  [network] Sending req=req_46d8420bcbc54715af960a3fc328d7d1 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:22.451] [info]  [network] Response succeeded req=req_46d8420bcbc54715af960a3fc328d7d1 status=404
+[2022-02-28 23:55:26.857] [info]  [network] Sending req=req_23a28071a99a49aba1238df17d7f42b8 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:26.942] [info]  [network] Response succeeded req=req_23a28071a99a49aba1238df17d7f42b8 status=200
+[2022-02-28 23:55:33.002] [info]  [network] Sending req=req_46d8420bcbc54715af960a3fc328d7d1 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:33.090] [info]  [network] Response succeeded req=req_46d8420bcbc54715af960a3fc328d7d1 status=200
+[2022-02-28 23:55:39.084] [info]  [network] Sending req=req_46d8420bcbc54715af960a3fc328d7d1 env=env_744debc9e793449a8fa329a868daac05
+[2022-02-28 23:55:39.183] [info]  [network] Response succeeded req=req_46d8420bcbc54715af960a3fc328d7d1 status=200

@@ -115,7 +115,7 @@ killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager
 
 # Lauch notification daemon
 dunst \
--geom "280x50-10+42" -frame_width "1" -font "Fira Code 9" \
+-geom "280x50-10+42" -frame_width "1" -font "Fira Code 12" \
 -lb "$BACKGROUND" -lf "$FOREGROUND" -lfr "$BLUE" \
 -nb "$BACKGROUND" -nf "$FOREGROUND" -nfr "$BLUE" \
 -cb "$BACKGROUND" -cf "$RED" -cfr "$RED" &
