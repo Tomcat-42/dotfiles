@@ -142,13 +142,14 @@ xfce4-power-manager &
 xsetroot -cursor_name left_ptr
 
 bspmon
+# Restore wallpaper
+#bash $HOME/.fehbg
+nitrogen --restore
 caffeine -a &
 syncthingtray --wait &
 plank &
 nm-tray &
 
-# Restore wallpaper
-bash $HOME/.fehbg
 
 # Start bspwm scripts
 bspcolors

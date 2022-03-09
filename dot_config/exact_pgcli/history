@@ -1,0 +1,226 @@
+
+# 2022-03-08 16:22:40.174130
++select * from *
+
+# 2022-03-08 16:22:44.611271
++select * from public
+
+# 2022-03-08 16:23:22.503731
++select * from information_schema.constraint_table_usage
+
+# 2022-03-08 16:54:26.820677
++woof
+
+# 2022-03-08 16:54:30.585283
++exit
+
+# 2022-03-08 17:19:36.128651
++ls
+
+# 2022-03-08 17:30:00.023899
++CREATE TABLE cidade ( 
++codigo_cidade SERIAL, 
++nome_cidade VARCHAR(50), 
++codigo_subregiao INTEGER, 
++CONSTRAINT cidade_pk PRIMARY KEY (codigo_cidade) 
++); 
++ 
++CREATE TABLE subregiao ( 
++codigo_subregiao SERIAL, 
++nome_subregiao VARCHAR(50), 
++codigo_pais INTEGER, 
++CONSTRAINT subregiao_pk PRIMARY KEY (codigo_subregiao) 
++); 
++ 
++CREATE TABLE pais ( 
++codigo_pais SERIAL, 
++nome_pais VARCHAR(50), 
++CONSTRAINT pais_pk PRIMARY KEY (codigo_pais) 
++); 
++ 
++INSERT INTO pais (nome_pais) VALUES ('Brasil'); 
++INSERT INTO pais (nome_pais) VALUES ('Argentina'); 
++INSERT INTO pais (nome_pais) VALUES ('Estados Unidos'); 
++INSERT INTO pais (nome_pais) VALUES ('Itália'); 
++INSERT INTO pais (nome_pais) VALUES ('França'); 
++INSERT INTO pais (nome_pais) VALUES ('Noruega'); 
++ 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Paraná', 1); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Sao Paulo', 1); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Rio Grande do Sul', 1); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Buenos Aires', 2); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Cordoba', 2); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Califórnia', 3); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Flórida', 3); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Toscana', 4); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Lombardia', 4); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Aquitania', 5); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Borgonha', 5); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Calábria', 5); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Massachussetts', 3); 
++INSERT INTO subregiao ( nome_subregiao, codigo_pais) VALUES ('Chiapas', NULL); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Curitiba', 1); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Sao Paulo', 2); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Guarulhos', 2); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Buenos Aires', 4); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('La Plata', 4); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Cordoba', 5); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Los Angeles', 6); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('San Francisco', 6); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Orlando', 7); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Miami', 7); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Siena', 8); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Florença', 8); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Milao', 9); 
++INSERT INTO cidade (nome_cidade, codigo_subregiao) VALUES ('Yokohama', NULL);
+
+# 2022-03-08 17:30:24.289499
++\d
+
+# 2022-03-08 17:30:34.057705
++\d cidade
+
+# 2022-03-08 17:33:37.678552
++\d
+
+# 2022-03-08 17:33:52.268468
++\d cidade
+
+# 2022-03-08 17:35:24.953249
++select * from cross join subregiao where cidade.codigo_subregiao = subregiao.codigo_subregiao;
+
+# 2022-03-08 17:35:35.202037
++select * from cidade cross join subregiao where cidade.codigo_subregiao = subregiao.codigo_subregiao;
+
+# 2022-03-08 17:35:51.969551
++\d cidade
+
+# 2022-03-08 17:36:20.047638
++select * from cidade cross join subregiao where cidade.codigo_subregiao = subregiao.codigo_subregiao;
+
+# 2022-03-08 17:38:00.541710
++select * from cidade cross join subregiao;
+
+# 2022-03-08 17:40:35.275986
++select * from cidade cross join subregiao where cidade.codigo_subregiao = subregiao.codigo_subregiao;
+
+# 2022-03-08 17:40:37.680450
++select * from cidade cross join subregiao;
+
+# 2022-03-08 17:41:49.876199
++select * from cidade cross join (subregiao cross join pais);
+
+# 2022-03-08 17:43:52.178328
++\d
+
+# 2022-03-08 17:43:58.404364
++\d subregiao]
+
+# 2022-03-08 17:44:00.822506
++\d subregiao
+
+# 2022-03-08 17:44:22.451469
++\d pais
+
+# 2022-03-08 17:44:28.228561
++\d cidade
+
+# 2022-03-08 17:45:19.575971
++select * from subregiao,pais;
+
+# 2022-03-08 17:46:56.330779
++select * from subregiao,pais where ;
+
+# 2022-03-08 17:48:26.183954
++select * from cidade inner join subregiao;
+
+# 2022-03-08 17:48:55.443496
++select * from cidade natural inner join subregiao;
+
+# 2022-03-08 17:51:04.539943
++\d cidade
+
+# 2022-03-08 17:51:09.086198
++\d subregiao
+
+# 2022-03-08 17:52:29.650765
++select * from cidade natural inner join subregiao;
+
+# 2022-03-08 17:52:46.127372
++\d subregiao
+
+# 2022-03-08 17:53:00.332671
++\dt subregiao
+
+# 2022-03-08 17:54:12.050397
++\i atv.sql
+
+# 2022-03-08 17:54:32.407687
++\d
+
+# 2022-03-08 17:54:46.635382
++\l
+
+# 2022-03-08 18:01:14.056119
++select * from subregiao left outer join cidade using (codigo_subregiao);
+
+# 2022-03-08 18:05:48.201640
++\c ex_bd
+
+# 2022-03-08 18:06:02.832825
++\?
+
+# 2022-03-08 18:06:23.187977
++create database ex_db_01;
+
+# 2022-03-08 18:06:35.207257
++\c ex_db_01
+
+# 2022-03-08 18:08:32.877167
++create table empregado(
++    nome_empregado 
+
+# 2022-03-08 18:27:03.628165
++\i create_db.sql
+
+# 2022-03-08 18:27:32.965369
++create database exercicios_slides;
+
+# 2022-03-08 18:27:37.118502
++\c exercicios_slides
+
+# 2022-03-08 18:27:43.802255
++\i create_db.sql
+
+# 2022-03-08 18:33:45.546872
++\d
+
+# 2022-03-08 18:34:46.798897
++\dt companhia
+
+# 2022-03-08 18:34:51.454643
++\d companhia
+
+# 2022-03-08 18:35:04.412393
++\d trabalha
+
+# 2022-03-08 18:36:03.373414
++\d empregado
+
+# 2022-03-08 18:43:09.468809
++\i populate_db.sql
+
+# 2022-03-08 18:45:16.284406
++\l
+
+# 2022-03-08 18:45:24.248396
++\dt
+
+# 2022-03-08 18:46:02.462894
++\
+
+# 2022-03-08 18:46:25.507606
++select * from empregado;
+
+# 2022-03-08 18:46:40.608758
++select * from companhia;
