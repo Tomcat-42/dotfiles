@@ -1,0 +1,38 @@
+session: ktp2
+
+root: ~/projects/Loupen/ktp2
+
+before_start:
+  - docker compose -f api/docker-compose.yml up -d 
+  - docker compose -f front/docker-compose.yml up -d
+
+stop:
+  - pushd api; docker compose down --remove-orphans; popd
+  - pushd front; docker compose down --remove-orphans; popd
+
+windows:
+  - name: api
+    root: api
+    layout: main-vertical
+    commands:
+      - 'nvim .'
+
+  - name: front
+    root: front
+    layout: main-vertical
+    commands:
+      - 'nvim .'
+
+  - name: run
+    root: .
+    layout: main-vertical
+    panes:
+      - type: vertical
+        root: api
+        commands: 
+          - docker compose logs -f app
+      - type: vertical
+        root: front
+        commands: 
+          # - docker compose logs -f front
+          - yarn start

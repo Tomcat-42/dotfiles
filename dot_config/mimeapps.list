@@ -12,6 +12,7 @@ application/x-extension-html=firefox.desktop;
 application/x-extension-shtml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
+application/sql=nvim.desktop;
 
 [Default Applications]
 application/x-php=nvim.desktop

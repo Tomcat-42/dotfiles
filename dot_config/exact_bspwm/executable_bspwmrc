@@ -145,7 +145,8 @@ bspmon
 # Restore wallpaper
 #bash $HOME/.fehbg
 nitrogen --restore
-caffeine -a &
+# caffeine -a &
+caffeine &
 syncthingtray --wait &
 plank &
 nm-tray &
