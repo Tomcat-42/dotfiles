@@ -1,6 +1,5 @@
 output HDMI-A-0
 crtc 0
-gamma 1.0:0.769:0.556
 mode 2560x1080
 pos 0x0
 primary
@@ -14,7 +13,6 @@ x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
 output eDP
 crtc 1
-gamma 1.0:0.769:0.556
 mode 1366x768
 pos 2560x0
 rate 60.00

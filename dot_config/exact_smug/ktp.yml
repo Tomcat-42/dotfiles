@@ -4,11 +4,11 @@ root: ~/projects/Loupen/ktp2
 
 before_start:
   - docker compose -f api/docker-compose.yml up -d 
-  - docker compose -f front/docker-compose.yml up -d
+  # - docker compose -f front/docker-compose.yml up -d
 
 stop:
   - pushd api; docker compose down --remove-orphans; popd
-  - pushd front; docker compose down --remove-orphans; popd
+  # - pushd front; docker compose down --remove-orphans; popd
 
 windows:
   - name: api

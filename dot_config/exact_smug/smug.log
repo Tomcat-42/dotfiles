@@ -2,18 +2,8 @@ tmux has-session -t ktp2:
 exit status 1
 /bin/sh -c docker compose -f api/docker-compose.yml up -d
 /bin/sh -c docker compose -f front/docker-compose.yml up -d
-tmux new -Pd -s ktp2 -n smug_def -c /home/pablo/projects/Loupen/ktp2
-tmux neww -Pd -t ktp2: -c /home/pablo/projects/Loupen/ktp2/api -F #{window_id} -n api
-tmux send-keys -t @2 nvim . Enter
-tmux select-layout -t @2 main-vertical
-tmux neww -Pd -t ktp2: -c /home/pablo/projects/Loupen/ktp2/front -F #{window_id} -n front
-tmux send-keys -t @3 nvim . Enter
-tmux select-layout -t @3 main-vertical
-tmux neww -Pd -t ktp2: -c /home/pablo/projects/Loupen/ktp2 -F #{window_id} -n run
-tmux split-window -Pd -v -t @4 -c /home/pablo/projects/Loupen/ktp2/api -F #{pane_id}
-tmux send-keys -t @4.%5 docker compose logs -f app Enter
-tmux split-window -Pd -v -t @4 -c /home/pablo/projects/Loupen/ktp2/front -F #{pane_id}
-tmux send-keys -t @4.%6 yarn start Enter
-tmux select-layout -t @4 main-vertical
-tmux kill-window -t ktp2:smug_def
-tmux move-window -r -s ktp2: -t ktp2:
+exit status 1
+/bin/sh -c pushd api; docker compose down --remove-orphans; popd
+/bin/sh -c pushd front; docker compose down --remove-orphans; popd
+tmux kill-session -t ktp2
+exit status 1

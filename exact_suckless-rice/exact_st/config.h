@@ -3,7 +3,7 @@
 
 //configurações de cores
 #if pywal
-#include "/home/pablo951_br/.cache/wal/colors-wal-st.h"
+#include "/home/pablo/.cache/wal/colors-wal-st.h"
 #else
 
 /* Terminal colors (16 first used in escape sequence) */

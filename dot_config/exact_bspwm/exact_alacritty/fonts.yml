@@ -5,23 +5,28 @@
 font:
   # Normal (roman) font face
   normal:
-    family: "Iosevka Custom"
-    #style: Regular
+    # family: "Iosevka Custom"
+    family: "Iosevka Nerd Font"
+    # family: "Iosevka Term"
+    style: Regular
 
   # Bold font face
   bold:
-    family: "Iosevka Custom"
-    #style: Bold
+    # family: "Iosevka Custom"
+    family: "Iosevka Nerd Font"
+    style: Bold
 
   # Italic font face
   italic:
-    family: "Iosevka Custom"
-    #style: Italic
+    # family: "Iosevka Custom"
+    family: "Iosevka Nerd Font"
+    style: Italic
 
   # Bold italic font face
   bold_italic:
-    family: "Iosevka Custom"
-    #style: Bold Italic
+    # family: "Iosevka Custom"
+    family: "Iosevka Nerd Font"
+    style: Bold Italic
 
   # Point size
   size: 12

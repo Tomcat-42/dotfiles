@@ -2,7 +2,8 @@
 ## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 ### Directories ###
-ncmpcpp_directory 	= ~/.ncmpcpp
+#ncmpcpp_directory 	= ~/.ncmpcpp
+ncmpcpp_directory 	= ~/.config/ncmpcpp/
 lyrics_directory     	= /mnt/files/data/music/Letras
 mpd_music_dir     	= /mnt/files/data/music
 mpd_host 		  	= "localhost"

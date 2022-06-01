@@ -1,0 +1,22 @@
+[2022-05-03 07:32:50.829] [sharedprocess] [info] Starting worker process with pid 23693 (type: fileWatcher, window: 1).
+[2022-05-03 07:33:22.191] [sharedprocess] [info] Getting Manifest... pkief.material-icon-theme
+[2022-05-03 07:33:22.420] [sharedprocess] [info] Installing extension: pkief.material-icon-theme
+[2022-05-03 07:33:32.424] [sharedprocess] [info] Downloaded extension: pkief.material-icon-theme /home/pablo/.config/Code - OSS/CachedExtensionVSIXs/pkief.material-icon-theme-4.16.0
+[2022-05-03 07:33:33.352] [sharedprocess] [info] Extracted extension to /home/pablo/.vscode-oss/extensions/.d5005db0-25da-4d3e-9f2c-31a5f9b197cc: pkief.material-icon-theme
+[2022-05-03 07:33:33.484] [sharedprocess] [info] Renamed to /home/pablo/.vscode-oss/extensions/pkief.material-icon-theme-4.16.0
+[2022-05-03 07:33:33.487] [sharedprocess] [info] Extracting completed. pkief.material-icon-theme
+[2022-05-03 07:33:33.491] [sharedprocess] [info] Extension installed successfully: pkief.material-icon-theme
+[2022-05-03 07:34:04.449] [sharedprocess] [info] Getting Manifest... asvetliakov.vscode-neovim
+[2022-05-03 07:34:04.679] [sharedprocess] [info] Installing extension: asvetliakov.vscode-neovim
+[2022-05-03 07:34:12.002] [sharedprocess] [info] Downloaded extension: asvetliakov.vscode-neovim /home/pablo/.config/Code - OSS/CachedExtensionVSIXs/asvetliakov.vscode-neovim-0.0.84
+[2022-05-03 07:34:12.097] [sharedprocess] [info] Extracted extension to /home/pablo/.vscode-oss/extensions/.9013b7cc-1143-4960-a08e-9e3e94f0d8c4: asvetliakov.vscode-neovim
+[2022-05-03 07:34:12.229] [sharedprocess] [info] Renamed to /home/pablo/.vscode-oss/extensions/asvetliakov.vscode-neovim-0.0.84
+[2022-05-03 07:34:12.233] [sharedprocess] [info] Extracting completed. asvetliakov.vscode-neovim
+[2022-05-03 07:34:12.238] [sharedprocess] [info] Extension installed successfully: asvetliakov.vscode-neovim
+[2022-05-03 07:34:52.419] [sharedprocess] [info] Getting Manifest... eamodio.gitlens
+[2022-05-03 07:34:52.655] [sharedprocess] [info] Installing extension: eamodio.gitlens
+[2022-05-03 07:35:16.675] [sharedprocess] [info] Downloaded extension: eamodio.gitlens /home/pablo/.config/Code - OSS/CachedExtensionVSIXs/eamodio.gitlens-12.0.6
+[2022-05-03 07:35:17.288] [sharedprocess] [info] Extracted extension to /home/pablo/.vscode-oss/extensions/.5035daae-b34f-4f32-b855-1f6279345c59: eamodio.gitlens
+[2022-05-03 07:35:17.563] [sharedprocess] [info] Renamed to /home/pablo/.vscode-oss/extensions/eamodio.gitlens-12.0.6
+[2022-05-03 07:35:17.577] [sharedprocess] [info] Extracting completed. eamodio.gitlens
+[2022-05-03 07:35:17.598] [sharedprocess] [info] Extension installed successfully: eamodio.gitlens
