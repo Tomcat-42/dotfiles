@@ -5,7 +5,7 @@
 #define PYWAL 0
 
 #if PYWAL
-#include "/home/pablo951_br/.cache/wal/colors-wal-dmenu.h"
+#include "/home/pablo/.cache/wal/colors-wal-dmenu.h"
 #else
 // static const char *colors[SchemeLast][2] = {
 //	/*     fg         bg       */
@@ -39,13 +39,22 @@
 //     [SchemeOut] = {"#F8F8F2", "#a1efe4"},
 // };
 
+// static const char *colors[SchemeLast][2] = {
+// 	/*     fg         bg       */
+// 	[SchemeNorm] = { "#FFFFFF", "#1e1f26" },
+// 	[SchemeSel] = { "#1e1f26", "#bd93f9", },
+// 	[SchemeSelHighlight] = { "#50fa7b", "#1e1f26" },
+// 	[SchemeNormHighlight] = { "#50fa7b", "#1e1f26" },
+// 	[SchemeOut] = { "#1e1f26", "#bd93f9" },
+// };
+
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#FFFFFF", "#1e1f26" },
-	[SchemeSel] = { "#bd93f9", "#1e1f26" },
-	[SchemeSelHighlight] = { "#50fa7b", "#1e1f26" },
-	[SchemeNormHighlight] = { "#50fa7b", "#1e1f26" },
-	[SchemeOut] = { "#1e1f26", "#bd93f9" },
+	[SchemeNorm] = { "#fff1e8", "#000000" },
+	[SchemeSel] = { "#fff1e8", "#ff004d" },
+	[SchemeOut] = { "#fff1e8", "#29adff" },
+    [SchemeSelHighlight] = { "#000000", "#ff004d" },
+    [SchemeNormHighlight] = { "#000000", "#ff004d" },
 };
 
 #endif
@@ -65,7 +74,7 @@ static const char *fonts[] = {
     //"envypn:size=9"
     //"GohuFont:size=12"
     "Iosevka Nerd Font:size=9:antialias=false:autohint=true",
-	  "EmojiOne:pixelsize=12:antialias=true:autohint=true",
+	"EmojiOne:pixelsize=12:antialias=true:autohint=true",
 };
 static const char *prompt =
     NULL; /* -p  option; prompt to the left of input field */

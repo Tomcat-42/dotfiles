@@ -85,16 +85,15 @@ snippet adefm
 
 # New Property
 snippet property
-	def ${1:foo}():
-		doc = "${2:The $1 property.}"
-		def fget(self):
-			${3:return self._$1}
-		def fset(self, value):
-			${4:self._$1 = value}
-		def fdel(self):
-			${0:del self._$1}
-		return locals()
-	$1 = property(**$1())
+	@property
+	def ${1:foo}(self) -> ${2:type}:
+		"""${3:doc}"""
+		return self._$1
+
+	@$1.setter
+	def $1(self, value: $2):
+		self._$1 = value
+
 # Ifs
 snippet if
 	if ${1:condition}:
@@ -160,6 +159,10 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__
+
+# debugger breakpoint
+snippet br
+	breakpoint()
 # python debugger (pdb)
 snippet pdb
 	__import__('pdb').set_trace()

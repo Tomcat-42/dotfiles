@@ -40,3 +40,5 @@ b4b8872480d3fcf99e1cf76eacc4a70194705950 927df8630a960d0caa89b6bba703e77256400ca
 b4b8872480d3fcf99e1cf76eacc4a70194705950 9c798a60ed20910abf2aac8535b801be96722009 Pablo Hugen <pablohuggem@gmail.com> 1629264531 -0300	commit: Add anysize patch
 9c798a60ed20910abf2aac8535b801be96722009 ca1ee4b21bd3705456e0d1d0aa1e695ce281c6f4 Pablo Hugen <pablohuggem@gmail.com> 1629264546 -0300	commit: Add sync patch
 ca1ee4b21bd3705456e0d1d0aa1e695ce281c6f4 d4958fb71d9277dc99b9c0cef59384bad93c228e Pablo Hugen <pablohuggem@gmail.com> 1642962108 -0300	commit: minor changes
+d4958fb71d9277dc99b9c0cef59384bad93c228e ae442b8e8aa3df8b69ffef281d5d4a408326a67e Pablo <pablohuggem@gmail.com> 1654491213 -0300	commit: Change colorscheme to base16-pico
+ae442b8e8aa3df8b69ffef281d5d4a408326a67e 68cd1eb8a17a6d8a40dafb8396d062a208adbeaa Pablo <pablohuggem@gmail.com> 1656202431 -0300	commit: Minor changes

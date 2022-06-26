@@ -62,6 +62,11 @@ if has('nvim-0.5') && luaeval("pcall(require, 'gitsigns')")
 endif
 " }}}
 " Tree-sitter: {{{
+" The nvim-treesitter library defines many global highlight groups that are
+" linked to the regular vim syntax highlight groups. We only need to redefine
+" those highlight groups when the defaults do not match the dracula
+" specification.
+" https://github.com/nvim-treesitter/nvim-treesitter/blob/master/plugin/nvim-treesitter.vim
 if exists('g:loaded_nvim_treesitter')
   " # Misc
   hi! link TSPunctSpecial Special
@@ -89,6 +94,47 @@ if exists('g:loaded_nvim_treesitter')
   hi! link TSTitle DraculaYellow
   hi! link TSLiteral DraculaYellow
   hi! link TSURI DraculaYellow
+  " HTML and JSX tag attributes. By default, this group is linked to TSProperty,
+  " which in turn links to Identifer (white).
+  hi! link TSTagAttribute DraculaGreenItalic
+endif
+" }}}
+" nvim-cmp: {{{
+" A completion engine plugin for neovim written in Lua.
+" https://github.com/hrsh7th/nvim-cmp
+if exists('g:loaded_cmp')
+  hi! link CmpItemAbbrDeprecated DraculaError
+
+  hi! link CmpItemAbbrMatch DraculaCyan
+  hi! link CmpItemAbbrMatchFuzzy DraculaCyan
+
+  hi! link CmpItemKindText DraculaFg
+  hi! link CmpItemKindMethod Function
+  hi! link CmpItemKindFunction Function
+  hi! link CmpItemKindConstructor DraculaCyan
+  hi! link CmpItemKindField DraculaOrange
+  hi! link CmpItemKindVariable DraculaPurpleItalic
+  hi! link CmpItemKindClass DraculaCyan
+  hi! link CmpItemKindInterface DraculaCyan
+  hi! link CmpItemKindModule DraculaYellow
+  hi! link CmpItemKindProperty DraculaPink
+  hi! link CmpItemKindUnit DraculaFg
+  hi! link CmpItemKindValue DraculaYellow
+  hi! link CmpItemKindEnum DraculaPink
+  hi! link CmpItemKindKeyword DraculaPink
+  hi! link CmpItemKindSnippet DraculaFg
+  hi! link CmpItemKindColor DraculaYellow
+  hi! link CmpItemKindFile DraculaYellow
+  hi! link CmpItemKindReference DraculaOrange
+  hi! link CmpItemKindFolder DraculaYellow
+  hi! link CmpItemKindEnumMember DraculaPurple
+  hi! link CmpItemKindConstant DraculaPurple
+  hi! link CmpItemKindStruct DraculaPink
+  hi! link CmpItemKindEvent DraculaFg
+  hi! link CmpItemKindOperator DraculaPink
+  hi! link CmpItemKindTypeParameter DraculaCyan
+
+  hi! link CmpItemMenu Comment
 endif
 " }}}
 

@@ -5,61 +5,55 @@
 #
 #   Part of https://github.com/jaclu/tmux-menus
 #
-#   Version: 1.2.1 2022-02-03
+#   Version: 1.3.4  2022-06-07
 #
-#   Main menu, the one popping up when you hit the trigger
-#
-#   Types of menu item lines.
-#
-#   1) An item leading to an action
-#          "Description" "In-menu key" "Action taken when it is triggered"
-#
-#   2) Just a line of text
-#      You must supply two empty strings, in order for the
-#      menu logic to interpret it as a full menu line item.
-#          "Some text to display" "" ""
-#
-#   3) Separator line
-#      This is a propper gaphical separator line, without any label.
-#          ""
-#
-#   4) Labeled separator line
-#      Not pefect, since you will have at least one space on each side of
-#      the labeled separator line, but using something like this and carefully
-#      increase the dashes until you are just below forcing the menu to just
-#      grow wider, seems to be as close as it gets.
-#          "#[align=centre]-----  Other stuff  -----" "" ""
-#
-#
-#   All but the last line in the menu, needs to end with a continuation \
-#   Whitespace after this \ will cause the menu to fail!
-#   For any field containing no spaces, quotes are optional.
+#   Resize a pane
 #
 
+#  shellcheck disable=SC2034
+#  Directives for shellcheck directly after bang path are global
+
+# shellcheck disable=SC1007
 CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-
 SCRIPT_DIR="$(dirname "$CURRENT_DIR")/scripts"
 
+# shellcheck disable=SC1091
 . "$SCRIPT_DIR/utils.sh"
 
+menu_name="Resize Pane"
+req_win_width=33
+req_win_height=18
 
-tmux display-menu  \
-     -T "#[align=centre] Resize Pane "  \
-     -x "$menu_location_x" -y "$menu_location_y"  \
-     \
-     "Back to Main menu"       Home  "run-shell $CURRENT_DIR/main.sh"  \
-     "Back to Handling Pane"  Left  "run-shell $CURRENT_DIR/panes.sh" \
-     "" \
-     "#[align=left]Specify width & height" s "command-prompt -p 'Pane width,Pane height' 'resize-pane -x %1 -y %2'" \
-     "" \
-     "<P> up    by 5"  M-Up   "resize-pane -U 5"  \
-     "<P> down  by 5"  M-Down "resize-pane -D 5"  \
-     "<P> left  by 5"  M-Left "resize-pane -L 5"  \
-     "<P> right by 5"  M-Left "resize-pane -R 5"  \
-     "" \
-     "<P> up    by 1"  C-Up   "resize-pane -U"    \
-     "<P> down  by 1"  C-Down "resize-pane -D"    \
-     "<P> left  by 1"  C-Left "resize-pane -L"    \
-     "<P> right by 1"  C-Left "resize-pane -R"    \
-     "" \
-     "Help  -->"  H  "run-shell \"$CURRENT_DIR/help.sh $CURRENT_DIR/panes.sh\""
+
+this_menu="$CURRENT_DIR/pane_resize.sh"
+reload="; run-shell '$this_menu'"
+
+set_size="command-prompt -p 'Pane width,Pane height' 'resize-pane -x %1 -y %2'"
+open_menu="run-shell '$CURRENT_DIR"
+
+
+t_start="$(date +'%s')"
+
+# shellcheck disable=SC2154
+tmux display-menu                                                   \
+    -T "#[align=centre] $menu_name "                                \
+    -x "$menu_location_x" -y "$menu_location_y"                     \
+                                                                    \
+    "Back to Main menu"      Home  "$open_menu/main.sh'"            \
+    "Back to Handling Pane"  Left  "$open_menu/panes.sh'"           \
+    ""                                                              \
+    "Specify width & height"  s  "$set_size"                        \
+    "-#[align=centre,nodim]-------  resize by 1  ------" "" ""      \
+    "up     "                 u  "resize-pane -U $reload"           \
+    "down   "                 d  "resize-pane -D $reload"           \
+    "left   "                 l  "resize-pane -L $reload"           \
+    "right  "                 r  "resize-pane -R $reload"           \
+    "-#[align=centre,nodim]-------  resize by 5  ------" "" ""      \
+    "up     "                 U  "resize-pane -U 5 $reload"         \
+    "down   "                 D  "resize-pane -D 5 $reload"         \
+    "left   "                 L  "resize-pane -L 5 $reload"         \
+    "right  "                 R  "resize-pane -R 5 $reload"         \
+    ""                                                              \
+    "Help  -->"               H  "$open_menu/help.sh $this_menu'"
+
+ensure_menu_fits_on_screen

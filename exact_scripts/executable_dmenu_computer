@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIALOG_RESULT=$(echo -e 'exit dwm\nsuspend\nreboot\nshutdown' | dmenu -i -p "power options" -l 5)
+DIALOG_RESULT=$(echo -e 'lock\nexit dwm\nsuspend\nreboot\nshutdown' | dmenu -i -p "power options" -l 5)
 
 echo "This result is : $DIALOG_RESULT"
 sleep 1;
@@ -10,14 +10,22 @@ then
     killall Xorg
 elif [ "$DIALOG_RESULT" = "suspend" ];
 then
-    exec systemctl suspend
+    exec loginctl suspend
+    # systemctl suspend
+elif [ "$DIALOG_RESULT" = "lock" ];
+then
+    exec lock_n_off.sh
+    # systemctl suspend
+elif [ "$DIALOG_RESULT" = "suspend" ];
+then
+    exec loginctl suspend
     # systemctl suspend
 elif [ "$DIALOG_RESULT" = "reboot" ];
 then
     # exec reboot
-    reboot
+    loginctl reboot
 elif [ "$DIALOG_RESULT" = "shutdown" ];
 then
     # exec shutdown -h now
-    shutdown -h now
+    loginctl poweroff
 fi

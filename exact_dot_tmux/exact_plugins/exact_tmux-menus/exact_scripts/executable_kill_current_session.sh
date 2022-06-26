@@ -5,14 +5,22 @@
 #
 #   Part of https://github.com/jaclu/tmux-menus
 #
-#   Version: 1.2.1 2022-02-03
+#   Version: 1.2.3 2022-04-24
+#
+#   It is assumed that the calliing entity has recieved confirmation
+#   that this session shoule be killed if that is needed.
 #
 #   Kills current session. If this is the only session, it
 #   first calls kill_session_confirm.sh where user can confirm
 #   if this should still happen, since it will terminate the tmux server.
 #
 
+
+# shellcheck disable=SC1007
 CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+# shellcheck disable=SC1091
+. "$CURRENT_DIR/utils.sh"
 
 force_directive="force"
 
@@ -20,9 +28,9 @@ ses_count="$(tmux list-sessions | wc -l)"
 
 ses_to_go="$(tmux display-message -p '#{session_id}')"
 
+
 if [ -z "$ses_to_go" ]; then
-    tmux display-message "ERROR: tmux-menus:kill_current_session.sh  Failed to identify current session!"
-    exit 0
+    error_msg "kill_current_session.sh  Failed to identify current session!" 1
 fi
 
 
@@ -50,9 +58,9 @@ if [ "$ses_count" -gt 1 ]; then
     #  On some slower systems, like iSH it might actually take a second to
     #  switch sessions. If the client is still connected to the session when
     #  it gets killed it gets disconnected. Nothing major, the other sessions
-    #  are still running, but its an unnesesarry anoyannce to have to
+    #  are still running, but its an unnecessary annoyance to have to
     #  reconnect. Combined with that this is not blocking anything,
-    #  running in its own thread, it doesnt hurt to wait a bit.
+    #  running in its own thread, it doesn't hurt to wait a bit.
     #
     sleep 2
 fi

@@ -1,1 +1,3 @@
-sudo systemctl reboot
+#!/bin/bash
+sudo reboot
+

@@ -14,7 +14,7 @@ tmux_get() {
     [ -n "$value" ] && echo "$value" || echo "$2"
 }
 
-key="$(tmux_get '@fzf-url-bind' 'e')"
+key="$(tmux_get '@fzf-url-bind' 'u')"
 history_limit="$(tmux_get '@fzf-url-history-limit' 'screen')"
 extra_filter="$(tmux_get '@fzf-url-extra-filter' '')"
 echo "$extra_filter" > /tmp/filter

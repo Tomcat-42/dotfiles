@@ -1,6 +1,6 @@
-static const char* selbgcolor   = "#1e1f26";
-static const char* selfgcolor   = "#FFFFFF";
-static const char* normbgcolor  = "#50FA7B";
-static const char* normfgcolor  = "#FFFFFF";
-static const char* urgbgcolor   = "#FF5555";
-static const char* urgfgcolor   = "#FFFFFF";
+static const char* selbgcolor   = "#000000";
+static const char* selfgcolor   = "#fff1e8";
+static const char* normbgcolor  = "#00e756";
+static const char* normfgcolor  = "#fff1e8";
+static const char* urgbgcolor   = "#ff004d";
+static const char* urgfgcolor   = "#fff1e8";

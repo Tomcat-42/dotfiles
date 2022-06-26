@@ -28,3 +28,5 @@ b518bb027de1a4b356812827a23f54dec1a434a5 3f09b8c26bef765b8447173be0a9b7bf1da03f5
 3f09b8c26bef765b8447173be0a9b7bf1da03f50 250145869acdffae53895af1180af35ef9fb3180 Pablo Hugen <pablohuggem@gmail.com> 1619716346 -0300	commit (amend): yes
 250145869acdffae53895af1180af35ef9fb3180 18dfbd2d524bb7e68789bd88fcb6bf7b6f7af4a0 Pablo Hugen <pablohuggem@gmail.com> 1642962169 -0300	commit: minor changes
 18dfbd2d524bb7e68789bd88fcb6bf7b6f7af4a0 77b8ad1a4edf2736654378058f9176a058b1be10 Pablo Hugen <pablohuggem@gmail.com> 1642962493 -0300	commit (amend): minor changes
+77b8ad1a4edf2736654378058f9176a058b1be10 53f01b2ee77d9f12c87f9185ae281f6f4a8e3f22 Pablo <pablohuggem@gmail.com> 1654491224 -0300	commit: Change colorscheme to base16-pico
+53f01b2ee77d9f12c87f9185ae281f6f4a8e3f22 d6a626e7dd4ad0e389e4876c2c04d2a8beda8c04 Pablo <pablohuggem@gmail.com> 1656202455 -0300	commit: Minor changes

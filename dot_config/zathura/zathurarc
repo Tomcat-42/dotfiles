@@ -9,7 +9,7 @@ set statusbar-h-padding 20
 set window-title-basename true
 set incremental-search false
 set synctex true
-set font "Inconsolata-g Medium 12"
+set font "Iosevka Nerd Font 9"
 set selection-notification true
 # set smooth-scroll true
 set sandbox none
@@ -102,50 +102,83 @@ map [index] q toggle_index
 # Dracula color theme
 #
 
-set notification-error-bg       "#ff5555" # Red
-set notification-error-fg       "#ffffff" # Foreground
-set notification-warning-bg     "#ffb86c" # Orange
-set notification-warning-fg     "#44475a" # Selection
-set notification-bg             "#1e1f26" # Background
-set notification-fg             "#ffffff" # Foreground
-
-set completion-bg               "#1e1f26" # Background
-set completion-fg               "#6272a4" # Comment
-set completion-group-bg         "#1e1f26" # Background
-set completion-group-fg         "#6272a4" # Comment
-set completion-highlight-bg     "#21222C" # Selection
-set completion-highlight-fg     "#ffffff" # Foreground
-
-set index-bg                    "#21222C" # Background
-set index-fg                    "#ffffff" # Foreground
-set index-active-bg             "#1e1f26" # Current Line
-set index-active-fg             "#ffffff" # Foreground
-
-set inputbar-bg                 "#1e1f26" # Background
-set inputbar-fg                 "#ffffff" # Foreground
-set statusbar-bg                "#1e1f26" # Background
-set statusbar-fg                "#ffffff" # Foreground
-
-set highlight-color             "#bd93f9" # Orange
-set highlight-active-color      "#ff79c6" # Pink
-
-set default-bg                  "#1e1f26" # Background
-set default-fg                  "#ffffff" # Foreground
-
-set render-loading              true
-set render-loading-fg           "#1e1f26" # Background
-set render-loading-bg           "#ffffff" # Foreground
-
-#
-# Recolor mode settings
-#
-
-set recolor-lightcolor          "#1e1f26" # Background
-set recolor-darkcolor           "#ffffff" # Foreground
-
-# DARKMODE 
-set recolor "true"
+# set notification-error-bg       "#ff5555" # Red
+# set notification-error-fg       "#ffffff" # Foreground
+# set notification-warning-bg     "#ffb86c" # Orange
+# set notification-warning-fg     "#44475a" # Selection
+# set notification-bg             "#1e1f26" # Background
+# set notification-fg             "#ffffff" # Foreground
+# 
+# set completion-bg               "#1e1f26" # Background
+# set completion-fg               "#6272a4" # Comment
+# set completion-group-bg         "#1e1f26" # Background
+# set completion-group-fg         "#6272a4" # Comment
+# set completion-highlight-bg     "#21222C" # Selection
+# set completion-highlight-fg     "#ffffff" # Foreground
+# 
+# set index-bg                    "#21222C" # Background
+# set index-fg                    "#ffffff" # Foreground
+# set index-active-bg             "#1e1f26" # Current Line
+# set index-active-fg             "#ffffff" # Foreground
+# 
+# set inputbar-bg                 "#1e1f26" # Background
+# set inputbar-fg                 "#ffffff" # Foreground
+# set statusbar-bg                "#1e1f26" # Background
+# set statusbar-fg                "#ffffff" # Foreground
+# 
+# set highlight-color             "#bd93f9" # Orange
+# set highlight-active-color      "#ff79c6" # Pink
+# 
+# set default-bg                  "#1e1f26" # Background
+# set default-fg                  "#ffffff" # Foreground
+# 
+# set render-loading              true
+# set render-loading-fg           "#1e1f26" # Background
+# set render-loading-bg           "#ffffff" # Foreground
+# 
+# #
+# # Recolor mode settings
+# #
+# 
+# set recolor-lightcolor          "#1e1f26" # Background
+# set recolor-darkcolor           "#ffffff" # Foreground
+# 
+# # DARKMODE 
+# set recolor "true"
 
 # setting recolor-keep true will keep any color your pdf has.
 # if it is false, it'll just be black and white
 set recolor-keephue "false"
+set recolor "true"
+
+set completion-bg "#000000"
+set completion-fg "#ffffff"
+set completion-group-bg "#000000"
+set completion-group-fg "#00e756"
+set completion-highlight-bg "#ffffff"
+set completion-highlight-fg "#000000"
+
+set recolor-lightcolor "#000000"
+set recolor-darkcolor "#ffffff"
+set default-bg "#000000"
+
+set inputbar-bg "#000000"
+set inputbar-fg "#ffffff"
+set notification-bg "#000000"
+set notification-fg "#ffffff"
+set notification-error-bg "#ff004d"
+set notification-error-fg "#ffffff"
+set notification-warning-bg "#ff004d"
+set notification-warning-fg "#ffffff"
+set statusbar-bg "#000000"
+set statusbar-fg "#ffffff"
+set index-bg "#000000"
+set index-fg "#ffffff"
+set index-active-bg "#ffffff"
+set index-active-fg "#000000"
+set render-loading-bg "#000000"
+set render-loading-fg "#ffffff"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard

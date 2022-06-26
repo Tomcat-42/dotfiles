@@ -41,24 +41,25 @@
 #define CLIFM "ranger"
 
 /* Fontes */
-#define FONT "Iosevka Nerd Font:size=10:antialias=false:autohint=false"
-#define FONT2 "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
+#define FONT "Iosevka Nerd Font:size=11:antialias=true:autohint=true"
+//#define FONT2 "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
+#define FONT2 "Iosevka Term:size=11:antialias=true:autohint=true"
 
 /* Cores do pywal */
 #define PYWAL 0
 
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 0;       /* snap pixel */
-static const unsigned int gappih    = 1;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 1;       /* vert inner gap between windows */
+static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
 
@@ -72,39 +73,39 @@ static const int toptab = 1;               /* False means bottom tab bar */
 static const char *fonts[]          = { FONT, FONT2 };
 static const char dmenufont[]       = FONT;
 
-static const char norm_fg[] = "#FFFFFF";
-static const char norm_bg[] = "#1e1f26";
-static const char norm_border[] = "#bd93f9";
-static const char norm_float[] = "#50fa7b";
+static const char norm_fg[] = "#fff1e8";
+static const char norm_bg[] = "#000000";
+static const char norm_border[] = "#000000";
+static const char norm_float[] = "#000000";
 
+static const char sel_fg[] = "#fff1e8";
+static const char sel_bg[] = "#00e756";
+static const char sel_border[] = "#83769c";
+static const char sel_float[] = "#83769c";
 
-static const char sel_fg[] = "#bd93f9";
-static const char sel_bg[] = "#1e1f26";
-static const char sel_border[] = "#bd93f9";
-static const char sel_float[] = "#50fa7b";
+static const char urg_fg[] = "#fff1e8";
+static const char urg_bg[] = "#ff004d";
+static const char urg_border[] = "#ff004d";
+static const char urg_float[] = "#ff004d";
 
-static const char urg_fg[] = "#bd93f9";
-static const char urg_bg[] = "#1e1f26";
-static const char urg_border[] = "#bd93f9";
-static const char urg_float[] = "#50fa7b";
 
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#29adff";
 
-static const char col_col1[] = "#f8f8f2";
-static const char col_col2[] = "#A4FFFF";
-static const char col_col3[] = "##FF92DF";
-static const char col_col4[] = "#6272a4";
-static const char col_col5[] = "#8be9fd";
-static const char col_col6[] = "#50fa7b";
-static const char col_col7[] = "#ffb86c";
-static const char col_col8[] = "#bd93f9";
-static const char col_col9[] = "#ff5555";
-static const char col_col10[] = "#f1fa8c";
-static const char col_col11[] = "#ff79c6";
+static const char col_col1[] = "#ffffff";
+static const char col_col2[] = "#ff004d";
+static const char col_col3[] = "#00e756";
+static const char col_col4[] = "#fff024";
+static const char col_col5[] = "#83769c";
+static const char col_col6[] = "#ff77a8";
+static const char col_col7[] = "#29adff";
+static const char col_col8[] = "#ffffff";
+static const char col_col9[] = "#008751";
+static const char col_col10[] = "#fff1e8";
+static const char col_col11[] = "#000000";
 
 
 static const char *colors[][4]      = {
@@ -118,15 +119,15 @@ static const char *colors[][4]      = {
 static const char *tags[] = { "壱", "弐", "参", "四","五", "六", "七", "八", "九" };
 
 static const char *tagsel[][2] = {
-	{  "#50fa7b", "#1e1f26"},
-	{  "#bd93f9", "#1e1f26"},
-	{  "#ff5555", "#1e1f26"},
-	{  "#f1fa8c", "#1e1f26"},
-	{  "#8be9fd", "#1e1f26"},
-	{  "#6272a4", "#1e1f26"},
-	{  "#ffb86c", "#1e1f26"},
-	{  "#ff79c6", "#1e1f26"},
-	{  "#44475a", "#1e1f26"},
+	{"#1e1f26",  "#ff004d"},
+	{"#1e1f26",  "#00e756"},
+	{"#1e1f26",  "#fff024"},
+	{"#1e1f26",  "#83769c"},
+	{"#1e1f26",  "#ff77a8"},
+	{"#1e1f26",  "#29adff"},
+	{"#1e1f26",  "#ffffff"},
+	{"#1e1f26",  "#ff79c6"},
+	{"#1e1f26",  "#008751"},
 };
 
 static const unsigned int ulinepad = 5;	/* horizontal padding between the underline and tag */
@@ -223,7 +224,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 /* #define MODKEY Mod1Mask */
-#define MODKEY Mod1Mask
+#define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -244,9 +245,9 @@ static const char *guiFMcmd[]  = { GUIFM, NULL };
 static const char *cliFMcmd[]  = { TERM, "-t", "ranger", "-e", CLIFM, NULL };
 static const char *ncmpcpp[]  = { TERM, "-t", "ncmpcpp", "-e", "ncmpcpp", NULL };
 /* static const char *netmngr[]  = { "networkmanager_dmenu", NULL }; */
-static const char *netmngr[]  = { "/home/pablo951_br/Downloads/scripts/dmenu_connection_manager", NULL };
+static const char *netmngr[]  = { "/home/pablo/scripts/dmenu_connection_manager", NULL };
 
-static const char *quick_file_open[]  = { "st", "-i", "-g", "160x10+0+0", "-c", "quick_file_open", "-n", "quick_file_open","-t", "quick_file_open", "-e", "/home/pablo951_br/Downloads/scripts/quick_file_open", NULL };
+static const char *quick_file_open[]  = { "st", "-i", "-g", "160x10+0+0", "-c", "quick_file_open", "-n", "quick_file_open","-t", "quick_file_open", "-e", "/home/pablo/scripts/quick_file_open", NULL };
 
 static Key keys[] = {
   /* Custom Keys */
@@ -265,37 +266,37 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,             XK_bracketleft,   spawn,          SHCMD("mpc volume +5")},
 	//{ 0,                            KP_ENTER,  spawn,          SHCMD("mpc single")},
 	//volume keys
-	{ 0,                            SND_INC,     spawn,          SHCMD("amixer set Master -q 5%+")},
-	{ 0,                            SND_DEC,   spawn,          SHCMD("amixer set Master -q 5%-")},
-	{ 0,                            SND_MUTE, spawn,          SHCMD("amixer -q sset Master,0 toggle")},
-	{ 0,                            MIC_MUTE, spawn,          SHCMD("amixer set Capture toggle")},
-	{ 0,                            MONIT_SEL, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/displayselect")},
-	{ 0,                            WIFI_TOGGLE, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/toggle_wifi")},
-	{ 0,                            FAVORITES,     spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/search")},
-	{ MODKEY,                       XK_period, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/mpdnotify")},
+	{ 0,                            SND_INC,     spawn,          SHCMD("pamixer -i 5")},
+	{ 0,                            SND_DEC,   spawn,          SHCMD("pamixer -d 5")},
+	{ 0,                            SND_MUTE, spawn,          SHCMD("pamixer -t")},
+	{ 0,                            MIC_MUTE, spawn,          SHCMD("pamixer --default-source -t")},
+	{ 0,                            MONIT_SEL, spawn,          SHCMD("/home/pablo/scripts/displayselect")},
+	{ 0,                            WIFI_TOGGLE, spawn,          SHCMD("/home/pablo/scripts/toggle_wifi")},
+	{ 0,                            FAVORITES,     spawn,          SHCMD("/home/pablo/scripts/search")},
+	{ MODKEY,                       XK_period, spawn,          SHCMD("/home/pablo/scripts/mpdnotify")},
 	
 	//F1-F12 keys
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD(TERM " -t newsboat -e newsboat")},
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD(TERM " -t clima -e 'curl wttr.in'")},
-	{ MODKEY,                       XK_F3,     spawn,          SHCMD(TERM " -t calendario -e 'bash /home/pablo951_br/Downloads/scripts/binding_calcurse.sh'")},
-	{ MODKEY,                       XK_F5,     spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/dmenu_mount")},
-	{ MODKEY,                       XK_F6,     spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/dmenu_umount")},
+	{ MODKEY,                       XK_F3,     spawn,          SHCMD(TERM " -t calendario -e 'bash /home/pablo/scripts/binding_calcurse.sh'")},
+	{ MODKEY,                       XK_F5,     spawn,          SHCMD("/home/pablo/scripts/dmenu_mount")},
+	{ MODKEY,                       XK_F6,     spawn,          SHCMD("/home/pablo/scripts/dmenu_umount")},
 	{ MODKEY,                       XK_F8,     spawn,          SHCMD(TERM " -t nload -e nload")},
-	{ MODKEY,                       XK_F9,     spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/webcam")},
-	{ MODKEY,                       XK_F10,    spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/dmenu_record")},
+	{ MODKEY,                       XK_F9,     spawn,          SHCMD("/home/pablo/scripts/webcam")},
+	{ MODKEY,                       XK_F10,    spawn,          SHCMD("/home/pablo/scripts/dmenu_record")},
 
 
 	//Outros
 	//{ MODKEY|ControlMask,           XK_k,      spawn,          SHCMD("setxkbmap -model abnt2 -layout br ; xset r rate 280 35") },
-	{ MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/lock_n_off.sh") },
-	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/desligar_monitor.sh off") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/lock_n_off_n_suspend.sh") },
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/redshift_dmenu") },
-	{ MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/tlp_dmenu") },
-	{ 0,                            CONFIG_LAUNCH,spawn,       SHCMD("/home/pablo951_br/Downloads/scripts/toggletouchpad") },
+	{ MODKEY|ControlMask,           XK_l,      spawn,          SHCMD("/home/pablo/scripts/lock_n_off.sh") },
+	{ MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("/home/pablo/scripts/desligar_monitor.sh off") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("/home/pablo/scripts/lock_n_off_n_suspend.sh") },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("/home/pablo/scripts/redshift_dmenu") },
+	{ MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("/home/pablo/scripts/tlp_dmenu") },
+	{ 0,                            CONFIG_LAUNCH,spawn,       SHCMD("/home/pablo/scripts/toggletouchpad") },
 	//{ MODKEY,                  XK_Tab,      spawn,          SHCMD("rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font \"Droid Sans 16\" ") },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_Tab,    spawn,           SHCMD("/home/pablo951_br/Downloads/scripts/switch") },
+	{ MODKEY|ShiftMask,             XK_Tab,    spawn,           SHCMD("/home/pablo/scripts/switch") },
 	{ MODKEY,                       XK_f,      spawn,          {.v = browsercmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = password_manager} },
 	{ MODKEY,                       XK_o,      spawn,          {.v = quick_file_open} },
@@ -306,26 +307,26 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,      spawn,          {.v = ncmpcpp} },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = netmngr} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,              XK_Insert, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/showclip") },
-	{ MODKEY|ControlMask,            XK_Insert, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/xcqr") },
+	{ MODKEY|ShiftMask,              XK_Insert, spawn,          SHCMD("/home/pablo/scripts/showclip") },
+	{ MODKEY|ControlMask,            XK_Insert, spawn,          SHCMD("/home/pablo/scripts/xcqr") },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD( TERM " -t weechat -e weechat")},
-	//{ MODKEY,                       XK_c,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/chcolor_gui") },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/toggle_caffeine") },
+	//{ MODKEY,                       XK_c,      spawn,          SHCMD("/home/pablo/scripts/chcolor_gui") },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("/home/pablo/scripts/toggle_caffeine") },
 	{ MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("xcolor | xsel -i -b") },
-	{ 0,                       XK_Print,  spawn,              SHCMD("/home/pablo951_br/Downloads/scripts/scrot_dmenu") },
-	//{ MODKEY,                       XK_Print,     spawn,              SHCMD("scrot /home/pablo951_br/`date +%Y-%m-%d_%H:%M:%S`.png") },
-	//{ MODKEY|ShiftMask,             XK_Print,     spawn,          SHCMD("scrot -u /home/pablo951_br/`date +%Y-%m-%d_%H:%M:%S`.png") },
-	//{ MODKEY|ControlMask,           XK_Print,     spawn,          SHCMD("scrot -s /home/pablo951_br/`date +%Y-%m-%d_%H:%M:%S`.png") },
-	{ MODKEY,                       XK_Delete, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/dmenu_computer") },
-	{ MODKEY,                       XK_x, spawn,          SHCMD("/home/pablo951_br/Downloads/scripts/mpdmenu :: -l 3") },
+	{ 0,                       XK_Print,  spawn,              SHCMD("/home/pablo/scripts/scrot_dmenu") },
+	//{ MODKEY,                       XK_Print,     spawn,              SHCMD("scrot /home/pablo/`date +%Y-%m-%d_%H:%M:%S`.png") },
+	//{ MODKEY|ShiftMask,             XK_Print,     spawn,          SHCMD("scrot -u /home/pablo/`date +%Y-%m-%d_%H:%M:%S`.png") },
+	//{ MODKEY|ControlMask,           XK_Print,     spawn,          SHCMD("scrot -s /home/pablo/`date +%Y-%m-%d_%H:%M:%S`.png") },
+	{ MODKEY,                       XK_Delete, spawn,          SHCMD("/home/pablo/scripts/dmenu_computer") },
+	{ MODKEY,                       XK_x, spawn,          SHCMD("/home/pablo/scripts/mpdmenu :: -l 3") },
 	
 	//teclas especiais
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 10") },
 	{ 0,                            XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 10") },
 	//{ 0,                            XF86XK_AudioPlay, spawn, SHCMD("mpc toggle") },
-	{ 0,                            XF86XK_Sleep, spawn, SHCMD("/home/pablo951_br/Downloads/scripts/lock_n_off.sh") },
+	{ 0,                            XF86XK_Sleep, spawn, SHCMD("/home/pablo/scripts/lock_n_off.sh") },
 	{ MODKEY,                       XK_t,      spawn,          {.v = termcmd } },
-	{ 0     ,                       SUPER,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 
 
 	/* modifier                     key        function        argument */
@@ -381,10 +382,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = -1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -411,4 +412,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-

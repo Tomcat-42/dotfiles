@@ -15,3 +15,5 @@ e05aa41fda72034f5f099280de6e1fb513f32362 68797eb6513b8e93b7bce70d496b8000fcdad89
 0ae251d6c390948763b81ba1d9228cd90a56acd4 a2c60d6f70b60111f2bdba016ea4e660f75850cf Pablo Hugen <pablohuggem@gmail.com> 1615160491 -0300	commit (amend): Change theme to Dracula
 a2c60d6f70b60111f2bdba016ea4e660f75850cf a2c60d6f70b60111f2bdba016ea4e660f75850cf Pablo Hugen <pablohuggem@gmail.com> 1628961300 -0300	reset: moving to a2c60d6
 a2c60d6f70b60111f2bdba016ea4e660f75850cf ab424ee83e09a4c70fa4de7b42b32d1ff39a9005 Pablo Hugen <pablohuggem@gmail.com> 1642961943 -0300	commit: minor changes
+ab424ee83e09a4c70fa4de7b42b32d1ff39a9005 dcb380c9c9b327f1c8d4e7c4135655c0abccabc1 Pablo <pablohuggem@gmail.com> 1654490835 -0300	commit: Change colorscheme to base16-pico
+dcb380c9c9b327f1c8d4e7c4135655c0abccabc1 0de4ffea105978a7d6f8fa89a3109759ea30fdf2 Pablo <pablohuggem@gmail.com> 1656202397 -0300	commit: Minor changes

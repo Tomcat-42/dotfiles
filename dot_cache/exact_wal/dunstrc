@@ -13,7 +13,7 @@
     horizontal_padding = 24
 
     # The frame color and width of the notification
-    frame_color = "#BD93F9"
+    frame_color = "#83769c"
     frame_width = 6
 
     # How long a user needs to be idle for sticky notifications
@@ -39,15 +39,15 @@
 
 # Set the background and foreground (text) color for all notifications
 [urgency_low]
-    background = "#1e1f26"
-    foreground = "#FFFFFF"
+    background = "#000000"
+    foreground = "#ffffff"
 
 [urgency_normal]
-    background = "#1e1f26"
-    foreground = "#FFFFFF"
+    background = "#000000"
+    foreground = "#ffffff"
 
 [urgency_critical]
-    background = "#1e1f26"
-    foreground = "#FFFFFF"
+    background = "#000000"
+    foreground = "#ffffff"
 
 # vim:ft=cfg

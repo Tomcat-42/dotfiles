@@ -1,59 +1,53 @@
-## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
 
 [global]
-monitor = 0
-follow = mouse
-geometry = "280x50-10+48"
-indicate_hidden = yes
-shrink = no
-separator_height = 4
-separator_color = auto
-padding = 15
-horizontal_padding = 15
-frame_width = 6
-sort = no
-idle_threshold = 120
-font = JetBrains Mono 10
-line_height = 4
-markup = full
-format = %s\n%b
-alignment = left
-show_age_threshold = 60
-word_wrap = yes
-ignore_newline = no
-stack_duplicates = false
-hide_duplicate_count = yes
-show_indicators = no
-icon_position = left
-max_icon_size = 48
-sticky_history = yes
-history_length = 20
-browser = x-www-browser -new-tab
-always_run_script = true
-title = Dunst
-class = Dunst
+    # Make the width 3740 (3840 - 100), have 50 left margin and 95 above
+    geometry = "3740x5-50+95"
 
+    # Show multiple notifications in the same box
+    separator_height = 0
+
+    # Add vertical padding to the inside of the notification
+    padding = 24
+
+    # Add horizontal padding for when the text gets long enough
+    horizontal_padding = 24
+
+    # The frame color and width of the notification
+    frame_color = "#83769c"
+    frame_width = 6
+
+    # How long a user needs to be idle for sticky notifications
+    idle_threshold = 120
+
+    # Font and typography settings
+    font = envypn 9 
+    alignment = center
+    word_wrap = yes
+
+    # Format for how notifications will be displayed
+    # Usage: `notify-send 'Title' 'Summary'`
+    format = "<b>%s</b>: %b"
+
+    # Allow some HTML tags like <i> and <u> in notifications
+    markup = full
+
+# These are the keybindings used to control dunst notifications
 [shortcuts]
-close = ctrl+shift+space
-close_all = ctrl+shift+space
-history = ctrl+grave
-context = ctrl+shift+period
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
 
+# Set the background and foreground (text) color for all notifications
 [urgency_low]
-timeout = 2
-background = "#282C33"
-foreground = "#D8D8D8"
-frame_color = "#30343B"
+    background = "#000000"
+    foreground = "#ffffff"
 
 [urgency_normal]
-timeout = 5
-background = "#282C33"
-foreground = "#D8D8D8"
-frame_color = "#30343B"
+    background = "#000000"
+    foreground = "#ffffff"
 
 [urgency_critical]
-timeout = 0
-background = "#282C33"
-foreground = "#E06B74"
-frame_color = "#30343B"
+    background = "#000000"
+    foreground = "#ffffff"
+
+# vim:ft=cfg

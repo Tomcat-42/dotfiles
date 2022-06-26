@@ -1,6 +1,6 @@
 ##matar o pulseaudio que foi iniciado na tty, pois o daemon do pulseaudio cuida do x
 ##killall -9 pulseaudio &> /dev/null
-##pulseaudio --start
+pulseaudio --start
 
 #qgnomeplatform
 export QT_QPA_PLATFORMTHEME='qt5ct'
@@ -12,14 +12,14 @@ export LANG=pt_BR.UTF-8
 
 #bset XCURSOR_THEME=Breeze
 #setxkbmap -model br-thinkpad &>/dev/null
-xset r rate 280 35 &>/dev/null
+xset r rate 230 45 &>/dev/null
 #Xcursor.theme: Breeze
 
 #export MONITOR1=`xrandr | grep VGA | sed -n 1p | awk '{print $1}'`
 #export MONITOR2=`xrandr | grep VGA | sed -n 2p | awk '{print $1}'`
 
 ##configuração monitores
-~/Downloads/scripts/conf_monitores.sh
+~/scripts/conf_monitores.sh
 
 ##gerenciador de wallpapers
 nitrogen --restore
@@ -56,7 +56,7 @@ dunst &
 #xautolock -corners --00 -time 10 -locker /home/pablo951_br/Downloads/scripts/lock_n_off.sh -notify 5 &>/dev/null &
 xautolock \
 	-time 10\
-	-locker /home/pablo951_br/Downloads/scripts/lock_n_off.sh\
+	-locker /home/pablo/scripts/lock_n_off.sh\
 	-notify 10\
 	-notifier "/usr/bin/notify-send 'xautolock' 'Screen will be locked in 10 seconds.'"\
 	-detectsleep \
@@ -71,5 +71,5 @@ export AWT_TOOLKIT=MToolkit
 #exec i3 &>/dev/null
 
 #dwmstatus 2>&1 >/dev/null &
-slstatus 2>&1 >/dev/null &
+exec slstatus 2>&1 >/dev/null &
 exec dwm &> /dev/null

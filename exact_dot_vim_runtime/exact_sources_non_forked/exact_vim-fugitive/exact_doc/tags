@@ -3,10 +3,10 @@
 :GMove	fugitive.txt	/*:GMove*
 :GRemove	fugitive.txt	/*:GRemove*
 :GRename	fugitive.txt	/*:GRename*
+:GUnlink	fugitive.txt	/*:GUnlink*
 :Gblame	fugitive.txt	/*:Gblame*
 :Gbrowse	fugitive.txt	/*:Gbrowse*
 :Gcd	fugitive.txt	/*:Gcd*
-:Gcgrep	fugitive.txt	/*:Gcgrep*
 :Gclog	fugitive.txt	/*:Gclog*
 :Gcommit	fugitive.txt	/*:Gcommit*
 :Gdelete	fugitive.txt	/*:Gdelete*
@@ -58,7 +58,11 @@ User_Fugitive	fugitive.txt	/*User_Fugitive*
 User_FugitiveBlob	fugitive.txt	/*User_FugitiveBlob*
 User_FugitiveChanged	fugitive.txt	/*User_FugitiveChanged*
 User_FugitiveCommit	fugitive.txt	/*User_FugitiveCommit*
+User_FugitiveEditor	fugitive.txt	/*User_FugitiveEditor*
 User_FugitiveIndex	fugitive.txt	/*User_FugitiveIndex*
+User_FugitiveObject	fugitive.txt	/*User_FugitiveObject*
+User_FugitivePager	fugitive.txt	/*User_FugitivePager*
+User_FugitiveStageBlob	fugitive.txt	/*User_FugitiveStageBlob*
 User_FugitiveTag	fugitive.txt	/*User_FugitiveTag*
 User_FugitiveTree	fugitive.txt	/*User_FugitiveTree*
 fugitive	fugitive.txt	/*fugitive*

@@ -2,3 +2,6 @@
 84a2f117a32f0796045941260cdc4b69852b41e0 84a2f117a32f0796045941260cdc4b69852b41e0 Pablo Hugen <pablohuggem@gmail.com> 1629134725 -0300	checkout: moving from master to my_slstatus
 84a2f117a32f0796045941260cdc4b69852b41e0 fc40c7ee0b3f1ce930535c1f01206bbe74d46fd2 Pablo Hugen <pablohuggem@gmail.com> 1629143252 -0300	commit: first custom build
 fc40c7ee0b3f1ce930535c1f01206bbe74d46fd2 7dcb791da5250737393ac55b1d69c291337b3c65 Pablo Hugen <pablohuggem@gmail.com> 1642961984 -0300	commit: minor changes
+7dcb791da5250737393ac55b1d69c291337b3c65 cf114b87a81123176657f8d3ca058ca3784ccafc Pablo <pablohuggem@gmail.com> 1654491150 -0300	commit: Change colorscheme to base16-pico
+cf114b87a81123176657f8d3ca058ca3784ccafc fea2762ed66a045ac88ae913a779dde3bfc2a150 Pablo <pablohuggem@gmail.com> 1654875036 -0300	commit: Change colorscheme to base16-pico white version
+fea2762ed66a045ac88ae913a779dde3bfc2a150 2b41312df2573d137e3c1365115c5571b533745f Pablo <pablohuggem@gmail.com> 1656202418 -0300	commit: Minor changes

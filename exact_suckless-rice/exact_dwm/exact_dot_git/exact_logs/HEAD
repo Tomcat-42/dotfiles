@@ -39,3 +39,6 @@ b4925851d3817d5cf129a53ecc45d895d563aa88 716233534b35f74dba5a46ade8f1a6f8cc72fea
 716233534b35f74dba5a46ade8f1a6f8cc72fea4 b4925851d3817d5cf129a53ecc45d895d563aa88 Pablo Hugen <pablohuggem@gmail.com> 1642962272 -0300	checkout: moving from master to patches
 b4925851d3817d5cf129a53ecc45d895d563aa88 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1642962287 -0300	checkout: moving from patches to master
 716233534b35f74dba5a46ade8f1a6f8cc72fea4 b4925851d3817d5cf129a53ecc45d895d563aa88 Pablo Hugen <pablohuggem@gmail.com> 1643562472 -0300	checkout: moving from master to patches
+b4925851d3817d5cf129a53ecc45d895d563aa88 ed3586464e34dc5737c483349364832071d4d516 Pablo <pablohuggem@gmail.com> 1654490702 -0300	commit: Change colorscheme to base16-pico
+ed3586464e34dc5737c483349364832071d4d516 0c26783c0cbde4e0e0dbeb4d41732aacc2499a46 Pablo <pablohuggem@gmail.com> 1654874974 -0300	commit: Change colorscheme to base16-pico white version
+0c26783c0cbde4e0e0dbeb4d41732aacc2499a46 da7c584e4be1e80777ef31837a694ce4212127a8 Pablo <pablohuggem@gmail.com> 1656202355 -0300	commit: Minor changes

@@ -12,3 +12,6 @@
 [remote "origin"]
 	url = git@github.com:Tomcat-42/dwm.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "patches"]
+	remote = origin
+	merge = refs/heads/patches

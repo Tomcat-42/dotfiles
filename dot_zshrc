@@ -154,7 +154,6 @@ add-zsh-hook -Uz precmd rehash_precmd
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="thunar ~/.oh-my-zsh"
 
-# ls
 alias l='ls -lh'
 alias ll='ls -lah'
 alias la='ls -A'
@@ -200,8 +199,10 @@ export BROWSER="firefox"
 export COLORTERM="truecolor"
 export npm_config_prefix=~/.node_modules
 export PATH="$(du "$HOME/scripts/" | cut -f2 | tr '\n' ':')$HOME/.local/bin:$HOME/.node_modules/bin:$PATH"
-export PATH="$HOME/.node_modules/bin:$PATH"
-export READER="zathura"
+export PATH="$HOME/.node_modules/bin:$PATH"export PATH="$HOME/.node_modules/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export CHROME_EXECUTABLE="chromium"
 export CHROME_FLAGS=""
 export CMAKE_EXPORT_COMPILE_COMMANDS
@@ -248,7 +249,6 @@ export FZF_DEFAULT_OPTS='--height=20%
 export LS_COLORS="${LS_COLORS}:su=30;41:ow=30;42:st=30;44:"
 
 
-
 #bindkey -v
 #clear
 
@@ -283,3 +283,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # clear
+
+xset r rate 200 25
