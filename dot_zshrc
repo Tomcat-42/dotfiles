@@ -82,7 +82,8 @@ plugins=(
   frontend-search
   flutter
   copybuffer
-  autojump
+  # autojump
+  zoxide
   npm
   heroku
   git
@@ -94,8 +95,8 @@ plugins=(
   pip
   docker
   themes
-  z
-  zsh-interactive-cd
+  # z
+  # zsh-interactive-cd
   zsh-autosuggestions
   #k
   docker-compose
