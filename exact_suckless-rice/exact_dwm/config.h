@@ -169,7 +169,7 @@ static const Rule rules[] = {
 	//{ "MPlayer",                 NULL,                 NULL,                                 1 << 5,                     1,                1,             0,0                       ,                              -1 },
 	{ "MPlayer",                  NULL,                 NULL,                                 0,                          1,                1,               0,                      0,                             -1 },
 	{ "ffplay",                   NULL,                 NULL,                                 1 << 5,                     1,                1,               0,                      0,                             -1 },
-	{ "Gimp",                     NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
+	{ "Gimp",                     NULL,                 NULL,                                 1 << 6,                     1,                1,               0,                      0,                             -1 },
 	{ "Leafpad",                  NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
 	{ "Libreoffice",              NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
 	{ "Libreoffice-writer",       NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
@@ -319,6 +319,8 @@ static Key keys[] = {
 	//{ MODKEY|ControlMask,           XK_Print,     spawn,          SHCMD("scrot -s /home/pablo/`date +%Y-%m-%d_%H:%M:%S`.png") },
 	{ MODKEY,                       XK_Delete, spawn,          SHCMD("/home/pablo/scripts/dmenu_computer") },
 	{ MODKEY,                       XK_x, spawn,          SHCMD("/home/pablo/scripts/mpdmenu :: -l 3") },
+	{ MODKEY,                       XK_k, spawn,          SHCMD("/home/pablo/scripts/dmenu_xkb") },
+	{ MODKEY,                       XK_g, spawn,          SHCMD("/home/pablo/scripts/dmenu_gpu") },
 	
 	//teclas especiais
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 10") },

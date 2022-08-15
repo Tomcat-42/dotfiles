@@ -1960,3 +1960,389 @@
 +WHERE p1.codprod = ANY (SELECT codprod FROM maquina INNER JOIN maqprod USING(codmaq) WHERE tempo > 10 and nomemaq = 'fresa computadorizada') OR
 +p2.codprod = ANY (SELECT codprod FROM maquina INNER JOIN maqprod USING(codmaq) WHERE tempo > 10 and nomemaq = 'fresa computadorizada');
 +
+
+# 2022-08-07 23:34:02.208702
++\i src/1-create.sql
+
+# 2022-08-07 23:34:37.610526
++drop TABLE *;DROP SCHEMA public CASCADE;
+
+# 2022-08-07 23:35:40.022108
++drop TABLE *;
+
+# 2022-08-07 23:36:00.498487
++DROP SCHEMA public CASCADE;
+
+# 2022-08-07 23:36:28.513749
++\i src/1-create.sql
+
+# 2022-08-07 23:36:37.984647
++CREATE SCHEMA public;
+
+# 2022-08-07 23:36:39.647886
++\i src/1-create.sql
+
+# 2022-08-07 23:37:24.999785
++DROP SCHEMA public CASCADE;
+
+# 2022-08-07 23:37:27.465441
++CREATE SCHEMA public;
+
+# 2022-08-07 23:37:29.144790
++\i src/1-create.sql
+
+# 2022-08-07 23:38:12.285461
++DROP SCHEMA public CASCADE;
+
+# 2022-08-07 23:38:14.124016
++CREATE SCHEMA public;
+
+# 2022-08-07 23:38:15.662909
++\i src/1-create.sql
+
+# 2022-08-07 23:41:32.560377
++CREATE SCHEMA public;
+
+# 2022-08-07 23:41:34.083481
++\i src/1-create.sql
+
+# 2022-08-07 23:41:37.101902
++DROP SCHEMA public CASCADE;
+
+# 2022-08-07 23:41:42.153871
++CREATE SCHEMA public;
+
+# 2022-08-07 23:41:43.382608
++\i src/1-create.sql
+
+# 2022-08-08 00:04:13.377770
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:04:18.924847
++CREATE SCHEMA public;
+
+# 2022-08-08 00:04:20.803552
++\i src/1-create.sql
+
+# 2022-08-08 00:11:32.214400
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:11:35.052458
++CREATE SCHEMA public;
+
+# 2022-08-08 00:11:36.685958
++\i src/1-create.sql
+
+# 2022-08-08 00:32:49.164280
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:32:52.378517
++CREATE SCHEMA public;
+
+# 2022-08-08 00:32:54.146995
++\i src/1-create.sql
+
+# 2022-08-08 00:33:07.106066
++\i src/2-indexes.sql
+
+# 2022-08-08 00:33:11.984763
++\i src/3-populate.sql
+
+# 2022-08-08 00:34:05.405375
++SELECT * FROM localizacao;
+
+# 2022-08-08 00:39:12.492935
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:39:18.948765
++CREATE SCHEMA public;
+
+# 2022-08-08 00:39:23.224881
++\i src/1-populate.sql
+
+# 2022-08-08 00:39:26.047629
++\i src/1-create.sql
+
+# 2022-08-08 00:39:32.218527
++\i src/2-indexes.sql
+
+# 2022-08-08 00:39:36.079622
++\i src/3-populate.sql
+
+# 2022-08-08 00:41:35.130776
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:41:39.766012
++CREATE SCHEMA public;
+
+# 2022-08-08 00:41:42.700462
++\i src/1-create.sql
+
+# 2022-08-08 00:41:48.167681
++\i src/2-indexes.sql
+
+# 2022-08-08 00:41:51.227611
++\i src/3-populate.sql
+
+# 2022-08-08 00:42:08.187062
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 00:42:11.675016
++CREATE SCHEMA public;
+
+# 2022-08-08 00:42:14.972637
++\i src/1-create.sql
+
+# 2022-08-08 00:42:21.388677
++\i src/2-indexes.sql
+
+# 2022-08-08 00:42:23.168592
++\i src/3-populate.sql
+
+# 2022-08-08 01:20:53.228848
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:20:56.998914
++CREATE SCHEMA public;
+
+# 2022-08-08 01:21:01.593492
++\i src/2-indexes.sql
+
+# 2022-08-08 01:21:04.226882
++\i src/1-create.sql
+
+# 2022-08-08 01:21:08.420448
++\i src/2-indexes.sql
+
+# 2022-08-08 01:21:11.314635
++\i src/3-populate.sql
+
+# 2022-08-08 01:22:22.651691
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:22:26.873471
++\i src/1-create.sql
+
+# 2022-08-08 01:22:31.778617
++CREATE SCHEMA public;
+
+# 2022-08-08 01:22:34.936732
++\i src/1-create.sql
+
+# 2022-08-08 01:22:40.069515
++\i src/2-indexes.sql
+
+# 2022-08-08 01:22:43.013482
++\i src/3-populate.sql
+
+# 2022-08-08 01:24:58.646572
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:25:02.155289
++CREATE SCHEMA public;
+
+# 2022-08-08 01:25:04.359227
++\i src/1-create.sql
+
+# 2022-08-08 01:25:09.881603
++\i src/2-indexes.sql
+
+# 2022-08-08 01:25:12.506483
++\i src/3-populate.sql
+
+# 2022-08-08 01:26:22.323196
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:26:25.327518
++CREATE SCHEMA public;
+
+# 2022-08-08 01:26:27.391201
++\i src/2-indexes.sql
+
+# 2022-08-08 01:26:29.912178
++\i src/1-create.sql
+
+# 2022-08-08 01:26:34.537355
++\i src/2-indexes.sql
+
+# 2022-08-08 01:26:37.129385
++\i src/3-populate.sql
+
+# 2022-08-08 01:27:05.582540
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:27:08.801321
++CREATE SCHEMA public;
+
+# 2022-08-08 01:27:10.727162
++\i src/1-create.sql
+
+# 2022-08-08 01:27:14.993112
++\i src/2-indexes.sql
+
+# 2022-08-08 01:27:17.258294
++\i src/3-populate.sql
+
+# 2022-08-08 01:27:44.226702
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:27:46.966244
++CREATE SCHEMA public;
+
+# 2022-08-08 01:27:49.768059
++\i src/1-create.sql
+
+# 2022-08-08 01:27:54.764149
++\i src/2-indexes.sql
+
+# 2022-08-08 01:27:56.766137
++\i src/3-populate.sql
+
+# 2022-08-08 01:28:14.240361
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:28:17.829715
++CREATE SCHEMA public;
+
+# 2022-08-08 01:28:19.719191
++\i src/1-create.sql
+
+# 2022-08-08 01:28:24.133156
++\i src/2-indexes.sql
+
+# 2022-08-08 01:28:26.385006
++\i src/3-populate.sql
+
+# 2022-08-08 01:29:23.341137
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:29:27.321998
++CREATE SCHEMA public;
+
+# 2022-08-08 01:29:28.951032
++\i src/1-create.sql
+
+# 2022-08-08 01:29:33.355971
++\i src/2-indexes.sql
+
+# 2022-08-08 01:29:35.776054
++\i src/3-populate.sql
+
+# 2022-08-08 01:30:05.331178
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:30:08.672841
++CREATE SCHEMA public;
+
+# 2022-08-08 01:30:10.580808
++\i src/1-create.sql
+
+# 2022-08-08 01:30:18.027494
++CREATE SCHEMA public;
+
+# 2022-08-08 01:30:20.594995
++\i src/1-create.sql
+
+# 2022-08-08 01:30:25.022906
++\i src/2-indexes.sql
+
+# 2022-08-08 01:30:27.704174
++\i src/3-populate.sql
+
+# 2022-08-08 01:31:38.237436
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:31:44.063331
++CREATE SCHEMA public;
+
+# 2022-08-08 01:31:45.795915
++\i src/1-create.sql
+
+# 2022-08-08 01:32:26.191308
++DROP SCHEMA public CASCADE;
+
+# 2022-08-08 01:32:29.388577
++\i src/1-create.sql
+
+# 2022-08-08 01:32:32.329167
++CREATE SCHEMA public;
+
+# 2022-08-08 01:32:34.245795
++\i src/1-create.sql
+
+# 2022-08-08 01:32:45.905077
++\i src/2-indexes.sql
+
+# 2022-08-08 01:32:49.155069
++\i src/3-populate.sql
+
+# 2022-08-08 01:34:22.123201
++DROP SCHEMA public CASCADE; CREATE SCHEMA public;
+
+# 2022-08-08 01:34:30.321778
++\i src/3-populate.sql
+
+# 2022-08-08 01:34:34.745715
++\i src/1-create.sql
+
+# 2022-08-08 01:34:39.861747
++\i src/2-indexes.sql
+
+# 2022-08-08 01:34:41.606926
++\i src/3-populate.sql
+
+# 2022-08-08 01:35:21.550630
++SELECT p.saldo FROM Passageiro as p, PassageiroEstudante as e WHERE p.id = e.id;
+
+# 2022-08-08 01:35:31.002930
++SELECT loc.latitude, loc.longitude FROM Onibus as o, LocalizacaoOnibus as locOnibus, Localizacao as loc WHERE
++o.status == operante AND o.id = locOnibus.id_onibus;
+
+# 2022-08-08 10:54:03.113563
++\i src/5-queries.sql
+
+# 2022-08-08 12:03:09.349752
++\i src/6-assertions.sql
+
+# 2022-08-08 12:03:53.992516
++SELECT
++  count(*) INTO student_count
++FROM
++  PassageiroEstudante
++WHERE
++  desconto < 0.5;
++
+
+# 2022-08-08 12:04:10.655279
++SELECT
++  count(*)
++FROM
++  PassageiroEstudante
++WHERE
++  desconto < 0.5;
++
+
+# 2022-08-08 12:04:27.470732
++\i src/6-assertions.sql
+
+# 2022-08-08 12:20:44.181911
++\i src/7-triggers.sql
+
+# 2022-08-08 12:28:11.465589
++\i src/8-test-triggers.sql
+
+# 2022-08-08 12:29:30.322729
++DROP TRIGGER log_name;
+
+# 2022-08-08 12:30:02.641516
++DROP TRIGGER name_changes
++;
+
+# 2022-08-08 12:30:16.016520
++DROP TRIGGER name_changes on Ponto;
+
+# 2022-08-08 12:30:21.796221
++\i src/7-triggers.sql
+
+# 2022-08-08 12:30:24.134417
++\i src/8-test-triggers.sql

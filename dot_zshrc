@@ -190,6 +190,9 @@ yS () {
     yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print [}")' | xargs -ro yay -S
 }
 
+# java
+export MAVEN_HOME=/opt/maven
+
 #export TERM=tmux-256color
 export TERM=xterm-256color
 export EDITOR=nvim
@@ -204,6 +207,8 @@ export PATH="$HOME/.node_modules/bin:$PATH"export PATH="$HOME/.node_modules/bin:
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$MAVEN_HOME/bin:$PATH"
 export CHROME_EXECUTABLE="chromium"
 export CHROME_FLAGS=""
 export CMAKE_EXPORT_COMPILE_COMMANDS
@@ -284,5 +289,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # clear
+#
 
-xset r rate 200 25
+#xset r rate 200 25

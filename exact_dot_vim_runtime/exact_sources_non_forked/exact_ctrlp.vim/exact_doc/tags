@@ -4,7 +4,6 @@
 'ctrlp-autocompletion'	ctrlp.txt	/*'ctrlp-autocompletion'*
 'ctrlp-fullregexp'	ctrlp.txt	/*'ctrlp-fullregexp'*
 'ctrlp-pasting'	ctrlp.txt	/*'ctrlp-pasting'*
-'g:ctrlp_abbrev'	ctrlp.txt	/*'g:ctrlp_abbrev'*
 'g:ctrlp_arg_map'	ctrlp.txt	/*'g:ctrlp_arg_map'*
 'g:ctrlp_brief_prompt'	ctrlp.txt	/*'g:ctrlp_brief_prompt'*
 'g:ctrlp_buffer_func'	ctrlp.txt	/*'g:ctrlp_buffer_func'*
