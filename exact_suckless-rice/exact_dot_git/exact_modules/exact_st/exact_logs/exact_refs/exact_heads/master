@@ -31,3 +31,4 @@ b4b8872480d3fcf99e1cf76eacc4a70194705950 9c798a60ed20910abf2aac8535b801be9672200
 ca1ee4b21bd3705456e0d1d0aa1e695ce281c6f4 d4958fb71d9277dc99b9c0cef59384bad93c228e Pablo Hugen <pablohuggem@gmail.com> 1642962108 -0300	commit: minor changes
 d4958fb71d9277dc99b9c0cef59384bad93c228e ae442b8e8aa3df8b69ffef281d5d4a408326a67e Pablo <pablohuggem@gmail.com> 1654491213 -0300	commit: Change colorscheme to base16-pico
 ae442b8e8aa3df8b69ffef281d5d4a408326a67e 68cd1eb8a17a6d8a40dafb8396d062a208adbeaa Pablo <pablohuggem@gmail.com> 1656202431 -0300	commit: Minor changes
+68cd1eb8a17a6d8a40dafb8396d062a208adbeaa 87a8c32896a1be9c7ecafb88a9c45dd587f8d96f Pablo <pablohuggem@gmail.com> 1660530849 -0300	commit: Add optimization flags to cc

@@ -13,3 +13,4 @@ a22647384f7cb7e050a4f321484e49f073601281 838b68430b13a97f768eb6e09162bc724706d50
 838b68430b13a97f768eb6e09162bc724706d508 3bb2ab74d26a3374f1deaf6e4ba81c8cb0baae57 Pablo Hugen <pablohuggem@gmail.com> 1619715984 -0300	commit (amend): Add second battery status
 3bb2ab74d26a3374f1deaf6e4ba81c8cb0baae57 2068122989d235506c996c060511e7f513a05b81 Pablo Hugen <pablohuggem@gmail.com> 1629020299 -0300	commit: Add networkspeed component
 2068122989d235506c996c060511e7f513a05b81 9ac3f6fe195dbad802958b1db99c67c11673386f Pablo Hugen <pablohuggem@gmail.com> 1642961924 -0300	commit: minor changes
+9ac3f6fe195dbad802958b1db99c67c11673386f 59258475fc6dfcf0baf22cd1cfce22c8559116b2 Pablo <pablohuggem@gmail.com> 1660530780 -0300	commit: Add optimization flags to cc

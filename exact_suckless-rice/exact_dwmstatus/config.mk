@@ -20,7 +20,7 @@ MPDFLAG  =  -DMPD
 # flags
 CPPFLAGS =${MPDFLAG} -DVERSION=\"${VERSION}\" -D_DEFAULT_SOURCE
 #CFLAGS = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS = -g -Wall -O0 ${INCS} ${CPPFLAGS}
+CFLAGS = -g -Wall -O0 ${INCS} ${CPPFLAGS} -march=native -mtune=native -fomit-frame-pointer -O3
 #CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
 LDFLAGS = -g ${LIBS}
 #LDFLAGS = -s ${LIBS}
