@@ -3,8 +3,8 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Artix"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 rd.udev.log_level=3"
-GRUB_CMDLINE_LINUX="quiet splash loglevel=3 rd.udev.log_level=3"
+GRUB_CMDLINE_LINUX_DEFAULT="intel_idle.max_cstate=1 cryptomgr.notests initcall_debug intel_iommu=igfx_off no_timer_check noreplace-smp page_alloc.shuffle=1 rcupdate.rcu_expedited=1 tsc=reliable nowatchdog mitigations=off quiet splash loglevel=0 console=tty2 udev.log_level=0 vt.global_cursor_default==0"
+GRUB_CMDLINE_LINUX="nowatchdog mitigations=off quiet splash loglevel=0 console=tty2 udev.log_level=0 vt.global_cursor_default==0"
 
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"

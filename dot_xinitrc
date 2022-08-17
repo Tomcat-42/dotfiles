@@ -2,6 +2,9 @@
 ##killall -9 pulseaudio &> /dev/null
 pulseaudio --start
 
+# NVIDIA optimus
+/usr/bin/prime-offload
+
 #qgnomeplatform
 export QT_QPA_PLATFORMTHEME='qt5ct'
 export LC_ALL=pt_BR.UTF-8
