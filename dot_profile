@@ -1,3 +1,4 @@
 #export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 export GNUPGHOME=/home/pablo/.gnupg
-xset r rate 200 45
+export LIBVA_DRIVER_NAME=i965
+export VDPAU_DRIVER=va_gl

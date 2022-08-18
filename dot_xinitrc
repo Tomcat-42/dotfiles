@@ -15,7 +15,6 @@ export LANG=pt_BR.UTF-8
 
 #bset XCURSOR_THEME=Breeze
 #setxkbmap -model br-thinkpad &>/dev/null
-xset r rate 230 45 &>/dev/null
 #Xcursor.theme: Breeze
 
 #export MONITOR1=`xrandr | grep VGA | sed -n 1p | awk '{print $1}'`
@@ -64,6 +63,8 @@ xautolock \
 	-notifier "/usr/bin/notify-send 'xautolock' 'Screen will be locked in 10 seconds.'"\
 	-detectsleep \
 	&>/dev/null & 
+
+xset r rate 200 25 &>/dev/null
 
 ##compton
 #compton --config ~/.config/i3/compton.conf &>/dev/null &
