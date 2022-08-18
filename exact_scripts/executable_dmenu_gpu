@@ -1,0 +1,14 @@
+#!/bin/bash
+
+MODES="hybrid\n\
+integrated\n\
+nvidia"
+
+MODE=$(printf "$MODES" | dmenu -l 3 -i -p "Choose GPU  mode")
+OUTPUT=$(optimus-manager --switch "$MODE")
+
+if [ $? -eq 0 ]; then
+	notify-send "GPU mode set to $MODE"
+else
+	notify-send "Error setting GPU mode"
+fi
