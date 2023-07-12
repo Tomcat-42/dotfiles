@@ -1,0 +1,48 @@
+0000000000000000000000000000000000000000 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1629224596 -0300	clone: from https://git.suckless.org/dwm
+716233534b35f74dba5a46ade8f1a6f8cc72fea4 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1629224744 -0300	checkout: moving from master to my_dwm
+716233534b35f74dba5a46ade8f1a6f8cc72fea4 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1629224750 -0300	checkout: moving from my_dwm to patches
+716233534b35f74dba5a46ade8f1a6f8cc72fea4 7febd0a05f4cda576a151582322d90f55e73f3ef Pablo Hugen <pablohuggem@gmail.com> 1629224864 -0300	commit: Add activeindicatorbar patch
+7febd0a05f4cda576a151582322d90f55e73f3ef 68ef1a980194e1ffbc4033ad955718ad3d268c98 Pablo Hugen <pablohuggem@gmail.com> 1629224888 -0300	commit: Add actualfullscreen patch
+68ef1a980194e1ffbc4033ad955718ad3d268c98 c1aca1543346f2478a267282a15a656ceb56eda5 Pablo Hugen <pablohuggem@gmail.com> 1629225097 -0300	commit: Add attachdirection patch
+c1aca1543346f2478a267282a15a656ceb56eda5 0e304721955411967e30a450136a3223d3f5c26a Pablo Hugen <pablohuggem@gmail.com> 1629225533 -0300	commit: Add barpadding patch
+0e304721955411967e30a450136a3223d3f5c26a f5d0a1ccd7eef2c35f42e92351517b2901b98ef9 Pablo Hugen <pablohuggem@gmail.com> 1629225647 -0300	commit: Add canfocusfloating patch
+f5d0a1ccd7eef2c35f42e92351517b2901b98ef9 8e7b8c464520a81066369ba2e130b9a84066a320 Pablo Hugen <pablohuggem@gmail.com> 1629225726 -0300	commit: Add center patch
+8e7b8c464520a81066369ba2e130b9a84066a320 fa8070cb073cce0ad7e5266eec5c4f98d4808753 Pablo Hugen <pablohuggem@gmail.com> 1629225833 -0300	commit: Add centeredmaster patch
+fa8070cb073cce0ad7e5266eec5c4f98d4808753 c111a1c8ac6dd6277b93cb1b59a0f2ba254dcea1 Pablo Hugen <pablohuggem@gmail.com> 1629242458 -0300	commit: Add clientindicators patch
+c111a1c8ac6dd6277b93cb1b59a0f2ba254dcea1 7bdf367ef092e000dcf1ff76e7fa78184403b11e Pablo Hugen <pablohuggem@gmail.com> 1629242748 -0300	commit: Add column patch
+7bdf367ef092e000dcf1ff76e7fa78184403b11e 92df42ef59f687e608b06d28b9655c8c5bb63213 Pablo Hugen <pablohuggem@gmail.com> 1629242839 -0300	commit: Add cursorwarp patch
+92df42ef59f687e608b06d28b9655c8c5bb63213 b966904cc6cd35943092296f8cec83c7436d5d74 Pablo Hugen <pablohuggem@gmail.com> 1629242906 -0300	commit: Add cyclelayouts patch
+b966904cc6cd35943092296f8cec83c7436d5d74 b06ae024d94d5c1d47d24dddcc31d6fd05acf9c7 Pablo Hugen <pablohuggem@gmail.com> 1629242955 -0300	commit: Add doubledeck patch
+b06ae024d94d5c1d47d24dddcc31d6fd05acf9c7 3733bca4af49120ea2105ef14b2922fcd9443160 Pablo Hugen <pablohuggem@gmail.com> 1629243150 -0300	commit: Add ewmhtags patch
+3733bca4af49120ea2105ef14b2922fcd9443160 fc980fd820b356b29a2358c02d0a3c0ce5f2ed3f Pablo Hugen <pablohuggem@gmail.com> 1629243382 -0300	commit: Add fibonacci patch
+fc980fd820b356b29a2358c02d0a3c0ce5f2ed3f c09be6c43bfbc11cd7a5836ef6587078cf294a2b Pablo Hugen <pablohuggem@gmail.com> 1629243473 -0300	commit: Add floatbordercolor patch
+c09be6c43bfbc11cd7a5836ef6587078cf294a2b 719550b2bf6e50eb1883714706fc7b62de95d6f1 Pablo Hugen <pablohuggem@gmail.com> 1629243563 -0300	commit: Add focusonnetactive patch
+719550b2bf6e50eb1883714706fc7b62de95d6f1 60832e9f6944b368db45dee5869594a4d4e7126a Pablo Hugen <pablohuggem@gmail.com> 1629244512 -0300	commit: Add maximize patch
+60832e9f6944b368db45dee5869594a4d4e7126a 719550b2bf6e50eb1883714706fc7b62de95d6f1 Pablo Hugen <pablohuggem@gmail.com> 1629244647 -0300	reset: moving to 719550b
+719550b2bf6e50eb1883714706fc7b62de95d6f1 20d901606339b69283c83d525dde1fae19ac7daa Pablo Hugen <pablohuggem@gmail.com> 1629244717 -0300	commit: Add moveresize patch
+20d901606339b69283c83d525dde1fae19ac7daa eecdd3a6d74eb8e7996f146e1ddec96247261204 Pablo Hugen <pablohuggem@gmail.com> 1629245067 -0300	commit: Add noborder patch
+eecdd3a6d74eb8e7996f146e1ddec96247261204 d0e98c25fc5e2fb8580e59dc91a995dab8f630ec Pablo Hugen <pablohuggem@gmail.com> 1629250368 -0300	commit: Add pertag patch
+d0e98c25fc5e2fb8580e59dc91a995dab8f630ec b3a3cadb9bbc37efe853ae17453088c683fb43a3 Pablo Hugen <pablohuggem@gmail.com> 1629250972 -0300	commit: Add warp patch
+b3a3cadb9bbc37efe853ae17453088c683fb43a3 fcdcefb898899e93111b5f9b64c3987260c96fcf Pablo Hugen <pablohuggem@gmail.com> 1629252073 -0300	commit: Add vanitygapps patch
+fcdcefb898899e93111b5f9b64c3987260c96fcf 03de9dbe2c260fc1fe1310293a92842c7ac7266f Pablo Hugen <pablohuggem@gmail.com> 1629252255 -0300	commit: Add urgborder patch
+03de9dbe2c260fc1fe1310293a92842c7ac7266f 2b65b7411875ed4b94a910709464495a6f9556d6 Pablo Hugen <pablohuggem@gmail.com> 1629252620 -0300	commit: Add underline patch
+2b65b7411875ed4b94a910709464495a6f9556d6 2a7027673d0e9244df1712b774ae72e5d44bbeed Pablo Hugen <pablohuggem@gmail.com> 1629254977 -0300	commit: Add a ? patch
+2a7027673d0e9244df1712b774ae72e5d44bbeed 44c7e0d5e7b0e0e9da6510bcafb8eb4fb7a9ac04 Pablo Hugen <pablohuggem@gmail.com> 1629259728 -0300	commit: Change bar var sw to tw
+44c7e0d5e7b0e0e9da6510bcafb8eb4fb7a9ac04 b7020ed3c40aaf818fd94c31c9b5f0c5a6e14108 Pablo Hugen <pablohuggem@gmail.com> 1629261190 -0300	commit: Add status2d patch
+b7020ed3c40aaf818fd94c31c9b5f0c5a6e14108 8e1b19a02244a9dc805d3902e17dea8b3a3c1eca Pablo Hugen <pablohuggem@gmail.com> 1629261444 -0300	commit: Add statusallmons patch
+8e1b19a02244a9dc805d3902e17dea8b3a3c1eca 826524dc3d3a87a315e4799dbd89596677acf19b Pablo Hugen <pablohuggem@gmail.com> 1629261673 -0300	commit: Add sticky patch
+826524dc3d3a87a315e4799dbd89596677acf19b 6d2f06ffb8f2f628de9d651f2bdcbe70835ac052 Pablo Hugen <pablohuggem@gmail.com> 1629261875 -0300	commit: Add swallow patch
+6d2f06ffb8f2f628de9d651f2bdcbe70835ac052 654370ca1ce7f407cb0df02a3c7b76a3705f53d0 Pablo Hugen <pablohuggem@gmail.com> 1629306786 -0300	commit: Config update
+654370ca1ce7f407cb0df02a3c7b76a3705f53d0 21d554f023e08c9a3730e7da93558fad2eecd0d8 Pablo Hugen <pablohuggem@gmail.com> 1633225187 -0300	commit: change config
+21d554f023e08c9a3730e7da93558fad2eecd0d8 b4925851d3817d5cf129a53ecc45d895d563aa88 Pablo Hugen <pablohuggem@gmail.com> 1642961902 -0300	commit: minor changes
+b4925851d3817d5cf129a53ecc45d895d563aa88 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1642962256 -0300	checkout: moving from patches to master
+716233534b35f74dba5a46ade8f1a6f8cc72fea4 b4925851d3817d5cf129a53ecc45d895d563aa88 Pablo Hugen <pablohuggem@gmail.com> 1642962272 -0300	checkout: moving from master to patches
+b4925851d3817d5cf129a53ecc45d895d563aa88 716233534b35f74dba5a46ade8f1a6f8cc72fea4 Pablo Hugen <pablohuggem@gmail.com> 1642962287 -0300	checkout: moving from patches to master
+716233534b35f74dba5a46ade8f1a6f8cc72fea4 b4925851d3817d5cf129a53ecc45d895d563aa88 Pablo Hugen <pablohuggem@gmail.com> 1643562472 -0300	checkout: moving from master to patches
+b4925851d3817d5cf129a53ecc45d895d563aa88 ed3586464e34dc5737c483349364832071d4d516 Pablo <pablohuggem@gmail.com> 1654490702 -0300	commit: Change colorscheme to base16-pico
+ed3586464e34dc5737c483349364832071d4d516 0c26783c0cbde4e0e0dbeb4d41732aacc2499a46 Pablo <pablohuggem@gmail.com> 1654874974 -0300	commit: Change colorscheme to base16-pico white version
+0c26783c0cbde4e0e0dbeb4d41732aacc2499a46 da7c584e4be1e80777ef31837a694ce4212127a8 Pablo <pablohuggem@gmail.com> 1656202355 -0300	commit: Minor changes
+da7c584e4be1e80777ef31837a694ce4212127a8 52ed1cb545c9922ec4ef685fcc1da2c55fa356d6 Pablo <pablohuggem@gmail.com> 1659306915 -0300	commit: Change Gimp window rule
+52ed1cb545c9922ec4ef685fcc1da2c55fa356d6 919414629811c264d1d0cc30cf826e154d239139 Pablo <pablohuggem@gmail.com> 1660511066 -0300	commit: Add scripts keymaps
+919414629811c264d1d0cc30cf826e154d239139 e89cea6a282a763d1fc6b53000e28f596c8fa39b Pablo <pablohuggem@gmail.com> 1660530758 -0300	commit: Add optimization flags to cc
+e89cea6a282a763d1fc6b53000e28f596c8fa39b 94c59ce44ade11d586c6041ffa6e4d24e604371a Pablo <PabloASHugen@protonmail.com> 1689183661 -0300	commit: chore(config.h): update FONT2 to use "Noto Color Emoji" font and enable PYWAL

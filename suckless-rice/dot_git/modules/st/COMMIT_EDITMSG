@@ -1,0 +1,2 @@
+chore(config.h): update font name from "Iosevka Term" to "IosevkaTerm Nerd Font" for consistency
+The font name in the config.h file has been updated from "Iosevka Term" to "IosevkaTerm Nerd Font" to maintain consistency with the naming conventions used for other fonts in the file.

@@ -1,0 +1,11 @@
+pane	0	1	0	:	1	pablo@thiccpad:/mnt/files/projects/Unioeste/comp/midirlang	:/mnt/files/projects/Unioeste/comp/midirlang	1	zsh	:
+pane	0	2	1	:*	1	nvim	:/mnt/files/projects/Unioeste/comp/midirlang	1	nvim	:nvim
+pane	0	3	0	:-	1	nvim	:/mnt/files/projects/Unioeste/paa/daa	1	nvim	:nvim
+pane	1	1	1	:*	1	pablo@thiccpad:~	:/home/pablo	1	zsh	:
+pane	4	1	1	:*	1	nvim Mochila10.txt	:/mnt/files/projects/Unioeste/paa/daa_knapsack/data	1	nvim	:nvim Mochila10.txt
+window	0	1	:zsh	0	:	d4bd,365x59,0,0,0	:
+window	0	2	:nvim	1	:*	ccbf,365x57,0,0,2	:
+window	0	3	:nvim	0	:-	ccc2,365x57,0,0,5	:
+window	1	1	:zsh	1	:*	ca5e,232x38,0,0,1	:
+window	4	1	:nvim	1	:*	c923,205x47,0,0,6	:
+state	0	

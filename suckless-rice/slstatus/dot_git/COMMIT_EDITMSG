@@ -1,0 +1,2 @@
+chore(config.h): comment out unused code and update disk path in config file
+The code for the separator and run_command functions are commented out as they are not currently being used. The disk path in the disk_free function is updated from "/mnt/data" to "/mnt/files" to reflect the correct directory. These changes improve code readability and ensure that the config file accurately represents the desired functionality.

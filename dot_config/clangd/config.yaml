@@ -1,0 +1,29 @@
+# Fragment common to C and C++ source files
+CompileFlags:
+    Add: [-Wall, -I/usr/include] # enable more warnings
+
+
+---
+# Fragment specific to C++ source files
+If:
+    PathExclude: [.*\.c, .*\.h]
+CompileFlags: # Tweak the parse settings
+  Add: [-xc++, -Wall, -std=c++2b, -stdlib=libc++, -I/usr/include] # treat all files as C++, enable more warnings
+  # Remove: [] # strip all other warning-related flags
+  Compiler: clang++ # Change argv[0] of compile flags to `clang++`
+Index:
+  StandardLibrary: Yes
+Diagnostics:
+  UnusedIncludes: Strict
+  ClangTidy:
+    Add: modernize*
+    CheckOptions:
+      readability-identifier-naming.VariableCase: SnakeCase
+InlayHints:
+  Designators: Yes
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+Hover:
+  ShowAKA: Yes
+Remove: modernize-use-trailing-return-type

@@ -43,4 +43,7 @@ PATH=$ANDROID_HOME/emulator:$PATH
 # gnupg
 export GNUPGHOME=/home/pablo/.gnupg
 
+# vcpkg
+export VCPKG_ROOT=/opt/vcpkg
+
 [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1 &> /dev/null

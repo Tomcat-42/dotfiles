@@ -2,3 +2,5 @@
 export GNUPGHOME=/home/pablo/.gnupg
 export LIBVA_DRIVER_NAME=i965
 export VDPAU_DRIVER=va_gl
+export WASI_SDK_PATH=/opt/wasi-sdk
+export W4_LANG=cpp

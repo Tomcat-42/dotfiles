@@ -1,4 +1,0 @@
-regexSearch: bad_expression: The repeat operator "?" cannot start a regular expression.  The error occurred while parsing the regular expression: '>>>HERE>>>?'.
-TagLib: Could not open file /home/pablo951_br/music/spotify:track:2rKz4ihTRHCD0RpNaO1ANJ
-TagLib: Could not open file /home/pablo951_br/music/file:///mnt/PABLO/android_repo/HOME/M%C3%BAsicas/Pink%20floyd/1977%20-%20Animals/01%20-%20Pigs%20On%20The%20Wing%201.mp3
-TagLib: Could not open file /home/pablo951_br/music/spotify:track:6Kl2BY1d8KHjOjY3cynftv

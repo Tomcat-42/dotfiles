@@ -1,8 +1,8 @@
 Graphics Backend used: svp
-Passed Tests : 65
-Quirky Tests : 37
-Failed Tests : 1
-Skipped Tests : 6
+Passed Tests: 66
+Quirky Tests: 36
+Failed Tests: 1
+Skipped Tests: 6
 
 ---Name of the tests that failed---
 testDrawInvertN50WithRectangle
@@ -13,11 +13,10 @@ testDrawRectWithPolygon
 testDrawRectWithPolyLine
 testDrawRectWithPolyPolygon
 testDrawRectWithPolyPolygonB2D
-testDrawDiamondWithPolygon
 testDrawDiamondWithLine
-testDrawDiamondWithPolyline
 testComplexDrawTransformedBitmap24bpp
 testDashedLine
+testLinearGradientBorder
 testLinearGradientSteps
 testRadialGradient
 testRadialGradientOfs
