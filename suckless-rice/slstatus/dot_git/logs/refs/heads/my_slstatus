@@ -6,3 +6,5 @@ cf114b87a81123176657f8d3ca058ca3784ccafc fea2762ed66a045ac88ae913a779dde3bfc2a15
 fea2762ed66a045ac88ae913a779dde3bfc2a150 2b41312df2573d137e3c1365115c5571b533745f Pablo <pablohuggem@gmail.com> 1656202418 -0300	commit: Minor changes
 2b41312df2573d137e3c1365115c5571b533745f d61fd0f6b48a501f3d23a4638287547fb344ef1f Pablo <pablohuggem@gmail.com> 1660530813 -0300	commit: Add optimization flags to cc
 d61fd0f6b48a501f3d23a4638287547fb344ef1f e61dbe233556543ccb5268805901fc87ae732086 Pablo <PabloASHugen@protonmail.com> 1689183689 -0300	commit: chore(config.h): comment out unused code and update disk path in config file
+e61dbe233556543ccb5268805901fc87ae732086 0b99f6a2207ad447a47abc65ff5ace3368c693e7 Pablo <PabloASHugen@protonmail.com> 1689388048 -0300	commit: change config to new setup
+0b99f6a2207ad447a47abc65ff5ace3368c693e7 0da1f7715919456a05f39a880ce37f8fe9c9c7ed Pablo <PabloASHugen@protonmail.com> 1689388787 -0300	commit: change config to new setup

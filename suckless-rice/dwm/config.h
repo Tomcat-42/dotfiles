@@ -35,15 +35,15 @@
 #define PRINT 0xff61
 
 /* Programas */
-#define BROWSER "firefox"
+#define BROWSER "microsoft-edge-dev"
 #define TERM "st"
 #define GUIFM "pcmanfm"
 #define CLIFM "ranger"
 
 /* Fontes */
 #define FONT "Iosevka Nerd Font:size=11:antialias=true:autohint=true"
-#define FONT2 "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
-//#define FONT2 "Iosevka Term:size=11:antialias=true:autohint=true"
+#define FONT2 "Iosevka Term:size=11:antialias=true:autohint=true"
+#define FONT3 "Noto Color Emoji:pixelsize=16:antialias=true:autohint=true"
 
 /* Cores do pywal */
 #define PYWAL 1
@@ -70,7 +70,7 @@ enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always
 static const int showtab = showtab_auto;        /* Default tab bar show mode */
 static const int toptab = 1;               /* False means bottom tab bar */
 
-static const char *fonts[]          = { FONT, FONT2 };
+static const char *fonts[]          = { FONT, FONT2, FONT3 };
 static const char dmenufont[]       = FONT;
 
 static const char norm_fg[] = "#fff1e8";
@@ -148,32 +148,16 @@ static const Rule rules[] = {
 	{ "Pcmanfm",                  NULL,                 NULL,                                 1 << 1,                     0,                0,               0,                      0,                             -1 },
 	{ "firefox",                  NULL,                 NULL,                                 1 << 2,                     0,                0,               0,                     -1,                             -1 },
 	{ "Chromium",                 NULL,                 NULL,                                 1 << 2,                     0,                0,               0,                      0,                             -1 },
+	{ "Microsoft-edge-dev",       NULL,                 NULL,                                 1 << 2,                     0,                0,               0,                      0,                             -1 },
 	{ "firefox",                  "Devtools",           NULL,                                 0,                          1,                1,               0,                      0,                             -1 },
-	{ "qutebrowser",              NULL,                 NULL,                                 1 << 2,                     0,                0,               0,                      0,                             -1 },
-	{ "Tor Browser",              NULL,                 NULL,                                 1 << 2,                     0,                0,               0,                      0,                             -1 },
 	{ TERM ,                      NULL,                 "ncmpcpp",                            1 << 3,                     0,                0,               0,                      0,                             -1 },
 	{ NULL,                       NULL,                 "spotify",                            1 << 3,                     0,                0,               0,                      0,                             -1 },
 	{ "feh",                      NULL,                 NULL,                                 1 << 3,                     0,                0,               0,                      0,                             -1 },
 	{ "vlc",                      NULL,                 NULL,                                 1 << 3,                     0,                0,               0,                      0,                             -1 },
-	{ "Minetest",                 NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
-	//xonotic                                                                                                                                    
-	{ "Darkplaces",               NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
 	{ "retroarch",                NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
-	//shiginima                                                                                                                                  
-	{ "net-mc-main-Main",         NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
-	//minecraft                                                                                                                                  
-	{ "^.*\\b(Minecraft)\\b.*$",  NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
 	{ "Steam" ,                   NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
-	//arduino-ide                                                                                                                                
 	{ "PCSX2" ,                   NULL,                 NULL,                                 1 << 4,                     0,                0,               0,                      0,                             -1 },
-	//{ "MPlayer",                 NULL,                 NULL,                                 1 << 5,                     1,                1,             0,0                       ,                              -1 },
 	{ "MPlayer",                  NULL,                 NULL,                                 0,                          1,                1,               0,                      0,                             -1 },
-	{ "ffplay",                   NULL,                 NULL,                                 1 << 5,                     1,                1,               0,                      0,                             -1 },
-	{ "Gimp",                     NULL,                 NULL,                                 1 << 6,                     1,                1,               0,                      0,                             -1 },
-	{ "Leafpad",                  NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
-	{ "Libreoffice",              NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
-	{ "Libreoffice-writer",       NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
-	{ "Libreoffice-impress",      NULL,                 NULL,                                 1 << 6,                     0,                0,               0,                      0,                             -1 },
 	{ "Pavucontrol",              NULL,                 NULL,                                 1 << 7,                     0,                0,               0,                      0,                             -1 },
 	{ "qpaeq" ,                   NULL,                 NULL,                                 1 << 7,                     0,                0,               0,                      0,                             -1 },
 	{ "Lxappearance",             NULL,                 NULL,                                 1 << 7,                     0,                0,               0,                      0,                             -1 },
@@ -189,6 +173,8 @@ static const Rule rules[] = {
 	{ "Microsoft Teams - Preview",NULL,                 NULL,                                 1 << 8,                     0,                0,               0,                      0,                             -1 },
 	{ NULL,                       NULL,                 "Notificação do Microsoft Teams",     1 << 9,                     1,                1,               0,                      0,                             -1 },
 	{ "quick_file_open",          "quick_file_open",    "quick_file_open",                    0,                          1,                1,               0,                      0,                             -1 },
+  { "Chat-gpt",                 NULL,                 NULL,                                 1 << 1,                     0,                0,               0,                      0,                             -1 },
+  { "Spotify",                  NULL,                 NULL,                                 1 << 3,                     0,                0,               0,                      0,                             -1 },
 };
 
 /* layout(s) */
@@ -384,10 +370,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = +1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

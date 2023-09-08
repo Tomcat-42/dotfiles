@@ -1,9 +1,9 @@
 ##matar o pulseaudio que foi iniciado na tty, pois o daemon do pulseaudio cuida do x
 ##killall -9 pulseaudio &> /dev/null
-pulseaudio --start
+#pulseaudio --start
 
 # NVIDIA optimus
-/usr/bin/prime-offload
+#//usr/bin/prime-offload
 
 #qgnomeplatform
 export QT_QPA_PLATFORMTHEME='qt5ct'
@@ -51,8 +51,8 @@ unclutter --timeout 1 &>/dev/null &
 dunst &
 #/home/pablo951_br/Downloads/scripts/dunst_colors &>/dev/null
 
-##gnome authentication-agent
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &>/dev/null &
+# polkit sucks ngl
+polkit-dumb-agent &>/dev/null &
 
 ##bloquear automaticamente a tela
 #xautolock -corners --00 -time 10 -locker /home/pablo951_br/Downloads/scripts/lock_n_off.sh -notify 5 &>/dev/null &

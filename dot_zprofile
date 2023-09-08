@@ -46,4 +46,7 @@ export GNUPGHOME=/home/pablo/.gnupg
 # vcpkg
 export VCPKG_ROOT=/opt/vcpkg
 
+# docker
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
 [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1 &> /dev/null

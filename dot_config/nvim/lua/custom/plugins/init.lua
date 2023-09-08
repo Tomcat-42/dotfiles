@@ -219,6 +219,7 @@ return {
   ["github/copilot.vim"] = {},
   ["jackMort/ChatGPT.nvim"] = {
     after = "telescope.nvim",
+    commit = "24bcca7",
     config = function()
       require "custom.plugins.configs.chatgpt"
     end,
@@ -239,16 +240,17 @@ return {
 
   ["justinj/vim-pico8-syntax"] = {},
 
-  ["mrcjkb/haskell-tools.nvim"] = {
-    after = "nvim-lspconfig",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-    config = function()
-      require "custom.plugins.configs.haskell-tools"
-    end,
-  },
+  -- ["mrcjkb/haskell-tools.nvim"] = {
+  --   after = "nvim-lspconfig",
+  --   branch = "2.x.x",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim", -- optional
+  --   },
+  --   config = function()
+  --     require "custom.plugins.configs.haskell-tools"
+  --   end,
+  -- },
   ["akinsho/toggleterm.nvim"] = {
     config = function()
       require "custom.plugins.configs.toggleterm"

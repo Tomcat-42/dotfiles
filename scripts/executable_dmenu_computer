@@ -10,7 +10,7 @@ then
     killall Xorg
 elif [ "$DIALOG_RESULT" = "suspend" ];
 then
-    exec loginctl suspend
+    exec systemctl suspend
     # systemctl suspend
 elif [ "$DIALOG_RESULT" = "lock" ];
 then
@@ -18,14 +18,14 @@ then
     # systemctl suspend
 elif [ "$DIALOG_RESULT" = "suspend" ];
 then
-    exec loginctl suspend
+    exec systemctl suspend
     # systemctl suspend
 elif [ "$DIALOG_RESULT" = "reboot" ];
 then
     # exec reboot
-    loginctl reboot
+    exec systemctl reboot
 elif [ "$DIALOG_RESULT" = "shutdown" ];
 then
     # exec shutdown -h now
-    loginctl poweroff
+    exec systemctl poweroff
 fi

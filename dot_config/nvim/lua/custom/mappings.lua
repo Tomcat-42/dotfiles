@@ -27,7 +27,7 @@ M.nvterm = {
         ["<leader>cc"] = {
             function()
                 require("nvterm.terminal").send(
-                    "clear && clang++ -stdlib=libc++ -std=c++2b -lfmt -o out " .. vim.fn.expand "%" ..
+                    "clear && clang++ -fmodules -fbuiltin-module-map -stdlib=libc++ -std=c++2b -lfmt -o out " .. vim.fn.expand "%" ..
                         " && ./out", "horizontal")
             end, "compile & run a cpp file"
         }

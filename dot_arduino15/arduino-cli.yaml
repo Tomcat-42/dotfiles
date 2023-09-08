@@ -1,5 +1,6 @@
 board_manager:
-  additional_urls: []
+  additional_urls:
+    - http://arduino.esp8266.com/stable/package_esp8266com_index.json
 daemon:
   port: "50051"
 directories:

@@ -1,5 +1,2 @@
-chore(config.h): update FONT2 to use "Noto Color Emoji" font and enable PYWAL
-feat(config.h): update keybindings for dmenu_xkb and dmenucmd
-The FONT2 variable in the config.h file has been updated to use the "Noto Color Emoji" font, allowing for proper rendering of color emojis. Additionally, the PYWAL variable has been set to 1, enabling support for pywal color schemes.
-
-The keybindings for dmenu_xkb and dmenucmd have been updated. The XK_k key now launches dmenu_xkb, while the XK_c key now launches dmenucmd. This change provides a more intuitive and consistent keybinding scheme.
+fix(config.h): fix incorrect keybindings for focusmon and tagmon functions
+The keybindings for the focusmon and tagmon functions were reversed. The comma key should now decrease the monitor index and the period key should increase it. The Shift key modifier should also be updated accordingly. This fix ensures that the keybindings for monitor focus and tag operations work as intended.
