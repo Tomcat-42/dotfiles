@@ -11,7 +11,7 @@ M.ui = {
   hl_override = {},
   changed_themes = {},
   theme_toggle = { "oxocarbon", "one_light" },
-  theme = "oxocarbon", -- default theme
+  theme = "oxocarbon",
   transparency = true,
   lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
@@ -83,10 +83,9 @@ M.ui = {
   },
 }
 
---M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
+M.plugins = "custom.plugins"
+M.mappings = require "custom.mappings"
 
---M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
 
---M.mappings = require "core.mappings"
 
 return M

@@ -2,8 +2,8 @@
 static char * top_right_active_xpm[] = {
 "2 26 4 1",
 " 	c None",
-".	c #fff024",
-"+	c #fff024",
+".	c #d98e1d",
+"+	c #d98e1d",
 "@	c #000000",
 ". ",
 "+.",

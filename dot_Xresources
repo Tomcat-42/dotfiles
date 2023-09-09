@@ -12,44 +12,44 @@ UXTerm*foreground:  #ffffff
 URxvt*background:   [100]#000000
 XTerm*background:   #000000
 UXTerm*background:  #000000
-URxvt*cursorColor:  #ffffff
-XTerm*cursorColor:  #ffffff
-UXTerm*cursorColor: #ffffff
+URxvt*cursorColor:  #be6262
+XTerm*cursorColor:  #be6262
+UXTerm*cursorColor: #be6262
 URxvt*borderColor:  [100]#000000
 
 ! Colors 0-15.
 *.color0: #000000
 *color0:  #000000
-*.color1: #ff004d
-*color1:  #ff004d
-*.color2: #00e756
-*color2:  #00e756
-*.color3: #fff024
-*color3:  #fff024
-*.color4: #83769c
-*color4:  #83769c
-*.color5: #ff77a8
-*color5:  #ff77a8
-*.color6: #29adff
-*color6:  #29adff
-*.color7: #ffffff
-*color7:  #ffffff
-*.color8: #008751
-*color8:  #008751
-*.color9: #ff004d
-*color9:  #ff004d
-*.color10: #00e756
-*color10:  #00e756
-*.color11: #fff024
-*color11:  #fff024
-*.color12: #83769c
-*color12:  #83769c
-*.color13: #ff77a8
-*color13:  #ff77a8
-*.color14: #29adff
-*color14:  #29adff
-*.color15: #fff1e8
-*color15:  #fff1e8
+*.color1: #eb3d51
+*color1:  #eb3d51
+*.color2: #66b61a
+*color2:  #66b61a
+*.color3: #d98e1d
+*color3:  #d98e1d
+*.color4: #23ffa8
+*color4:  #23ffa8
+*.color5: #ff00da
+*color5:  #ff00da
+*.color6: #68a783
+*color6:  #68a783
+*.color7: #eaeaea
+*color7:  #eaeaea
+*.color8: #484848
+*color8:  #484848
+*.color9: #eb3d51
+*color9:  #eb3d51
+*.color10: #66b61a
+*color10:  #66b61a
+*.color11: #d98e1d
+*color11:  #d98e1d
+*.color12: #23ffa8
+*color12:  #23ffa8
+*.color13: #ff00da
+*color13:  #ff00da
+*.color14: #68a783
+*color14:  #68a783
+*.color15: #eaeaea
+*color15:  #eaeaea
 
 ! Black color that will not be affected by bold highlighting.
 *.color66: #000000
@@ -58,11 +58,11 @@ URxvt*borderColor:  [100]#000000
 ! Xclock colors.
 XClock*foreground: #ffffff
 XClock*background: #000000
-XClock*majorColor:  rgba:ff/f1/e8/ff
-XClock*minorColor:  rgba:ff/f1/e8/ff
-XClock*hourColor:   rgba:ff/f1/e8/ff
-XClock*minuteColor: rgba:ff/f1/e8/ff
-XClock*secondColor: rgba:ff/f1/e8/ff
+XClock*majorColor:  rgba:ea/ea/ea/ff
+XClock*minorColor:  rgba:ea/ea/ea/ff
+XClock*hourColor:   rgba:ea/ea/ea/ff
+XClock*minuteColor: rgba:ea/ea/ea/ff
+XClock*secondColor: rgba:ea/ea/ea/ff
 
 ! Set depth to make transparency work.
 URxvt*depth: 32
