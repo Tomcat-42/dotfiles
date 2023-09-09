@@ -1,1 +1,1 @@
-set clipboard=unnamed
+colorscheme pyte

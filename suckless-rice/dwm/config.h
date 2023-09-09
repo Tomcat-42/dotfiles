@@ -73,61 +73,59 @@ static const int toptab = 1;               /* False means bottom tab bar */
 static const char *fonts[]          = { FONT, FONT2, FONT3 };
 static const char dmenufont[]       = FONT;
 
-static const char norm_fg[] = "#fff1e8";
+static const char norm_fg[] = "#eaeaea";
 static const char norm_bg[] = "#000000";
-static const char norm_border[] = "#000000";
-static const char norm_float[] = "#000000";
+static const char norm_border[] = "#484848";
+static const char norm_float[] = "#484848";
 
-static const char sel_fg[] = "#fff1e8";
-static const char sel_bg[] = "#00e756";
-static const char sel_border[] = "#83769c";
-static const char sel_float[] = "#83769c";
+static const char sel_fg[] = "#eaeaea";
+static const char sel_bg[] = "#66b61a";
+static const char sel_border[] = "#be6262";
+static const char sel_float[] = "#be6262";
 
-static const char urg_fg[] = "#fff1e8";
-static const char urg_bg[] = "#ff004d";
-static const char urg_border[] = "#ff004d";
-static const char urg_float[] = "#ff004d";
+static const char urg_fg[] = "#eaeaea";
+static const char urg_bg[] = "#eb3d51";
+static const char urg_border[] = "#eb3d51";
+static const char urg_float[] = "#eb3d51";
 
-
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#29adff";
+static const char col_gray1[] = "#000000";
+static const char col_gray2[] = "#484848";
+static const char col_gray3[] = "#eaeaea";
+static const char col_gray4[] = "#ffffff";
+static const char col_cyan[] = "#23ffa8";
 
 static const char col_col1[] = "#ffffff";
-static const char col_col2[] = "#ff004d";
-static const char col_col3[] = "#00e756";
-static const char col_col4[] = "#fff024";
-static const char col_col5[] = "#83769c";
-static const char col_col6[] = "#ff77a8";
-static const char col_col7[] = "#29adff";
-static const char col_col8[] = "#ffffff";
-static const char col_col9[] = "#008751";
-static const char col_col10[] = "#fff1e8";
+static const char col_col2[] = "#eb3d51";
+static const char col_col3[] = "#66b61a";
+static const char col_col4[] = "#d98e1d";
+static const char col_col5[] = "#23ffa8";
+static const char col_col6[] = "#ff00da";
+static const char col_col7[] = "#68a783";
+static const char col_col8[] = "#eaeaea";
+static const char col_col9[] = "#be6262";
+static const char col_col10[] = "#eaeaea";
 static const char col_col11[] = "#000000";
-
 
 static const char *colors[][4]      = {
     /*               fg           bg         border       float      */
-    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border, norm_float }, // unfocused wins
-    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border, sel_float },  // the focused win
-    [SchemeUrg] = {urg_fg, urg_border, urg_border, urg_float}
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border, norm_float },
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border,  sel_float  },
+    [SchemeUrg] = { urg_fg,      urg_bg,    urg_border,  urg_float  }
 };
 
 /* tagging */
 static const char *tags[] = { "壱", "弐", "参", "四","五", "六", "七", "八", "九" };
 
 static const char *tagsel[][2] = {
-	{"#1e1f26",  "#ff004d"},
-	{"#1e1f26",  "#00e756"},
-	{"#1e1f26",  "#fff024"},
-	{"#1e1f26",  "#83769c"},
-	{"#1e1f26",  "#ff77a8"},
-	{"#1e1f26",  "#29adff"},
-	{"#1e1f26",  "#ffffff"},
-	{"#1e1f26",  "#ff79c6"},
-	{"#1e1f26",  "#008751"},
+	{"#000000",  "#eb3d51"},
+	{"#000000",  "#66b61a"},
+	{"#000000",  "#d98e1d"},
+	{"#000000",  "#23ffa8"},
+	{"#000000",  "#ff00da"},
+	{"#000000",  "#68a783"},
+	{"#000000",  "#eaeaea"},
+	{"#000000",  "#be6262"},
+	{"#000000",  "#484848"},
 };
 
 static const unsigned int ulinepad = 5;	/* horizontal padding between the underline and tag */

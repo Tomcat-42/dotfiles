@@ -398,11 +398,6 @@ if !exists("b:ruby_no_expensive") && !exists("ruby_no_expensive")
 
   SynFold 'for' syn region rubyRepeatExpression start="\<for\>" start="\%(\%(^\|\.\.\.\=\|[{:,;([<>~\*/%&^|+=-]\|\%(\<\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*\)\@<![!?]\)\s*\)\@<=\<\%(until\|while\)\>" matchgroup=rubyRepeat skip="\<end:" end="\<end\>" contains=ALLBUT,@rubyNotTop nextgroup=rubyOptionalDoLine
 
-  if !exists("ruby_minlines")
-    let ruby_minlines = 500
-  endif
-  exe "syn sync minlines=" . ruby_minlines
-
 else
   syn match rubyControl "\<def\>"    nextgroup=rubyMethodDeclaration skipwhite skipnl
   syn match rubyControl "\<class\>"  nextgroup=rubyClassDeclaration  skipwhite skipnl
@@ -410,6 +405,11 @@ else
   syn match rubyControl "\<\%(case\|begin\|do\|for\|if\|unless\|while\|until\|else\|elsif\|rescue\|ensure\|then\|when\|end\)\>"
   syn match rubyKeyword "\<\%(alias\|undef\)\>"
 endif
+
+if !exists("ruby_minlines")
+  let ruby_minlines = 500
+endif
+exe "syn sync minlines=" . ruby_minlines
 
 " Special Methods {{{1
 if !exists("ruby_no_special_methods")
@@ -434,8 +434,8 @@ syn match   rubySharpBang    "\%^#!.*" display
 syn keyword rubyTodo	     FIXME NOTE TODO OPTIMIZE HACK REVIEW XXX todo contained
 syn match   rubyEncoding     "[[:alnum:]-_]\+" contained display
 syn match   rubyMagicComment "\c\%<3l#\s*\zs\%(coding\|encoding\):"					contained nextgroup=rubyEncoding skipwhite
-syn match   rubyMagicComment "\c\%<10l#\s*\zs\%(frozen_string_literal\|warn_indent\|warn_past_scope\):" contained nextgroup=rubyBoolean  skipwhite
-syn match   rubyMagicComment "\c\%<10l#\s*\zs\%(shareable_constant_value\):"				contained nextgroup=rubyEncoding  skipwhite
+syn match   rubyMagicComment "\c\%<10l#\s*\zs\%(frozen[-_]string[-_]literal\|warn[-_]indent\|warn[-_]past[-_]scope\):" contained nextgroup=rubyBoolean  skipwhite
+syn match   rubyMagicComment "\c\%<10l#\s*\zs\%(shareable[-_]constant[-_]value\):"				contained nextgroup=rubyEncoding  skipwhite
 syn match   rubyComment	     "#.*" contains=@rubyCommentSpecial,rubySpaceError,@Spell
 
 syn cluster rubyCommentSpecial contains=rubySharpBang,rubyTodo,rubyMagicComment

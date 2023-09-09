@@ -47,6 +47,7 @@ g:ale_yaml_actionlint_options                   *g:ale_yaml_actionlint_options*
 <
   Please note that passing `-format` as option is not supported at the moment.
 
+
 ===============================================================================
 circleci                                                    *ale-yaml-circleci*
 
@@ -243,6 +244,44 @@ g:ale_yaml_yamlfix_use_global                   *g:ale_yaml_yamlfix_use_global*
 
 
 ===============================================================================
+yamlfmt                                                      *ale-yaml-yamlfmt*
+
+Website: https://github.com/google/yamlfmt
+
+
+Installation
+-------------------------------------------------------------------------------
+
+Install yamlfmt:
+
+  See the website.
+
+Options
+-------------------------------------------------------------------------------
+g:ale_yaml_yamlfmt_executable                   *g:ale_yaml_yamlfmt_executable*
+                                                *b:ale_yaml_yamlfmt_executable*
+  Type: |String|
+  Default: `'yamlfmt'`
+
+  See |ale-integrations-local-executables|
+
+
+g:ale_yaml_yamlfmt_options                         *g:ale_yaml_yamlfmt_options*
+                                                   *b:ale_yaml_yamlfmt_options*
+  Type: |String|
+  Default: `''`
+
+  This variable can be set to pass extra options to yamlfmt.
+
+g:ale_yaml_yamlfmt_use_global                   *g:ale_yaml_yamlfmt_use_global*
+                                                *b:ale_yaml_yamlfmt_use_global*
+  Type: |Number|
+  Default: `get(g:, 'ale_use_global_executables', 0)`
+
+  See |ale-integrations-local-executables|
+
+
+===============================================================================
 yamllint                                                    *ale-yaml-yamllint*
 
 Website: https://github.com/adrienverge/yamllint
@@ -278,6 +317,53 @@ g:ale_yaml_yamllint_options                       *g:ale_yaml_yamllint_options*
   Default: `''`
 
   This variable can be set to pass additional options to yamllint.
+
+
+===============================================================================
+gitlablint                                                  *ale-yaml-gitlablint*
+
+Website: https://github.com/elijah-roberts/gitlab-lint
+
+
+Installation
+-------------------------------------------------------------------------------
+
+Install yamllint in your a virtualenv directory, locally, or globally: >
+
+  pip3 install gitlab_lint        # After activating virtualenv
+  pip3 install --user gitlab_lint # Install to ~/.local/bin
+  sudo pip3 install gitlab_lint   # Install globally
+
+See |g:ale_virtualenv_dir_names| for configuring how ALE searches for
+virtualenv directories.
+
+Is recommended to use |g:ale_pattern_options| to enable this linter so it only
+applies to 'gitlab-ci.yml' files and not all yaml files:
+>
+  let g:ale_pattern_options = {
+  \   '.gitlab-ci\.yml$': {
+  \       'ale_linters': ['gitlablint'],
+  \   },
+  \}
+<
+
+Options
+-------------------------------------------------------------------------------
+
+g:ale_yaml_gitlablint_executable               *g:ale_yaml_gitlablint_executable*
+                                               *b:ale_yaml_gitlablint_executable*
+  Type: |String|
+  Default: `'gll'`
+
+  This variable can be set to change the path to gll.
+
+
+g:ale_yaml_gitlablint_options                     *g:ale_yaml_gitlablint_options*
+                                                  *b:ale_yaml_gitlablint_options*
+  Type: |String|
+  Default: `''`
+
+  This variable can be set to pass additional options to gll.
 
 
 ===============================================================================

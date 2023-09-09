@@ -8,49 +8,49 @@ Color=0,0,0
 Color=0,0,0
 
 [Color0Intense]
-Color=0,135,81
+Color=72,72,72
 
 [Color1]
-Color=255,0,77
+Color=235,61,81
 
 [Color1Intense]
-Color=255,0,77
+Color=235,61,81
 
 [Color2]
-Color=0,231,86
+Color=102,182,26
 
 [Color2Intense]
-Color=0,231,86
+Color=102,182,26
 
 [Color3]
-Color=255,240,36
+Color=217,142,29
 
 [Color3Intense]
-Color=255,240,36
+Color=217,142,29
 
 [Color4]
-Color=131,118,156
+Color=35,255,168
 
 [Color4Intense]
-Color=131,118,156
+Color=35,255,168
 
 [Color5]
-Color=255,119,168
+Color=255,0,218
 
 [Color5Intense]
-Color=255,119,168
+Color=255,0,218
 
 [Color6]
-Color=41,173,255
+Color=104,167,131
 
 [Color6Intense]
-Color=41,173,255
+Color=104,167,131
 
 [Color7]
-Color=255,255,255
+Color=234,234,234
 
 [Color7Intense]
-Color=255,241,232
+Color=234,234,234
 
 [Foreground]
 Color=255,255,255

@@ -245,8 +245,10 @@ function! s:on_bufenter()
   " been any changes to the buffer since the first round, the second round
   " will be cheap.
   if has('vim_starting') && !$VIM_GITGUTTER_TEST
-    if exists('*timer_start')
-      call timer_start(&updatetime, 'GitGutterCursorHold')
+    if exists('*timer_start') && has('lambda')
+      call s:next_tick("call gitgutter#process_buffer(+".bufnr('').", 0)")
+    else
+      call gitgutter#process_buffer(bufnr(''), 0)
     endif
     return
   endif
@@ -259,12 +261,37 @@ function! s:on_bufenter()
   endif
 endfunction
 
-function! GitGutterCursorHold(timer)
-  execute 'doautocmd' s:nomodeline 'gitgutter CursorHold'
-endfunction
-
 function! s:next_tick(cmd)
   call timer_start(1, {-> execute(a:cmd)})
+endfunction
+
+function! s:on_buffilepre(bufnr)
+  if !exists('s:renaming')
+    let s:renaming = []
+    let s:gitgutter_was_enabled = gitgutter#utility#getbufvar(a:bufnr, 'enabled')
+  endif
+
+  let s:renaming += [a:bufnr]
+endfunction
+
+function! s:on_buffilepost(bufnr)
+  if len(s:renaming) > 1
+    if s:renaming[0] != a:bufnr
+      throw 'gitgutter rename error' s:renaming[0] a:bufnr
+    endif
+    unlet s:renaming[0]
+    return
+  endif
+
+  " reset cached values
+  GitGutterBufferDisable
+
+  if s:gitgutter_was_enabled
+    GitGutterBufferEnable
+  endif
+
+  unlet s:renaming
+  unlet s:gitgutter_was_enabled
 endfunction
 
 " Autocommands {{{
@@ -298,9 +325,6 @@ augroup gitgutter
 
   autocmd User FugitiveChanged call gitgutter#all(1)
 
-  autocmd BufFilePre  * GitGutterBufferDisable
-  autocmd BufFilePost * GitGutterBufferEnable
-
   " Handle all buffers when focus is gained, but only after it was lost.
   " FocusGained gets triggered on startup with Neovim at least already.
   " Therefore this tracks also if it was lost before.
@@ -314,9 +338,11 @@ augroup gitgutter
 
   autocmd ColorScheme * call gitgutter#highlight#define_highlights()
 
-  " Disable during :vimgrep
-  autocmd QuickFixCmdPre  *vimgrep* let [g:gitgutter_was_enabled, g:gitgutter_enabled] = [g:gitgutter_enabled, 0]
-  autocmd QuickFixCmdPost *vimgrep* let g:gitgutter_enabled = g:gitgutter_was_enabled | unlet g:gitgutter_was_enabled
+  autocmd BufFilePre  * call s:on_buffilepre(expand('<abuf>'))
+  autocmd BufFilePost * call s:on_buffilepost(expand('<abuf>'))
+
+  autocmd QuickFixCmdPre  *vimgrep* let b:gitgutter_was_enabled = gitgutter#utility#getbufvar(expand('<abuf>'), 'enabled') | GitGutterBufferDisable
+  autocmd QuickFixCmdPost *vimgrep* if b:gitgutter_was_enabled | GitGutterBufferEnable | endif | unlet b:gitgutter_was_enabled
 augroup END
 
 " }}}

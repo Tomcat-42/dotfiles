@@ -9,6 +9,14 @@ static const char unknown_str[] = "";
 /* maximum output string length */
 #define MAXLEN 2048
 
+#define BLACK_BKG "^b#000000^"
+#define COLOR1 "^c#ff00da^"
+#define COLOR2 "^c#23ffa8^"
+#define COLOR3 "^c#eb3d51^"
+#define COLOR4 "^c#68a783^"
+#define COLOR5 "^c#d98e1d^"
+#define COLOR6 "^c#eaeaea^"
+
 /*
  * function            description                     argument (example)
  *
@@ -67,37 +75,37 @@ static const char unknown_str[] = "";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-  // {separator, "^b#000000^^c#ff004d^  ", NULL},
+  // {separator, BLACK_BKG COLOR1 "  ", NULL},
   /* { media_mpd_stat,       "%s ",          NULL}, */
   // { run_command,       "%s ",          "~/scripts/mpd-status&"},
-  {separator, "^b#000000^^c#00e756^  ", NULL},
+  {separator, BLACK_BKG COLOR2 "  ", NULL},
   {cpu_perc,            " %s%% ",            NULL},
   {cpu_freq,            " %shz ",            NULL},
-  {separator, "^b#000000^^c#fff024^  ", NULL},
+  {separator, BLACK_BKG COLOR3 "  ", NULL},
   {ram_perc,            "%s%% ",            NULL},
   {ram_used,            "%s ",            NULL},
-  {separator, "^b#000000^^c#83769c^  ", NULL},
+  {separator, BLACK_BKG COLOR4 "  ", NULL},
   {temp,            "%s° ",            "/sys/class/hwmon/hwmon3/temp1_input"},
-  {separator, "^b#000000^^c#ff77a8^  ", NULL},
+  {separator, BLACK_BKG COLOR5 "  ", NULL},
   {wifi_essid,            " %s",            "wlp0s20f3"},
   {wifi_perc,            " %s%%",            "wlp0s20f3"},
   {ipv4,            " %s",            "wlp0s20f3"},
   {netspeed_rx, "  %s", "wlp0s20f3"},
   {netspeed_tx, "  %s ", "wlp0s20f3"},
-  // {separator, "^b#000000^^c#29adff^  ", NULL},
+  // {separator, BLACK_BKG COLOR4 "  ", NULL},
   // {ipv4,            " %s",            "eth0"},
   // {netspeed_rx, "  %s", "eth0"},
   // {netspeed_tx, "  %s ", "eth0"},
-  {separator, "^b#000000^^c#ffffff^   ", NULL},
+  {separator, BLACK_BKG COLOR6 "   ", NULL},
   /* {disk_perc, " %s%% ", "/"}, */
   {disk_free, "%s ", "/"},
   {disk_free, "%s ", "/mnt/files"},
-  {separator, "^b#000000^^c#ff004d^   ", NULL},
+  {separator, BLACK_BKG COLOR1 "   ", NULL},
   { datetime, "%s ",           "%d/%m/%y %T" },
-  {separator, "^b#000000^^c#00e756^ ", NULL},
+  {separator, BLACK_BKG COLOR2 " ", NULL},
   { run_command,  "%s ",              "$(pamixer --get-mute) && echo   || echo  " },
 	{ run_command,  " %s%% ",       "pamixer --get-volume" },
-  {separator, "^c#fff024^^b#000000^   ", NULL},
+  {separator, COLOR3 BLACK_BKG "   ", NULL},
   {battery_perc, "%s", "BAT0"},
   {battery_state, "%s ", "BAT0"},
   // {battery_perc, "%s", "BAT1"},

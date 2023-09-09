@@ -42,3 +42,4 @@ da7c584e4be1e80777ef31837a694ce4212127a8 52ed1cb545c9922ec4ef685fcc1da2c55fa356d
 e89cea6a282a763d1fc6b53000e28f596c8fa39b 94c59ce44ade11d586c6041ffa6e4d24e604371a Pablo <PabloASHugen@protonmail.com> 1689183661 -0300	commit: chore(config.h): update FONT2 to use "Noto Color Emoji" font and enable PYWAL
 94c59ce44ade11d586c6041ffa6e4d24e604371a 043944af9711b13e73a3a00a6f132504c63a569f Pablo <PabloASHugen@protonmail.com> 1689388661 -0300	commit: change config to new setup
 043944af9711b13e73a3a00a6f132504c63a569f b121ab42314200b9b0f154679848e0eff1c49f7e Pablo <PabloASHugen@protonmail.com> 1689783749 -0300	commit: fix(config.h): fix incorrect keybindings for focusmon and tagmon functions
+b121ab42314200b9b0f154679848e0eff1c49f7e af1904ca01c12b65168cf4303c246b71b68a5121 Pablo <PabloASHugen@protonmail.com> 1694225737 -0300	commit: Change colorscheme

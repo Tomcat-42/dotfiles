@@ -13,6 +13,7 @@ dracula_runtimepath	dracula.txt	/*dracula_runtimepath*
 g:dracula_bold	dracula.txt	/*g:dracula_bold*
 g:dracula_colorterm	dracula.txt	/*g:dracula_colorterm*
 g:dracula_full_special_attrs_support	dracula.txt	/*g:dracula_full_special_attrs_support*
+g:dracula_high_contrast_diff	dracula.txt	/*g:dracula_high_contrast_diff*
 g:dracula_inverse	dracula.txt	/*g:dracula_inverse*
 g:dracula_italic	dracula.txt	/*g:dracula_italic*
 g:dracula_undercurl	dracula.txt	/*g:dracula_undercurl*

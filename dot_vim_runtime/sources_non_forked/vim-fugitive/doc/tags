@@ -13,6 +13,7 @@
 :Gdiff	fugitive.txt	/*:Gdiff*
 :Gdiffsplit	fugitive.txt	/*:Gdiffsplit*
 :Gdiffsplit!	fugitive.txt	/*:Gdiffsplit!*
+:Gdrop	fugitive.txt	/*:Gdrop*
 :Gedit	fugitive.txt	/*:Gedit*
 :Gfetch	fugitive.txt	/*:Gfetch*
 :Ggrep	fugitive.txt	/*:Ggrep*
@@ -36,7 +37,6 @@
 :Gpull	fugitive.txt	/*:Gpull*
 :Gpush	fugitive.txt	/*:Gpush*
 :Gread	fugitive.txt	/*:Gread*
-:Gread!	fugitive.txt	/*:Gread!*
 :Grebase	fugitive.txt	/*:Grebase*
 :Gremove	fugitive.txt	/*:Gremove*
 :Grename	fugitive.txt	/*:Grename*
@@ -70,7 +70,6 @@ fugitive#statusline()	fugitive.txt	/*fugitive#statusline()*
 fugitive-:G	fugitive.txt	/*fugitive-:G*
 fugitive-:Ge	fugitive.txt	/*fugitive-:Ge*
 fugitive-:Gr	fugitive.txt	/*fugitive-:Gr*
-fugitive-:Gr!	fugitive.txt	/*fugitive-:Gr!*
 fugitive-:Gw	fugitive.txt	/*fugitive-:Gw*
 fugitive-about	fugitive.txt	/*fugitive-about*
 fugitive-api	fugitive.txt	/*fugitive-api*

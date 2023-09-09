@@ -1,12 +1,7 @@
-vim.filetype.add {
-  extension = { ebnf = "ebnf", bnf = "ebnf", ll = "llvm", pl = "prolog" },
-}
+-- local autocmd = vim.api.nvim_create_autocmd
 
-vim.cmd [[imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")]]
-vim.cmd [[let g:copilot_no_tab_map = v:true]]
-vim.cmd [[let g:copilot_filetypes = {'markdown': v:true, "yaml": v:true}]]
-
--- Remover mappings <C-j> do mod "core"
-
-require "custom.commands"
-require "custom.autocmds"
+-- Auto resize panes when resizing nvim window
+-- autocmd("VimResized", {
+--   pattern = "*",
+--   command = "tabdo wincmd =",
+-- })

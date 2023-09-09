@@ -1,2 +1,1 @@
-fix(config.h): fix incorrect keybindings for focusmon and tagmon functions
-The keybindings for the focusmon and tagmon functions were reversed. The comma key should now decrease the monitor index and the period key should increase it. The Shift key modifier should also be updated accordingly. This fix ensures that the keybindings for monitor focus and tag operations work as intended.
+Change colorscheme

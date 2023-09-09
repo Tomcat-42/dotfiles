@@ -127,14 +127,18 @@ def triple_quotes_handle_trailing(snip, quoting_style):
 	if not snip.c:
 		# Do this only once, otherwise the following error would happen:
 		# RuntimeError: The snippets content did not converge: …
-		_, col = vim.current.window.cursor
-		line = vim.current.line
+		row, col = vim.current.window.cursor
+
+		# before ultisnip expansion, chars ahead cursor is at row - 1, col
+		# after ultisnip expansion, they are pushed to row + 1, col - 1
+		# when this function is run, it's already after ultisni expansion
+		line = snip.buffer[row + 1]
 
 		# Handle already existing quote chars after the trigger.
 		_ret = quoting_style * 3
 		while True:
 			try:
-				nextc = line[col]
+				nextc = line[col - 1]
 			except IndexError:
 				break
 			if nextc == quoting_style and len(_ret):
@@ -340,6 +344,18 @@ if args:
 write_init_body(args, t[2], snip)
 `
 		$0
+endsnippet
+
+
+snippet dcl "dataclass" b
+@dataclass
+class ${1:MyClass}:
+	`!p snip.rv = triple_quotes(snip)`${2:Docstring for $1. }`!p snip.rv = triple_quotes(snip)`
+	${3:var_1}: ${4:int}
+	${5:var_2}: ${6:float} = ${7:0}
+
+	def ${8:total}(self): -> $6:
+		return ${0:self.$3 * self.$5}
 endsnippet
 
 
@@ -603,9 +619,9 @@ $1 = property(**$1(), doc=$1.__doc__)
 endsnippet
 
 
-####################
-# If / Else / Elif #
-####################
+############################
+# If / Else / Elif / Match #
+############################
 snippet if "If" b
 if ${1:condition}:
 	${2:${VISUAL:pass}}
@@ -625,6 +641,22 @@ elif ${3:condition}:
 	${4:pass}
 else:
 	${5:pass}
+endsnippet
+
+snippet match "Structural pattern matching" b
+match ${1:expression}:
+	case ${2:pattern_1}:
+		${3:pass}
+	case ${4:pattern_2}:
+		${0:pass}
+endsnippet
+
+snippet matchw "Pattern matching with wildcard" b
+match ${1:expression}:
+	case ${2:pattern_1}:
+		${3:pass}
+	case _:
+		${0:pass}
 endsnippet
 
 

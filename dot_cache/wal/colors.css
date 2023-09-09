@@ -6,23 +6,23 @@
     /* Special */
     --background: #000000;
     --foreground: #ffffff;
-    --cursor: #ffffff;
+    --cursor: #be6262;
 
     /* Colors */
     --color0: #000000;
-    --color1: #ff004d;
-    --color2: #00e756;
-    --color3: #fff024;
-    --color4: #83769c;
-    --color5: #ff77a8;
-    --color6: #29adff;
-    --color7: #ffffff;
-    --color8: #008751;
-    --color9: #ff004d;
-    --color10: #00e756;
-    --color11: #fff024;
-    --color12: #83769c;
-    --color13: #ff77a8;
-    --color14: #29adff;
-    --color15: #fff1e8;
+    --color1: #eb3d51;
+    --color2: #66b61a;
+    --color3: #d98e1d;
+    --color4: #23ffa8;
+    --color5: #ff00da;
+    --color6: #68a783;
+    --color7: #eaeaea;
+    --color8: #484848;
+    --color9: #eb3d51;
+    --color10: #66b61a;
+    --color11: #d98e1d;
+    --color12: #23ffa8;
+    --color13: #ff00da;
+    --color14: #68a783;
+    --color15: #eaeaea;
 }

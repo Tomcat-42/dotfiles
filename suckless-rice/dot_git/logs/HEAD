@@ -36,3 +36,4 @@ d6a626e7dd4ad0e389e4876c2c04d2a8beda8c04 52a058e604661363128bbcc89953e28a10e3913
 75dc288340b7114f79beaa11b7556d52c12a094a 89ccd3e5218ab8b7d4179eea55096316802cd999 Pablo <PabloASHugen@protonmail.com> 1689388672 -0300	commit: change config to new setup
 89ccd3e5218ab8b7d4179eea55096316802cd999 88e1f7ee67e67451076a118da457625f61aad3c3 Pablo <PabloASHugen@protonmail.com> 1689388797 -0300	commit: change config to new setup
 88e1f7ee67e67451076a118da457625f61aad3c3 b5fe87a3d57bb2aef8af53f19a86fba16fe955c7 Pablo <PabloASHugen@protonmail.com> 1689783998 -0300	commit: chore(dwm): update dwm subproject commit reference
+b5fe87a3d57bb2aef8af53f19a86fba16fe955c7 fcd09d0f1553c28b66cc09f41ccc4db8b6fe568e Pablo <PabloASHugen@protonmail.com> 1694227698 -0300	commit: Change colorscheme
