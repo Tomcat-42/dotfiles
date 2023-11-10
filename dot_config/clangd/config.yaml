@@ -1,6 +1,6 @@
 # Fragment common to C and C++ source files
 CompileFlags:
-    Add: [-Wall, -I/usr/include] # enable more warnings
+    Add: [-Wall, -I/usr/include, -stdlib=libc++ -std=c++23 -fexperimental-library -lfmt]
 
 
 ---
@@ -8,7 +8,7 @@ CompileFlags:
 If:
     PathExclude: [.*\.c, .*\.h]
 CompileFlags: # Tweak the parse settings
-  Add: [-xc++, -Wall, -std=c++2b, -stdlib=libc++, -I/usr/include] # treat all files as C++, enable more warnings
+  Add: [-xc++, -Wall, -std=c++26, -stdlib=libc++, -I/usr/include] # treat all files as C++, enable more warnings
   # Remove: [] # strip all other warning-related flags
   Compiler: clang++ # Change argv[0] of compile flags to `clang++`
 Index:
@@ -26,4 +26,3 @@ InlayHints:
   DeducedTypes: Yes
 Hover:
   ShowAKA: Yes
-Remove: modernize-use-trailing-return-type

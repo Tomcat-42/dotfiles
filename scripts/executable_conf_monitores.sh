@@ -12,4 +12,4 @@
 # #desativado para o pywal gerenciar os wallpapers
 # ##nitrogen --restore
 
-autorandr --change
+autorandr --change && nitrogen --restore

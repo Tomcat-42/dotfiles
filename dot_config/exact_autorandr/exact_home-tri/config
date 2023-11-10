@@ -24,9 +24,10 @@ x-prop-max_bpc 12
 x-prop-non_desktop 0
 output DP-1
 crtc 2
-mode 1280x1024
+mode 1600x900
 pos 4480x0
-rate 60.02
+rate 60.00
+rotate left
 x-prop-audio auto
 x-prop-broadcast_rgb Automatic
 x-prop-colorspace Default

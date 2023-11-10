@@ -1,6 +1,7 @@
 board_manager:
   additional_urls:
     - http://arduino.esp8266.com/stable/package_esp8266com_index.json
+    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 daemon:
   port: "50051"
 directories:
@@ -8,14 +9,14 @@ directories:
   downloads: /home/pablo/.arduino15/staging
   user: /home/pablo/Arduino
 library:
-  enable_unsafe_install: false
+  enable_unsafe_install: true
 logging:
   file: ""
   format: text
   level: info
 metrics:
   addr: :9090
-  enabled: true
+  enabled: false
 output:
   no_color: false
 sketch:

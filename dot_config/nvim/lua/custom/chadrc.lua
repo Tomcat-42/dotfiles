@@ -2,6 +2,32 @@ local M = {}
 
 M.options = {
   nvchad_branch = "v2.0",
+  permanent_undo = true,
+  ruler = false,
+  hidden = true,
+  ignorecase = true,
+  mouse = "a",
+  cmdheight = 1,
+  updatetime = 250,
+  timeoutlen = 400,
+  clipboard = "unnamedplus",
+  number = true,
+  -- relative numbers in normal mode tool at the bottom of options.lua
+  relativenumber = true,
+  numberwidth = 2,
+  expandtab = true,
+  shiftwidth = 2,
+  smartindent = true,
+  mapleader = " ",
+  autosave = false,
+  enable_insertNav = true,
+  nu = true,
+  tabstop = 4,
+  softtabstop = 4,
+  wrap = false,
+  termiguicolors = true,
+  hlsearch = true,
+  incsearch = true,
 }
 
 M.ui = {
@@ -10,19 +36,32 @@ M.ui = {
   hl_add = {},
   hl_override = {},
   changed_themes = {},
-  theme_toggle = { "oxocarbon", "one_light" },
-  theme = "oxocarbon",
+  theme_toggle = { "radium", "one_light" },
+  theme = "radium",
   transparency = true,
-  lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
+  lsp_semantic_tokens = true,
+  italic_comments = true,
 
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
+  extended_integrations = {
+    "alpha",
+    "bufferline",
+    "codeactionmenu",
+    "dap",
+    "hop",
+    "lspsaga",
+    "navic",
+    "notify",
+    "rainbowdelimiters",
+    "todo",
+    "trouble",
+  },
 
   -- cmp themeing
   cmp = {
     icons = true,
     lspkind_text = true,
-    style = "flat_dark", -- default/flat_light/flat_dark/atom/atom_colored
+    style = "flat_dark", -- default/flat_light/flat_dark/atom/
     border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
     selected_item_bg = "colored", -- colored / simple
   },
@@ -35,7 +74,13 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "default",
-    overriden_modules = nil,
+    overriden_modules = function(modules)
+      local present, arduino = pcall(require, "custom.configs.arduino")
+      -- check for filetype == arduino
+      if present and vim.bo.filetype == "arduino" then
+        table.insert(modules, 13, arduino.status())
+      end
+    end,
   },
 
   -- lazyload it when there are 1+ buffers
@@ -48,7 +93,7 @@ M.ui = {
 
   -- nvdash (dashboard)
   nvdash = {
-    load_on_startup = true,
+    load_on_startup = false,
 
     header = {
       "           ▄ ▄                   ",
@@ -85,7 +130,5 @@ M.ui = {
 
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
-
-
 
 return M

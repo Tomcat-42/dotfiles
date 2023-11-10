@@ -12,6 +12,9 @@ export OPENAI_API_KEY=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
 
 export SUDO_PROMPT="$(tput setab 1 setaf 7 bold)[sudo]$(tput sgr0) $(tput setaf 6)password for$(tput sgr0) $(tput setaf 5)%p$(tput sgr0): "
 
+# Rust ESP32 
+. $HOME/export-esp.sh
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -87,19 +90,19 @@ plugins=(
     # nvm
     fzf
     frontend-search
-    flutter
+    # flutter
     copybuffer
     # autojump
     zoxide
-    npm
-    heroku
+    # npm
+    # heroku
     git
     gh
     colored-man-pages
     command-not-found
-    httpie
-    nmap
-    pip
+    # httpie
+    # nmap
+    # pip
     docker
     themes
     # z
@@ -107,11 +110,11 @@ plugins=(
     zsh-autosuggestions
     #k
     docker-compose
-    pip
+    # pip
     gitignore
-    node
-    aws
-    poetry
+    # node
+    # aws
+    # poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -185,7 +188,7 @@ alias py80='python -m http.server 60957'
 
 ##cores
 #alias ls='ls -hN --color=auto --group-directories-first'
-alias ls='eza -h --color=auto --group-directories-first --icons'
+alias ls='eza -h --color=auto --group-directories-first --icons always'
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias ccat="highlight --out-format=ansi" # Color cat - print file with syntax highlighting.
@@ -230,6 +233,12 @@ export CHROME_FLAGS=""
 export CMAKE_EXPORT_COMPILE_COMMANDS
 export EXPORT_COMPILE_COMMANDS
 export PROJECT_PATHS=(~/projects)
+
+# OmnetPP
+export OMNETPP_IMAGE_PATH=/opt/omnetpp/images
+export OMNETPP_TKENV_DIR=/opt/omnetpp/src/tkenv
+export PATH=$PATH:/opt/omnetpp/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/omnetpp/lib
 
 
 unset npm_config_prefix
@@ -302,16 +311,16 @@ fi
 # [[ -s /home/pablo/.autojump/etc/profile.d/autojump.sh ]] && source /home/pablo/.autojump/etc/profile.d/autojump.sh
 eval "$(starship init zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # clear
 
 
-#export PYENV_ROOT="$HOME/.pyenv"
-#command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 eval "$(github-copilot-cli alias -- "$0")"
 
 
@@ -320,3 +329,6 @@ eval "$(atuin init zsh)"
 
 ## Prevent the prompt from appearing twice
 #clear
+# >>> xmake >>>
+test -f "/home/pablo/.xmake/profile" && source "/home/pablo/.xmake/profile"
+# <<< xmake <<<
