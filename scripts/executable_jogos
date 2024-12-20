@@ -1,8 +1,0 @@
-#!/bin/bash
-
-JOGOS='0ad\ngog-terraria\nassaultcube\nminetest\nxonotic\nsteam\nPCSX2\nretroarch\nxonotic-glx'
-
-#echo $JOGOS
-exec $(echo -e $JOGOS | dmenu -i -p "jogos" -l 5) 2>&1 >/dev/null &
-
-

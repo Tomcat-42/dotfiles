@@ -1,3 +1,0 @@
-#!/bin/sh
-TITLE=${1:-"Confirm"}
-printf "yes\nno" | rofi -dmenu -p "$TITLE"

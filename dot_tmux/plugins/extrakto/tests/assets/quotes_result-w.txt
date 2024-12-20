@@ -1,6 +1,0 @@
-simple
-quote
-first
-foobar
-second
-single

@@ -1,0 +1,25 @@
+## Base16 eva01
+# Author: Pablo Alessandro Santos Hugen
+#
+# You can use these variables anywhere in the mako configuration file.
+sort=-time
+layer=overlay
+icons=0
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=1
+font=Iosevka Nerd Font 12
+
+background-color=#000000
+text-color=#ffffff
+border-color=#66ff66
+
+[urgency=low]
+background-color=#000000
+text-color=#ffffff
+border-color=#66ff66
+
+[urgency=high]
+background-color=#000000
+text-color=#ffffff
+border-color=#ff6666

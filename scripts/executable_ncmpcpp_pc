@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-ncmpcpp --host 192.168.1.101 --port 60960 -q

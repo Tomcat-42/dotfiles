@@ -1,9 +1,0 @@
-#!/bin/sh
-
-for ARQUIVO in "${@}"; do
-    if [ ! -f "${ARQUIVO}" ]; then
-        echo "[!] Arquivo ${ARQUIVO} não encontrado."
-    else
-        objdump -drwC -Mintel "${ARQUIVO}"
-    fi
-done

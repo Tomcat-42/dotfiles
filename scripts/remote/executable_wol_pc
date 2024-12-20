@@ -1,8 +1,0 @@
-#!/bin/bash
-declare -A MACS
-MACS["server"]="ec:a8:6b:b8:30:1f" 
-MACS["thinkpad"]="64:1c:67:a1:35:b2"
-
-
-HOST=$(printf "server\nthinkpad" | choose_rofi "Host")
-wol "${MACS[$HOST]}"

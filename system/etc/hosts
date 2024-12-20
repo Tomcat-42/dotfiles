@@ -1,9 +1,0 @@
-#<ip-address>	<hostname.domain.org>	<hostname>
-127.0.0.1	localhost.localdomain	localhost	thiccpad
-::1	localhost.localdomain	localhost	thiccpad
-
-192.168.1.101 server
-192.168.1.102 lan.thinkpad
-192.168.1.103 wlan.thinkpad
-192.168.1.108 phone
-192.168.1.113 work

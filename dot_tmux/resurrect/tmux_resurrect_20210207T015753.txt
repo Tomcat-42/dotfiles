@@ -1,3 +1,0 @@
-pane	0	3	:zsh	1	:*	1	:/home/pablo951_br	1	zsh	:
-window	0	3	1	:*	c5a5,240x75,0,0,8
-state	0	

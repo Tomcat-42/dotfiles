@@ -1,4 +1,0 @@
-#!/bin/env bash
-
-KEYS=$(localectl list-keymaps | dmenu -i -p "⌨︁ " -l 5)
-setxkbmap -layout "${KEYS:-'br-abnt2'}"

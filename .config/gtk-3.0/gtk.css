@@ -1,0 +1,7 @@
+.titlebar, .titlebar *, .header-bar, .header-bar * {
+  background-color: transparent;
+  margin: -20px 0 0 0;
+  padding: 0;
+  font-size: 0;
+  min-height: 0;
+}

@@ -1,9 +1,0 @@
-tmux has-session -t ktp2:
-exit status 1
-/bin/sh -c docker compose -f api/docker-compose.yml up -d
-/bin/sh -c docker compose -f front/docker-compose.yml up -d
-exit status 1
-/bin/sh -c pushd api; docker compose down --remove-orphans; popd
-/bin/sh -c pushd front; docker compose down --remove-orphans; popd
-tmux kill-session -t ktp2
-exit status 1

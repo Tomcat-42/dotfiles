@@ -1,3 +1,0 @@
-#!/bin/sh
-TITLE=${1:-"input"}
-rofi -dmenu -p $TITLE <&0

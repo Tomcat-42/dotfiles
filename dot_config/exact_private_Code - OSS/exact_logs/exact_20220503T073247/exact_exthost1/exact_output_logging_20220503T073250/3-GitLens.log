@@ -1,2 +1,0 @@
-[2022-05-03 10:35:22.698] Unable to read sessions from storage
-Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.secrets was not provided by any .service files

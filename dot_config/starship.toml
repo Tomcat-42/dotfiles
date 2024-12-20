@@ -1,9 +1,0 @@
-command_timeout = 10000
-continuation_prompt = '▶▶ '
-add_newline = true
-
-# Replace the "❯" symbol in the prompt with "➜", λ
-[character]                            # The name of the module we are configuring is "character"
-error_symbol = "[➜ ](bold red)"
-success_symbol = "[➜ ](bold green)"
-vimcmd_symbol = '[V](bold green) '
