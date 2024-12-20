@@ -1,4 +1,0 @@
-pane	0	1	1	:*	1	nvim samples/rust/rust_echo_server.rs	:/home/pablo/kernel/linux	0	nvim	:nvim samples/rust/rust_echo_server.rs
-pane	0	1	1	:*	2	qemu-system-x86_64 -kernel linux/vmlinux -initrd busybox/_install/rootfs.img 	:/home/pablo/kernel	1	qemu-system-x86_64	:qemu-system-x86_64 -kernel linux/vmlinux -initrd busybox/_install/rootfs.img -nographic -machine q35 -enable-kvm -device intel-iommu -cpu host -m 4G -nic user,model=rtl8139,hostfwd=tcp::5555-:23,hostfwd=tcp::5556-:8080
-window	0	1	:qemu-system-x86_64	1	:*	5c6b,365x57,0,0{284x57,0,0,0,80x57,285,0,1}	:
-state	0	

@@ -1,8 +1,0 @@
-#!/bin/env bash
-
-#xautolock -enable ; pkill -f caffeine-ng &> /dev/null || caffeine -a &>/dev/null  & 
-
-xautolock -toggle
-
-# checa se o arquivo está vazio ou  não
-grep -q '[^[:space:]]' < /tmp/dwmbuf && echo "" > /tmp/dwmbuf || echo "" > /tmp/dwmbuf

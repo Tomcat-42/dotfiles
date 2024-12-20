@@ -1,0 +1,132 @@
+#!/bin/sh
+
+# Colors and Borders
+riverctl background-color "0x${color00}"
+riverctl border-color-focused "0x${color0E}"
+riverctl border-color-unfocused "0x${color01}"
+riverctl border-color-urgent "0x${color08}"
+riverctl border-width 2
+
+# Keyboard
+riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
+
+# Monitor Conf
+# riverctl spawn "wlr-randr  --output HDMI-A-1 --preferred"
+# riverctl spawn "wlr-randr --output HDMI-A-1 --preferred  --scale 2.5"
+riverctl spawn "wlr-randr --output HDMI-A-1 --preferred  --output DP-1 --preferred --transform 90"
+riverctl spawn "wlr-randr --output eDP-1 --off"
+
+# Status Bar
+riverctl spawn "$HOME/.config/river/status"
+riverctl spawn "$HOME/.config/river/bar"
+
+# default night mode
+riverctl spawn 'toggleable_background_task wlsunset -S 00:00'
+
+# wallpaper
+#riverctl spawn 'swaybg -i /home/pablo/data/pictures/wallpapers/desert_sand.jpg  --mode center'
+
+# Application Maps
+riverctl map normal Super+Shift Return spawn kitty
+riverctl map normal Super c spawn 'exec $(bemenu-run)'
+riverctl map normal Super t spawn '~/scripts/theme > /dev/null'
+riverctl map normal Super+Shift c spawn 'exec kitty $(bemenu-run --no-exec)'
+riverctl map normal Super s spawn '~/scripts/screenshot > /dev/null'
+riverctl map normal Super+Shift s spawn '~/scripts/screenshot stop > /dev/null'
+riverctl map normal Super b spawn 'echo "all toggle-visibility" >> $XDG_RUNTIME_DIR/sandbar'
+riverctl map normal Super n spawn 'toggleable_background_task wlsunset -S 00:00'
+riverctl map normal Super a spawn 'kblayout'
+riverctl map normal Super p spawn 'TERMINAL_EXEC=kitty EDITOR=nvim neopassmenu -c -m > /dev/null && notify-send "Password copied" > /dev/null'
+riverctl map normal Super+Shift p spawn 'TERMINAL_EXEC=kitty EDITOR=nvim neopassmenu -c -a -m > /dev/null && notify-send "Password edited"  > /dev/null'
+riverctl map normal Super Delete spawn 'powermenu'
+for mode in normal locked; do
+  riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'
+  riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer -d 5'
+  riverctl map $mode None XF86AudioMute spawn 'pamixer --toggle-mute'
+
+  riverctl map $mode None XF86MonBrightnessUp spawn 'light -A 5'
+  riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+done
+
+# Confs
+riverctl focus-follows-cursor always
+riverctl hide-cursor timeout 1000
+riverctl hide-cursor when-typing enabled
+riverctl set-cursor-warp on-focus-change
+riverctl set-repeat 70 200
+riverctl float-filter-add app-id 'float*'
+riverctl float-filter-add title 'foo'
+riverctl csd-filter-add app-id "bar"
+riverctl csd-filter-add title "bar"
+riverctl attach-mode bottom
+riverctl declare-mode passthrough
+
+# River Maps
+riverctl map normal Super Q close
+riverctl map normal Super+Shift E exit
+riverctl map normal Super J focus-view next
+riverctl map normal Super K focus-view previous
+riverctl map normal Super+Shift J swap next
+riverctl map normal Super+Shift K swap previous
+riverctl map normal Super Period focus-output next
+riverctl map normal Super Comma focus-output previous
+riverctl map normal Super+Shift Period send-to-output next
+riverctl map normal Super+Shift Comma send-to-output previous
+riverctl map normal Super Return zoom
+riverctl map normal Super H send-layout-cmd rivercarro "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd rivercarro "main-ratio +0.05"
+riverctl map normal Super+Shift H send-layout-cmd rivercarro "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd rivercarro "main-count -1"
+riverctl map -repeat normal Super+Alt H move left 100
+riverctl map -repeat normal Super+Alt J move down 100
+riverctl map -repeat normal Super+Alt K move up 100
+riverctl map -repeat normal Super+Alt L move right 100
+riverctl map normal Super+Alt+Control H snap left
+riverctl map normal Super+Alt+Control J snap down
+riverctl map normal Super+Alt+Control K snap up
+riverctl map normal Super+Alt+Control L snap right
+riverctl map -repeat normal Super+Alt+Shift H resize horizontal -100
+riverctl map -repeat normal Super+Alt+Shift J resize vertical 100
+riverctl map -repeat normal Super+Alt+Shift K resize vertical -100
+riverctl map -repeat normal Super+Alt+Shift L resize horizontal 100
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+for i in $(seq 1 9); do
+  tags=$((1 << (i - 1)))
+  riverctl map normal Super "$i" set-focused-tags $tags
+  riverctl map normal Super+Shift "$i" set-view-tags $tags
+  riverctl map normal Super+Control "$i" toggle-focused-tags $tags
+  riverctl map normal Super+Shift+Control "$i" toggle-view-tags $tags
+done
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+riverctl map normal Super Tab focus-previous-tags
+riverctl map normal Super+Shift Tab send-to-previous-tags
+riverctl map normal Super Space toggle-float
+riverctl map normal Super F toggle-fullscreen
+riverctl map normal Super Up send-layout-cmd rivercarro "main-location top"
+riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
+riverctl map normal Super Down send-layout-cmd rivercarro "main-location bottom"
+riverctl map normal Super Left send-layout-cmd rivercarro "main-location left"
+# For monocle
+riverctl map normal Super M send-layout-cmd rivercarro "main-location monocle"
+# Cycle through layout
+riverctl map normal Super W send-layout-cmd rivercarro "main-location-cycle left,monocle"
+riverctl map normal Super F11 enter-mode passthrough
+riverctl map passthrough Super F11 enter-mode normal
+
+# Layouts
+riverctl default-layout rivercarro
+rivercarro -per-tag -inner-gaps 0 -outer-gaps 0 &
+
+# custom window rules
+riverctl rule-add -title "*" ssd
+riverctl rule-add -title "C++ - Swarm" output DP-1
+riverctl rule-add -title "C++ - Swarm" no-float
+riverctl rule-add -title "C++ - Swarm" tags $((1 << 4))
+
+# Environment
+riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'
+riverctl spawn 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river'

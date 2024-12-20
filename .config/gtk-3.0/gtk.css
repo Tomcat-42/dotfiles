@@ -1,0 +1,5 @@
+.titlebar, .titlebar *, .header-bar, .header-bar * {
+  margin: -20px 0 0 0;
+  padding: 0;
+  font-size: 0;
+}

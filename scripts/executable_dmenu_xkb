@@ -1,5 +1,0 @@
-#!/bin/bash
-
-LAYOUTS=("br thinkpad" "br abnt2" "us")
-
-dmenu -l 3 -p "Layout: " < <(printf '%s\n' "${LAYOUTS[@]}") | xargs setxkbmap -layout

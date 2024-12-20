@@ -1,7 +1,0 @@
---pad-horiz 20
---pad-vert 20
--b "#1e1f29" 
---theme "Dracula" 
--f "Iosevka Nerd Font"
---shadow-color "#282a36"
--o ~/silicon-{time:%Y-%m-%d-%H%M%S}.png

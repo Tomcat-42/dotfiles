@@ -1,0 +1,92 @@
+shell = "fish -c '{}'"
+default-scheme = "base16-eva01"
+
+[[items]]
+name = "gtk2-flatcolor"
+path = "~/dev/colorschemes/gtk-flatcolor"
+themes-dir = "gtk-2"
+hook = "cp -f %f ~/.themes/FlatColor/colors2"
+theme-file-extension = "-gtkrc"
+
+[[items]]
+name = "gtk3-flatcolor"
+path = "~/dev/colorschemes/gtk-flatcolor"
+themes-dir = "gtk-3"
+hook = "cp -f %f ~/.themes/FlatColor/colors3.css"
+theme-file-extension = "-gtk.css"
+
+[[items]]
+name = "qt5ct-conf"
+path = "~/dev/colorschemes/qt5ct/"
+themes-dir = "qt5ct_appearance_conf"
+hook = "cp -f %f ~/.config/qt5ct/qt5ct.conf"
+theme-file-extension = ".conf"
+
+[[items]]
+name = "qt5ct-colors"
+path = "~/dev/colorschemes/qt5ct/"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/qt5ct/colors/colors.conf"
+theme-file-extension = ".conf"
+
+[[items]]
+name = "zathura"
+path = "~/dev/colorschemes/zathura/"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/zathura/zathurarc"
+theme-file-extension = ""
+
+[[items]]
+name = "tmux"
+path = "~/dev/colorschemes/tmux/"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/tmux/colors.tmux.conf"
+theme-file-extension = ".tmux.conf"
+
+[[items]]
+name = "fish"
+path = "~/dev/colorschemes/fish/"
+themes-dir = "functions"
+hook = "cp -f %f ~/.config/fish/functions/base16_colors.fish"
+theme-file-extension = ".fish"
+
+[[items]]
+name = "nvim-mini.base16"
+path = "~/dev/colorschemes/nvim/mini.base16/"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/nvim/lua/plugins/base16.lua"
+theme-file-extension = ".lua"
+
+[[items]]
+name = "luakit"
+path = "~/dev/colorschemes/luakit/"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/luakit/colors/system.lua"
+theme-file-extension = ".lua"
+
+[[items]]
+path = "https://github.com/tinted-theming/base16-qutebrowser"
+name = "base16-qutebrowser"
+themes-dir = "themes/minimal"
+hook = "cp -f %f ~/.config/qutebrowser/config.d/colorscheme.py"
+theme-file-extension = ".config.py"
+
+[[items]]
+path = "~/dev/colorschemes/kitty/"
+name = "kitty"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/kitty/theme.conf"
+theme-file-extension = ".conf"
+
+[[items]]
+path = "~/dev/colorschemes/mako/"
+name = "mako"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/mako/config"
+
+[[items]]
+path = "~/dev/colorschemes/hugo-theme-nostyleplease/"
+name = "hugo-theme-nostyleplease"
+themes-dir = "css"
+hook = "cp -f %f ~/dev/hugo-theme-nostyleplease/assets/css/main.scss"
+theme-file-extension = ".scss"

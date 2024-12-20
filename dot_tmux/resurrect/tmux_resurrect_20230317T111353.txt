@@ -1,5 +1,0 @@
-pane	0	1	0	:-	1	nvim	:/mnt/files/projects/bry/cppdev	1	nvim	:nvim
-pane	0	2	1	:*	1	nvim	:/mnt/files/projects/bry/ciphervault	1	nvim	:nvim
-window	0	1	:nvim	0	:-	cc5d,274x57,0,0,0	:
-window	0	2	:nvim	1	:*	cc5e,274x57,0,0,1	:
-state	0	

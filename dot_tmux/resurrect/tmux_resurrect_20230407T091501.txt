@@ -1,8 +1,0 @@
-pane	0	1	1	:*M	1	nvim scripts/run	:/home/pablo/kernel/rust-lkm-template	0	nvim	:nvim scripts/run
-pane	0	1	1	:*M	2	pablo@thiccpad:~/kernel/rust-lkm-template	:/home/pablo/kernel/rust-lkm-template	1	zsh	:
-pane	1	1	1	:*	1	nvim	:/home/pablo/Tomcat-42.github.io	1	nvim	:nvim
-pane	1	2	0	:-	1	pablo@thiccpad:~/.config/nvim	:/home/pablo/.config/nvim	1	zsh	:
-window	0	1	:zsh	1	:*M	6691,365x57,0,0{182x57,0,0,0,182x57,183,0,4}	:
-window	1	1	:nvim	1	:*	c91e,205x47,0,0,1	:
-window	1	2	:zsh	0	:-	c91f,205x47,0,0,2	:
-state	0	

@@ -1,5 +1,0 @@
-#!/data/data/com.termux/files/usr/bin/bash
-TITLE=${1:-"CHOOSE A OPTION"}
-JSON_OUT="$(termux-dialog confirm -t "$TITLE")"
-TEXT_OUT="$(jq .text <<<$JSON_OUT)"
-echo "$TEXT_OUT" | tr -d '"'

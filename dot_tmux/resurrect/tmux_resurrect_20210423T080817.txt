@@ -1,5 +1,0 @@
-pane	0	1	:vim	0	:-	1	:/home/pablo951_br/nlw_videos/nlw_05/flutter/devquiz	1	vim	:vim /home/pablo951_br/.vim/configs/vimrc.coc
-pane	0	2	:vim	1	:*	1	:/home/pablo951_br/nlw_videos/nlw_05/flutter/devquiz	1	vim	:vim lib/widgets/appbar/app_bar_widget.dart
-window	0	1	0	:-	ca7d,123x57,0,0,0
-window	0	2	1	:*	c9be,150x57,0,0,1
-state	0	
