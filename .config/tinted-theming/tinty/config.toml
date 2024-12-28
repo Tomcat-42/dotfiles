@@ -79,6 +79,12 @@ hook = "cp -f %f ~/.config/kitty/theme.conf"
 theme-file-extension = ".conf"
 
 [[items]]
+path = "~/dev/colorschemes/ghostty/"
+name = "ghostty"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/ghostty/themes/system"
+
+[[items]]
 path = "~/dev/colorschemes/mako/"
 name = "mako"
 themes-dir = "colors"

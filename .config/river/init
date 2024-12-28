@@ -27,17 +27,18 @@ riverctl spawn 'toggleable_background_task wlsunset -S 00:00'
 #riverctl spawn 'swaybg -i /home/pablo/data/pictures/wallpapers/desert_sand.jpg  --mode center'
 
 # Application Maps
-riverctl map normal Super+Shift Return spawn kitty
+riverctl map normal Super+Shift Return spawn "$TERMINAL"
 riverctl map normal Super c spawn 'exec $(bemenu-run)'
+riverctl map normal Super o spawn 'makoctl dismiss -a'
 riverctl map normal Super t spawn '~/scripts/theme > /dev/null'
-riverctl map normal Super+Shift c spawn 'exec kitty $(bemenu-run --no-exec)'
+riverctl map normal Super+Shift c spawn 'exec $TERMINAL $(bemenu-run --no-exec)'
 riverctl map normal Super s spawn '~/scripts/screenshot > /dev/null'
 riverctl map normal Super+Shift s spawn '~/scripts/screenshot stop > /dev/null'
 riverctl map normal Super b spawn 'echo "all toggle-visibility" >> $XDG_RUNTIME_DIR/sandbar'
 riverctl map normal Super n spawn 'toggleable_background_task wlsunset -S 00:00'
 riverctl map normal Super a spawn 'kblayout'
-riverctl map normal Super p spawn 'TERMINAL_EXEC=kitty EDITOR=nvim neopassmenu -c -m > /dev/null && notify-send "Password copied" > /dev/null'
-riverctl map normal Super+Shift p spawn 'TERMINAL_EXEC=kitty EDITOR=nvim neopassmenu -c -a -m > /dev/null && notify-send "Password edited"  > /dev/null'
+riverctl map normal Super p spawn 'TERMINAL_EXEC=$TERMINAL EDITOR=nvim neopassmenu -c -m > /dev/null && notify-send "Password copied" > /dev/null'
+riverctl map normal Super+Shift p spawn 'TERMINAL_EXEC=$TERMINA EDITOR=nvim neopassmenu -c -a -m > /dev/null && notify-send "Password edited"  > /dev/null'
 riverctl map normal Super Delete spawn 'powermenu'
 for mode in normal locked; do
   riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'
@@ -123,6 +124,8 @@ rivercarro -per-tag -inner-gaps 0 -outer-gaps 0 &
 
 # custom window rules
 riverctl rule-add -title "*" ssd
+riverctl rule-add -title "glfw" output DP-1
+riverctl rule-add -title "glfw" float
 riverctl rule-add -title "C++ - Swarm" output DP-1
 riverctl rule-add -title "C++ - Swarm" no-float
 riverctl rule-add -title "C++ - Swarm" tags $((1 << 4))
