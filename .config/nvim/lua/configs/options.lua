@@ -11,9 +11,9 @@ opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
 
-opt.tabstop = 2
-opt.softtabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
 opt.expandtab = true
 opt.shortmess:append "atI"
 opt.signcolumn = "auto"
@@ -39,6 +39,16 @@ opt.updatetime = 50
 opt.colorcolumn = "80"
 opt.completeopt = 'menuone,noselect'
 opt.laststatus = 3
+-- vim.opt.fillchars = {
+--   vert = "▕", -- alternatives │
+--   fold = " ",
+--   eob = " ", -- suppress ~ at EndOfBuffer
+--   diff = "╱", -- alternatives = ⣿ ░ ─
+--   msgsep = "‾",
+--   foldopen = "▾",
+--   foldsep = "│",
+--   foldclose = "▸",
+-- }
 opt.showmode = true
 opt.showmode = true
 opt.splitbelow = true
