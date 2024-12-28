@@ -3,17 +3,16 @@ set -gx BROWSER "chromium"
 set -gx PAGER "bat"
 # set -gx TERM "screen-256color"
 set -gx VISUAL "nvim"
-set -gx TERMINAL_EXEC  "kitty"
+set -gx TERMINAL_EXEC  "ghostty"
+set -gx TERMINAL  "ghostty"
 set -gx BEMENU_OPTS  "-C -i -w -T -b -l '10 up' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color0E' -R 0 -n --fn 'Iosevka Nerd Font' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0% --ab #$color00 --af #$color05"
 set -gx NO_AT_BRIDGE  "1"
 set -gx PASSWORD_STORE_DIR  "/home/pablo/data/documents/other/passwords"
 set -gx BAT_THEME  "base16"
 set -gx _JAVA_AWT_WM_NONREPARENTING  "1"
 
-
 set -gx CC "/usr/bin/clang"
 set -gx CXX "/usr/bin/clang++"
-set -gx TERMINAL "kitty"
 set -gx XDG_CURRENT_DESKTOP "river"
 set -gx XDG_SESSION_TYPE "wayland"
 set -gx GTK_USE_PORTAL 1
@@ -53,6 +52,7 @@ set paths \
     /usr/lib/llvm16/bin \
     ~/dev/bun/build/debug/ \
     ~/dev/bun/build/release \
-    ~/.zvm/bin
+    ~/.zvm/bin \
+    ~/.zvm/self
 
 fish_add_path $paths

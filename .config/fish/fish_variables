@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export AOC_SESSION_TOKEN:53616c7465645f5f961a978d725b96174b9d71f94b69335f9ab5e4d15829c7ade552a814d263811d0d40db90aecf99dc7c17af3a6cf25bac01839bd8a90ca2f9
 SETUVAR BROWSER:\x1d
 SETUVAR --export FZF_DEFAULT_OPTS:\x20\x2d\x2dcolor\x3dbg\x2b\x3a\x23000000\x2cbg\x3a\x23000000\x2cspinner\x3a\x234b8f77\x2chl\x3a\x2315f4ee\x20\x2d\x2dcolor\x3dfg\x3a\x23ffffff\x2cheader\x3a\x2315f4ee\x2cinfo\x3a\x23ffff66\x2cpointer\x3a\x234b8f77\x20\x2d\x2dcolor\x3dmarker\x3a\x234b8f77\x2cfg\x2b\x3a\x23ffffff\x2cprompt\x3a\x23ffff66\x2chl\x2b\x3a\x2315f4ee
 SETUVAR __fish_initialized:3400
@@ -32,4 +33,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/usr/lib/llvm16/bin\x1e/home/pablo/dev/bun/build/debug\x1e/home/pablo/\x2ezvm/bin
+SETUVAR fish_user_paths:/home/pablo/\x2ezvm/self\x1e/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/usr/lib/llvm16/bin\x1e/home/pablo/dev/bun/build/debug\x1e/home/pablo/\x2ezvm/bin
