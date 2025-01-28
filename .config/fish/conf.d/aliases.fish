@@ -1,10 +1,8 @@
-alias dz 'detach zathura'
-alias di 'detach imv'
-alias pingle 'gping www.google.com'
-alias gitsc 'git commit -S -s --amend --no-edit'
-alias diff 'delta'
-alias nv 'nvim'
-# alias ls 'lsd'
+abbr -a pingle gping www.google.com
+abbr -a dz detach zathura
+abbr -a di detach imv
+abbr -a gitsc git commit -S -s --amend --no-edit
+abbr -a n nvim
 
 function c
     if test (count $argv) -eq 0
@@ -25,21 +23,21 @@ end
 # Function 'git_logmsgs' to display the latest 10 commit messages
 function git_logmsgs
     git log --pretty=format:"%h»¦«%aN»¦«%s»¦«%aD" |
-    string split '\n' |
-    while read line
-        echo $line | string split '»¦«'
-    end | head -n 10
+        string split '\n' |
+        while read line
+            echo $line | string split '»¦«'
+        end | head -n 10
 end
 
 # Function 'git_contribs' to show a histogram of committers and mergers
 function git_contribs
     git log --pretty=format:"%h»¦«%aN»¦«%s»¦«%aD" |
-    string split '\n' |
-    while read line
-        set parts (echo $line | string split '»¦«')
-        echo $parts[2]  # Assuming the committer is the second field
-    end |
-    sort |
-    uniq -c |
-    sort -nr
+        string split '\n' |
+        while read line
+            set parts (echo $line | string split '»¦«')
+            echo $parts[2] # Assuming the committer is the second field
+        end |
+        sort |
+        uniq -c |
+        sort -nr
 end

@@ -2,6 +2,14 @@ shell = "fish -c '{}'"
 default-scheme = "base16-eva01"
 
 [[items]]
+name = "oomox"
+path = "~/dev/colorschemes/base16"
+themes-dir = "schemes"
+hook = "cp -f %f ~/.config/oomox/colors/__plugin__base16/"
+theme-file-extension = ".yml"
+
+
+[[items]]
 name = "gtk2-flatcolor"
 path = "~/dev/colorschemes/gtk-flatcolor"
 themes-dir = "gtk-2"

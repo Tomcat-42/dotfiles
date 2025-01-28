@@ -23,9 +23,13 @@ window-padding-y = 5
 window-padding-color = extend
 window-padding-balance = true
 resize-overlay = never
+window-theme = ghostty
+adw-toolbar-style = flat
+# custom-shader = /home/pablo/.config/ghostty/shaders/glow-rgbsplit-twitchy.glsl
 
-#shell-integration = fish
-#shell-integration-features = no-cursor
+
+shell-integration = fish
+shell-integration-features = no-cursor
 
 confirm-close-surface = false
 clipboard-paste-protection = false

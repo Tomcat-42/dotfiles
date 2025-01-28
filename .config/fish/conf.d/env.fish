@@ -3,7 +3,8 @@ set -gx BROWSER "chromium"
 set -gx PAGER "bat"
 # set -gx TERM "screen-256color"
 set -gx VISUAL "nvim"
-set -gx TERMINAL_EXEC  "ghostty"
+set -gx TERMINAL_EXEC "ghostty -e"
+set -gx TERMCMD "ghostty -e"
 set -gx TERMINAL  "ghostty"
 set -gx BEMENU_OPTS  "-C -i -w -T -b -l '10 up' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color0E' -R 0 -n --fn 'Iosevka Nerd Font' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0% --ab #$color00 --af #$color05"
 set -gx NO_AT_BRIDGE  "1"
@@ -49,10 +50,22 @@ set paths \
     ~/scripts \
     ~/.cargo/bin \
     ~/.local/share/bob/nvim-bin \
-    /usr/lib/llvm16/bin \
-    ~/dev/bun/build/debug/ \
-    ~/dev/bun/build/release \
+    # /usr/lib/llvm16/bin \
+    # ~/dev/bun/build/debug/ \
+    # ~/dev/bun/build/release \
     ~/.zvm/bin \
-    ~/.zvm/self
+    ~/.zvm/self \
+    ~/.luarocks/bin \
+
+# for i in (luarocks path | awk '{sub(/PATH=/, "PATH ", $2); print "set -gx "$2}'); eval $i; end
+
+set -gx LUA_PATH '/usr/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?.lua;/usr/local/sha
+re/lua/5.4/?/init.lua;/usr/share/lua/5.4/?/init.lua;/usr/local/lib/lua/5.4/?.lua;/usr/lo
+cal/lib/lua/5.4/?/init.lua;/usr/lib/lua/5.4/?.lua;/usr/lib/lua/5.4/?/init.lua;./?.lua;./
+?/init.lua;/home/pablo/.luarocks/share/lua/5.4/?.lua;/home/pablo/.luarocks/share/lua/5.4
+/?/init.lua'
+set -gx LUA_CPATH '/usr/local/lib/lua/5.4/?.so;/usr/lib/lua/5.4/?.so;/usr/local/lib/lua/
+5.4/loadall.so;/usr/lib/lua/5.4/loadall.so;./?.so;/home/pablo/.luarocks/lib/lua/5.4/?.so
+'
 
 fish_add_path $paths

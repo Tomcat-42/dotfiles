@@ -1,10 +1,12 @@
 local opt = vim.opt
+local wo = vim.wo
 local gopt = vim.g
 local env = vim.env
 
 -- folds
+opt.foldenable = true
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 99
@@ -27,7 +29,7 @@ opt.cursorline = true
 -- opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 -- opt.guicursor = ""
-opt.signcolumn = "yes"
+opt.signcolumn = "number"
 opt.wrap = false
 opt.swapfile = false
 opt.backup = false
@@ -54,6 +56,8 @@ opt.showmode = true
 opt.splitbelow = true
 opt.splitright = true
 opt.whichwrap:append "<>[]hl"
+opt.autochdir = false
+
 
 gopt.netrw_banner = 0
 gopt.netrw_liststyle = 3
