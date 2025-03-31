@@ -1,12 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export AOC_SESSION_TOKEN:53616c7465645f5f961a978d725b96174b9d71f94b69335f9ab5e4d15829c7ade552a814d263811d0d40db90aecf99dc7c17af3a6cf25bac01839bd8a90ca2f9
-SETUVAR BROWSER:\x1d
-SETUVAR --export FZF_DEFAULT_OPTS:\x20\x2d\x2dcolor\x3dbg\x2b\x3a\x23000000\x2cbg\x3a\x23000000\x2cspinner\x3a\x234b8f77\x2chl\x3a\x2315f4ee\x20\x2d\x2dcolor\x3dfg\x3a\x23ffffff\x2cheader\x3a\x2315f4ee\x2cinfo\x3a\x23ffff66\x2cpointer\x3a\x234b8f77\x20\x2d\x2dcolor\x3dmarker\x3a\x234b8f77\x2cfg\x2b\x3a\x23ffffff\x2cprompt\x3a\x23ffff66\x2chl\x2b\x3a\x2315f4ee
+SETUVAR --export FZF_ALT_C_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dwalker\x2dskip\x20\x2egit\x2cnode_modules\x2ctarget\x20\x2d\x2dpreview\x20\x27tree\x20\x2dC\x20\x7b\x7d\x27
+SETUVAR --export FZF_CTRL_R_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dreverse\x20\x2d\x2dpreview\x20\x27echo\x20\x7b2\x2e\x2e\x7d\x20\x7c\x20bat\x20\x2d\x2dcolor\x3dalways\x20\x2dpl\x20sh\x27\x20\x2d\x2dbind\x20\x27ctrl\x2dy\x3aexecute\x2dsilent\x28echo\x20\x2dn\x20\x7b2\x2e\x2e\x7d\x20\x7c\x20wl\x2dcopy\x29\x2babort\x27\x20\x2d\x2dcolor\x20header\x3aitalic\x20\x2d\x2dheader\x20\x27Press\x20CTRL\x2dY\x20to\x20copy\x20command\x20into\x20clipboard\x27
+SETUVAR --export FZF_CTRL_T_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dwalker\x2dskip\x20\x2egit\x2cnode_modules\x2ctarget\x20\x2d\x2dpreview\x20\x27bat\x20\x2dn\x20\x2d\x2dcolor\x3dalways\x20\x7b\x7d\x27\x20\x2d\x2dbind\x20\x27ctrl\x2d/\x3achange\x2dpreview\x2dwindow\x28down\x7chidden\x7c\x29\x27
+SETUVAR --export FZF_DEFAULT_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dcolor\x3dbg\x2b\x3a\x23000000\x2cbg\x3a\x23000000\x2cspinner\x3a\x234b8f77\x2chl\x3a\x2315f4ee\x20\x2d\x2dcolor\x3dfg\x3a\x23ffffff\x2cheader\x3a\x2315f4ee\x2cinfo\x3a\x23ffff66\x2cpointer\x3a\x234b8f77\x20\x2d\x2dcolor\x3dmarker\x3a\x234b8f77\x2cfg\x2b\x3a\x23ffffff\x2cprompt\x3a\x23ffff66\x2chl\x2b\x3a\x2315f4ee
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:blue
+SETUVAR fish_color_command:purple
 SETUVAR fish_color_comment:red
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
@@ -14,23 +15,24 @@ SETUVAR fish_color_end:green
 SETUVAR fish_color_error:brred
 SETUVAR fish_color_escape:brcyan
 SETUVAR fish_color_history_current:\x2d\x2dbold
-SETUVAR fish_color_host:normal
+SETUVAR fish_color_host:green
 SETUVAR fish_color_host_remote:yellow
-SETUVAR fish_color_normal:normal
+SETUVAR fish_color_normal:purple
 SETUVAR fish_color_operator:brcyan
 SETUVAR fish_color_param:cyan
 SETUVAR fish_color_quote:yellow
 SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
-SETUVAR fish_color_search_match:white\x1e\x2d\x2dbackground\x3dbrblack
-SETUVAR fish_color_selection:white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_search_match:green\x1e\x2d\x2dbackground\x3dbrblack
+SETUVAR fish_color_selection:blue\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_color_status:red
 SETUVAR fish_color_user:brgreen
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_command_not_found:\x1d
 SETUVAR fish_greeting:\x1d
-SETUVAR fish_pager_color_completion:normal
+SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_pager_color_completion:green
 SETUVAR fish_pager_color_description:yellow\x1e\x2di
-SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_prefix:purple\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
+SETUVAR fish_pager_color_progress:brgreen\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/home/pablo/\x2ezvm/self\x1e/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/home/pablo/dev/bun/build/debug\x1e/home/pablo/\x2ezvm/bin
+SETUVAR fish_user_paths:/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/\x2efzf/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/home/pablo/\x2ezvm/bin\x1e/home/pablo/\x2ezvm/self

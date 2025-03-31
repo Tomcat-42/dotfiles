@@ -1,8 +1,22 @@
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 return {
   { 'f3fora/nvim-texlabconfig', ft = { 'tex', 'bib' }, build = 'go build -o ~/.local/bin/' },
+  {
+    'lewis6991/gitsigns.nvim',
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
   {
     'saghen/blink.cmp',
     event = "InsertEnter",
@@ -22,7 +36,6 @@ return {
     },
     build = 'cargo build --release',
     opts = {
-
       -- Default:
       --
       --['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -39,6 +52,8 @@ return {
       --['<S-Tab>'] = { 'snippet_backward', 'fallback' },
       keymap = {
         preset = 'default',
+        ['<C-n>'] = { 'show', 'select_next', 'fallback' },
+        ['<C-p>'] = { 'show', 'select_prev', 'fallback' },
         ["<c-g>"] = {
           function()
             require("blink-cmp").show({ sources = { "ripgrep" } })
@@ -54,20 +69,22 @@ return {
           function()
             require("blink-cmp").show({ sources = { "copilot" } })
           end,
-
         },
       },
-      appearance = { use_nvim_cmp_as_default = false, nerd_font_variant = 'mono' },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'mono'
+      },
       sources = {
         default = {
           'lsp',
           'path',
           'snippets',
           'buffer',
+          'snippets',
           -- "ripgrep",
           "copilot"
         },
-        cmdline = {},
         providers = {
           copilot = {
             name = "copilot",
@@ -88,9 +105,17 @@ return {
             },
           },
         },
-
+      },
+      cmdline = {
+        enabled = false,
+        sources = {},
       },
       completion = {
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          }
+        },
         list = {
           selection = {
             preselect = false,
@@ -106,6 +131,7 @@ return {
         },
         menu = {
           draw = {
+            treesitter = { "lsp" },
             columns = {
               { "label",     "label_description", gap = 1 },
               { "kind_icon", "kind" }
@@ -118,7 +144,6 @@ return {
           auto_show = true,
           window = { border = 'single' }
         },
-
         ghost_text = { enabled = true },
       },
       signature = {
@@ -140,11 +165,15 @@ return {
       "LspUninstall",
       "LspStart"
     },
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = {
+      "ibhagwan/fzf-lua",
+      "saghen/blink.cmp",
+    },
     opts = {
       servers = {
         html = {},
         cssls = {},
+        yamlls = {},
         ts_ls = {},
         pyright = {},
         arduino_language_server = {},
@@ -203,28 +232,45 @@ return {
               },
             },
           },
-        }
+        },
+        asm_lsp = {},
       },
+
     },
     config = function(_, opts)
       local lspconfig = require('lspconfig')
 
       autocmd('LspAttach', {
         desc = 'LSP actions',
+        group = augroup('lsp', { clear = true }),
         callback = function(event)
           local o = { buffer = event.buf }
+          local fzf = require('fzf-lua')
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          -- map('n', 'gr', vim.lsp.buf.references, o)
+          -- map('n', 'gd', vim.lsp.buf.definition, o)
+          -- map('n', 'gD', vim.lsp.buf.declaration, o)
+          -- map('n', 'go', vim.lsp.buf.type_definition, o)
+          -- map('n', 'gi', vim.lsp.buf.implementation, o)
+          -- map('n', '<leader>gl', vim.diagnostic.setloclist, o)
+          -- map('n', 'ga', vim.lsp.buf.code_action, o)
+          map('n', 'gr', fzf.lsp_references, o)
+          map('n', 'gd', fzf.lsp_definitions, o)
+          map('n', 'gD', fzf.lsp_declarations, o)
+          map('n', 'go', fzf.lsp_typedefs, o)
+          map('n', 'gi', fzf.lsp_implementations, o)
+          map('n', 'gS', fzf.lsp_document_symbols, o)
+          map('n', 'gW', fzf.lsp_workspace_symbols, o)
+          map('n', 'ga', fzf.lsp_code_actions, o)
+          map('n', 'gF', fzf.lsp_finder, o)
+          map('n', '<leader>gl', fzf.diagnostics_document, o)
+          map('n', '<leader>gw', fzf.diagnostics_workspace, o)
 
           map({ 'n', 'x' }, 'gq', vim.lsp.buf.format, o)
-          map('n', 'K', vim.lsp.buf.hover, o)
-          map('n', 'gd', vim.lsp.buf.definition, o)
-          map('n', 'gD', vim.lsp.buf.declaration, o)
-          map('n', 'gi', vim.lsp.buf.implementation, o)
-          map('n', 'go', vim.lsp.buf.type_definition, o)
-          map('n', 'gr', vim.lsp.buf.references, o)
+          map('n', 'K', function() vim.lsp.buf.hover({ border = "single" }) end, o)
           map('n', 'gs', vim.lsp.buf.signature_help, o)
           map('n', 'ra', vim.lsp.buf.rename, o)
-          map('n', 'ga', vim.lsp.buf.code_action, o)
-          map('n', '<leader>gl', vim.diagnostic.setloclist, o)
           map('n', 'gl', vim.diagnostic.open_float, o)
           map('n', '[g', vim.diagnostic.goto_prev, o)
           map('n', ']g', vim.diagnostic.goto_next, o)
@@ -233,45 +279,74 @@ return {
 
           map('n', '<leader>v', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, o)
 
-          vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-            vim.lsp.handlers.hover, {
-              border = "single"
-            }
-          )
-
-          vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-            vim.lsp.handlers.signature_help, {
-              border = "single"
-            }
-          )
-
           vim.diagnostic.config {
-            -- virtual_lines = true,
+            -- virtual_lines = {
+            --   enabled = true,
+            --   current_line = true,
+            -- },
+            -- signs = {
+            --   text = {
+            --     ERROR = '',
+            --     WARN = '',
+            --     INFO = '',
+            --     HINT = '',
+            --   }
+            -- },
             virtual_text = {
-              virt_text_pos = "eol_right_align",
-              prefix = '■ ', -- '●', '▎', 'x', '■', , 
+              virt_text_pos = "eol_right_align", -- 'eol'|'eol_right_align'|'inline'|'overlay'|'right_align'
+              prefix = ' ', -- '●', '▎', 'x', '■', , , ->
               enabled = true,
             },
             float = { border = "single" }
           }
+
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.clear_references,
+            })
+
+            vim.api.nvim_create_autocmd('LspDetach', {
+              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              end,
+            })
+          end
+
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map("n", "<leader>th", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, o)
+          end
         end,
       })
 
+      local capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(),
+        require('blink.cmp').get_lsp_capabilities())
 
       for server, config in pairs(opts.servers) do
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
 
       lspconfig.glsl_analyzer.setup {
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        capabilities = capabilities,
         on_attach = function(client, bufnr)
           if client.name == "glsl_analyzer" then
             client.cancel_request = function(_, _) end
           end
         end
       }
-
 
       autocmd({ "BufEnter", "BufWinEnter" }, {
         pattern = { "*.cpp", "*.hpp", "*.c", "*.h" },

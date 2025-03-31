@@ -1,74 +1,78 @@
 local opt = vim.opt
-local wo = vim.wo
+local g = vim.g
 local gopt = vim.g
-local env = vim.env
+local wo = vim.wo
 
--- folds
+-- === Folding ===
 opt.foldenable = true
+wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
 
+-- === Indentation ===
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
-opt.shortmess:append "atI"
-opt.signcolumn = "auto"
-opt.mouse = ""
 opt.smartindent = true
 opt.autoindent = true
+
+-- === UI Settings ===
+opt.shortmess:append "atI"
+opt.signcolumn = "number" -- or "auto"
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 1
 opt.cursorline = true
--- opt.clipboard = "unnamedplus"
+opt.wrap = false
+opt.scrolloff = 10
+opt.colorcolumn = "80"
+opt.laststatus = 3
+opt.showmode = true
 opt.termguicolors = true
 -- opt.guicursor = ""
-opt.signcolumn = "number"
-opt.wrap = false
+opt.splitbelow = true
+opt.splitright = true
+opt.whichwrap:append "<>[]hl"
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- === Misc ===
+opt.mouse = ""
+opt.timeoutlen = 1000 -- 600
+opt.updatetime = 250
+opt.autochdir = false
+opt.breakindent = true
+
+-- === Backup & Swap ===
 opt.swapfile = false
 opt.backup = false
 opt.undofile = true
 opt.undodir = vim.fn.stdpath("data") .. "/undo"
 opt.directory = vim.fn.stdpath("data") .. "/swap"
-opt.scrolloff = 8
-opt.updatetime = 50
-opt.colorcolumn = "80"
-opt.completeopt = 'menuone,noselect'
-opt.laststatus = 3
--- vim.opt.fillchars = {
---   vert = "▕", -- alternatives │
---   fold = " ",
---   eob = " ", -- suppress ~ at EndOfBuffer
---   diff = "╱", -- alternatives = ⣿ ░ ─
---   msgsep = "‾",
---   foldopen = "▾",
---   foldsep = "│",
---   foldclose = "▸",
--- }
-opt.showmode = true
-opt.showmode = true
-opt.splitbelow = true
-opt.splitright = true
-opt.whichwrap:append "<>[]hl"
-opt.autochdir = false
 
+-- === Searching ===
+opt.ignorecase = true
+opt.smartcase = true
 
-gopt.netrw_banner = 0
-gopt.netrw_liststyle = 3
-gopt.netrw_keepdir = 1
-gopt.netrw_localrm = "rm -r"
---gopt.netrw_winsize = 25
-gopt.netrw_localcopydircmd = "cp -r"
-
+-- === Completion ===
+opt.completeopt = "menuone,noinsert,noselect,popup,fuzzy"
 opt.completeopt:append('fuzzy') -- Use fuzzy matching for built-in completion
+opt.inccommand = 'split'
 
--- nushell fuckery
+-- === NetRW ===
+-- gopt.netrw_banner = 0
+-- gopt.netrw_liststyle = 3
+-- gopt.netrw_keepdir = 1
+-- gopt.netrw_localrm = "rm -r"
+--gopt.netrw_winsize = 25
+-- gopt.netrw_localcopydircmd = "cp -r"
+
+-- === Custom Shell ===
 -- opt.shell = "nu"
 -- opt.shellcmdflag = "--stdin --no-newline -c"
 -- opt.shellredir = "out+err> %s"

@@ -54,7 +54,7 @@ riverctl focus-follows-cursor always
 riverctl hide-cursor timeout 1000
 riverctl hide-cursor when-typing enabled
 riverctl set-cursor-warp on-focus-change
-riverctl set-repeat 70 200
+riverctl set-repeat 100 150
 riverctl float-filter-add app-id 'float*'
 riverctl float-filter-add title 'foo'
 riverctl csd-filter-add app-id "bar"

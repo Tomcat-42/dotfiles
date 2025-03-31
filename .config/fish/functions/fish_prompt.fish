@@ -1,4 +1,6 @@
 function fish_prompt --description 'Write out the prompt'
+    echo -en "\e]133;A\e\\"  # OSC 133;A (Start of command)
+
     set -l last_pipestatus $pipestatus
     set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
 

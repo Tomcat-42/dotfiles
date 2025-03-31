@@ -1,14 +1,24 @@
+local highlight = vim.api.nvim_set_hl
+
 return {
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    opts = { enable = false },
+    keys = {
+      { "<leader>cc", function() require('treesitter-context').toggle() end,                    "Toggle Treesitter Context" },
+      { "<leader>cg", function() require('treesitter-context').go_to_context(vim.v.count1) end, "Go to Treesitter Context" },
+    },
+  },
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
     build = ":TSUpdate",
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context',
-      'hiphish/rainbow-delimiters.nvim'
+      'hiphish/rainbow-delimiters.nvim',
     },
     config = function()
+      highlight(0, 'TreesitterContext', { italic = true })
       require 'nvim-treesitter.configs'.setup {
         -- ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "rust", "cpp" },
         disable = function(_, buf)
@@ -27,36 +37,53 @@ return {
           use_langtree = true,
         },
         textobjects = {
+          lsp_interop = {
+            enable = true,
+            border = 'single',
+            floating_preview_opts = {},
+            peek_definition_code = {
+              ["<leader>df"] = "@function.outer",
+              ["<leader>dF"] = "@class.outer",
+            },
+          },
           move = {
             enable = true,
             set_jumps = true,
             goto_next_start = {
               ["]m"] = "@function.outer",
-              ["gj"] = "@function.outer",
               ["]]"] = "@class.outer",
               ["]b"] = "@block.outer",
               ["]a"] = "@parameter.inner",
+              ["]o"] = "@loop.*",
+              ["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+              ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
             goto_next_end = {
               ["]M"] = "@function.outer",
-              ["gJ"] = "@function.outer",
               ["]["] = "@class.outer",
               ["]B"] = "@block.outer",
               ["]A"] = "@parameter.inner",
+              ["]O"] = "@loop.*",
+              ["]S"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+              ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
             goto_previous_start = {
               ["[m"] = "@function.outer",
-              ["gk"] = "@function.outer",
               ["[["] = "@class.outer",
               ["[b"] = "@block.outer",
               ["[a"] = "@parameter.inner",
+              ["[o"] = "@loop.*",
+              ["[s"] = { query = "@local.scope", query_group = "locals", desc = "Previous scope" },
+              ["[z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
             },
             goto_previous_end = {
               ["[M"] = "@function.outer",
-              ["gK"] = "@function.outer",
               ["[]"] = "@class.outer",
               ["[B"] = "@block.outer",
               ["[A"] = "@parameter.inner",
+              ["[O"] = "@loop.*",
+              ["[S"] = { query = "@local.scope", query_group = "locals", desc = "Previous scope" },
+              ["[Z"] = { query = "@fold", query_group = "folds", desc = "Previous fold" },
             },
           },
           select = {
@@ -75,6 +102,17 @@ return {
               ["i/"] = "@comment.outer",   -- no inner for comment
               ["aa"] = "@parameter.outer", -- parameter -> argument
               ["ia"] = "@parameter.inner",
+              ["as"] = "@scope.outer",
+              ["is"] = "@scope.inner",
+            },
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<leader>a"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<leader>A"] = "@parameter.inner",
             },
           },
         },

@@ -1,5 +1,3 @@
 require("configs.autocmds")
-require("configs.colors")
-require("configs.commands")
 require("configs.maps")
 require("configs.options")

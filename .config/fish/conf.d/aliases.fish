@@ -3,6 +3,7 @@ abbr -a dz detach zathura
 abbr -a di detach imv
 abbr -a gitsc git commit -S -s --amend --no-edit
 abbr -a n nvim
+abbr -a dp dragon-drop --and-exit
 
 function c
     if test (count $argv) -eq 0
