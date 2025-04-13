@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/oil.nvim",
-    opts = {},
+    opts = { view_options = { show_hidden = true } },
     cmd = {
       "Oil"
     },
@@ -29,6 +29,8 @@ return {
       { "<leader>fh", '<cmd>lua require("fzf-lua").help_tags()<cr>',        desc = "Find Help Tags" },
       { "<leader>fm", '<cmd>lua require("fzf-lua").marks()<cr>',            desc = "Find Marks" },
       { "<leader>fl", '<cmd>lua require("fzf-lua").manpages()<cr>',         desc = "Find Marks" },
+      { "<leader>fc", '<cmd>lua require("fzf-lua").commands()<cr>',         desc = "Find Marks" },
+      { "<leader>fs", '<cmd>lua require("fzf-lua").command_history()<cr>',  desc = "Find Marks" },
     },
     config = function(_, opts)
       local fzf = require("fzf-lua")

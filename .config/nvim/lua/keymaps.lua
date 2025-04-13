@@ -2,6 +2,7 @@ local map = vim.keymap.set
 local g = vim.g
 local opt = vim.opt
 
+
 -- === Leader Keys ===
 g.mapleader = " "
 g.maplocalleader = "\\"
@@ -9,7 +10,7 @@ g.maplocalleader = "\\"
 -- === UI & Navigation ===
 map("n", "<Esc>", "<cmd>noh<cr>")                        -- Clear search highlights
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- Disable accidental space key usage
--- Movement in wrapped lines
+map('n', '<leader>w', '<cmd>set wrap!<cr>')
 -- map({ "n", "x" }, "j", function() return vim.v.count > 0 and "j" or "gj" end, { noremap = true, expr = true })
 -- map({ "n", "x" }, "k", function() return vim.v.count > 0 and "k" or "gk" end, { noremap = true, expr = true })
 
@@ -36,8 +37,11 @@ map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", "\"_dp") -- Paste over selection without losing register
 
-map("i", "<C-c>", "<esc>")     -- Make <C-c> behave like <esc>
-map("n", "Q", "<nop>")         -- Disable Ex mode
+-- map("i", "<C-c>", "<esc>")     -- Make <C-c> behave like <esc>
+-- map("n", "Q", "<nop>")         -- Disable Ex mode
+-- map("i", "jk", "<esc>")        -- Pressing jk in insert mode will exit insert mode
+-- map("i", "kj", "<esc>")        -- Pressing kj in insert mode will exit insert mode
+-- map("i", "<esc>", "<nop>")     -- Disable <esc> in insert mode
 
 -- === Clipboard & Registers ===
 map("n", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
@@ -73,9 +77,9 @@ map('n', 'tmn', ':tabm +1<CR>')                -- Move tab right
 map('n', 'tmp', ':tabm -1<CR>')                -- Move tab left
 
 -- === Splits ===
-map('n', '<M-e>', '<cmd>vsplit<cr>')
-map('n', '<M-o>', '<cmd>split<cr>')
-map('n', '<M-q>', '<cmd>q<cr>')
+-- map('n', '<M-e>', '<cmd>vsplit<cr>')
+-- map('n', '<M-o>', '<cmd>split<cr>')
+-- map('n', '<M-q>', '<cmd>q<cr>')
 
 -- === Search & Replace ===
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- Substitute word under cursor
@@ -93,9 +97,11 @@ map("n", "<leader>lo", "<cmd>lopen<cr>zz")
 -- === Terminal ===
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 map("n", "<leader><cr>", "<cmd>term<cr><cmd>startinsert<cr>")
+map("n", "<C-s><C-v>", "<cmd>vsplit term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in vertical split" })
+map("n", "<C-s><C-s>", "<cmd>split term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in horizontal split" })
 
 -- === Treesitter ===
-map("n", "<C-s>", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
+map("n", "<C-k>", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
 
 -- === Diff Mode ===
 if opt.diff:get() then

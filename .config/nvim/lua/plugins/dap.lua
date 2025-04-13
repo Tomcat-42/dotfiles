@@ -32,7 +32,7 @@ local get_path = function(default_path)
           completion = "file",
         },
         function(input)
-          vim:notify("PATH == " .. input)
+          vim.notify("PATH == " .. input)
           coroutine.resume(co, input)
         end)
     end)
@@ -178,11 +178,11 @@ return {
     config = function()
       local dap, dapview = require("dap"), require("dap-view")
 
-      highlight(0, "DapStopped", vim.api.nvim_get_hl(0, { name = "Visual" }))
-      sign("DapBreakpoint", { text = "⭘", texthl = "DapBreakpoint", linehl = "", numhl = "" })
-      sign("DapBreakpointCondition", { text = "◉", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
-      sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
-      sign("DapStopped", { text = "▶", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+      -- highlight(0, "DapStopped", vim.api.nvim_get_hl(0, { name = "Visual" }))
+      -- sign("DapBreakpoint", { text = "⭘", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+      -- sign("DapBreakpointCondition", { text = "◉", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+      -- sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+      -- sign("DapStopped", { text = "▶", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
       dap.adapters = {
         codelldb = {

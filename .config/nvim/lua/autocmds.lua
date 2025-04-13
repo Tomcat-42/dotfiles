@@ -2,6 +2,16 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
 
+autocmd("UiEnter", {
+  group = augroup("Netrw", { clear = true }),
+  pattern = "*",
+  callback = function(args)
+    local bufname = vim.api.nvim_buf_get_name(args.buf)
+    if vim.fn.isdirectory(bufname) == 0 and bufname ~= "" then return end
+    require("fzf-lua").files()
+  end,
+})
+
 -- === Highlight on Yank ===
 -- See `:help vim.highlight.on_yank()`
 autocmd('TextYankPost', {
@@ -32,12 +42,17 @@ autocmd({ "BufReadPost" }, {
 })
 
 -- === Terminal ===
--- Auto-close terminal buffers if the command exits successfully
+-- Auto-close interactive terminal buffers if the command exits successfully,
+-- because non-interactive commands generally are launched for it's output.
 autocmd('TermClose', {
   pattern = '*',
   callback = function()
     vim.schedule(function()
-      if vim.bo.buftype == 'terminal' and vim.v.shell_error == 0 then
+      if
+          vim.bo.buftype == 'terminal'
+          and vim.v.shell_error == 0
+          and vim.fn.mode() == "t"
+      then
         vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
       end
     end)
@@ -57,7 +72,7 @@ vim.api.nvim_create_autocmd('TermRequest', {
       local lnum = args.data.cursor[1]
       vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
         -- Replace with sign text and highlight group of choice
-        sign_text = '▶',
+        sign_text = '-> ',
         sign_hl_group = 'SpecialChar',
       })
     end

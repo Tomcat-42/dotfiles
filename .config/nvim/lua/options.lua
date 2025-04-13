@@ -5,13 +5,13 @@ local wo = vim.wo
 
 -- === Folding ===
 opt.foldenable = true
-wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldmethod = "expr"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
+wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+wo.foldmethod = "expr"
 
 -- === Indentation ===
 opt.tabstop = 4
@@ -28,6 +28,7 @@ opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 1
 opt.cursorline = true
+opt.colorcolumn = "80"
 opt.wrap = false
 opt.scrolloff = 10
 opt.colorcolumn = "80"

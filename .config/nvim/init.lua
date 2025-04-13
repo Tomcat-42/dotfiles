@@ -1,4 +1,6 @@
-require("configs")
+require("autocmds")
+require("options")
+require("keymaps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -15,7 +17,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup("plugins", {
   install = { colorscheme = { "base16" } },
   lockfile = vim.fn.stdpath("config") .. "/.lazy-lock.json",
