@@ -5,9 +5,8 @@ default-scheme = "base16-eva01"
 name = "oomox"
 path = "~/dev/colorschemes/base16"
 themes-dir = "schemes"
-hook = "cp -f %f ~/.config/oomox/colors/__plugin__base16/"
+hook = "cp -f %f ~/.config/oomox/colors/__plugin__base16/system.yml"
 theme-file-extension = ".yml"
-
 
 [[items]]
 name = "gtk2-flatcolor"
@@ -66,31 +65,11 @@ hook = "cp -f %f ~/.config/nvim/lua/plugins/base16.lua"
 theme-file-extension = ".lua"
 
 [[items]]
-name = "luakit"
-path = "~/dev/colorschemes/luakit/"
-themes-dir = "colors"
-hook = "cp -f %f ~/.config/luakit/colors/system.lua"
-theme-file-extension = ".lua"
-
-[[items]]
-path = "https://github.com/tinted-theming/base16-qutebrowser"
-name = "base16-qutebrowser"
-themes-dir = "themes/minimal"
-hook = "cp -f %f ~/.config/qutebrowser/config.d/colorscheme.py"
-theme-file-extension = ".config.py"
-
-[[items]]
-path = "~/dev/colorschemes/kitty/"
-name = "kitty"
-themes-dir = "colors"
-hook = "cp -f %f ~/.config/kitty/theme.conf"
-theme-file-extension = ".conf"
-
-[[items]]
-path = "~/dev/colorschemes/ghostty/"
-name = "ghostty"
-themes-dir = "colors"
-hook = "cp -f %f ~/.config/ghostty/themes/system"
+name = "helix"
+path = "~/dev/colorschemes/helix/"
+themes-dir = "themes"
+hook = "cp -f %f ~/.config/helix/themes/system.toml"
+theme-file-extension = ".toml"
 
 [[items]]
 path = "~/dev/colorschemes/mako/"

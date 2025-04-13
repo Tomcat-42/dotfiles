@@ -1,4 +1,4 @@
-## Base16 eva01
+## Base16 rosedark
 # Author: Pablo Alessandro Santos Hugen
 #
 # You can use these variables anywhere in the mako configuration file.
@@ -11,15 +11,15 @@ ignore-timeout=1
 font=Iosevka Nerd Font 12
 
 background-color=#000000
-text-color=#ffffff
-border-color=#66ff66
+text-color=#f5e0dc
+border-color=#31748f
 
 [urgency=low]
 background-color=#000000
-text-color=#ffffff
-border-color=#66ff66
+text-color=#f5e0dc
+border-color=#31748f
 
 [urgency=high]
 background-color=#000000
-text-color=#ffffff
-border-color=#ff6666
+text-color=#f5e0dc
+border-color=#eb6f92

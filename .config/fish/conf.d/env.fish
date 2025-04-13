@@ -42,19 +42,19 @@ end
 
 #" --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"\
 set -Ux FZF_DEFAULT_OPTS \
-" --style minimal"\
+    " --style minimal"\
 " --color=bg+:#$color01,bg:#$color00,spinner:#$color0C,hl:#$color0D"\
 " --color=fg:#$color04,header:#$color0D,info:#$color0A,pointer:#$color0C"\
 " --color=marker:#$color0C,fg+:#$color06,prompt:#$color0A,hl+:#$color0D"
 
 set -Ux FZF_CTRL_T_OPTS \
-" --style minimal"\
+    " --style minimal"\
 " --walker-skip .git,node_modules,target"\
 " --preview 'bat -n --color=always {}'"\
 " --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 set -Ux FZF_CTRL_R_OPTS \
-" --style minimal"\
+    " --style minimal"\
 " --reverse"\
 " --preview 'echo {2..} | bat --color=always -pl sh'"\
 " --bind 'ctrl-y:execute-silent(echo -n {2..} | wl-copy)+abort'"\
@@ -62,7 +62,7 @@ set -Ux FZF_CTRL_R_OPTS \
 " --header 'Press CTRL-Y to copy command into clipboard'"
 
 set -Ux FZF_ALT_C_OPTS \
-" --style minimal"\
+    " --style minimal"\
 " --walker-skip .git,node_modules,target"\
 " --preview 'tree -C {}'"
 
@@ -89,5 +89,19 @@ cal/lib/lua/5.4/?/init.lua;/usr/lib/lua/5.4/?.lua;/usr/lib/lua/5.4/?/init.lua;./
 set -gx LUA_CPATH '/usr/local/lib/lua/5.4/?.so;/usr/lib/lua/5.4/?.so;/usr/local/lib/lua/
 5.4/loadall.so;/usr/lib/lua/5.4/loadall.so;./?.so;/home/pablo/.luarocks/lib/lua/5.4/?.so
 '
+
+set -gx LIBVA_DRIVER_NAME "nvidia"
+set -gx __GLX_VENDOR_LIBRARY_NAME "nvidia"
+set -gx NVD_BACKEND "direct"
+
+# set -gx FREETYPE_PROPERTIES \
+#     "autofitter:no-stem-darkening=0\
+#  autofitter:darkening-parameters=500,0,1000,500,2500,500,4000,0\
+#  cff:no-stem-darkening=0\
+#  cff:darkening-parameters=500,475,1000,475,2500,475,4000,0\
+#  type1:no-stem-darkening=0\
+#  type1:darkening-parameters=500,475,1000,475,2500,475,4000,0\
+#  t1cid:no-stem-darkening=0\
+#  t1cid:darkening-parameters=500,475,1000,475,2500,475,4000,0"
 
 fish_add_path $paths

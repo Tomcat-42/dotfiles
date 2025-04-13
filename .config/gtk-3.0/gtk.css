@@ -1,7 +1,19 @@
-.titlebar, .titlebar *, .header-bar, .header-bar * {
-  background-color: transparent;
-  margin: -25px 0 0 0;
-  padding: 0;
-  font-size: 0;
-  min-height: 0;
+/* .titlebar, .titlebar *, .header-bar, .header-bar * { */
+/*   background-color: transparent; */
+/*   margin: -25px 0 0 0; */
+/*   padding: 0; */
+/*   font-size: 0; */
+/*   min-height: 0; */
+/* } */
+/* No (default) title bar on wayland */
+headerbar.default-decoration {
+  /* You may need to tweak these values depending on your GTK theme */
+  margin-bottom: 50px;
+  margin-top: -100px;
+}
+
+/* rm -rf window shadows */
+window.csd,             /* gtk4? */
+window.csd decoration { /* gtk3 */
+  box-shadow: none;
 }
