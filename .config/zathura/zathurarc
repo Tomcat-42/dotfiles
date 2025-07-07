@@ -8,7 +8,7 @@ set adjust-open "width"
 set statusbar-v-padding 0
 set statusbar-h-padding 20
 set incremental-search true
-set font "Iosevka NF 12"
+set font "Berkeley Nerd Font 16"
 set selection-notification true
 set vertical-center true
 
@@ -36,59 +36,59 @@ map [index] q toggle_index
 set default-bg                  "#000000"
 set default-fg                  "#000000"
 
-set statusbar-fg                "#c4a7e7"
-set statusbar-bg                "#191724"
+set statusbar-fg                "#bdae93"
+set statusbar-bg                "#1d2021"
 
 set inputbar-bg                 "#000000"
-set inputbar-fg                 "#f2e9e1"
+set inputbar-fg                 "#fbf1c7"
 
 set notification-bg             "#000000"
-set notification-fg             "#f2e9e1"
+set notification-fg             "#fbf1c7"
 
 set notification-error-bg       "#000000"
-set notification-error-fg       "#eb6f92"
+set notification-error-fg       "#fb4934"
 
 set notification-warning-bg     "#000000"
-set notification-warning-fg     "#eb6f92"
+set notification-warning-fg     "#fb4934"
 
-set highlight-color             "#f6c177"
-set highlight-active-color      "#c4a7e7"
+set highlight-color             "#fabd2f"
+set highlight-active-color      "#83a598"
 
 set completion-bg               "#000000"
-set completion-fg               "#c4a7e7"
+set completion-fg               "#83a598"
 
 set completion-group-bg         "#000000"
-set completion-group-fg         "#c4a7e7"
+set completion-group-fg         "#83a598"
 
-set completion-highlight-fg     "#f2e9e1"
-set completion-highlight-bg     "#c4a7e7"
+set completion-highlight-fg     "#fbf1c7"
+set completion-highlight-bg     "#83a598"
 
 set recolor-lightcolor          "#000000"
-set recolor-darkcolor           "#e0def4"
+set recolor-darkcolor           "#ebdbb2"
 
 # Inserted Missing Options
 
 set index-bg                    "#000000" # base00 - default background
-set index-fg                    "#f5e0dc" # base05 - foreground
-set index-active-bg             "#9ccfd8" # base0C - cyan
+set index-fg                    "#d5c4a1" # base05 - foreground
+set index-active-bg             "#8ec07c" # base0C - cyan
 set index-active-fg             "#000000" # base00 - default background
 
 set inputbar-bg                 "#000000" # base00 - default background
-set inputbar-fg                 "#f5e0dc" # base05 - foreground
+set inputbar-fg                 "#d5c4a1" # base05 - foreground
 
 set statusbar-bg                "#000000" # base00 - default background
-set statusbar-fg                "#f5e0dc" # base05 - foreground
+set statusbar-fg                "#d5c4a1" # base05 - foreground
 
-set highlight-color             "#f6c177" # base09 - orange
-set highlight-active-color      "#f6c177" # base09 - orange
+set highlight-color             "#fe8019" # base09 - orange
+set highlight-active-color      "#fe8019" # base09 - orange
 
 set default-bg                  "#000000" # base00 - default background
-set default-fg                  "#f5e0dc" # base05 - foreground
+set default-fg                  "#d5c4a1" # base05 - foreground
 set render-loading              true
 set render-loading-bg           "#000000" # base00 - default background
-set render-loading-fg           "#f5e0dc" # base05 - foreground
+set render-loading-fg           "#d5c4a1" # base05 - foreground
 
 # Recolor Book Content's Color
 set recolor-lightcolor          "#000000" # base00 - default background
-set recolor-darkcolor           "#f5e0dc" # base05 - foreground
+set recolor-darkcolor           "#d5c4a1" # base05 - foreground
 set recolor-keephue             true      # keep original color

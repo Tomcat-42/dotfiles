@@ -1,0 +1,17 @@
+#!/bin/env bash
+
+deps="tinty bemenu"
+for dep in $deps; do
+    if ! command -v "$dep" >/dev/null 2>&1; then
+        echo "Error: $dep is not installed" >&2
+        exit 1
+    fi
+done
+
+theme=$(printf "%s\n%s" "$(tinty list --custom-schemes)" "$(tinty list)" | bemenu -p "Select theme: " -i -l "10 up")
+
+if [ -z "$theme" ]; then
+    exit 1
+fi
+
+tinty apply "$theme"

@@ -2,19 +2,16 @@
 
 # Colors and Borders
 riverctl background-color "0x${color00}"
-riverctl border-color-focused "0x${color0E}"
+riverctl border-color-focused "0x${color08}"
 riverctl border-color-unfocused "0x${color01}"
-riverctl border-color-urgent "0x${color08}"
+riverctl border-color-urgent "0x${color0E}"
 riverctl border-width 2
 
 # Keyboard
 riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
 
 # Monitor Conf
-# riverctl spawn "wlr-randr  --output HDMI-A-1 --preferred"
-# riverctl spawn "wlr-randr --output HDMI-A-1 --preferred  --scale 2.5"
-riverctl spawn "wlr-randr --output HDMI-A-1 --preferred  --output DP-1 --preferred --transform 90"
-riverctl spawn "wlr-randr --output eDP-1 --off"
+riverctl spawn "kanshi"
 
 # Status Bar
 riverctl spawn "$HOME/.config/river/status"
@@ -33,8 +30,12 @@ riverctl map normal Super o spawn 'makoctl dismiss -a'
 riverctl map normal Super t spawn '~/scripts/theme > /dev/null'
 riverctl map normal Super+Shift c spawn 'exec $TERMINAL_EXEC $(bemenu-run --no-exec)'
 riverctl map normal Super s spawn '~/scripts/screenshot > /dev/null'
+riverctl map normal XF86SelectiveScreenshot spawn '~/scripts/screenshot > /dev/null'
+riverctl map normal XF86Print spawn '~/scripts/screenshot > /dev/null'
+riverctl map normal XF86Display spawn 'wdisplays'
+riverctl map normal XF86Display spawn '~/scripts/screenshot > /dev/null'
 riverctl map normal Super+Shift s spawn '~/scripts/screenshot stop > /dev/null'
-riverctl map normal Super b spawn 'echo "all toggle-visibility" >> $XDG_RUNTIME_DIR/sandbar'
+riverctl map normal Super b spawn 'kill -USR1 $(pidof dam)'
 riverctl map normal Super n spawn 'toggleable_background_task wlsunset -S 00:00'
 riverctl map normal Super a spawn 'kblayout'
 riverctl map normal Super p spawn 'neopassmenu -c -m > /dev/null && notify-send "Password copied" > /dev/null'
@@ -44,6 +45,7 @@ for mode in normal locked; do
   riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'
   riverctl map $mode None XF86AudioLowerVolume spawn 'pamixer -d 5'
   riverctl map $mode None XF86AudioMute spawn 'pamixer --toggle-mute'
+  riverctl map $mode None XF86AudioMicMute spawn 'pamixer --default-source -t'
 
   riverctl map $mode None XF86MonBrightnessUp spawn 'light -A 5'
   riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
@@ -51,7 +53,7 @@ done
 
 # Confs
 riverctl focus-follows-cursor always
-riverctl hide-cursor timeout 1000
+riverctl hide-cursor timeout 500
 riverctl hide-cursor when-typing enabled
 riverctl set-cursor-warp on-focus-change
 riverctl set-repeat 100 150
@@ -118,6 +120,15 @@ riverctl map normal Super W send-layout-cmd rivercarro "main-location-cycle left
 riverctl map normal Super F11 enter-mode passthrough
 riverctl map passthrough Super F11 enter-mode normal
 
+# inputs
+riverctl input "pointer-11311-45-SNSL002D:00_2C2F:002D_Touchpad" events disabled
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" events enabled
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" drag enabled
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" accel-profile adaptive
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" pointer-accel 0.45
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" click-method button-areas
+riverctl input "tablet-1386-890-Wacom_One_by_Wacom_S_Pen" disable-while-typing enabled
+
 # Layouts
 riverctl default-layout rivercarro
 rivercarro -per-tag -inner-gaps 0 -outer-gaps 0 &
@@ -131,5 +142,5 @@ riverctl rule-add -title "C++ - Swarm" no-float
 riverctl rule-add -title "C++ - Swarm" tags $((1 << 4))
 
 # Environment
-riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP'
+riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP BEMENU_OPTS'
 riverctl spawn 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river'

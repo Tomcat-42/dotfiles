@@ -30,17 +30,31 @@ opt.numberwidth = 1
 opt.cursorline = true
 opt.colorcolumn = "80"
 opt.wrap = false
-opt.scrolloff = 10
+opt.scrolloff = 8
+opt.sidescrolloff = 8
 opt.colorcolumn = "80"
 opt.laststatus = 3
 opt.showmode = true
 opt.termguicolors = true
+opt.background = "dark"
 -- opt.guicursor = ""
 opt.splitbelow = true
 opt.splitright = true
 opt.whichwrap:append "<>[]hl"
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.statusline = table.concat(
+  {
+    ' %t',
+    '%r',
+    '%m',
+    '%=',
+    '%{&filetype}',
+    ' %2p%%',
+    ' %3l:%-2c '
+  },
+  ''
+)
 
 -- === Misc ===
 opt.mouse = ""

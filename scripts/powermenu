@@ -1,0 +1,33 @@
+#!/bin/sh
+
+opts="exit
+restart
+suspend
+lock
+reboot
+shutdown"
+
+choosen=$(printf "%s" "$opts" | bemenu -p "power:")
+
+case "$choosen" in
+  exit)
+    riverctl exit
+    ;;
+  restart)
+    killall "${SHELL}"
+    ;;
+  suspend)
+    systemctl suspend
+    ;;
+  lock)
+    lock
+    ;;
+  reboot)
+    reboot
+    ;;
+  shutdown)
+    poweroff
+    ;;
+  *)
+    ;;
+esac

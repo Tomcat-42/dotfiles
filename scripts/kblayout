@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+
+set keymaps br us
+
+set layout (printf "%s\n" $keymaps | bemenu -p "layout:")
+
+riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle $layout

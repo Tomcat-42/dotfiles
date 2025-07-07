@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+latexmk -pdf -f && zathura --fork *.pdf 2>/dev/null
+ag -l | entr -pcs 'latexmk -pdf -f'                                                                                                           
+latexmk -C

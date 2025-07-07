@@ -1,4 +1,4 @@
-## Base16 rosedark
+## Base16 darkbox-hard
 # Author: Pablo Alessandro Santos Hugen
 #
 # You can use these variables anywhere in the mako configuration file.
@@ -11,15 +11,15 @@ ignore-timeout=1
 font=Iosevka Nerd Font 12
 
 background-color=#000000
-text-color=#f5e0dc
-border-color=#31748f
+text-color=#d5c4a1
+border-color=#98971a
 
 [urgency=low]
 background-color=#000000
-text-color=#f5e0dc
-border-color=#31748f
+text-color=#d5c4a1
+border-color=#98971a
 
 [urgency=high]
 background-color=#000000
-text-color=#f5e0dc
-border-color=#eb6f92
+text-color=#d5c4a1
+border-color=#fb4934

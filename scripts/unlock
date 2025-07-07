@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+# Unlock session if at a trusted location
+
+function trusted() {
+    local DOCK_ID="17ef:30b4"
+
+    if lsusb -d "$DOCK_ID" &> /dev/null; then
+        return 0
+    fi
+
+    return 1
+}
+
+for (( i=0; i < 10; i++ )); do
+    if trusted; then
+        loginctl unlock-sessions
+        exit 0
+    fi
+    sleep 0.5
+done
+
+exit 1

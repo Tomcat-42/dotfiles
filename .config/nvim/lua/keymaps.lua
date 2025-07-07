@@ -8,6 +8,7 @@ g.mapleader = " "
 g.maplocalleader = "\\"
 
 -- === UI & Navigation ===
+map("n", "<leader>r", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
 map("n", "<Esc>", "<cmd>noh<cr>")                        -- Clear search highlights
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- Disable accidental space key usage
 map('n', '<leader>w', '<cmd>set wrap!<cr>')

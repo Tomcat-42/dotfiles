@@ -1,0 +1,294 @@
+#!/usr/bin/env sh
+
+multi=false
+clipboard=false
+type=false
+add=false
+otp=false
+remove=false
+edit=false
+file=""
+dir=""
+coffin=false
+
+checkmenu(){
+	for i in "$@"; do
+		if command -v "$i" >/dev/null 2>&1; then
+			echo "$i";
+			break;
+		fi
+	done
+}
+
+fileopener(){
+	editor="$(xdg-mime query default text/plain)"
+
+	[ -f "$HOME/.local/share/applications/${editor}" ] && path="$HOME/.local/share/applications/${editor}"
+
+	[ -z "$path" ] && [ -f "/usr/local/share/applications/${editor}" ] && path="/usr/local/share/applications/${editor}"
+
+	[ -z "$path" ] && [ -f "/usr/share/applications/${editor}" ] && path="/usr/share/applications/${editor}"
+
+	if [ -z "$path" ]; then
+		echo "Text editor cannot be found" >&2
+	fi
+
+	if grep -q "^Terminal=true$" "$path"; then
+		eval "${TERMINAL_EXEC:-xterm -e} $TERMINAL_SYNCHRONIZE $(grep "^Exec=" "$path" | head -n 1 | sed "{s/^Exec=//; s#%.#$1#}")"
+	else
+		eval "$(grep "^Exec=" "$path" | head -n 1 | sed "{s/^Exec=//; s#%.#$1#}")"
+	fi
+}
+
+testcoffin(){
+	if pass open 1>&2; then
+		coffin=true
+	fi
+}
+
+_exit(){
+	$coffin && pass close 1>&2
+	exit "$1"
+}
+
+if [ -n "$WAYLAND_DISPLAY" ]; then
+	x11=false
+	if [ -z "$DMENU_COMMAND" ]; then
+		dmenu="$(checkmenu dmenu-wl bemenu tofi yofi wofi)"
+		case "$dmenu" in
+			yofi)
+				dmenu="yofi dialog"
+				;;
+			wofi)
+				dmenu="wofi -dmenu"
+				;;
+		esac
+	else
+		dmenu="$DMENU_COMMAND"
+	fi
+else
+	x11=true
+	if [ -z "$DMENU_COMMAND" ]; then
+		dmenu="$(checkmenu dmenu rofi bemenu)"
+		case "$dmenu" in
+			rofi)
+				dmenu="rofi -dmenu"
+				;;
+		esac
+	else
+		dmenu="$DMENU_COMMAND"
+	fi
+fi
+
+prompt_prefix="$(case "$(echo "$dmenu" | cut -d " " -f 1)" in
+	tofi)
+		printf "%s" "--prompt="
+		;;
+	*)
+		printf "%s" "-p "
+		;;
+	esac
+)"
+
+if [ -z "$dmenu" ]; then
+	echo "No menu found, specify menu with the DMENU_COMMAND environment variable or install a known menu"
+	_exit 1;
+fi
+
+
+usage="$(printf "USAGE:\nneopassmenu [OPTS] [Pass Entry]\n\nOptions:\n-a\t\tGenerate a password\n-e\t\tEdit a password\n-c\t\tCopy to clipboard instead of printing to stdout\n-t\t\tSimulate typing instead of printing to stdout\n-m\t\tSelect a specific line from a multiline file\n-o\t\tGet an otp instead of the password file (precedence over -m)\n-r\t\tRemove password\n-h\t\tPrint usage information\n\nCONFIGURATION:\nEnvironement variables:\nDMENU_COMMAND\t\tSpecify dmenu command (default: dmenu)\nTERMINAL_EXEC\t\tSpecify the terminal command (default: xterm -e)\nTERMINAL_SYNCHRONIZE\tArgument to not make the terminal process\n\t\t\timmediately quit in single instance terminals")"
+
+# Open eventual coffin before reading
+
+cd "${PASSWORD_STORE_DIR:-"$HOME/.password-store"}" || _exit 2
+
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		-a)
+			add=true
+			shift
+			;;
+		-c)
+			clipboard=true
+			type=false
+			shift
+			;;
+		-t)
+			clipboard=false
+			type=true
+			shift
+			;;
+		-m)
+			multi=true
+			shift
+			;;
+		-h)
+			echo "$usage"
+			_exit 0
+			;;
+		-o)
+			otp=true
+			shift
+			;;
+		-r)
+			remove=true
+			shift
+			;;
+		-e)
+			edit=true
+			shift
+			;;
+		*)
+			if [ -f "$1" ] || [ -f "${1}.gpg" ]; then
+				file="$1"
+				shift
+			elif [ -d "$1" ]; then
+				dir="$1"
+				shift
+			else
+				echo "$usage" >&2
+				_exit 1
+			fi
+			;;
+	esac
+done
+
+if ($add && $remove) || ($add && $edit) || ($edit && remove); then
+	msg="Incompatible operations: $(printf "%s%s%s" "$($add && echo "add ")" "$($remove && echo "remove ")" "$($edit && echo "edit")")"
+	echo "$msg" 1>&2
+	notify-send -a "neopassmenu" -h "string:sound-name:dialog-error" "Error" "$msg"
+	_exit 1
+fi
+
+testcoffin
+
+if [ -z "$file" ]; then
+	while true; do
+		file="$(printf "..\n%s" "$(find "./$dir" -maxdepth 1)" | sed -e 's#^'"./$dir"'##;s#^/##;s/.gpg$//' -e '/^$/d; /^.gpg-id$/d; /^.git\(attributes\)\{0,1\}$/d' | $dmenu $prompt_prefix"Choose Password")"
+		if [ -z "$dir" ]; then
+			newdir="$file"
+		else
+			newdir="${dir%/}/$file"
+		fi
+		if [ -z "$file" ]; then
+			_exit 127
+		elif [ "$file" = ".." ]; then
+			dir="${dir%/}"
+			if echo "$dir" | grep -q "/"; then
+				dir="${dir%/*}"
+			else
+				dir=""
+			fi
+		elif [ -d "$newdir" ]; then
+			dir="$newdir"
+		elif [ -f "$newdir" ] || [ -f "${newdir}.gpg" ] || "$add"; then
+			file="$newdir"
+			break
+		else
+			break
+		fi
+	done
+fi
+
+if "$add" || "$edit"; then
+	if $otp; then
+		command="append"
+		if ! [ -f "${file}.gpg" ]; then
+			command="add"
+		else
+			if pass otp "${file}"; then
+				notify-send -a "neopassmenu" -h "string:sound-name:message" "OTP" "Password ${file} already has OTP set up"
+				_exit 0
+			fi
+			otp="$(echo "" | $dmenu -p "OTP URI ($command): ")"
+			[ -n "$otp" ] && echo "$otp" | pass otp "$command" "$file"
+		fi
+		_exit 0
+	fi
+	tempfile=""
+	if [ -n "$XDG_RUNTIME_DIR" ]; then
+		tempfile="$XDG_RUNTIME_DIR/neopassmenu"
+	else
+		tempfile="$HOME/.cache/neopassmenu"
+		notify-send --app-name="neopassmenu" --urgency="critical" "\$XDG_RUNTIME_DIR is not set" "Storing password file in the home. THIS IS NOT SECURE!"
+		echo "\$XDG_RUNTIME_DIR is not set. Storing password file in the home. THIS IS NOT SECURE!" >&2
+	fi
+	if [ -f "${file}.gpg" ]; then
+		pass "$file" > "$tempfile"
+	fi
+	$add && (printf "\n\n%s" "$(dd count=2 if=/dev/random of=/dev/stdout 2>/dev/null ibs=512 obs=512 | uuencode -m /dev/stdout | tail -n +2 | tr -d '\n')" >> "$tempfile")
+	fileopener "$tempfile" || notify-send "Error $?"
+	if [ -n "$(cat "$tempfile")" ]; then
+		save="$(printf "yes\nno" | $dmenu $prompt_prefix"Save changes? ")"
+		if [ "$save" = "yes" ]; then
+			pass add -m -f "$file" < "$tempfile"
+		fi
+		shred "$tempfile"
+		rm "$tempfile"
+		_exit 0
+	fi
+	shred "$tempfile"
+	rm "$tempfile"
+	_exit 1
+fi
+
+if ! [ -f "$file" ] && ! [ -f "${file}.gpg" ]; then
+	_exit 127
+fi
+
+if $remove; then
+	pass rm file
+	_exit $?
+fi
+
+if ! $otp; then
+	password_lines="$(pass "$file")"
+else
+	password_lines="$(pass otp "$file")"
+fi
+
+if $multi && ! $otp; then
+	sel_password="$(echo "$password_lines" | sed '{h; s/^.\{1,2\}//; s/./*/g; x; s/^\(.\{1,2\}\).*/\1/; G; s/\n//}' | nl -b a -w 1 -s " " | $dmenu | cut -d " " -f 1)"
+	if echo "$sel_password" | grep -qE "^[0-9]+$"; then
+		password_lines="$(echo "$password_lines" | sed -n "$(echo "$sel_password" | cut -d " " -f 1){p;q}")"
+	else
+		password_lines=""
+	fi
+
+	# Sed script:
+	# Copy pattern space (line) to hold space. Pattern space: Foo Hold space: Foo
+	# Delete first or first two characters in pattern space. Pattern space: o Hold space: Foo
+	# Replace every character in patter space with "*", Pattern space: * Hold Space: Foo
+	# Swap pattern space with hold space. Pattern Space: Foo Hold space: *
+	# Delete all the characters in pattern space after the first two. Pattern Space: Fo Hold Space: *
+	# Append newline followed by the Hold Space to the Pattern Space. Pattern Space: Fo\n* Hold Space: *
+	# Remove the (supposedly only) newline from the pattern space. Pattern Space: Fo* Hold Space: *
+	# Sed automatically prints the pattern space at the end of a script (unless the -n option is given). Output: Fo*
+fi
+
+if [ -z "$password_lines" ]; then
+	echo "No password found or selected" >&2
+	_exit 1
+fi
+
+# Finished reading passwords, it's probably safe to close the coffin
+
+if $clipboard; then
+	if $x11; then
+		printf "%s" "$password_lines" | xclip -in -selection clipboard
+	else
+		printf "%s" "$password_lines" | wl-copy -n
+	fi
+	_exit 0
+elif $type; then
+	if $x11; then
+		printf "%s" "$password_lines" | xdotool type --clearmodifiers --file -
+	else
+		printf "%s" "$password_lines" | ydotool type --file -
+	fi
+	_exit 0
+fi
+
+echo "$password_lines"
+
+$coffin && _exit 0

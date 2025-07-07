@@ -1,0 +1,7 @@
+#!/bin/sh
+
+BEMENU_OPTS="-b -n -l 10 -w -n --fn 'Iosevka Nerd Font' \
+--tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 \
+--cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 \
+--hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0B \
+--ab #$color00 --af #$color05" pinentry-bemenu "$*"

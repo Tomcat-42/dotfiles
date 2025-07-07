@@ -6,6 +6,10 @@ abbr -a n nvim
 abbr -a h hx
 abbr -a dp dragon-drop --and-exit
 
+function play
+    mpv $(ls | bemenu)
+end
+
 function c
     if test (count $argv) -eq 0
         echo "Usage: c <path>"

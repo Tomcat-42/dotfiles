@@ -1,12 +1,12 @@
 set -gx EDITOR nvim
 set -gx BROWSER chromium
 set -gx PAGER bat
-# set -gx TERM "screen-256color"
+#set -gx TERM "screen-256color"
 set -gx VISUAL nvim
 set -gx TERMINAL_EXEC "ghostty -e"
 set -gx TERMCMD "ghostty -e"
 set -gx TERMINAL ghostty
-set -gx BEMENU_OPTS "-C -i -w -T -b -l '10 up' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color0E' -R 0 -n --fn 'Iosevka Nerd Font' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0% --ab #$color00 --af #$color05"
+set -gx BEMENU_OPTS "-C -i -w -T -l '10 down' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color08' -R 0 -n --fn 'Berkeley Nerd Font 14' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0A --ab #$color00 --af #$color05"
 set -gx NO_AT_BRIDGE 1
 set -gx PASSWORD_STORE_DIR /home/pablo/data/documents/other/passwords
 set -gx BAT_THEME base16
@@ -27,8 +27,10 @@ set -gx GTK_THEME FlatColor
 set -gx GTK_CSD 0
 set -gx LD_PRELOAD /usr/lib/libgtk3-nocsd.so.0
 set -gx LIBSEAT_BACKEND logind
-set -gx LC_CTYPE "pt_BR.UTF-8"
-set -gx VDPAU_DRIVER nvidia
+set -gx LANG "en_US.UTF-8"
+set -gx LC_ALL "en_US.UTF-8"
+set -gx LC_CTYPE "en_US.UTF-8"
+set -gx LANGUAGE "en_US.UTF-8"
 set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=/run/user/1000/bus"
 
@@ -90,9 +92,16 @@ set -gx LUA_CPATH '/usr/local/lib/lua/5.4/?.so;/usr/lib/lua/5.4/?.so;/usr/local/
 5.4/loadall.so;/usr/lib/lua/5.4/loadall.so;./?.so;/home/pablo/.luarocks/lib/lua/5.4/?.so
 '
 
-set -gx LIBVA_DRIVER_NAME "nvidia"
-set -gx __GLX_VENDOR_LIBRARY_NAME "nvidia"
-set -gx NVD_BACKEND "direct"
+set -gx LIBVA_DRIVER_NAME "iHD"
+set -gx VDPAU_DRIVER "va_gl"
+set -gx ANV_DEBUG "video-decode,video-encode"
+# set -gx __GLX_VENDOR_LIBRARY_NAME "nvidia"
+# set -gx NVD_BACKEND "direct"
+# set -gx GBM_BACKEND "nvidia-drm"
+
+# Guile
+set -gx GUILE_LOAD_COMPILED_PATH "/usr/lib/guile/3.0/ccache/:/usr/local/lib/guile/3.0/site-ccache/"
+set -gx GUILE_LOAD_PATH "/usr/share/guile/3.0/:/usr/local/share/guile/site/3.0"
 
 # set -gx FREETYPE_PROPERTIES \
 #     "autofitter:no-stem-darkening=0\

@@ -9,6 +9,52 @@ return {
       { "<leader>e", "<cmd>Oil<cr>", desc = "Open file explorer" }
     },
   },
+
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        "<leader>gq",
+        function() require("conform").format({ async = true }) end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        shtml = { 'superhtml' },
+        ziggy = { 'ziggy' },
+        ziggy_schema = { 'ziggy_schema' },
+      },
+      default_format_opts = { lsp_format = "fallback" },
+      formatters = {
+        superhtml = {
+          inherit = false,
+          command = 'superhtml',
+          stdin = true,
+          args = { 'fmt', '--stdin-super' },
+        },
+        ziggy = {
+          inherit = false,
+          command = 'ziggy',
+          stdin = true,
+          args = { 'fmt', '--stdin' },
+        },
+        ziggy_schema = {
+          inherit = false,
+          command = 'ziggy',
+          stdin = true,
+          args = { 'fmt', '--stdin-schema' },
+        },
+      },
+    },
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
   {
     "jiaoshijie/undotree",
     dependencies = "nvim-lua/plenary.nvim",

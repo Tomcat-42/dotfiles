@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Error: Please provide the name of the task to toggle."
+	exit 1
+fi
+
+target_script="$1"
+shift
+pidof "$target_script" &>/dev/null && pkill -f "$target_script" || nohup $target_script "$@" &>/dev/null &

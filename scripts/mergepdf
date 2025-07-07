@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 part1.pdf part2.pdf ... output.pdf"
+    exit 1
+fi
+
+tp="/tmp/mergepdf_temp.pdf"
+td="/tmp/mergepdf_bookmarks"
+mkdir -p "$td"
+out="${!#}"
+parts=("${@:1:$#-1}")
+
+function clean() {
+    [ -d "$td" ] && rm -rf "$td"
+    [ -f "$tp" ] && rm -f "$tp"
+}
+trap clean EXIT INT TERM
+
+for i in "${parts[@]}"; do
+    echo "Bookmarking $i"
+    bookmark_file="$td/bookmark_${i##*/}.txt"
+    printf "BookmarkBegin\nBookmarkTitle: %s\nBookmarkLevel: 1\nBookmarkPageNumber: 1\n" "${i%.*}" >"$bookmark_file"
+    pdftk "$i" update_info "$bookmark_file" output "$tp"
+    mv "$tp" "$i"
+done
+
+pdftk "${parts[@]}" cat output "$out"

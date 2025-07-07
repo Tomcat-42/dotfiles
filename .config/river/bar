@@ -5,14 +5,10 @@ FIFO="$XDG_RUNTIME_DIR/sandbar"
 [ -e "$FIFO" ] && rm -f "$FIFO"
 mkfifo "$FIFO"
 
-while cat "$FIFO"; do :; done | sandbar \
-  -tags 9 "一" "二" "三" "四" "五" "六" "七" "八" "九" \
-  -font "Iosevka Nerd Font:Pixelsize" \
-  -active-fg-color "$color00" \
-  -active-bg-color "$color0E" \
-  -inactive-fg-color "$color05" \
-  -inactive-bg-color "$color00" \
-  -urgent-fg-color "$color00" \
-  -urgent-bg-color "$color08" \
-  -title-fg-color "$color0B" \
-  -title-bg-color "$color00"
+while cat "$FIFO"; do :; done | dam \
+  -t \
+  -f "Berkeley Nerd Font:size=16:Pixelsize" \
+  -sf "$color00" \
+  -sb "$color08" \
+  -nf "$color05" \
+  -nb "$color00"

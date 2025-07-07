@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+set -x XDG_RUNTIME_DIR /run/user/1000
+waylock -fork-on-lock -ignore-empty-password -init-color "0x$color00" -input-color "0x$color0E" -fail-color "0x$color08"

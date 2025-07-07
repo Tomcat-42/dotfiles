@@ -65,6 +65,12 @@ hook = "cp -f %f ~/.config/nvim/lua/plugins/base16.lua"
 theme-file-extension = ".lua"
 
 [[items]]
+path = "~/dev/colorschemes/ghostty/"
+name = "ghostty"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/ghostty/themes/system"
+
+[[items]]
 name = "helix"
 path = "~/dev/colorschemes/helix/"
 themes-dir = "themes"

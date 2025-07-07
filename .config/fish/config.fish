@@ -3,7 +3,8 @@ set -U fish_command_not_found
 
 if status is-login
     # dbus-run-session river -no-xwayland -log-level error
-    dbus-run-session river -log-level error
+    # dbus-run-session river -log-level error
+    dbus-launch river -log-level error
 end
 
 if status is-interactive

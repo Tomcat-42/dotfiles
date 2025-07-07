@@ -1,5 +1,7 @@
 local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
+local get_autocmds = vim.api.nvim_get_autocmds
+local del_autocmd = vim.api.nvim_del_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 return {
@@ -25,21 +27,33 @@ return {
       servers = {
         html = {},
         cssls = {},
-        yamlls = {},
+        -- yamlls = {},
         ts_ls = {},
-        pyright = {},
-        arduino_language_server = {},
+        -- ty = {},
+        -- arduino_language_server = {},
         bashls = {},
-        taplo = {},
-        fortls = {},
+        -- taplo = {},
+        -- fortls = {},
         lua_ls = {},
-        rust_analyzer = {},
-        gopls = {},
+        -- rust_analyzer = {},
+        gopls = {
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              usePlaceholders = true,
+              analyses = {
+                unusedparams = true,
+              },
+              staticcheck = true,
+              gofumpt = true,
+            }
+          }
+        },
         jsonls = {},
-        cmake = {},
+        -- cmake = {},
         zls = {},
         fish_lsp = {},
-        jdtls = {},
+        -- jdtls = {},
         clangd = {
           cmd = {
             "clangd",
@@ -87,8 +101,11 @@ return {
           },
         },
         asm_lsp = {},
-        glsl_analyzer = {
-        },
+        glsl_analyzer = {},
+        racket_langserver = {},
+        ziggy = {},
+        ziggy_schema = {},
+        superhtml = {},
       }
     },
     config = function(_, opts)
@@ -351,7 +368,26 @@ return {
     },
     opts_extend = { "sources.default" }
   },
-  -- { 'f3fora/nvim-texlabconfig', ft = { 'tex', 'bib' }, build = 'go build -o ~/.local/bin/' },
+  { 'f3fora/nvim-texlabconfig', ft = { 'tex', 'bib' }, build = 'go build -o ~/.local/bin/' },
+  {
+    "Olical/conjure",
+    ft = { "racket", "scheme" },
+    event = { "BufReadPre", "BufNewFile", },
+    init = function()
+      vim.g["conjure#mapping#doc_word"] = false
+      vim.g["conjure#highlight#enabled"] = true
+      -- vim.g["conjure#log#hud#enabled"] = false
+    end,
+    -- config = function()
+    --   local conjure_autocmds = get_autocmds({
+    --     group = "conjure_init_filetypes",
+    --     event = { "CursorMoved", "CursorMovedI" },
+    --     pattern = "*"
+    --   })
+    --   for _, a in ipairs(conjure_autocmds) do del_autocmd(a.id) end
+    -- end,
+    dependencies = { "gpanders/nvim-parinfer" },
+  },
   -- {
   --   "p00f/clangd_extensions.nvim",
   --   ft = { "c", "cpp" },

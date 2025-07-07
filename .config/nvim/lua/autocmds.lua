@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('TermRequest', {
       local lnum = args.data.cursor[1]
       vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
         -- Replace with sign text and highlight group of choice
-        sign_text = '-> ',
+        sign_text = '=>',
         sign_hl_group = 'SpecialChar',
       })
     end

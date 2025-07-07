@@ -2,15 +2,15 @@ theme = system
 gtk-adwaita = false
 gtk-titlebar = false
 
-font-family = IosevkaTerm Nerd Font
-font-style = Medium
-font-size = 16
-font-thicken = true
+font-family = Berkeley Nerd Font
+font-style = Regular
+font-size = 18
+font-thicken = false
 font-synthetic-style = false
-adjust-cell-width = -10%
-adjust-cell-height = -5%
+adjust-cell-width = -15%
+#adjust-cell-height = 5%
 bold-is-bright = true
-#selection-invert-fg-bg = true
+selection-invert-fg-bg = false
 
 cursor-opacity = 1
 cursor-style = block
@@ -18,15 +18,14 @@ cursor-style-blink = false
 mouse-hide-while-typing = true
 
 window-decoration = false
-window-padding-x = 5
-window-padding-y = 5
 window-padding-color = extend
 window-padding-balance = true
+window-padding-x = 5
+window-padding-y = 5,2
 resize-overlay = never
 window-theme = ghostty
 adw-toolbar-style = flat
 # custom-shader = /home/pablo/.config/ghostty/shaders/glow-rgbsplit-twitchy.glsl
-
 
 shell-integration = fish
 shell-integration-features = no-cursor
@@ -37,4 +36,6 @@ clipboard-read = allow
 clipboard-write = allow
 
 # quick term
-keybind = ctrl+shift+t=toggle_quick_terminal
+# keybind = ctrl+shift+t=toggle_quick_terminal
+keybind = ctrl+slash=text:/
+keybind = shift+ctrl+slash=text:?
