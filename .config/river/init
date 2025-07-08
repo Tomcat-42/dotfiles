@@ -40,6 +40,7 @@ riverctl map normal Super n spawn 'toggleable_background_task wlsunset -S 00:00'
 riverctl map normal Super a spawn 'kblayout'
 riverctl map normal Super p spawn 'neopassmenu -c -m > /dev/null && notify-send "Password copied" > /dev/null'
 riverctl map normal Super+Shift p spawn 'neopassmenu -c -a -m > /dev/null && notify-send "Password edited"  > /dev/null'
+riverctl map normal Super+Control p spawn 'neopassmenu -c -o > /dev/null && notify-send "OTP copied"  > /dev/null'
 riverctl map normal Super Delete spawn 'powermenu'
 for mode in normal locked; do
   riverctl map $mode None XF86AudioRaiseVolume spawn 'pamixer -i 5'

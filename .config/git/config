@@ -1,0 +1,107 @@
+[interactive]
+    diffFilter = delta --color-only
+
+[credential]
+    helper = cache
+    # helper=libsecret
+
+[delta]
+    navigate = true
+    light = false
+
+[diff]
+    colorMoved = default
+
+[user]
+    name = Pablo Alessandro Santos Hugen
+    email = phugen@redhat.com
+    signingkey = 0C3FEB6A87C5D681F85722D820FCC3580F1FBD7A
+
+[core]
+    editor = nvim
+    autocrlf = input
+    pager = delta
+
+[merge]
+    tool = nvimdiff
+    conflictstyle = diff3
+
+[alias]
+    nah = "!f(){ git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi; }; f"
+    lg = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+    subdiff = !git diff && git submodule foreach 'git diff'
+    subpush = push --recurse-submodules=on-demand
+    subupdate = submodule update --remote --merge
+    au = !git add $(git ls-files -o --exclude-standard)
+
+[sendemail]
+    from = Pablo Hugen <phugen@redhat.com>
+    smtpencryption = tls
+    smtpserver = smtp.gmail.com
+    smtpuser = phugen@redhat.com
+    smtpserverport = 587
+    confirm = auto
+
+[gpg]
+    program = gpg2
+
+[commit]
+    gpgsign = true
+
+[push]
+    recurseSubmodules = check
+
+[init]
+    defaultbranch = main
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = cyan bold reverse
+    local = white
+    plain =
+    remote = cyan
+
+[color "diff"]
+    commit =
+    func = cyan
+    plain =
+    whitespace = magenta reverse
+    meta = white
+    frag = cyan bold reverse
+    old = red
+    new = green
+
+[color "grep"]
+    context =
+    filename =
+    function =
+    linenumber = white
+    match =
+    selected =
+    separator =
+
+[color "interactive"]
+    error =
+    header =
+    help =
+    prompt =
+
+[color "status"]
+    added = green
+    changed = white
+    header =
+    localBranch =
+    nobranch =
+    remoteBranch = cyan bold
+    unmerged = magenta bold reverse
+    untracked = red
+    updated = green bold
+
+#[url "ssh://git@github.com/"]
+#    insteadOf = https://github.com
+#
+#[url "https://github.com/rust-lang/crates.io-index"]
+#    insteadOf = https://github.com/rust-lang/crates.io-index
