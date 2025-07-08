@@ -1,5 +1,6 @@
 set synctex true
-#set filemonitor "signal"
+set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
+set filemonitor "signal"
 set first-page-column 2
 set adjust-open "width"
 

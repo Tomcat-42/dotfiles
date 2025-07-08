@@ -10,13 +10,14 @@ opt.foldlevelstart = 99
 opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
-wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 wo.foldmethod = "expr"
+wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- === Indentation ===
 opt.tabstop = 4
 opt.softtabstop = 4
-opt.shiftwidth = 4
+opt.shiftwidth = 0
+opt.shiftround = true
 opt.expandtab = true
 opt.smartindent = true
 opt.autoindent = true
@@ -41,8 +42,13 @@ opt.background = "dark"
 opt.splitbelow = true
 opt.splitright = true
 opt.whichwrap:append "<>[]hl"
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.list = true
+vim.opt.listchars = {
+    tab = "▏ ",
+    trail = "·",
+    extends = "»",
+    precedes = "«",
+}
 opt.statusline = table.concat(
   {
     ' %t',
@@ -55,6 +61,7 @@ opt.statusline = table.concat(
   },
   ''
 )
+opt.diffopt:append("linematch:60")
 
 -- === Misc ===
 opt.mouse = ""
@@ -67,6 +74,7 @@ opt.breakindent = true
 opt.swapfile = false
 opt.backup = false
 opt.undofile = true
+opt.undolevels = 10000
 opt.undodir = vim.fn.stdpath("data") .. "/undo"
 opt.directory = vim.fn.stdpath("data") .. "/swap"
 
@@ -75,17 +83,18 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- === Completion ===
-opt.completeopt = "menuone,noinsert,noselect,popup,fuzzy"
+opt.completeopt = "menu,menuone,noinsert,noselect,popup,fuzzy"
 opt.completeopt:append('fuzzy') -- Use fuzzy matching for built-in completion
 opt.inccommand = 'split'
+opt.pumheight = 10
 
 -- === NetRW ===
--- gopt.netrw_banner = 0
--- gopt.netrw_liststyle = 3
--- gopt.netrw_keepdir = 1
--- gopt.netrw_localrm = "rm -r"
---gopt.netrw_winsize = 25
--- gopt.netrw_localcopydircmd = "cp -r"
+gopt.netrw_banner = 0
+gopt.netrw_liststyle = 3
+gopt.netrw_keepdir = 1
+gopt.netrw_localrm = "rm -r"
+gopt.netrw_winsize = 25
+gopt.netrw_localcopydircmd = "cp -r"
 
 -- === Custom Shell ===
 -- opt.shell = "nu"

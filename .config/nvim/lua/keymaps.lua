@@ -2,10 +2,9 @@ local map = vim.keymap.set
 local g = vim.g
 local opt = vim.opt
 
-
 -- === Leader Keys ===
-g.mapleader = " "
-g.maplocalleader = "\\"
+vim.g.mapleader = vim.keycode("<space>")
+vim.g.maplocalleader = vim.keycode("<cr>")
 
 -- === UI & Navigation ===
 map("n", "<leader>r", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
@@ -53,8 +52,8 @@ map("n", "<leader>p", "\"+p", { desc = "Paste from clipboard" })
 map("v", "<leader>p", "\"+p")
 map("n", "<leader>P", "\"+P")
 
-map("v", "<leader>d", "\"_d") -- Delete without affecting clipboard
-map("n", "<leader>D", "\"_D")
+map("v", "<leader>d", "\"+d")
+map("n", "<leader>D", "\"+D")
 
 map({ "n", "v", "x" }, '<leader>yy', '"+yy', { noremap = true, silent = true, desc = 'Yank line to clipboard' })
 map({ "n", "v", "x" }, '<leader>Y', '"+yy')
@@ -112,3 +111,6 @@ if opt.diff:get() then
   map('n', '<leader><up>', '<cmd>diffget BASE<cr>', { desc = 'Get changes from base', noremap = true })
   map('n', '<leader><right>', '<cmd>diffget REMOTE<cr>', { desc = 'Get changes from remote', noremap = true })
 end
+
+-- === NetRw ===
+map("n", "<leader>e", "<cmd>Ex<cr>")

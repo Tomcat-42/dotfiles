@@ -2,16 +2,6 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
 
-autocmd("UiEnter", {
-  group = augroup("Netrw", { clear = true }),
-  pattern = "*",
-  callback = function(args)
-    local bufname = vim.api.nvim_buf_get_name(args.buf)
-    if vim.fn.isdirectory(bufname) == 0 and bufname ~= "" then return end
-    require("fzf-lua").files()
-  end,
-})
-
 -- === Highlight on Yank ===
 -- See `:help vim.highlight.on_yank()`
 autocmd('TextYankPost', {
@@ -124,7 +114,7 @@ autocmd("BufWinEnter", {
   callback = function() remember("load") end,
 })
 
--- Close folds with `h` at BoL (currently commented out)
+-- Close folds with `h` at BoL
 -- vim.keymap.set("n", "h", function()
 --   local onIndentOrFirstNonBlank = vim.fn.virtcol(".") <= vim.fn.indent(".") + 1
 --   local shouldCloseFold = vim.tbl_contains(vim.opt_local.foldopen:get(), "hor")
