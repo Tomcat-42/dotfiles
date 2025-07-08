@@ -3,5 +3,4 @@ require("filetypes")
 require("keymaps")
 require("options")
 require("lsp")
-
 require("plugins")

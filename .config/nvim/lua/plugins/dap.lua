@@ -10,7 +10,6 @@ dapvirtual.setup({ commented = true, virt_text_pos = "eol" })
 -- sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 -- sign("DapStopped", { text = "▶", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
-
 map("n", "<leader>dz", function() require("dap-view").toggle(true) end, { desc = "Toggle Dap View" })
 map({ "n", "v" }, "<leader>dw", function() require("dap-view").add_expr() end, { desc = "Dapview watch" })
 map("n", "<leader>dc", function() require("dap").continue() end, { desc = "Dap continue" })
