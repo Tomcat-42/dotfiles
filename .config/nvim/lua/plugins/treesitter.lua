@@ -1,4 +1,3 @@
-local highlight = vim.api.nvim_set_hl
 local treesitter = require("nvim-treesitter.configs")
 
 treesitter.setup {

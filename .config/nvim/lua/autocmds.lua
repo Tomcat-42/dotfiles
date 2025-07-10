@@ -2,19 +2,29 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
 
+local user_config_group = augroup('UserConfig', { clear = true })
+
+-- === Default vert help/man ===
+autocmd("FileType", {
+  group = user_config_group,
+  pattern = { "help", "man" },
+  command = "wincmd L",
+})
+
 -- === Highlight on Yank ===
 -- See `:help vim.highlight.on_yank()`
 autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
-  group = augroup('YankHighlight', { clear = true }),
+  group = user_config_group,
   pattern = '*',
 })
 
 -- === Quickfix ===
 -- Don't list quickfix buffers
 autocmd("FileType", {
+  group = user_config_group,
   pattern = "qf",
   callback = function()
     vim.opt_local.buflisted = false
@@ -25,7 +35,7 @@ autocmd("FileType", {
 -- Restore cursor position
 autocmd({ "BufReadPost" }, {
   pattern = { "*" },
-  group = augroup("RestoreCursor", { clear = true }),
+  group = user_config_group,
   callback = function()
     vim.api.nvim_exec('silent! normal! g`"zv', false)
   end,
@@ -35,6 +45,7 @@ autocmd({ "BufReadPost" }, {
 -- Auto-close interactive terminal buffers if the command exits successfully,
 -- because non-interactive commands generally are launched for it's output.
 autocmd('TermClose', {
+  group = user_config_group,
   pattern = '*',
   callback = function()
     vim.schedule(function()
@@ -51,12 +62,34 @@ autocmd('TermClose', {
 
 -- Enable signcolumn in terminal buffers
 vim.api.nvim_create_autocmd('TermOpen', {
+  group = user_config_group,
   command = 'setlocal signcolumn=auto',
+})
+
+-- Auto-resize splits when window is resized
+autocmd("VimResized", {
+  group = user_config_group,
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+
+-- Create directories when saving files
+autocmd("BufWritePre", {
+  group = user_config_group,
+  callback = function()
+    local dir = vim.fn.expand('<afile>:p:h')
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, 'p')
+    end
+  end,
 })
 
 -- Terminal prompt markers
 local ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
-vim.api.nvim_create_autocmd('TermRequest', {
+autocmd('TermRequest', {
+  group = user_config_group,
   callback = function(args)
     if string.match(args.data.sequence, '^\027]133;A') then
       local lnum = args.data.cursor[1]
@@ -106,10 +139,12 @@ local function remember(mode)
   end
 end
 autocmd("BufWinLeave", {
+  group = user_config_group,
   pattern = "?*",
   callback = function() remember("save") end,
 })
 autocmd("BufWinEnter", {
+  group = user_config_group,
   pattern = "?*",
   callback = function() remember("load") end,
 })

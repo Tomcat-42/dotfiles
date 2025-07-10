@@ -7,7 +7,7 @@ vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
 -- === UI & Navigation ===
-map("n", "<leader>r", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
+map("n", "<leader>R", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
 map("n", "<Esc>", "<cmd>noh<cr>")                        -- Clear search highlights
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- Disable accidental space key usage
 map('n', '<leader>w', '<cmd>set wrap!<cr>')
@@ -27,12 +27,18 @@ map('', '<Left>', '<Nop>')
 map('', '<Right>', '<Nop>')
 
 -- === Editing Enhancements ===
-map("n", "J", "mzJ`z")            -- Join lines and restore cursor
-map("v", "K", ":m '<-2<cr>gv=gv") -- Move selected text up
+map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
+map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+map("v", "<", "<gv", { desc = "Indent left and reselect" })
+map("v", ">", ">gv", { desc = "Indent right and reselect" })
+map("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
+map("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
-map("n", "<C-d>", "<C-d>zz")      -- Keep cursor centered on scrolling
+map("n", "<C-d>", "<C-d>zz") -- Keep cursor centered on scrolling
 map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")            -- Keep search matches centered
+map("n", "n", "nzzzv")       -- Keep search matches centered
 map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", "\"_dp") -- Paste over selection without losing register
@@ -67,19 +73,22 @@ map("x", "<leader>P", '"_dP', { desc = "Paste over selection without erasing unn
 map("n", "<leader>bd", "<cmd>bd!<cr>")         -- Close buffer
 map("n", "<leader>bn", "<cmd>bn<cr>")          -- Next buffer
 map("n", "<leader>bp", "<cmd>bp<cr>")          -- Previous buffer
-map("n", "<leader>bb", "<cmd>ls<cr>:b<space>") -- List buffers
+map("n", "<leader>fb", "<cmd>ls<cr>:b<space>") -- List buffers
 
 map('n', 'tt', ':tabnew<CR>')                  -- New tab
-map('n', 'tc', ':tabclose<CR>')                -- Close tab
+map('n', 'td', ':tabclose<CR>')                -- Close tab
 map('n', 'tn', ':tabnext<CR>')                 -- Next tab
 map('n', 'tp', ':tabprevious<CR>')             -- Previous tab
 map('n', 'tmn', ':tabm +1<CR>')                -- Move tab right
 map('n', 'tmp', ':tabm -1<CR>')                -- Move tab left
 
 -- === Splits ===
--- map('n', '<M-e>', '<cmd>vsplit<cr>')
--- map('n', '<M-o>', '<cmd>split<cr>')
--- map('n', '<M-q>', '<cmd>q<cr>')
+map("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+map("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+map("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+map("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- === Search & Replace ===
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- Substitute word under cursor
@@ -87,12 +96,53 @@ map('n', '<leader>s', '*:%s///g<left><left>')                                 --
 map('x', '<leader>s', '"hy:%s/<C-r>h//g<left><left>')                         -- Rename selection
 
 -- === Compilation & Execution ===
-map("n", "<leader>m", "<cmd>make<cr>")
+map('n', '<leader>m', function()
+  vim.cmd('make')
+
+  local qflist = vim.fn.getqflist()
+  if #qflist ~= 0 then
+    vim.cmd('copen')
+  end
+end, { noremap = true, silent = true, desc = "Run make & open quickfix on error" })
 map("n", "<leader>x", "<cmd>!chmod +x % && ./% %<CR>", { silent = true })
 
 -- === Quickfix & Location Lists ===
-map("n", "<leader>co", "<cmd>copen<cr>zz")
-map("n", "<leader>lo", "<cmd>lopen<cr>zz")
+map("n", "<leader>c", function()
+  local windows = vim.fn.getwininfo()
+  local qf_is_open = false
+
+  for _, win in ipairs(windows) do
+    if win.quickfix == 1 then
+      qf_is_open = true
+      break
+    end
+  end
+
+  if qf_is_open then
+    vim.cmd("cclose")
+  else
+    vim.cmd("copen")
+  end
+  vim.cmd("normal! zz")
+end)
+map("n", "<leader>l", function()
+  local windows = vim.fn.getwininfo()
+  local ll_is_open = false
+
+  for _, win in ipairs(windows) do
+    if win.loclist == 1 then
+      ll_is_open = true
+      break
+    end
+  end
+
+  if ll_is_open then
+    vim.cmd("lclose")
+  else
+    vim.cmd("lopen")
+  end
+  vim.cmd("normal! zz")
+end)
 
 -- === Terminal ===
 map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
@@ -101,7 +151,30 @@ map("n", "<C-s><C-v>", "<cmd>vsplit term://fish<cr><cmd>startinsert<cr>", { desc
 map("n", "<C-s><C-s>", "<cmd>split term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in horizontal split" })
 
 -- === Treesitter ===
-map("n", "<C-k>", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
+map("n", "<leader>i", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
+
+-- builtin "Fuzzy" finding
+map("n", "<leader>ff", ":find ", { desc = "Find file" })
+map("n", "<leader>fh", ":help ", { desc = "Find help" })
+map("n", "<leader>fm", ":Man ", { desc = "Find help" })
+map("n", "<leader>fw", function()
+    local search_pattern = vim.fn.input("find pattern: ")
+    if search_pattern and search_pattern ~= '' then
+      local command = "silent! grep! -w " .. vim.fn.shellescape(search_pattern)
+      vim.cmd(command)
+      local qflist = vim.fn.getqflist()
+      if #qflist == 0 then
+        print("No matches found for: " .. search_pattern)
+      else
+        print("Found " .. #qflist .. " matches.")
+        vim.cmd("copen")
+      end
+    else
+      print("No search pattern provided.")
+    end
+  end,
+  { noremap = true, desc = "Find word (ripgrep)" }
+)
 
 -- === Diff Mode ===
 if opt.diff:get() then
@@ -111,6 +184,12 @@ if opt.diff:get() then
   map('n', '<leader><up>', '<cmd>diffget BASE<cr>', { desc = 'Get changes from base', noremap = true })
   map('n', '<leader><right>', '<cmd>diffget REMOTE<cr>', { desc = 'Get changes from remote', noremap = true })
 end
+
+map("n", "<leader>fa", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print("file:", path)
+end)
 
 -- === NetRw ===
 map("n", "<leader>e", "<cmd>Ex<cr>")

@@ -1,11 +1,6 @@
 local base16 = require("mini.base16")
 local hl = vim.api.nvim_set_hl
 
-hl(0, 'VertSplit', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
-hl(0, 'WinSeparator', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
-hl(0, 'ColorColumn', { link = "Visual" })
-hl(0, 'CursorLine', { link = "Visual" })
-
 base16.setup({
   palette = {
     base00 = '#000000', -- Default Background
@@ -30,3 +25,8 @@ base16.setup({
     default = true
   },
 })
+
+hl(0, 'VertSplit', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
+hl(0, 'WinSeparator', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
+hl(0, 'ColorColumn', { link = "Visual" })
+hl(0, 'CursorLine', { link = "Visual" })

@@ -33,6 +33,7 @@ set -gx LC_CTYPE "en_US.UTF-8"
 set -gx LANGUAGE "en_US.UTF-8"
 set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=/run/user/1000/bus"
+set -gx MANPAGER "nvim -c 'Man!' -o -"
 
 set -l FZF_NON_COLOR_OPTS
 
