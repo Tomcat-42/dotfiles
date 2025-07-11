@@ -1,6 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
+local bo = vim.bo
+local wo = vim.wo
 
 local user_config_group = augroup('UserConfig', { clear = true })
 
@@ -60,10 +62,13 @@ autocmd('TermClose', {
   end,
 })
 
--- Enable signcolumn in terminal buffers
+-- Enable signcolumn/number in terminal buffers
 vim.api.nvim_create_autocmd('TermOpen', {
   group = user_config_group,
-  command = 'setlocal signcolumn=auto',
+  callback = function()
+    wo.number = true
+    wo.signcolumn = 'number'
+  end
 })
 
 -- Auto-resize splits when window is resized
@@ -160,3 +165,4 @@ autocmd("BufWinEnter", {
 --   vim.cmd.normal{"h", bang = true}
 -- end, { desc = "h (+ close fold at BoL)" })
 --)
+--

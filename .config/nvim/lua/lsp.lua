@@ -54,7 +54,6 @@ local custom_configs = {
       "--header-insertion=never",
       "--background-index",
       "--background-index-priority=normal",
-      "-j8",
       "--clang-tidy",
       "--completion-style=detailed",
       "--function-arg-placeholders",
