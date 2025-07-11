@@ -1,107 +1,132 @@
-[interactive]
-    diffFilter = delta --color-only
-
-[credential]
-    helper = cache
-    # helper=libsecret
-
-[delta]
-    navigate = true
-    light = false
-
-[diff]
-    colorMoved = default
-
 [user]
-    name = Pablo Alessandro Santos Hugen
-    email = phugen@redhat.com
-    signingkey = 0C3FEB6A87C5D681F85722D820FCC3580F1FBD7A
-
-[core]
-    editor = nvim
-    autocrlf = input
-    pager = delta
-
-[merge]
-    tool = nvimdiff
-    conflictstyle = diff3
-
-[alias]
-    nah = "!f(){ git reset --hard; git clean -df; if [ -d ".git/rebase-apply" ] || [ -d ".git/rebase-merge" ]; then git rebase --abort; fi; }; f"
-    lg = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
-    subdiff = !git diff && git submodule foreach 'git diff'
-    subpush = push --recurse-submodules=on-demand
-    subupdate = submodule update --remote --merge
-    au = !git add $(git ls-files -o --exclude-standard)
+	name = Pablo Alessandro Santos Hugen
+	email = phugen@redhat.com
+	signingkey = 0C3FEB6A87C5D681F85722D820FCC3580F1FBD7A
 
 [sendemail]
-    from = Pablo Hugen <phugen@redhat.com>
-    smtpencryption = tls
-    smtpserver = smtp.gmail.com
-    smtpuser = phugen@redhat.com
-    smtpserverport = 587
-    confirm = auto
+	from = Pablo Hugen <phugen@redhat.com>
+	smtpuser = phugen@redhat.com
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpserverport = 587
+	confirm = auto
+	annotate = yes
+
+[credential "smtp://phugen%40redhat.com@smtp.gmail.com:587"]
+	helper = !pass show redhat/git-send-email
+
+[alias]
+	nah = "!f(){ git reset --hard; git clean -df; if [ -d \".git/rebase-apply\" ] || [ -d \".git/rebase-merge\" ]; then git rebase --abort; fi; }; f"
+	lg = "log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+	squash = "!f(){ git reset --soft HEAD~${1} && git commit --edit -m\"$(git log --format=%B --reverse HEAD..HEAD@{1})\"; };f"
+	subdiff = !git diff && git submodule foreach 'git diff'
+	subpush = push --recurse-submodules=on-demand
+	subupdate = submodule update --remote --merge
+	au = !git add $(git ls-files -o --exclude-standard)
+	tree = "!git log --graph --decorate --pretty=oneline --abbrev-commit"
+	rank = "shortlog -s -n --no-merges"
+	who = "blame -wCCC"
+	which-tag = "name-rev --tags --name-only"
+	file-added = "log --diff-filter=A --pretty=format:\"%H\""
+
 
 [gpg]
-    program = gpg2
+	program = gpg2
 
 [commit]
-    gpgsign = true
+	gpgsign = true
+	verbose = true
 
-[push]
-    recurseSubmodules = check
+[format]
+	signoff = true
+
+[core]
+	editor = nvim
+	autocrlf = input
+	pager = delta
 
 [init]
-    defaultbranch = main
+	defaultbranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	recurseSubmodules = check
+
+[rebase]
+	autoStash = true
+
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[delta]
+	navigate = true
+	light = false
+
+[interactive]
+	diffFilter = delta --color-only
 
 [color]
-    ui = auto
+	ui = auto
 
 [color "branch"]
-    current = cyan bold reverse
-    local = white
-    plain =
-    remote = cyan
+	current = cyan bold reverse
+	local = white
+	plain = 
+	remote = cyan
 
 [color "diff"]
-    commit =
-    func = cyan
-    plain =
-    whitespace = magenta reverse
-    meta = white
-    frag = cyan bold reverse
-    old = red
-    new = green
+	commit = 
+	func = cyan
+	plain = 
+	whitespace = magenta reverse
+	meta = white
+	frag = cyan bold reverse
+	old = red
+	new = green
 
 [color "grep"]
-    context =
-    filename =
-    function =
-    linenumber = white
-    match =
-    selected =
-    separator =
+	context = 
+	filename = 
+	function = 
+	linenumber = white
+	match = 
+	selected = 
+	separator = 
 
 [color "interactive"]
-    error =
-    header =
-    help =
-    prompt =
+	error = 
+	header = 
+	help = 
+	prompt = 
 
 [color "status"]
-    added = green
-    changed = white
-    header =
-    localBranch =
-    nobranch =
-    remoteBranch = cyan bold
-    unmerged = magenta bold reverse
-    untracked = red
-    updated = green bold
+	added = green
+	changed = white
+	header = 
+	localBranch = 
+	nobranch = 
+	remoteBranch = cyan bold
+	unmerged = magenta bold reverse
+	untracked = red
+	updated = green bold
 
-#[url "ssh://git@github.com/"]
-#    insteadOf = https://github.com
+[rerere]
+	enabled = false
+
+[tag]
+	sort = -taggerdate
+
+[branch]
+	sort = -committerdate
+
+# [url "ssh://git@github.com/"]
+# 	insteadOf = https://github.com
 #
-#[url "https://github.com/rust-lang/crates.io-index"]
-#    insteadOf = https://github.com/rust-lang/crates.io-index
+# [url "https://github.com/rust-lang/crates.io-index"]
+# 	insteadOf = https://github.com/rust-lang/crates.io-index

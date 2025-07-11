@@ -84,8 +84,7 @@ themes-dir = "colors"
 hook = "cp -f %f ~/.config/mako/config"
 
 [[items]]
-path = "~/dev/colorschemes/hugo-theme-nostyleplease/"
-name = "hugo-theme-nostyleplease"
-themes-dir = "css"
-hook = "cp -f %f ~/dev/hugo-theme-nostyleplease/assets/css/main.scss"
-theme-file-extension = ".scss"
+path = "~/dev/colorschemes/aerc/"
+name = "aerc"
+themes-dir = "stylesets"
+hook = "cp -f %f ~/.config/aerc/stylesets/system"

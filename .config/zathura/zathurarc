@@ -9,7 +9,7 @@ set adjust-open "width"
 set statusbar-v-padding 0
 set statusbar-h-padding 20
 set incremental-search true
-set font "Berkeley Nerd Font 16"
+set font "Iosevka NF 12"
 set selection-notification true
 set vertical-center true
 
