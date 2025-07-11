@@ -1,0 +1,86 @@
+*.default=true
+
+# present in 'Send this email?' dialog
+# Changed from green to red for high prominence
+title.fg=#fb4934
+title.bg=#000000
+title.bold=true
+
+# used in setup and in 'From:' etc
+# Changed from blue to red to make headers stand out
+header.bold=true
+header.fg=#fb4934
+
+# decorative lines
+border.fg=#bdae93
+
+# requires attention
+*error.bold=true
+*error.fg=#fb4934
+*error.blink=true
+*warning.fg=#fe8019
+*warning.blink=true
+*success.fg=#98971a
+
+# statusline
+statusline_default.fg=#d5c4a1
+statusline_*.bg=#000000
+
+# message list colors
+msglist_deleted.fg=#665c54
+# Changed from magenta to green
+msglist_unread.fg=#98971a
+msglist_unread.bold=true
+msglist_default.fg=#ebdbb2
+msglist_marked.fg=#fabd2f
+msglist_marked.reverse=true
+# Changed from orange to red for importance
+msglist_flagged.fg=#fb4934
+msglist_flagged.bold=true
+
+# inbox etc
+dirlist_default.fg=#ebdbb2
+# Changed from magenta to green
+dirlist_unread.fg=#98971a
+dirlist_unread.bold=true
+
+# highlight selected item
+# Changed from cyan to red to make the selection prominent
+*.selected.bg=#1d2021
+*.selected.fg=#fb4934
+*.selected.bold=true
+
+# primarily used in account setup
+selector_default.fg=#d5c4a1
+selector_chooser.bold=true
+selector_focused.bg=#fabd2f
+selector_focused.bold=true
+
+# command completion
+completion_default.bg=#000000
+completion_gutter.bg=#000000
+completion_pill.bg=#83a598
+
+#dynamic
+*msglist_answered.fg = #98971a
+
+[viewer]
+# Changed from blue to red for consistency
+header.fg=#fb4934
+header.bold=true
+signature.fg=#98971a
+signature.dim=true
+diff_meta.fg=#fabd2f
+diff_meta.bold=true
+diff_chunk.dim=true
+diff_add.fg=#98971a
+# Kept red for deletions, which is standard
+diff_del.fg=#fb4934
+quote_1.fg=#d3869b
+quote_2.fg=#fabd2f
+quote_3.fg=#d3869b
+quote_4.fg=#fabd2f
+quote_3.dim=true
+quote_4.dim=true
+quote_x.fg=#bdae93
+quote_x.dim=true
