@@ -56,6 +56,7 @@
 
 [rebase]
 	autoStash = true
+	autosquash = true
 
 [merge]
 	tool = nvimdiff
@@ -130,3 +131,5 @@
 #
 # [url "https://github.com/rust-lang/crates.io-index"]
 # 	insteadOf = https://github.com/rust-lang/crates.io-index
+[safe]
+	directory = /home/phugen/dev/copr/waylock

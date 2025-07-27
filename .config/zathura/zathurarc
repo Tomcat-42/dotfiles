@@ -93,3 +93,4 @@ set render-loading-fg           "#d5c4a1" # base05 - foreground
 set recolor-lightcolor          "#000000" # base00 - default background
 set recolor-darkcolor           "#d5c4a1" # base05 - foreground
 set recolor-keephue             true      # keep original color
+set recolor true

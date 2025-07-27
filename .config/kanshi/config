@@ -1,10 +1,12 @@
 profile free {
   output eDP-1 enable mode 1920x1200
   exec riverctl keyboard-layout -model abnt-2 -variant thinkpad -options grp:ctrl_space_toggle br
+  exec echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
 }
 
 profile docked {
-  output DP-7 enable mode 1920x1080 position 0,0
+  output DP-7 enable mode 3840x2160 position 0,0 scale 2
   output eDP-1 disable
   exec riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
+  exec echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness
 }

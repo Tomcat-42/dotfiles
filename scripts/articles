@@ -1,0 +1,27 @@
+#!/bin/bash
+
+BEMENU_LOCAL_OPTS="-p wallabag: -l 10"
+
+ACTION=$(printf "%s\n%s" "read" "add" | bemenu $BEMENU_LOCAL_OPTS)
+
+case $ACTION in
+    "read")
+        ENTRIES=$(wallabag list | sed '1d;$d')
+        ENTRY=$(bemenu $BEMENU_LOCAL_OPTS <<< "$ENTRIES")
+        if [ -n "$ENTRY" ]; then
+            ID=${ENTRY%% *}
+            wallabag open -o "$ID"
+            wallabag read "$ID"
+        fi
+        ;;
+    "add")
+        URL=$(wl-paste)
+        WILL_ADD=$(printf "%s\n%s" "yes" "no" | bemenu -p $"Add: $URL")
+        if [ "$WILL_ADD" = "yes" ]; then
+            wallabag add "$URL"
+        fi
+        ;;
+    *)
+        echo "Invalid action selected."
+        ;;
+esac

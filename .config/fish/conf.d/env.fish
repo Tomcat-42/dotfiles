@@ -1,6 +1,6 @@
 set -gx EDITOR nvim
 set -gx BROWSER chromium
-set -gx PAGER bat
+set -gx PAGER "bat --plain"
 #set -gx TERM "screen-256color"
 set -gx VISUAL nvim
 set -gx TERMINAL_EXEC "ghostty -e"
@@ -8,7 +8,7 @@ set -gx TERMCMD "ghostty -e"
 set -gx TERMINAL ghostty
 set -gx BEMENU_OPTS "-C -i -w -T -l '10 down' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color08' -R 0 -n --fn 'Berkeley Nerd Font 14' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0A --ab #$color00 --af #$color05"
 set -gx NO_AT_BRIDGE 1
-set -gx PASSWORD_STORE_DIR /home/pablo/data/documents/other/passwords
+set -gx PASSWORD_STORE_DIR ~/data/documents/other/passwords
 set -gx BAT_THEME base16
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
@@ -25,7 +25,7 @@ set -gx SDL_VIDEODRIVER wayland
 set -gx ELECTRON_OZONE_PLATFORM_HINT wayland
 set -gx GTK_THEME FlatColor
 set -gx GTK_CSD 0
-set -gx LD_PRELOAD /usr/lib/libgtk3-nocsd.so.0
+# set -gx LD_PRELOAD /usr/lib/libgtk3-nocsd.so.0
 set -gx LIBSEAT_BACKEND logind
 set -gx LANG "en_US.UTF-8"
 set -gx LC_ALL "en_US.UTF-8"
@@ -34,6 +34,7 @@ set -gx LANGUAGE "en_US.UTF-8"
 set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=/run/user/1000/bus"
 set -gx MANPAGER "nvim -c 'Man!' -o -"
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
 set -l FZF_NON_COLOR_OPTS
 
@@ -69,9 +70,38 @@ set -Ux FZF_ALT_C_OPTS \
 " --walker-skip .git,node_modules,target"\
 " --preview 'tree -C {}'"
 
+# fish  colors
+set -U fish_color_user brcyan --bold
+set -U fish_color_host magenta
+set -U fish_color_cwd bryellow
+set -U fish_color_cwd_root brred --bold
+set -U fish_color_status red
+set -U fish_color_end magenta
+set -U fish_color_normal normal
+set -U fish_color_command brgreen
+set -U fish_color_quote yellow
+set -U fish_color_redirection brblue --bold
+set -U fish_color_operator brmagenta
+set -U fish_color_keyword purple
+set -U fish_color_param white
+set -U fish_color_comment brmagenta --italics
+set -U fish_color_error brred --underline
+set -U fish_color_valid_path green --underline
+set -U fish_color_autosuggestion '555'
+set -U fish_color_search_match --background=brblue bryellow
+set -U fish_color_selection white --bold --background=purple
+set -U fish_pager_color_prefix brcyan --bold --underline
+set -U fish_pager_color_completion brcyan
+set -U fish_pager_color_description yellow
+set -U fish_pager_color_selected_background --background=magenta
+set -U fish_pager_color_selected_prefix '000000' --bold --underline
+set -U fish_pager_color_selected_completion '000000'
+set -U fish_pager_color_selected_description '000000'
+
+set -gx GOPATH "$HOME/.local/share/go"
 set paths \
     ~/.local/bin \
-    ~/go/bin \
+    "$GOPATH/bin" \
     ~/.fzf/bin \
     ~/scripts \
     ~/.cargo/bin \

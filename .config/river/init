@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Monitor Conf
+riverctl spawn "kanshi"
+
 # Colors and Borders
 riverctl background-color "0x${color00}"
 riverctl border-color-focused "0x${color08}"
@@ -9,9 +12,6 @@ riverctl border-width 2
 
 # Keyboard
 riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
-
-# Monitor Conf
-riverctl spawn "kanshi"
 
 # Status Bar
 riverctl spawn "$HOME/.config/river/status"

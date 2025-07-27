@@ -10,13 +10,14 @@ local servers = {
   "lua_ls",
   "texlab",
   "zls",
+  "ty",
+  "gopls",
   -- "asm_lsp",
   -- "cssls",
   -- "docker_compose_language_service",
   -- "dockerls",
   -- "gitlab_ci_ls",
   -- "gitlat_ci_ls",
-  -- "gopls",
   -- "html",
   -- "htmx",
   -- "jsonls",
@@ -28,7 +29,6 @@ local servers = {
   -- "superhtml",
   -- "systemd_ls",
   -- "ts_ls",
-  -- "ty",
   -- "yamlls",
   -- "ziggy",
   -- "ziggy_schema",
@@ -204,8 +204,8 @@ autocmd("LspAttach", {
       end
 
       -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-      local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-      client.server_capabilities.completionProvider.triggerCharacters = chars
+      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      -- client.server_capabilities.completionProvider.triggerCharacters = chars
       lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 
       map('i', '<cr>', function() return pumvisible() and '<C-y>' or '<cr>' end, { expr = true, buffer = bufnr })

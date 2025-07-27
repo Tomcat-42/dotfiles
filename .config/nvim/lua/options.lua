@@ -25,8 +25,8 @@ opt.autoindent = true
 -- === UI Settings ===
 opt.errorbells = false
 opt.lazyredraw = true
-opt.showmatch = true
-opt.matchtime = 2
+-- opt.showmatch = true
+-- opt.matchtime = 2
 opt.winborder = "single"
 opt.shortmess = "atIcWFsO"
 opt.messagesopt = "history:1000,hit-enter"

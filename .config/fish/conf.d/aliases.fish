@@ -1,10 +1,15 @@
-abbr -a pingle gping www.google.com
+abbr -a pingle ping www.google.com
 abbr -a dz detach zathura
 abbr -a di detach imv
 abbr -a gitsc git commit -S -s --amend --no-edit
 abbr -a n nvim
 abbr -a h hx
 abbr -a dp dragon-drop --and-exit
+abbr -a npager nvim -R
+
+function dnfz
+    dnf repoquery --available --queryformat '%{name}\n' | fzf -m | xargs -r sudo dnf install -y
+end
 
 function play
     mpv $(ls | bemenu)
