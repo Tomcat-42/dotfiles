@@ -205,17 +205,26 @@ end)
 map("n", "<leader>e", "<cmd>Ex<cr>")
 
 -- === Poor man's harpoon
-map("n", "<leader>a", function()
-  vim.cmd [[
-    argadd %
-    argdedup
-  ]]
-end)
-map("n", "<leader>q", function() vim.cmd.args() end)
+map('n', '<leader>a', "<cmd>$arga<cr>", { silent = true, desc = "Add current file to arg list" })
+
 for i, k in ipairs({ "h", "j", "k", "l" }) do
-  map("n", "<C-" .. k .. ">", function()
-    pcall(vim.cmd("silent! " .. i .. "argument"))
-    vim.cmd.args()
-    vim.cmd("normal! zz")
-  end, { desc = "Go to arg " .. i })
+  map('n', '<C-' .. k .. '>', "<CMD>argu " .. i .. "<CR>", { silent = true, desc = "Go to arg " .. i })
+  map('n', '<leader>h' .. k, "<CMD>" .. i .. "arga<CR>", { silent = true, desc = "Add current to arg " .. i })
+  map('n', '<leader>D' .. k, "<CMD>" .. i .. "argd<CR>", { silent = true, desc = "Delete current arg" })
 end
+
+map('n', '<leader>q', function()
+  local list = vim.fn.argv()
+  if #list > 0 then
+    local qf_items = {}
+    for _, filename in ipairs(list) do
+      table.insert(qf_items, {
+        filename = filename,
+        lnum = 1,
+        text = filename
+      })
+    end
+    vim.fn.setqflist(qf_items, 'r')
+    vim.cmd.copen()
+  end
+end, { silent = true, desc = "Show args in qf" })
