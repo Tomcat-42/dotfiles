@@ -63,7 +63,11 @@
 	conflictstyle = diff3
 
 [diff]
-	colorMoved = default
+    colorMoved = default
+    tool = nvim_difftool
+
+[difftool "nvim_difftool"]
+    cmd = nvim -c \"DiffTool $LOCAL $REMOTE\"
 
 [delta]
 	navigate = true
@@ -131,5 +135,3 @@
 #
 # [url "https://github.com/rust-lang/crates.io-index"]
 # 	insteadOf = https://github.com/rust-lang/crates.io-index
-[safe]
-	directory = /home/phugen/dev/copr/waylock

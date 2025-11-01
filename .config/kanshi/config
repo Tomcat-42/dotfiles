@@ -5,8 +5,15 @@ profile free {
 }
 
 profile docked {
-  output DP-7 enable mode 3840x2160 position 0,0 scale 2
   output eDP-1 disable
+  output DP-7 enable mode 3840x2160 position 0,0 scale 2
   exec riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
   exec echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness
+}
+
+profile infufrgs {
+  output eDP-1 disable
+  output DP-1 enable mode 1920x1080@164.998993 position 0,0
+  exec riverctl keyboard-layout -variant altgr-intl -options grp:ctrl_space_toggle us
+  exec echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
 }

@@ -1,0 +1,26 @@
+{
+  "plugins": {
+    "copilot.lua": {
+      "rev": "3abf634"
+    },
+    "mini.base16": {
+      "rev": "2a46266"
+    },
+    "nvim-dap": {
+      "rev": "6782b09"
+    },
+    "nvim-dap-view": {
+      "rev": "76f219c"
+    },
+    "nvim-dap-virtual-text": [],
+    "nvim-lspconfig": {
+      "rev": "ececa53"
+    },
+    "nvim-treesitter": {
+      "rev": "64f4755b",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "plenary.nvim": []
+  }
+}

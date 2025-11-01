@@ -11,8 +11,11 @@ local servers = {
   "texlab",
   "zls",
   "ty",
-  "gopls",
-  -- "asm_lsp",
+  "asm_lsp",
+  "rust_analyzer",
+  -- "gopls",
+  -- "ts_ls",
+  --"pico8_ls",
   -- "cssls",
   -- "docker_compose_language_service",
   -- "dockerls",
@@ -25,10 +28,8 @@ local servers = {
   -- "neocmake",
   -- "pkgbuild_language_server",
   -- "racket_langserver",
-  -- "rust_analyzer",
   -- "superhtml",
   -- "systemd_ls",
-  -- "ts_ls",
   -- "yamlls",
   -- "ziggy",
   -- "ziggy_schema",
@@ -105,6 +106,17 @@ local custom_configs = {
 lsp.enable(servers)
 for server, config in pairs(custom_configs) do lsp.config(server, config) end
 
+-- Diagnostics
+vim.diagnostic.config({
+  float = { border = "single" },
+  virtual_text = {
+    virt_text_pos = "eol_right_align", -- 'eol'|'eol_right_align'|'inline'|'overlay'|'right_align'
+    prefix = '->', -- '●', '▎', 'x', '■', , , ->, ' '
+  },
+  signs = true,
+  underline = true,
+})
+
 autocmd("LspAttach", {
   group = augroup("UserLspAttach", { clear = true }),
   callback = function(event)
@@ -149,16 +161,6 @@ autocmd("LspAttach", {
     map('n', 'gl', vim.diagnostic.open_float, o)
     map('n', '[g', function() vim.diagnostic.jump({ count = -1 }) end, o)
     map('n', ']g', function() vim.diagnostic.jump({ count = 1 }) end, o)
-
-    -- Diagnostics
-    vim.diagnostic.config({
-      virtual_text = {
-        virt_text_pos = "eol_right_align", -- 'eol'|'eol_right_align'|'inline'|'overlay'|'right_align'
-        prefix = ' ', -- '●', '▎', 'x', '■', , , ->
-        enabled = true,
-      },
-      float = { border = "single" }
-    })
 
     -- Highlight
     if client:supports_method(lsp.protocol.Methods.textDocument_documentHighlight) then
@@ -297,7 +299,6 @@ autocmd("LspAttach", {
     -- })
   end,
 })
-
 
 autocmd('LspDetach', {
   callback = function(ev)

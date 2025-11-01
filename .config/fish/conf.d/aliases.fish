@@ -4,7 +4,7 @@ abbr -a di detach imv
 abbr -a gitsc git commit -S -s --amend --no-edit
 abbr -a n nvim
 abbr -a h hx
-abbr -a dp dragon-drop --and-exit
+abbr -a d dragon --and-exit
 abbr -a npager nvim -R
 
 function dnfz

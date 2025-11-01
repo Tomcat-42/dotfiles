@@ -1,6 +1,5 @@
 local opt = vim.opt
 local g = vim.g
-local gopt = vim.g
 local wo = vim.wo
 
 -- === Folding ===
@@ -11,12 +10,11 @@ opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
 wo.foldmethod = "expr"
-wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- === Indentation ===
 opt.tabstop = 4
 opt.softtabstop = 4
-opt.shiftwidth = 0
+opt.shiftwidth = 4
 opt.shiftround = true
 opt.expandtab = true
 opt.smartindent = true
@@ -28,6 +26,8 @@ opt.lazyredraw = true
 -- opt.showmatch = true
 -- opt.matchtime = 2
 opt.winborder = "single"
+opt.winborder = "single"
+opt.pumborder = "single"
 opt.shortmess = "atIcWFsO"
 opt.messagesopt = "history:1000,hit-enter"
 opt.signcolumn = "number" -- or "auto"
@@ -70,7 +70,7 @@ opt.statusline = table.concat(
 opt.diffopt:append("linematch:60")
 opt.wildoptions = 'pum,fuzzy'
 opt.wildmenu = true
--- opt.wildmode = "longest:full,full"
+opt.wildmode = "noselect:longest,full" -- "longest:full,full"
 vim.opt.wildignore = {
   "*.o",
   "*.obj",
@@ -150,12 +150,13 @@ opt.inccommand = 'split'
 opt.pumheight = 10
 
 -- === NetRW ===
-gopt.netrw_banner = 0
-gopt.netrw_liststyle = 3
-gopt.netrw_keepdir = 1
-gopt.netrw_localrm = "rm -r"
-gopt.netrw_winsize = 25
-gopt.netrw_localcopydircmd = "cp -r"
+g.netrw_banner = 0
+g.netrw_liststyle = 3
+g.netrw_keepdir = 1
+g.netrw_localrm = "rm -r"
+g.netrw_winsize = 25
+g.netrw_localcopydircmd = "cp -r"
+g.netrw_sort_by = "name"
 
 -- === Custom Shell ===
 -- opt.shell = "nu"

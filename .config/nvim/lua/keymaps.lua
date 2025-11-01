@@ -6,6 +6,15 @@ local opt = vim.opt
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
+-- undotree
+map("n", "<leader>u", ":Undotree<cr>", { silent = true, desc = "Toggle undotree" })
+
+-- cd current dir
+map("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>')
+
+-- vim.pack.update
+map("n", "<leader>pu", vim.pack.update, { desc = "Update plugins", silent = true })
+
 -- === UI & Navigation ===
 map("n", "<leader>R", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
 map("n", "<Esc>", "<cmd>noh<cr>")                        -- Clear search highlights
@@ -149,6 +158,7 @@ map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 map("n", "<leader><cr>", "<cmd>term<cr><cmd>startinsert<cr>")
 map("n", "<C-s><C-v>", "<cmd>vsplit term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in vertical split" })
 map("n", "<C-s><C-s>", "<cmd>split term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in horizontal split" })
+map("n", "<C-s><C-t>", "<cmd>tabnew term://fish<cr><cmd>startinsert<cr>", { desc = "Open terminal in new tab" })
 
 -- === Treesitter ===
 map("n", "<leader>i", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
@@ -193,3 +203,19 @@ end)
 
 -- === NetRw ===
 map("n", "<leader>e", "<cmd>Ex<cr>")
+
+-- === Poor man's harpoon
+map("n", "<leader>a", function()
+  vim.cmd [[
+    argadd %
+    argdedup
+  ]]
+end)
+map("n", "<leader>q", function() vim.cmd.args() end)
+for i, k in ipairs({ "h", "j", "k", "l" }) do
+  map("n", "<C-" .. k .. ">", function()
+    pcall(vim.cmd("silent! " .. i .. "argument"))
+    vim.cmd.args()
+    vim.cmd("normal! zz")
+  end, { desc = "Go to arg " .. i })
+end

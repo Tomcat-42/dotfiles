@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "$#" -eq 0 ]; then
+  echo "Usage: $0 command [args...]" >&2
+  exit 1
+fi
+
+nohup "$@" >/dev/null </dev/null 2>/dev/null &
+
+if command -v disown >/dev/null 2>&1; then
+  disown
+fi
+
+exit 0

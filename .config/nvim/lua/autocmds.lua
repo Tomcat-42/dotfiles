@@ -1,4 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
+local keymap = vim.keymap.set
+local input = vim.ui.input
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
 local bo = vim.bo
@@ -6,12 +8,33 @@ local wo = vim.wo
 
 local user_config_group = augroup('UserConfig', { clear = true })
 
+-- === NetRW improvements ===
+autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    keymap('n', '<C-c>', '<cmd>bd<CR>', { buffer = true, silent = true })
+    keymap('n', '<Tab>', 'mf', { buffer = true, remap = true, silent = true })
+    keymap('n', '<S-Tab>', 'mF', { buffer = true, remap = true, silent = true })
+    keymap('n', '%', function()
+      local dir = vim.b.netrw_curdir or vim.fn.expand('%:p:h')
+      input({ prompt = 'Enter filename: ' }, function(input)
+        if input and input ~= '' then
+          local filepath = dir .. '/' .. input
+          vim.cmd('!touch ' .. vim.fn.shellescape(filepath))
+          vim.api.nvim_feedkeys('<C-l>', 'n', false)
+        end
+      end)
+    end, { buffer = true, silent = true })
+  end
+})
+
 -- === Default vert help/man ===
 autocmd("FileType", {
   group = user_config_group,
   pattern = { "help", "man" },
   command = "wincmd L",
 })
+
 
 -- === Highlight on Yank ===
 -- See `:help vim.highlight.on_yank()`
@@ -35,13 +58,13 @@ autocmd("FileType", {
 
 -- === Cursor Position ===
 -- Restore cursor position
-autocmd({ "BufReadPost" }, {
-  pattern = { "*" },
-  group = user_config_group,
-  callback = function()
-    vim.api.nvim_exec('silent! normal! g`"zv', false)
-  end,
-})
+-- autocmd({ "BufReadPost" }, {
+--   pattern = { "*" },
+--   group = user_config_group,
+--   callback = function()
+--     vim.api.nvim_exec('silent! normal! g`"zv', false)
+--   end,
+-- })
 
 -- === Terminal ===
 -- Auto-close interactive terminal buffers if the command exits successfully,
@@ -81,15 +104,17 @@ autocmd("VimResized", {
 
 
 -- Create directories when saving files
-autocmd("BufWritePre", {
-  group = user_config_group,
-  callback = function()
-    local dir = vim.fn.expand('<afile>:p:h')
-    if vim.fn.isdirectory(dir) == 0 then
-      vim.fn.mkdir(dir, 'p')
-    end
-  end,
-})
+-- autocmd("BufWritePre", {
+--   group = user_config_group,
+--   callback = function()
+--     if vim.bo.filetype == 'nvim-pack' then return end
+--
+--     local dir = vim.fn.expand('<afile>:p:h')
+--     if vim.fn.isdirectory(dir) == 0 then
+--       vim.fn.mkdir(dir, 'p')
+--     end
+--   end,
+-- })
 
 -- Terminal prompt markers
 local ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
@@ -112,46 +137,30 @@ autocmd('TermRequest', {
 opt.foldopen:remove { "search" }
 vim.keymap.set("n", "/", "zn/", { desc = "Search & Pause Folds" })
 
--- Auto toggle folds based on search/navigation
-vim.on_key(function(char)
-  local key = vim.fn.keytrans(char)
-  local searchKeys = { "n", "N", "*", "#", "/", "?" }
-  local searchConfirmed = (key == "<CR>" and vim.fn.getcmdtype():find("[/?]") ~= nil)
-  if not (searchConfirmed or vim.fn.mode() == "n") then return end
-  local searchKeyUsed = searchConfirmed or (vim.tbl_contains(searchKeys, key))
-
-  local pauseFold = vim.opt.foldenable:get() and searchKeyUsed
-  local unpauseFold = not (vim.opt.foldenable:get()) and not searchKeyUsed
-  if pauseFold then
-    vim.opt.foldenable = false
-  elseif unpauseFold then
-    vim.opt.foldenable = true
-    vim.cmd.normal("zv") -- Keep the current fold open
-  end
-end, vim.api.nvim_create_namespace("auto_pause_folds"))
-
 -- Save folds between sessions
-local function remember(mode)
-  -- Avoid complications with special filetypes
-  local ignoredFts = { "TelescopePrompt", "DressingSelect", "DressingInput", "toggleterm", "gitcommit", "replacer",
-    "harpoon", "help", "qf" }
-  if vim.tbl_contains(ignoredFts, vim.bo.filetype) or vim.bo.buftype ~= "" or not vim.bo.modifiable then return end
+local view_group = augroup("auto_view", { clear = true })
 
-  if mode == "save" then
-    vim.cmd.mkview(1)
-  else
-    pcall(function() vim.cmd.loadview(1) end) -- pcall, since new files have no view yet
-  end
-end
-autocmd("BufWinLeave", {
-  group = user_config_group,
-  pattern = "?*",
-  callback = function() remember("save") end,
+autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
+  desc = "Save view with mkview for real files",
+  group = view_group,
+  callback = function(args)
+    if vim.b[args.buf].view_activated then vim.cmd.mkview { mods = { emsg_silent = true } } end
+  end,
 })
 autocmd("BufWinEnter", {
-  group = user_config_group,
-  pattern = "?*",
-  callback = function() remember("load") end,
+  desc = "Try to load file view if available and enable view saving for real files",
+  group = view_group,
+  callback = function(args)
+    if not vim.b[args.buf].view_activated then
+      local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
+      local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
+      local ignore_filetypes = { "gitcommit", "gitrebase", "svg", "hgcommit", "nvim-pack" }
+      if buftype == "" and filetype and filetype ~= "" and not vim.tbl_contains(ignore_filetypes, filetype) then
+        vim.b[args.buf].view_activated = true
+        vim.cmd.loadview { mods = { emsg_silent = true } }
+      end
+    end
+  end,
 })
 
 -- Close folds with `h` at BoL
