@@ -9,7 +9,7 @@ vim.cmd [[
 local gh = "https://github.com/"
 vim.pack.add({
   gh .. "echasnovski/mini.base16",
-  { src = gh .. "nvim-treesitter/nvim-treesitter", version = "main", },
+  gh .. "nvim-treesitter/nvim-treesitter",
   gh .. "nvim-lua/plenary.nvim",
   gh .. "/neovim/nvim-lspconfig",
   gh .. "mfussenegger/nvim-dap",

@@ -13,6 +13,9 @@ local servers = {
   "ty",
   "asm_lsp",
   "rust_analyzer",
+  "c3_lsp",
+  "dartls",
+  "yamlls",
   -- "gopls",
   -- "ts_ls",
   --"pico8_ls",
@@ -60,11 +63,13 @@ local custom_configs = {
       "--function-arg-placeholders",
       "--rename-file-limit=0",
       "--all-scopes-completion",
-      "--cross-file-rename",
       "--header-insertion-decorators",
       "--log=verbose",
       "--pch-storage=memory",
       "--offset-encoding=utf-16",
+      "--fallback-style=Google",
+      "--log=info",
+      "--pretty",
     },
   },
   ["texlab"] = {
@@ -111,7 +116,7 @@ vim.diagnostic.config({
   float = { border = "single" },
   virtual_text = {
     virt_text_pos = "eol_right_align", -- 'eol'|'eol_right_align'|'inline'|'overlay'|'right_align'
-    prefix = '->', -- '●', '▎', 'x', '■', , , ->, ' '
+    prefix = '->',                     -- '●', '▎', 'x', '■', , , ->, ' '
   },
   signs = true,
   underline = true,
@@ -126,36 +131,41 @@ autocmd("LspAttach", {
     local o = { buffer = event.buf }
 
     -- Keymappings
-    if client:supports_method(lsp.protocol.Methods.references) then
-      map('n', 'ge', lsp.buf.references, o)
-    end
-    if client:supports_method('textDocument/definition') then
-      map('n', 'gd', lsp.buf.definition, o)
-    end
-    if client:supports_method('textDocument/declaration') then
-      map('n', 'gD', lsp.buf.declaration, o)
-    end
-    if client:supports_method('textDocument/typeDefinition') then
-      map('n', 'go', lsp.buf.type_definition, o)
-    end
-    if client:supports_method('textDocument/implementation') then
-      map('n', 'gi', lsp.buf.implementation, o)
-    end
-    if client:supports_method('textDocument/codeAction') then
-      map('n', 'ga', lsp.buf.code_action, o)
-    end
-    if client:supports_method('textDocument/formatting') or client:supports_method('textDocument/rangeFormatting') then
-      map({ 'n', 'x' }, 'gq', lsp.buf.format, o)
-    end
-    if client:supports_method('textDocument/hover') then
-      map('n', 'K', function() lsp.buf.hover({ border = "single" }) end, o)
-    end
-    if client:supports_method('textDocument/signatureHelp') then
-      map('n', 'gs', lsp.buf.signature_help, o)
-      map('i', '<C-s>', function() vim.lsp.buf.signature_help({ border = "single" }) end, o)
-    end
-    if client:supports_method('textDocument/rename') then
-      map('n', 'gw', lsp.buf.rename, o)
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_references) then
+    map('n', 'ge', lsp.buf.references, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_definition) then
+    map('n', 'gd', lsp.buf.definition, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_declaration) then
+    map('n', 'gD', lsp.buf.declaration, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_typeDefinition) then
+    map('n', 'go', lsp.buf.type_definition, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_implementation) then
+    map('n', 'gi', lsp.buf.implementation, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_codeAction) then
+    map('n', 'ga', lsp.buf.code_action, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_formatting)
+    --     or client:supports_method(lsp.protocol.Methods.textDocument_rangeFormatting) then
+    map({ 'n', 'x' }, 'gq', lsp.buf.format, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_hover) then
+    map('n', 'K', function() lsp.buf.hover({ border = "single" }) end, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_signatureHelp) then
+    map('n', 'gs', lsp.buf.signature_help, o)
+    map('i', '<C-s>', function() vim.lsp.buf.signature_help({ border = "single" }) end, o)
+    -- end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_rename) then
+    map('n', 'gw', lsp.buf.rename, o)
+    -- end
+
+    if client:supports_method(lsp.protocol.Methods.textDocument_documentColor) then
+      map({ 'n', 'x' }, 'grc', lsp.document_color.color_presentation, o)
     end
     map('n', '<leader>gl', vim.diagnostic.setloclist, o)
     map('n', 'gl', vim.diagnostic.open_float, o)
@@ -304,7 +314,7 @@ autocmd('LspDetach', {
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
 
-    if client:supports_method('textDocument/formatting') then
+    if client:supports_method(lsp.protocol.Methods.textDocument_formatting) then
       vim.api.nvim_clear_autocmds({
         event = 'BufWritePre',
         buffer = ev.buf,

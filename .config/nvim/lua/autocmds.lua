@@ -8,6 +8,18 @@ local wo = vim.wo
 
 local user_config_group = augroup('UserConfig', { clear = true })
 
+autocmd('FileType', {
+  group = augroup('big_file', { clear = true }),
+  desc = 'Disable features in big files',
+  pattern = 'bigfile',
+  callback = function(args)
+    vim.schedule(function()
+      vim.bo[args.buf].syntax = vim.filetype.match { buf = args.buf } or ''
+    end)
+  end,
+})
+
+
 -- === NetRW improvements ===
 autocmd("FileType", {
   pattern = "netrw",
@@ -104,17 +116,17 @@ autocmd("VimResized", {
 
 
 -- Create directories when saving files
--- autocmd("BufWritePre", {
---   group = user_config_group,
---   callback = function()
---     if vim.bo.filetype == 'nvim-pack' then return end
---
---     local dir = vim.fn.expand('<afile>:p:h')
---     if vim.fn.isdirectory(dir) == 0 then
---       vim.fn.mkdir(dir, 'p')
---     end
---   end,
--- })
+autocmd("BufWritePre", {
+  group = user_config_group,
+  callback = function()
+    if vim.bo.filetype == 'nvim-pack' then return end
+
+    local dir = vim.fn.expand('<afile>:p:h')
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.fn.mkdir(dir, 'p')
+    end
+  end,
+})
 
 -- Terminal prompt markers
 local ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
@@ -175,3 +187,15 @@ autocmd("BufWinEnter", {
 -- end, { desc = "h (+ close fold at BoL)" })
 --)
 --
+
+-- === Debug Directory Changes ===
+-- Temporarily track when the working directory changes
+autocmd("DirChanged", {
+  group = user_config_group,
+  callback = function(args)
+    local msg = string.format("Directory changed to: %s (scope: %s)", vim.fn.getcwd(), args.scope)
+    print(msg)
+    -- Uncomment the line below to see the full traceback
+    -- print(debug.traceback("", 2))
+  end
+})

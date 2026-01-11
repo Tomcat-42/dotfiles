@@ -6,7 +6,7 @@ FIFO="$XDG_RUNTIME_DIR/sandbar"
 mkfifo "$FIFO"
 
 while cat "$FIFO"; do :; done | dam \
-  -f "Berkeley Nerd Font:size=16:Pixelsize" \
+  -f "Berkeley Nerd Font:size=12:Pixelsize" \
   -sf "$color00" \
   -sb "$color08" \
   -nf "$color05" \

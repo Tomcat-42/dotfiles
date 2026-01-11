@@ -11,6 +11,10 @@
 	smtpserverport = 587
 	confirm = auto
 	annotate = yes
+	signedoffcc = false
+	suppresscc = self
+	suppressfrom = true
+	chainreplyto = false
 
 [credential "smtp://phugen%40redhat.com@smtp.gmail.com:587"]
 	helper = !pass show redhat/git-send-email
@@ -46,7 +50,7 @@
 	pager = delta
 
 [init]
-	defaultbranch = main
+	defaultbranch = master
 
 [pull]
 	rebase = true

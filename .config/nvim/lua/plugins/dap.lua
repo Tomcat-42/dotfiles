@@ -327,21 +327,11 @@ dap.configurations = {
       terminalKind = "integrated",
     }
   },
-  asm = {
-    {
-      name = "[gdb] [connect]",
-      type = "gdb",
-      request = "attach",
-      program = get_path("zig-out/bin"),
-      target = get_addr("localhost:1337"),
-      cwd = "${workspaceFolder}",
-      stopAtBeginningOfMainSubprogram = false,
-    },
-  },
 }
 dap.configurations.cpp = dap.configurations.zig
 dap.configurations.c = dap.configurations.zig
 dap.configurations.rust = dap.configurations.zig
+dap.configurations.asm = dap.configurations.zig
 
 require("dap.ext.vscode").type_to_filetypes["probe-rs-debug"] = { "rust", "zig", "c", "asm" }
 

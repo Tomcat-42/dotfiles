@@ -2,6 +2,9 @@ local opt = vim.opt
 local g = vim.g
 local wo = vim.wo
 
+-- === Variables ===
+vim.g.projects_dir = vim.env.HOME .. '/dev'
+
 -- === Folding ===
 opt.foldenable = true
 opt.foldlevel = 99
@@ -130,6 +133,8 @@ opt.path:append("**")
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+g.c_syntax_for_h = 1
+
 
 -- === Backup & Swap ===
 opt.swapfile = false
@@ -167,3 +172,8 @@ g.netrw_sort_by = "name"
 -- opt.shellxescape = ""
 -- opt.shellxquote = ""
 -- opt.shellquote = ""
+
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0

@@ -6,7 +6,7 @@ app-notifications = false
 
 font-family = Berkeley Nerd Font
 font-style = Regular
-font-size = 18
+font-size = 12
 font-thicken = false
 font-synthetic-style = false
 adjust-cell-width = -15%
@@ -27,7 +27,7 @@ window-padding-x = 5
 window-padding-y = 5,2
 resize-overlay = never
 window-theme = ghostty
-# custom-shader = /home/pablo/.config/ghostty/shaders/glow-rgbsplit-twitchy.glsl
+# custom-shader = /home/phugen/.config/ghostty/ghostty-cursor-shaders/cursor_tail.glsl
 
 shell-integration = fish
 shell-integration-features = no-cursor
@@ -37,7 +37,7 @@ clipboard-paste-protection = false
 clipboard-read = allow
 clipboard-write = allow
 
-# quick term
-# keybind = ctrl+shift+t=toggle_quick_terminal
-# keybind = ctrl+slash=text:/
-# keybind = shift+ctrl+slash=text:?
+keybind = ctrl+enter=text:\x0a
+keybind = ctrl+j=text:\x0a
+keybind = ctrl+r=text:\x12
+keybind = shift+enter=text:\x1b\r

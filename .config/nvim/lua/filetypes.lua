@@ -2,6 +2,7 @@ local filetype = vim.filetype
 
 filetype.add({
   extension = {
+    p = "p",
     ebnf = "ebnf",
     fmf = "yaml",
     v = "verilog",
@@ -11,5 +12,8 @@ filetype.add({
     shtml = 'superhtml',
     ziggy = 'ziggy',
     ['ziggy-schema'] = 'ziggy_schema',
-  }
+  },
+  filename = {
+    ["Makefile.inc"] = "make",
+  },
 })

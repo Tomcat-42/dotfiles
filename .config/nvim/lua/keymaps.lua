@@ -201,6 +201,10 @@ map("n", "<leader>fa", function()
   print("file:", path)
 end)
 
+-- === Git Blame ===
+map({ 'n', 'v' }, '<Leader>bb', ':GitBlame<CR>', { silent = true, desc = "Git Blame (current line or selection)" })
+map('n', '<Leader>bc', ':GitBlameClear<CR>', { silent = true, desc = "Git Blame Clear" })
+
 -- === NetRw ===
 map("n", "<leader>e", "<cmd>Ex<cr>")
 

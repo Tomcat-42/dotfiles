@@ -7,7 +7,7 @@ set -gx VISUAL nvim
 set -gx TERMINAL_EXEC "ghostty -e"
 set -gx TERMCMD "ghostty -e"
 set -gx TERMINAL ghostty
-set -gx BEMENU_OPTS "-b -C -i -w -T -l '10 top' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color08' -R 0 -n --fn 'Berkeley Nerd Font 14' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0A --ab #$color00 --af #$color05"
+set -gx BEMENU_OPTS "-b -C -i -w -T -l '10 top' --binding vim i --fork -f -P '=>' -p '' --vim-esc-exits -B 2.0 --bdr '#$color08' -R 0 -n --fn 'Berkeley Nerd Font 10' --tb #$color00 --tf #$color05 --fb #$color00 --ff #$color05 --cb #$color00 --cf #$color05 --nb #$color00 --nf #$color05 --hb #$color00 --hf #$color0B --fbb #$color00 --fbf #$color0A --ab #$color00 --af #$color05"
 set -gx NO_AT_BRIDGE 1
 set -gx PASSWORD_STORE_DIR ~/data/documents/other/passwords
 set -gx BAT_THEME base16
@@ -38,6 +38,12 @@ set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=/run/user/1000/bus"
 set -gx MANPAGER "nvim -c 'Man!' -o -"
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+set -gx SUDO_PROMPT (set_color green --bold)"[passwd]: "(set_color normal)
+
+# android sdk and flutter
+set -gx CHROME_EXECUTABLE $(which chromium-browser)
+set -gx ANDROID_HOME "$HOME/.local/opt/android-sdk"
+set -gx JAVA_HOME "/usr/lib/jvm/java-21-openjdk"
 
 set -l FZF_NON_COLOR_OPTS
 
@@ -117,10 +123,22 @@ set paths \
     ~/.luarocks/bin \
     /usr/libexec/podman/ \
     /opt/qmk_toolchains_linuxX64/bin/ \
-    ~/.local/luals/bin \
-    ~/.local/codelldb/extension/bin \
-    ~/.local/codelldb/extension/adapter
+    ~/.local/opt/luals/bin \
+    ~/.local/opt/codelldb/extension/bin \
+    ~/.local/opt/codelldb/extension/adapter \
+    ~/.local/opt/flutter/bin \
+    $ANDROID_HOME/cmdline-tools/latest/bin \
+    $ANDROID_HOME/platform-tools \
+    $ANDROID_HOME/emulator \
+    $HOME/.bun/bin \
+    ~/.radicle/bin \
+    ~/.local/opt/ghidra
+    
+# Added by Radicle.
+export PATH="$PATH:/home/phugen/.radicle/bin"
 
+set -gx WASMTIME_HOME "$HOME/.wasmtime"
+string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
 
 # for i in (luarocks path | awk '{sub(/PATH=/, "PATH ", $2); print "set -gx "$2}'); eval $i; end
 
@@ -155,3 +173,8 @@ set -gx GUILE_LOAD_PATH "/usr/share/guile/3.0/:/usr/local/share/guile/site/3.0"
 #  t1cid:darkening-parameters=500,475,1000,475,2500,475,4000,0"
 
 fish_add_path $paths
+
+# claude code
+set -gx CLAUDE_CODE_USE_VERTEX 1
+set -gx CLOUD_ML_REGION "us-east5"
+set -gx ANTHROPIC_VERTEX_PROJECT_ID "itpc-gcp-core-pe-eng-claude"

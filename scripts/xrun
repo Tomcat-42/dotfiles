@@ -1,0 +1,33 @@
+#!/bin/bash
+# Wrapper script to run X11 applications via Xwayland
+
+if [ -z "$1" ]; then
+    echo "Usage: xrun <command> [args...]"
+    exit 1
+fi
+
+# Find running Xwayland or pick available display
+DISPLAY_NUM=""
+for i in {1..10}; do
+    if pgrep -f "Xwayland :${i}\b" > /dev/null 2>&1; then
+        DISPLAY_NUM=$i
+        break
+    fi
+done
+
+# Start Xwayland if not running
+if [ -z "$DISPLAY_NUM" ]; then
+    for i in {1..10}; do
+        if [ ! -e "/tmp/.X${i}-lock" ]; then
+            DISPLAY_NUM=$i
+            break
+        fi
+    done
+    Xwayland :$DISPLAY_NUM &
+    sleep 1
+    # Start tinywm for Alt+drag window moving
+    DISPLAY=:$DISPLAY_NUM tinywm &
+fi
+
+export DISPLAY=:$DISPLAY_NUM
+exec "$@"

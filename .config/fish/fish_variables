@@ -7,7 +7,7 @@ SETUVAR --export FZF_CTRL_T_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dwalker\
 SETUVAR --export FZF_DEFAULT_OPTS:\x20\x2d\x2dstyle\x20minimal\x20\x2d\x2dcolor\x3dbg\x2b\x3a\x23000000\x2cbg\x3a\x23000000\x2cspinner\x3a\x238ec07c\x2chl\x3a\x2383a598\x20\x2d\x2dcolor\x3dfg\x3a\x23bdae93\x2cheader\x3a\x2383a598\x2cinfo\x3a\x23fabd2f\x2cpointer\x3a\x238ec07c\x20\x2d\x2dcolor\x3dmarker\x3a\x238ec07c\x2cfg\x2b\x3a\x23ebdbb2\x2cprompt\x3a\x23fabd2f\x2chl\x2b\x3a\x2383a598
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:555
-SETUVAR fish_color_cancel:\x2d\x2dreverse
+SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:brgreen
 SETUVAR fish_color_comment:brmagenta\x1e\x2d\x2ditalics
 SETUVAR fish_color_cwd:bryellow
@@ -22,7 +22,6 @@ SETUVAR fish_color_keyword:purple
 SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:brmagenta
-SETUVAR fish_color_option:cyan
 SETUVAR fish_color_param:white
 SETUVAR fish_color_quote:yellow
 SETUVAR fish_color_redirection:brblue\x1e\x2d\x2dbold
@@ -38,7 +37,7 @@ SETUVAR fish_pager_color_background:\x1d
 SETUVAR fish_pager_color_completion:brcyan
 SETUVAR fish_pager_color_description:yellow
 SETUVAR fish_pager_color_prefix:brcyan\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan\x1e\x2d\x2dbold
 SETUVAR fish_pager_color_secondary_background:\x1d
 SETUVAR fish_pager_color_secondary_completion:\x1d
 SETUVAR fish_pager_color_secondary_description:\x1d
@@ -48,4 +47,4 @@ SETUVAR fish_pager_color_selected_completion:000000
 SETUVAR fish_pager_color_selected_description:000000
 SETUVAR fish_pager_color_selected_foreground:black
 SETUVAR fish_pager_color_selected_prefix:000000\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
-SETUVAR fish_user_paths:/home/phugen/\x2elocal/codelldb/extension/bin\x1e/home/phugen/\x2elocal/codelldb/extension/adapter\x1e/home/phugen/\x2elocal/luals/bin\x1e/opt/qmk_toolchains_linuxX64/bin\x1e/home/phugen/\x2ezvm/bin\x1e/home/phugen/\x2ezvm/self\x1e/usr/libexec/podman\x1e/home/phugen/\x2elocal/share/go/bin\x1e/home/phugen/\x2elocal/share/bob/nvim\x2dbin\x1e/home/phugen/\x2ecargo/bin\x1e/home/phugen/\x2elocal/bin\x1e/home/phugen/scripts\x1e/home/pablo/\x2elocal/share/go/bin\x1e/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/home/pablo/\x2ezvm/bin\x1e/home/pablo/\x2ezvm/self
+SETUVAR fish_user_paths:/home/phugen/\x2elocal/opt/ghidra\x1e/home/phugen/\x2ebun/bin\x1e/home/phugen/\x2elocal/opt/android\x2dsdk/emulator\x1e/home/phugen/\x2elocal/opt/android\x2dsdk/platform\x2dtools\x1e/home/phugen/\x2elocal/opt/android\x2dsdk/cmdline\x2dtools/latest/bin\x1e/home/phugen/\x2elocal/opt/android\x2dsdk/cmdline\x2dtools/bin\x1e/home/phugen/\x2elocal/opt/flutter/bin\x1e/home/phugen/\x2elocal/opt/luals/bin\x1e/home/phugen/\x2elocal/opt/codelldb/extension/bin\x1e/home/phugen/\x2elocal/opt/codelldb/extension/adapter\x1e/home/phugen/\x2eradicle/bin\x1e/home/phugen/\x2ezv/bin\x1e/home/phugen/\x2elocal/codelldb/extension/bin\x1e/home/phugen/\x2elocal/codelldb/extension/adapter\x1e/home/phugen/\x2elocal/luals/bin\x1e/opt/qmk_toolchains_linuxX64/bin\x1e/home/phugen/\x2ezvm/bin\x1e/home/phugen/\x2ezvm/self\x1e/usr/libexec/podman\x1e/home/phugen/\x2elocal/share/go/bin\x1e/home/phugen/\x2elocal/share/bob/nvim\x2dbin\x1e/home/phugen/\x2ecargo/bin\x1e/home/phugen/\x2elocal/bin\x1e/home/phugen/scripts\x1e/home/pablo/\x2elocal/share/go/bin\x1e/home/pablo/\x2elocal/bin\x1e/home/pablo/go/bin\x1e/home/pablo/scripts\x1e/home/pablo/\x2ecargo/bin\x1e/home/pablo/\x2elocal/share/bob/nvim\x2dbin\x1e/home/pablo/\x2ezvm/bin\x1e/home/pablo/\x2ezvm/self
