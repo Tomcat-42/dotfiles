@@ -1,7 +1,7 @@
 {
   "plugins": {
     "copilot.lua": {
-      "rev": "e78d1ffebdf6ccb6fd8be4e6898030c1cf5f9b64",
+      "rev": "3faffefbd6ddeb52578535ec6b730e0b72d7fd1a",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "mini.base16": {
@@ -9,11 +9,11 @@
       "src": "https://github.com/echasnovski/mini.base16"
     },
     "nvim-dap": {
-      "rev": "7bb46cc612bb127d7b0e3e9ed695267d830824ec",
+      "rev": "e47878dcf1ccc30136b30d19ab19fe76946d61cd",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-view": {
-      "rev": "4f73b98b4db88a953f1998175a4daaea2bf52d28",
+      "rev": "c4384f417dae719d21a4af0ab62c9a3ae3c518c8",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lspconfig": {
-      "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
+      "rev": "66fd02ad1c7ea31616d3ca678fa04e6d0b360824",
       "src": "https://github.com//neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "undotree": {
-      "rev": "3976ed63d7fb0cc47f6a778e230a390a399df69c",
+      "rev": "f68aed28c8ff1294b012dfadaced2084dc045870",
       "src": "https://github.com/jiaoshijie/undotree"
     }
   }

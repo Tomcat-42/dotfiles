@@ -22,6 +22,7 @@ local langs = {
   "tex",
   "c3",
   "dart",
+  "xml",
 }
 
 vim.api.nvim_create_autocmd('FileType', {

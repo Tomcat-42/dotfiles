@@ -136,6 +136,7 @@ rivercarro -per-tag -inner-gaps 0 -outer-gaps 0 &
 
 # custom window rules
 riverctl rule-add -title "*" ssd
+riverctl rule-add -app-id "org.freedesktop.Xwayland" tags $((1 << 7))
 # riverctl rule-add -title "glfw" output DP-1
 # riverctl rule-add -title "glfw" float
 # riverctl rule-add -title "C++ - Swarm" output DP-1

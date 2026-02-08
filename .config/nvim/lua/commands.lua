@@ -6,13 +6,35 @@ vim.cmd([[
 ]])
 
 user_command("DeleteComments", function()
-  local comment_pattern = vim.fn.substitute(vim.o.commentstring, "%s", "", "g")
-  local escaped_pattern = vim.fn.escape(comment_pattern, "/.*[]~")
-  vim.cmd(("g/%s/d"):format(escaped_pattern))
-end, {
-  range = true,
-  desc = "Delete comments in the selected range or whole buffer",
-})
+  local ok, parser = pcall(vim.treesitter.get_parser, 0)
+  if not ok then return vim.notify("No treesitter parser", vim.log.levels.WARN) end
+
+  local types = { comment = true, line_comment = true, block_comment = true }
+  local ranges = {}
+
+  local function collect(node)
+    if types[node:type()] then
+      ranges[#ranges + 1] = { node:range() }
+    else
+      for child in node:iter_children() do collect(child) end
+    end
+  end
+  collect(parser:parse()[1]:root())
+
+  table.sort(ranges, function(a, b) return a[1] > b[1] or (a[1] == b[1] and a[2] > b[2]) end)
+
+  for _, r in ipairs(ranges) do
+    local sr, sc, er, ec = unpack(r)
+    local before = vim.api.nvim_buf_get_lines(0, sr, sr + 1, false)[1]:sub(1, sc)
+    local after = vim.api.nvim_buf_get_lines(0, er, er + 1, false)[1]:sub(ec + 1)
+
+    if before:match("^%s*$") and after:match("^%s*$") then
+      vim.api.nvim_buf_set_lines(0, sr, er + 1, false, {})
+    else
+      vim.api.nvim_buf_set_text(0, sr, #before:gsub("%s+$", ""), er, ec, { "" })
+    end
+  end
+end, { desc = "Delete all comments using treesitter" })
 
 
 local blame_ns = vim.api.nvim_create_namespace("GitBlameVirtText")

@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Update zv with locally built Zig
+# Usage: update-zv-local.sh <zig-source-dir> [--symlink] [--no-build]
+
+ZV_DIR="${ZV_DIR:-$HOME/.zv}"
+VERSIONS_DIR="$ZV_DIR/versions"
+
+USE_SYMLINK=false
+DO_BUILD=true
+ZIG_DIR=""
+
+print_usage() {
+    echo "Usage: $0 <zig-source-dir> [--symlink] [--no-build]"
+    echo ""
+    echo "Arguments:"
+    echo "  zig-source-dir  Path to Zig source repository"
+    echo ""
+    echo "Options:"
+    echo "  --symlink       Create symlinks instead of copying files"
+    echo "  --no-build      Skip build, just install existing binary"
+    echo "  --help, -h      Show this help"
+}
+
+for arg in "$@"; do
+    case $arg in
+        --symlink)
+            USE_SYMLINK=true
+            ;;
+        --no-build)
+            DO_BUILD=false
+            ;;
+        --help|-h)
+            print_usage
+            exit 0
+            ;;
+        -*)
+            echo "Unknown option: $arg"
+            print_usage
+            exit 1
+            ;;
+        *)
+            if [[ -z "$ZIG_DIR" ]]; then
+                ZIG_DIR="$arg"
+            else
+                echo "Error: Multiple directories specified"
+                print_usage
+                exit 1
+            fi
+            ;;
+    esac
+done
+
+if [[ -z "$ZIG_DIR" ]]; then
+    echo "Error: Zig source directory required"
+    print_usage
+    exit 1
+fi
+
+# Resolve to absolute path
+ZIG_DIR="$(cd "$ZIG_DIR" && pwd)"
+
+if [[ ! -d "$ZIG_DIR" ]]; then
+    echo "Error: Directory not found: $ZIG_DIR"
+    exit 1
+fi
+
+cd "$ZIG_DIR"
+
+# Detect build directory
+if [[ -f "build/stage3/bin/zig" ]]; then
+    BUILD_DIR="build/stage3"
+    BUILD_TYPE="cmake"
+elif [[ -f "stage3/bin/zig" ]]; then
+    BUILD_DIR="stage3"
+    BUILD_TYPE="zig"
+else
+    echo "No existing build found in $ZIG_DIR"
+    echo "Run cmake build first:"
+    echo "  cd $ZIG_DIR"
+    echo "  mkdir -p build && cd build"
+    echo "  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DZIG_NO_LIB=ON"
+    echo "  ninja install"
+    exit 1
+fi
+
+echo "Found build at: $ZIG_DIR/$BUILD_DIR ($BUILD_TYPE)"
+
+if $DO_BUILD; then
+    echo "Rebuilding Zig..."
+    if [[ "$BUILD_TYPE" == "cmake" ]]; then
+        ninja -C build install
+    else
+        "$BUILD_DIR/bin/zig" build -p "$BUILD_DIR" --zig-lib-dir lib -Dno-lib
+    fi
+fi
+
+# Get version from built zig
+VERSION=$("$BUILD_DIR/bin/zig" version)
+LOCAL_VERSION="${VERSION}-local"
+
+echo "Built version: $VERSION"
+echo "Installing as: $LOCAL_VERSION"
+
+mkdir -p "$VERSIONS_DIR"
+
+TARGET_DIR="$VERSIONS_DIR/$LOCAL_VERSION"
+
+if $USE_SYMLINK; then
+    rm -rf "$TARGET_DIR"
+    mkdir -p "$TARGET_DIR"
+
+    ln -s "$ZIG_DIR/$BUILD_DIR/bin/zig" "$TARGET_DIR/zig"
+    ln -s "$ZIG_DIR/lib" "$TARGET_DIR/lib"
+
+    echo "Created symlinks in: $TARGET_DIR"
+    echo "  zig -> $ZIG_DIR/$BUILD_DIR/bin/zig"
+    echo "  lib -> $ZIG_DIR/lib"
+else
+    rm -rf "$TARGET_DIR"
+    mkdir -p "$TARGET_DIR"
+
+    cp "$BUILD_DIR/bin/zig" "$TARGET_DIR/zig"
+    ln -s "$ZIG_DIR/lib" "$TARGET_DIR/lib"
+
+    echo "Installed to: $TARGET_DIR"
+    echo "  zig copied, lib/ symlinked to source"
+fi
+
+echo ""
+echo "Usage:"
+echo "  zig +$LOCAL_VERSION version"
+echo ""
+echo "Or set as default:"
+echo "  zv default $LOCAL_VERSION"

@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local dap, dapview, dapvirtual = require("dap"), require("dap-view"), require("nvim-dap-virtual-text")
 
-dapview.setup({ windows = { height = 10, } })
+dapview.setup({ windows = { size = 10, } })
 dapvirtual.setup({ commented = true, virt_text_pos = "eol" })
 
 -- highlight(0, "DapStopped", vim.api.nvim_get_hl(0, { name = "Visual" }))

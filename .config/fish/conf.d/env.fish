@@ -27,6 +27,7 @@ set -gx CLUTTER_BACKEND wayland
 set -gx SDL_VIDEODRIVER wayland
 set -gx ELECTRON_OZONE_PLATFORM_HINT wayland
 set -gx GTK_THEME "Gruvbox-Red-Dark":dark
+# set -gx GTK_THEME "FlatColor:dark"
 set -gx GTK_CSD 0
 # set -gx LD_PRELOAD /usr/lib/libgtk3-nocsd.so.0
 set -gx LIBSEAT_BACKEND logind
@@ -43,7 +44,7 @@ set -gx SUDO_PROMPT (set_color green --bold)"[passwd]: "(set_color normal)
 # android sdk and flutter
 set -gx CHROME_EXECUTABLE $(which chromium-browser)
 set -gx ANDROID_HOME "$HOME/.local/opt/android-sdk"
-set -gx JAVA_HOME "/usr/lib/jvm/java-21-openjdk"
+set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
 
 set -l FZF_NON_COLOR_OPTS
 
@@ -96,16 +97,16 @@ set -U fish_color_param white
 set -U fish_color_comment brmagenta --italics
 set -U fish_color_error brred --underline
 set -U fish_color_valid_path green --underline
-set -U fish_color_autosuggestion '555'
+set -U fish_color_autosuggestion 555
 set -U fish_color_search_match --background=brblue bryellow
 set -U fish_color_selection white --bold --background=purple
 set -U fish_pager_color_prefix brcyan --bold --underline
 set -U fish_pager_color_completion brcyan
 set -U fish_pager_color_description yellow
 set -U fish_pager_color_selected_background --background=magenta
-set -U fish_pager_color_selected_prefix '000000' --bold --underline
-set -U fish_pager_color_selected_completion '000000'
-set -U fish_pager_color_selected_description '000000'
+set -U fish_pager_color_selected_prefix 000000 --bold --underline
+set -U fish_pager_color_selected_completion 000000
+set -U fish_pager_color_selected_description 000000
 
 set -gx GOPATH "$HOME/.local/share/go"
 set paths \
@@ -133,12 +134,12 @@ set paths \
     $HOME/.bun/bin \
     ~/.radicle/bin \
     ~/.local/opt/ghidra
-    
+
 # Added by Radicle.
 export PATH="$PATH:/home/phugen/.radicle/bin"
 
 set -gx WASMTIME_HOME "$HOME/.wasmtime"
-string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
+string match -r ".wasmtime" "$PATH" >/dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
 
 # for i in (luarocks path | awk '{sub(/PATH=/, "PATH ", $2); print "set -gx "$2}'); eval $i; end
 
@@ -151,12 +152,13 @@ set -gx LUA_CPATH '/usr/local/lib/lua/5.4/?.so;/usr/lib/lua/5.4/?.so;/usr/local/
 5.4/loadall.so;/usr/lib/lua/5.4/loadall.so;./?.so;/home/phugen/.luarocks/lib/lua/5.4/?.so
 '
 
-set -gx LIBVA_DRIVER_NAME "iHD"
-set -gx VDPAU_DRIVER "va_gl"
+set -gx LIBVA_DRIVER_NAME iHD
+set -gx VDPAU_DRIVER va_gl
 set -gx ANV_DEBUG "video-decode,video-encode"
 # set -gx __GLX_VENDOR_LIBRARY_NAME "nvidia"
 # set -gx NVD_BACKEND "direct"
 # set -gx GBM_BACKEND "nvidia-drm"
+set -gx KRB5CCNAME "FILE:/tmp/krb5cc_(id -u)"
 
 # Guile
 set -gx GUILE_LOAD_COMPILED_PATH "/usr/lib/guile/3.0/ccache/:/usr/local/lib/guile/3.0/site-ccache/"
@@ -176,5 +178,8 @@ fish_add_path $paths
 
 # claude code
 set -gx CLAUDE_CODE_USE_VERTEX 1
-set -gx CLOUD_ML_REGION "us-east5"
-set -gx ANTHROPIC_VERTEX_PROJECT_ID "itpc-gcp-core-pe-eng-claude"
+set -gx CLOUD_ML_REGION us-east5
+set -gx ANTHROPIC_VERTEX_PROJECT_ID itpc-gcp-core-pe-eng-claude
+
+# virsh
+set -gx LIBVIRT_DEFAULT_URI "qemu:///system"

@@ -24,67 +24,81 @@ theme-file-extension = "-gtk.css"
 
 [[items]]
 name = "qt5ct-conf"
-path = "~/dev/colorschemes/qt5ct/"
+path = "~/dev/colorschemes/qt5ct"
 themes-dir = "qt5ct_appearance_conf"
 hook = "cp -f %f ~/.config/qt5ct/qt5ct.conf"
 theme-file-extension = ".conf"
 
 [[items]]
 name = "qt5ct-colors"
-path = "~/dev/colorschemes/qt5ct/"
+path = "~/dev/colorschemes/qt5ct"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/qt5ct/colors/colors.conf"
 theme-file-extension = ".conf"
 
 [[items]]
 name = "zathura"
-path = "~/dev/colorschemes/zathura/"
+path = "~/dev/colorschemes/zathura"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/zathura/zathurarc"
 theme-file-extension = ""
 
 [[items]]
 name = "tmux"
-path = "~/dev/colorschemes/tmux/"
+path = "~/dev/colorschemes/tmux"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/tmux/colors.tmux.conf"
 theme-file-extension = ".tmux.conf"
 
 [[items]]
 name = "fish"
-path = "~/dev/colorschemes/fish/"
+path = "~/dev/colorschemes/fish"
 themes-dir = "functions"
 hook = "cp -f %f ~/.config/fish/functions/base16_colors.fish"
 theme-file-extension = ".fish"
 
 [[items]]
 name = "nvim-mini.base16"
-path = "~/dev/colorschemes/nvim/mini.base16/"
+path = "~/dev/colorschemes/nvim/mini.base16"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/nvim/lua/plugins/base16.lua"
 theme-file-extension = ".lua"
 
 [[items]]
-path = "~/dev/colorschemes/ghostty/"
 name = "ghostty"
+path = "~/dev/colorschemes/ghostty"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/ghostty/themes/system"
 
 [[items]]
 name = "helix"
-path = "~/dev/colorschemes/helix/"
+path = "~/dev/colorschemes/helix"
 themes-dir = "themes"
 hook = "cp -f %f ~/.config/helix/themes/system.toml"
 theme-file-extension = ".toml"
 
 [[items]]
-path = "~/dev/colorschemes/mako/"
 name = "mako"
+path = "~/dev/colorschemes/mako"
 themes-dir = "colors"
 hook = "cp -f %f ~/.config/mako/config"
 
 [[items]]
-path = "~/dev/colorschemes/aerc/"
 name = "aerc"
+path = "~/dev/colorschemes/aerc"
 themes-dir = "stylesets"
 hook = "cp -f %f ~/.config/aerc/stylesets/system"
+
+[[items]]
+name = "gtk4"
+path = "~/dev/colorschemes/gtk4"
+themes-dir = "colors"
+hook = "cp -f %f ~/.config/gtk-4.0/gtk.css"
+theme-file-extension = ".css"
+
+[[items]]
+name = "bemenu"
+path = "~/dev/colorschemes/bemenu"
+themes-dir = "scripts"
+hook = "cp -f %f ~/scripts/pinentry_wrapper && chmod +x ~/scripts/pinentry_wrapper"
+theme-file-extension = ".sh"

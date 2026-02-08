@@ -1,10 +1,5 @@
 #!/bin/sh
-
-# BEMENU_OPTS="-n -l 10 -w -n --fn 'Berkeley Nerd Font 16' \
-# --tb #$color08 --tf #$color00 --fb #$color08 --ff #$color00 \
-# --cb #$color08 --cf #$color00 --nb #$color08 --nf #$color00 \
-# --hb #$color08 --hf #$color0B --fbb #$color08 --fbf #$color0B \
-# --ab #$color08 --af #$color05"
-# echo $BEMENU_OPTS
+## Base16 darkbox
+# Author: Pablo Alessandro Santos Hugen
 
 BEMENU_OPTS="-b -l 10 -w -n --fn 'Berkeley Nerd Font 12' --tb #fb4934 --tf #000000 --fb #fb4934 --ff #000000 --cb #fb4934 --cf #000000 --nb #fb4934 --nf #000000 --hb #fb4934 --hf #98971a --fbb #fb4934 --fbf #98971a --ab #fb4934 --af #d5c4a1" pinentry-bemenu "$*"
