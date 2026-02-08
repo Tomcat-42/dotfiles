@@ -1,8 +1,5 @@
 {
     "diagnostics.globals": [
-        "vim",
-        "MiniFiles",
-        "MiniPick",
-        "MiniCompletion"
+        "vim"
     ]
 }

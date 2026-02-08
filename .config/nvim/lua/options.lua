@@ -26,14 +26,11 @@ opt.autoindent = true
 -- === UI Settings ===
 opt.errorbells = false
 opt.lazyredraw = true
--- opt.showmatch = true
--- opt.matchtime = 2
-opt.winborder = "single"
 opt.winborder = "single"
 opt.pumborder = "single"
 opt.shortmess = "atIcWFsO"
 opt.messagesopt = "history:1000,hit-enter"
-opt.signcolumn = "number" -- or "auto"
+opt.signcolumn = "number"
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 1
@@ -42,38 +39,18 @@ opt.colorcolumn = "80"
 opt.wrap = false
 opt.scrolloff = 8
 opt.sidescrolloff = 8
-opt.colorcolumn = "80"
 opt.laststatus = 3
 opt.showmode = true
 opt.termguicolors = true
 opt.background = "dark"
--- opt.guicursor = ""
 opt.splitbelow = true
 opt.splitright = true
 opt.whichwrap:append "<>[]hl"
 vim.o.list = false
--- vim.opt.listchars = {
---     -- tab = "▏ ",
---     trail = "·",
---     extends = "»",
---     precedes = "«",
--- }
-opt.statusline = table.concat(
-  {
-    ' %t',
-    '%r',
-    '%m',
-    '%=',
-    '%{&filetype}',
-    ' %2p%%',
-    ' %3l:%-2c '
-  },
-  ''
-)
 opt.diffopt:append("linematch:60")
 opt.wildoptions = 'pum,fuzzy'
 opt.wildmenu = true
-opt.wildmode = "noselect:longest,full" -- "longest:full,full"
+opt.wildmode = "longest:full,full"
 vim.opt.wildignore = {
   "*.o",
   "*.obj",
@@ -118,20 +95,18 @@ vim.opt.wildignore = {
   "*.patch",
   "*.diff",
 }
-opt.showtabline = 1 -- Always show tabline (0=never, 1=when multiple tabs, 2=always)
-opt.tabline = ''    -- Use default tabline (empty string uses built-in)
+opt.showtabline = 1
+opt.tabline = ''
 
 -- === Misc ===
 opt.mouse = ""
-opt.timeoutlen = 1000 -- 600
+opt.timeoutlen = 1000
 opt.updatetime = 250
 opt.autochdir = false
 opt.breakindent = true
 opt.iskeyword:append("-")
 opt.backspace = "indent,eol,start"
 opt.path:append("**")
-opt.wildmenu = true
-opt.wildmode = "longest:full,full"
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 g.c_syntax_for_h = 1
 
@@ -151,6 +126,7 @@ opt.smartcase = true
 
 -- === Completion ===
 opt.completeopt = "menu,menuone,noinsert,noselect,popup,fuzzy"
+opt.autocomplete = true
 opt.inccommand = 'split'
 opt.pumheight = 10
 
@@ -162,16 +138,6 @@ g.netrw_localrm = "rm -r"
 g.netrw_winsize = 25
 g.netrw_localcopydircmd = "cp -r"
 g.netrw_sort_by = "name"
-
--- === Custom Shell ===
--- opt.shell = "nu"
--- opt.shellcmdflag = "--stdin --no-newline -c"
--- opt.shellredir = "out+err> %s"
--- opt.shellpipe = "| complete | update stderr { ansi strip } | tee { get stderr | save --force --raw %s } | into record"
--- opt.shelltemp = false
--- opt.shellxescape = ""
--- opt.shellxquote = ""
--- opt.shellquote = ""
 
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0

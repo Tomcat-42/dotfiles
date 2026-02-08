@@ -8,10 +8,6 @@ filetype.add({
     v = "verilog",
     vh = "verilog",
     scm = "scheme",
-    smd = 'supermd',
-    shtml = 'superhtml',
-    ziggy = 'ziggy',
-    ['ziggy-schema'] = 'ziggy_schema',
   },
   filename = {
     ["Makefile.inc"] = "make",

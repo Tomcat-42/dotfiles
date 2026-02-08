@@ -4,39 +4,17 @@ local augroup = vim.api.nvim_create_augroup
 local lsp = vim.lsp
 
 local servers = {
+  "asm_lsp",
   "bashls",
   "clangd",
   "fish_lsp",
+  "gopls",
   "lua_ls",
-  "texlab",
-  "zls",
-  "ty",
-  "asm_lsp",
   "rust_analyzer",
-  -- "c3_lsp",
-  -- "dartls",
+  "texlab",
+  "ty",
   "yamlls",
-  -- "rnix",
-  -- "gopls",
-  -- "ts_ls",
-  --"pico8_ls",
-  -- "cssls",
-  -- "docker_compose_language_service",
-  -- "dockerls",
-  -- "gitlab_ci_ls",
-  -- "gitlat_ci_ls",
-  -- "html",
-  -- "htmx",
-  -- "jsonls",
-  -- "marksman",
-  -- "neocmake",
-  -- "pkgbuild_language_server",
-  -- "racket_langserver",
-  -- "superhtml",
-  -- "systemd_ls",
-  -- "yamlls",
-  -- "ziggy",
-  -- "ziggy_schema",
+  "zls",
 }
 
 local custom_configs = {
@@ -65,11 +43,9 @@ local custom_configs = {
       "--rename-file-limit=0",
       "--all-scopes-completion",
       "--header-insertion-decorators",
-      "--log=verbose",
       "--pch-storage=memory",
       "--offset-encoding=utf-16",
       "--fallback-style=Google",
-      "--log=info",
       "--pretty",
     },
   },
@@ -112,16 +88,23 @@ local custom_configs = {
 lsp.enable(servers)
 for server, config in pairs(custom_configs) do lsp.config(server, config) end
 
--- Diagnostics
 vim.diagnostic.config({
   float = { border = "single" },
   virtual_text = {
-    virt_text_pos = "eol_right_align", -- 'eol'|'eol_right_align'|'inline'|'overlay'|'right_align'
-    prefix = '->',                     -- '●', '▎', 'x', '■', , , ->, ' '
+    virt_text_pos = "eol_right_align",
+    prefix = '->',
   },
   signs = true,
   underline = true,
 })
+
+local function feedkeys(keys)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', true)
+end
+
+local function pumvisible()
+  return tonumber(vim.fn.pumvisible()) ~= 0
+end
 
 autocmd("LspAttach", {
   group = augroup("UserLspAttach", { clear = true }),
@@ -131,39 +114,17 @@ autocmd("LspAttach", {
     local methods = lsp.protocol.Methods
     local o = { buffer = event.buf }
 
-    -- Keymappings
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_references) then
     map('n', 'ge', lsp.buf.references, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_definition) then
     map('n', 'gd', lsp.buf.definition, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_declaration) then
     map('n', 'gD', lsp.buf.declaration, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_typeDefinition) then
     map('n', 'go', lsp.buf.type_definition, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_implementation) then
     map('n', 'gi', lsp.buf.implementation, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_codeAction) then
     map('n', 'ga', lsp.buf.code_action, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_formatting)
-    --     or client:supports_method(lsp.protocol.Methods.textDocument_rangeFormatting) then
     map({ 'n', 'x' }, 'gq', lsp.buf.format, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_hover) then
-    map('n', 'K', function() lsp.buf.hover({ border = "single" }) end, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_signatureHelp) then
+    map('n', 'K', lsp.buf.hover, o)
     map('n', 'gs', lsp.buf.signature_help, o)
-    map('i', '<C-s>', function() vim.lsp.buf.signature_help({ border = "single" }) end, o)
-    -- end
-    -- if client:supports_method(lsp.protocol.Methods.textDocument_rename) then
+    map('i', '<C-s>', lsp.buf.signature_help, o)
     map('n', 'gw', lsp.buf.rename, o)
-    -- end
 
     if client:supports_method(lsp.protocol.Methods.textDocument_documentColor) then
       map({ 'n', 'x' }, 'grc', lsp.document_color.color_presentation, o)
@@ -173,7 +134,6 @@ autocmd("LspAttach", {
     map('n', '[g', function() vim.diagnostic.jump({ count = -1 }) end, o)
     map('n', ']g', function() vim.diagnostic.jump({ count = 1 }) end, o)
 
-    -- Highlight
     if client:supports_method(lsp.protocol.Methods.textDocument_documentHighlight) then
       local highlight_augroup = augroup('lsp-highlight', { clear = false })
       autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -197,7 +157,6 @@ autocmd("LspAttach", {
       })
     end
 
-    -- Inlay Hints
     if client:supports_method(lsp.protocol.Methods.textDocument_inlayHint) then
       lsp.inlay_hint.enable(true)
       map('n', '<leader>v', function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled()) end, o)
@@ -206,109 +165,64 @@ autocmd("LspAttach", {
       end, o)
     end
 
-    -- Completion
     if client:supports_method(methods.textDocument_completion) then
-      local function feedkeys(keys)
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', true)
-      end
-
-      local function pumvisible()
-        return tonumber(vim.fn.pumvisible()) ~= 0
-      end
-
-      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-      -- client.server_capabilities.completionProvider.triggerCharacters = chars
-      lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+      lsp.completion.enable(true, client.id, bufnr)
 
       map('i', '<cr>', function() return pumvisible() and '<C-y>' or '<cr>' end, { expr = true, buffer = bufnr })
-      map('i', '`', function() return pumvisible() and '<C-e>' or '/' end, { expr = true, buffer = bufnr })
 
       map('i', '<C-n>', function()
         if pumvisible() then
           feedkeys '<C-n>'
+        elseif next(lsp.get_clients { bufnr = 0 }) then
+          lsp.completion.get()
+        elseif vim.bo.omnifunc ~= '' then
+          feedkeys '<C-x><C-o>'
         else
-          if next(lsp.get_clients { bufnr = 0 }) then
-            lsp.completion.get()
-          else
-            if vim.bo.omnifunc == '' then
-              feedkeys '<C-x><C-n>'
-            else
-              feedkeys '<C-x><C-o>'
-            end
-          end
+          feedkeys '<C-x><C-n>'
         end
       end, { desc = 'Trigger/select next completion', buffer = bufnr })
 
       map('i', '<C-u>', '<C-x><C-n>', { desc = 'Buffer completions', buffer = bufnr })
-
-      map({ 'i', 's' }, '<Tab>', function()
-        local copilot = require 'copilot.suggestion'
-
-        if copilot.is_visible() then
-          copilot.accept()
-        elseif pumvisible() then
-          feedkeys '<C-n>'
-        elseif vim.snippet.active { direction = 1 } then
-          vim.snippet.jump(1)
-        else
-          feedkeys '<Tab>'
-        end
-      end, { buffer = bufnr })
-
-      map({ 'i', 's' }, '<S-Tab>', function()
-        if pumvisible() then
-          feedkeys '<C-p>'
-        elseif vim.snippet.active { direction = -1 } then
-          vim.snippet.jump(-1)
-        else
-          feedkeys '<S-Tab>'
-        end
-      end, { buffer = bufnr })
-
-      map('s', '<BS>', '<C-o>s', { buffer = bufnr })
     end
-
-
-    -- Auto-format on save.
-    -- if not client:supports_method('textDocument/willSaveWaitUntil')
-    --     and client:supports_method('textDocument/formatting') then
-    --   autocmd('BufWritePre', {
-    --     group = augroup('my.lsp', { clear = false }),
-    --     buffer = event.buf,
-    --     callback = function()
-    --       vim.lsp.buf.format({ bufnr = event.buf, id = client.id, timeout_ms = 1000 })
-    --     end,
-    --   })
-    -- end
-
-    -- c/cpp
-    autocmd({ "BufEnter", "BufWinEnter" }, {
-      pattern = { "*.cpp", "*.hpp", "*.c", "*.h" },
-      callback = function()
-        map({ 'n', 'x' }, '<leader>ch', function()
-          vim.cmd('LspClangdSwitchSourceHeader')
-        end)
-
-        map({ 'n', 'x' }, '<leader>ch', function()
-          vim.cmd('LspClangdShowSymbolInfo')
-        end)
-      end
-    })
-
-    -- zig
-    -- autocmd('BufWritePre', {
-    --   pattern = { "*.zig", "*.zon" },
-    --   callback = function()
-    --     lsp.buf.format()
-    --     lsp.buf.code_action({
-    --       -- context = { only = { "source.organizeImports", "source.fixAll", }, },
-    --       context = { only = { "source.organizeImports", }, },
-    --       apply = true,
-    --     })
-    --   end
-    -- })
   end,
+})
+
+map({ 'i', 's' }, '<Tab>', function()
+  local ok, copilot = pcall(require, 'copilot.suggestion')
+  if ok and copilot.is_visible() then
+    copilot.accept()
+  elseif pumvisible() then
+    feedkeys '<C-n>'
+  elseif vim.snippet.active { direction = 1 } then
+    vim.snippet.jump(1)
+  else
+    feedkeys '<Tab>'
+  end
+end)
+
+map({ 'i', 's' }, '<S-Tab>', function()
+  if pumvisible() then
+    feedkeys '<C-p>'
+  elseif vim.snippet.active { direction = -1 } then
+    vim.snippet.jump(-1)
+  else
+    feedkeys '<S-Tab>'
+  end
+end)
+
+map('s', '<BS>', '<C-o>s')
+
+autocmd({ "BufEnter", "BufWinEnter" }, {
+  group = augroup("UserClangd", { clear = true }),
+  pattern = { "*.cpp", "*.hpp", "*.c", "*.h" },
+  callback = function()
+    map({ 'n', 'x' }, '<leader>ch', function()
+      vim.cmd('LspClangdSwitchSourceHeader')
+    end)
+    map({ 'n', 'x' }, '<leader>cs', function()
+      vim.cmd('LspClangdShowSymbolInfo')
+    end)
+  end
 })
 
 autocmd('LspDetach', {

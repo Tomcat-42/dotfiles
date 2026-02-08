@@ -3,7 +3,6 @@ local keymap = vim.keymap.set
 local input = vim.ui.input
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
-local bo = vim.bo
 local wo = vim.wo
 
 local user_config_group = augroup('UserConfig', { clear = true })
@@ -20,7 +19,6 @@ autocmd('FileType', {
 })
 
 
--- === NetRW improvements ===
 autocmd("FileType", {
   pattern = "netrw",
   callback = function()
@@ -40,7 +38,6 @@ autocmd("FileType", {
   end
 })
 
--- === Default vert help/man ===
 autocmd("FileType", {
   group = user_config_group,
   pattern = { "help", "man" },
@@ -48,8 +45,6 @@ autocmd("FileType", {
 })
 
 
--- === Highlight on Yank ===
--- See `:help vim.highlight.on_yank()`
 autocmd('TextYankPost', {
   callback = function()
     vim.hl.on_yank()
@@ -58,8 +53,6 @@ autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- === Quickfix ===
--- Don't list quickfix buffers
 autocmd("FileType", {
   group = user_config_group,
   pattern = "qf",
@@ -68,19 +61,6 @@ autocmd("FileType", {
   end,
 })
 
--- === Cursor Position ===
--- Restore cursor position
--- autocmd({ "BufReadPost" }, {
---   pattern = { "*" },
---   group = user_config_group,
---   callback = function()
---     vim.api.nvim_exec('silent! normal! g`"zv', false)
---   end,
--- })
-
--- === Terminal ===
--- Auto-close interactive terminal buffers if the command exits successfully,
--- because non-interactive commands generally are launched for it's output.
 autocmd('TermClose', {
   group = user_config_group,
   pattern = '*',
@@ -97,7 +77,6 @@ autocmd('TermClose', {
   end,
 })
 
--- Enable signcolumn/number in terminal buffers
 vim.api.nvim_create_autocmd('TermOpen', {
   group = user_config_group,
   callback = function()
@@ -106,7 +85,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
   end
 })
 
--- Auto-resize splits when window is resized
 autocmd("VimResized", {
   group = user_config_group,
   callback = function()
@@ -115,7 +93,6 @@ autocmd("VimResized", {
 })
 
 
--- Create directories when saving files
 autocmd("BufWritePre", {
   group = user_config_group,
   callback = function()
@@ -128,7 +105,6 @@ autocmd("BufWritePre", {
   end,
 })
 
--- Terminal prompt markers
 local ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
 autocmd('TermRequest', {
   group = user_config_group,
@@ -136,7 +112,6 @@ autocmd('TermRequest', {
     if string.match(args.data.sequence, '^\027]133;A') then
       local lnum = args.data.cursor[1]
       vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
-        -- Replace with sign text and highlight group of choice
         sign_text = '=>',
         sign_hl_group = 'SpecialChar',
       })
@@ -144,12 +119,9 @@ autocmd('TermRequest', {
   end,
 })
 
--- === Folding ===
--- Pause folds when searching
 opt.foldopen:remove { "search" }
 vim.keymap.set("n", "/", "zn/", { desc = "Search & Pause Folds" })
 
--- Save folds between sessions
 local view_group = augroup("auto_view", { clear = true })
 
 autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
@@ -175,27 +147,3 @@ autocmd("BufWinEnter", {
   end,
 })
 
--- Close folds with `h` at BoL
--- vim.keymap.set("n", "h", function()
---   local onIndentOrFirstNonBlank = vim.fn.virtcol(".") <= vim.fn.indent(".") + 1
---   local shouldCloseFold = vim.tbl_contains(vim.opt_local.foldopen:get(), "hor")
---   if onIndentOrFirstNonBlank and shouldCloseFold then
---     local wasFolded = pcall(vim.cmd.normal, "zc")
---     if wasFolded then return end
---   end
---   vim.cmd.normal{"h", bang = true}
--- end, { desc = "h (+ close fold at BoL)" })
---)
---
-
--- === Debug Directory Changes ===
--- Temporarily track when the working directory changes
-autocmd("DirChanged", {
-  group = user_config_group,
-  callback = function(args)
-    local msg = string.format("Directory changed to: %s (scope: %s)", vim.fn.getcwd(), args.scope)
-    print(msg)
-    -- Uncomment the line below to see the full traceback
-    -- print(debug.traceback("", 2))
-  end
-})

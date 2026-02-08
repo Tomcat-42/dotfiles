@@ -22,15 +22,14 @@ local langs = {
   "tex",
   "c3",
   "dart",
-  "xml",
 }
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = langs,
   callback = function()
     vim.treesitter.start()
-    vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    vim.wo[0][0].foldmethod = 'expr'
+    vim.opt_local.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.opt_local.foldmethod = 'expr'
     vim.bo.indentexpr = "nvim_treesitter#indent()"
   end,
 })

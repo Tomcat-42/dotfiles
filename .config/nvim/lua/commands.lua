@@ -24,7 +24,7 @@ user_command("DeleteComments", function()
   table.sort(ranges, function(a, b) return a[1] > b[1] or (a[1] == b[1] and a[2] > b[2]) end)
 
   for _, r in ipairs(ranges) do
-    local sr, sc, er, ec = unpack(r)
+    local sr, sc, er, ec = table.unpack(r)
     local before = vim.api.nvim_buf_get_lines(0, sr, sr + 1, false)[1]:sub(1, sc)
     local after = vim.api.nvim_buf_get_lines(0, er, er + 1, false)[1]:sub(ec + 1)
 
@@ -139,7 +139,6 @@ end, {
   desc = "Toggle between binary and hex dump view",
 })
 
--- Run everything in a term
 user_command("Run", function(opts)
   local current = vim.fn.expand("%:p")
   local alt = vim.fn.expand("#:p")
@@ -165,35 +164,65 @@ end, {
   complete = "shellcmd",
 })
 
+local todo_keywords = { "TODO", "FIXME", "HACK", "XXX", "BUG", "WARN" }
+local comment_types = { comment = true, line_comment = true, block_comment = true }
+
 user_command("Todo", function(args)
-  local file, lines = vim.api.nvim_buf_get_name(0), {}
+  local file = vim.api.nvim_buf_get_name(0)
   local scoped = args.range > 0 and file ~= ""
   local scope = scoped and (args.range == 2 and "selection" or "file") or "project"
-  local cmd = { "rg", "--vimgrep", "-e", [[\b(TODO|FIXME|HACK|XXX|BUG|WARN)\b]] }
-  if scoped then vim.list_extend(cmd, { "--", file }) end
 
-  vim.fn.jobstart(cmd, {
-    stdin = "null",
-    stdout_buffered = true,
-    on_stdout = function(_, data) lines = data end,
-    on_exit = function()
-      vim.schedule(function()
-        local items = {}
-        for _, line in ipairs(lines) do
-          local f, l, c, t = line:match("^(.+):(%d+):(%d+):(.*)$")
-          if f then
-            local lnum = tonumber(l)
-            if scope ~= "selection" or (lnum >= args.line1 and lnum <= args.line2) then
-              items[#items + 1] = { filename = f, lnum = lnum, col = tonumber(c), text = t }
+  if scope == "project" then
+    local lines = {}
+    vim.fn.jobstart({ "rg", "--vimgrep", "-e", [[\b(TODO|FIXME|HACK|XXX|BUG|WARN)\b]] }, {
+      stdin = "null",
+      stdout_buffered = true,
+      on_stdout = function(_, data) lines = data end,
+      on_exit = function()
+        vim.schedule(function()
+          local items = {}
+          for _, line in ipairs(lines) do
+            local f, l, c, t = line:match("^(.+):(%d+):(%d+):(.*)$")
+            if f then
+              items[#items + 1] = { filename = f, lnum = tonumber(l), col = tonumber(c), text = t }
             end
           end
+          if #items == 0 then return print("No TODOs found") end
+          vim.fn.setqflist({}, "r", { title = "TODOs (project)", items = items })
+          vim.cmd.copen()
+        end)
+      end,
+    })
+    return
+  end
+
+  local ok, parser = pcall(vim.treesitter.get_parser, 0)
+  if not ok then return vim.notify("No treesitter parser", vim.log.levels.WARN) end
+
+  local items = {}
+  local function collect(node)
+    if comment_types[node:type()] then
+      local sr = node:range()
+      for i, line in ipairs(vim.split(vim.treesitter.get_node_text(node, 0), "\n")) do
+        for _, kw in ipairs(todo_keywords) do
+          if line:find(kw, 1, true) then
+            local lnum = sr + i
+            if scope ~= "selection" or (lnum >= args.line1 and lnum <= args.line2) then
+              items[#items + 1] = { filename = file, lnum = lnum, col = 1, text = vim.trim(line) }
+            end
+            break
+          end
         end
-        if #items == 0 then return print("No TODOs found") end
-        vim.fn.setqflist({}, "r", { title = "TODOs (" .. scope .. ")", items = items })
-        vim.cmd.copen()
-      end)
-    end,
-  })
+      end
+    else
+      for child in node:iter_children() do collect(child) end
+    end
+  end
+  collect(parser:parse()[1]:root())
+
+  if #items == 0 then return print("No TODOs found") end
+  vim.fn.setqflist({}, "r", { title = "TODOs (" .. scope .. ")", items = items })
+  vim.cmd.copen()
 end, {
   range = true,
   desc = ":Todo (project) | :%Todo (file) | :'<,'>Todo (selection)",

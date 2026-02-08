@@ -1,35 +1,23 @@
 local map = vim.keymap.set
-local g = vim.g
-local opt = vim.opt
 
 -- === Leader Keys ===
 vim.g.mapleader = vim.keycode("<space>")
 vim.g.maplocalleader = vim.keycode("<cr>")
 
--- undotree
 map("n", "<leader>u", ":Undotree<cr>", { silent = true, desc = "Toggle undotree" })
-
--- cd current dir
 map("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<CR>')
-
--- vim.pack.update
 map("n", "<leader>pu", vim.pack.update, { desc = "Update plugins", silent = true })
 
 -- === UI & Navigation ===
 map("n", "<leader>R", "<cmd>restart<cr>", { desc = "Restart Neovim", silent = true })
-map("n", "<Esc>", "<cmd>noh<cr>")                        -- Clear search highlights
-map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- Disable accidental space key usage
+map("n", "<Esc>", "<cmd>noh<cr>")
+map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 map('n', '<leader>w', '<cmd>set wrap!<cr>')
--- map({ "n", "x" }, "j", function() return vim.v.count > 0 and "j" or "gj" end, { noremap = true, expr = true })
--- map({ "n", "x" }, "k", function() return vim.v.count > 0 and "k" or "gk" end, { noremap = true, expr = true })
-
--- Better window navigation
 map("n", '<C-h>', '<C-w>h')
 map("n", '<C-j>', '<C-w>j')
 map("n", '<C-k>', '<C-w>k')
 map("n", '<C-l>', '<C-w>l')
 
--- Disable arrow keys
 map('', '<Up>', '<Nop>')
 map('', '<Down>', '<Nop>')
 map('', '<Left>', '<Nop>')
@@ -45,18 +33,12 @@ map("v", ">", ">gv", { desc = "Indent right and reselect" })
 map("n", "J", "mzJ`z", { desc = "Join lines and keep cursor position" })
 map("n", "<leader>rc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Edit config" })
 
-map("n", "<C-d>", "<C-d>zz") -- Keep cursor centered on scrolling
+map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")       -- Keep search matches centered
+map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
-map("x", "<leader>p", "\"_dp") -- Paste over selection without losing register
-
--- map("i", "<C-c>", "<esc>")     -- Make <C-c> behave like <esc>
--- map("n", "Q", "<nop>")         -- Disable Ex mode
--- map("i", "jk", "<esc>")        -- Pressing jk in insert mode will exit insert mode
--- map("i", "kj", "<esc>")        -- Pressing kj in insert mode will exit insert mode
--- map("i", "<esc>", "<nop>")     -- Disable <esc> in insert mode
+map("x", "<leader>p", "\"_dp")
 
 -- === Clipboard & Registers ===
 map("n", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
@@ -79,17 +61,17 @@ map('i', '<C-p>', '<C-r>+', { noremap = true, silent = true, desc = 'Paste from 
 map("x", "<leader>P", '"_dP', { desc = "Paste over selection without erasing unnamed register" })
 
 -- === Buffer & Tab Management ===
-map("n", "<leader>bd", "<cmd>bd!<cr>")         -- Close buffer
-map("n", "<leader>bn", "<cmd>bn<cr>")          -- Next buffer
-map("n", "<leader>bp", "<cmd>bp<cr>")          -- Previous buffer
-map("n", "<leader>fb", "<cmd>ls<cr>:b<space>") -- List buffers
+map("n", "<leader>bd", "<cmd>bd!<cr>")
+map("n", "<leader>bn", "<cmd>bn<cr>")
+map("n", "<leader>bp", "<cmd>bp<cr>")
+map("n", "<leader>fb", "<cmd>ls<cr>:b<space>")
 
-map('n', 'tt', ':tabnew<CR>')                  -- New tab
-map('n', 'td', ':tabclose<CR>')                -- Close tab
-map('n', 'tn', ':tabnext<CR>')                 -- Next tab
-map('n', 'tp', ':tabprevious<CR>')             -- Previous tab
-map('n', 'tmn', ':tabm +1<CR>')                -- Move tab right
-map('n', 'tmp', ':tabm -1<CR>')                -- Move tab left
+map('n', 'tt', ':tabnew<CR>')
+map('n', 'td', ':tabclose<CR>')
+map('n', 'tn', ':tabnext<CR>')
+map('n', 'tp', ':tabprevious<CR>')
+map('n', 'tmn', ':tabm +1<CR>')
+map('n', 'tmp', ':tabm -1<CR>')
 
 -- === Splits ===
 map("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
@@ -100,9 +82,8 @@ map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width"
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- === Search & Replace ===
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- Substitute word under cursor
-map('n', '<leader>s', '*:%s///g<left><left>')                                 -- Rename current word
-map('x', '<leader>s', '"hy:%s/<C-r>h//g<left><left>')                         -- Rename selection
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map('x', '<leader>s', '"hy:%s/<C-r>h//g<left><left>')
 
 -- === Compilation & Execution ===
 map('n', '<leader>m', function()
@@ -163,10 +144,9 @@ map("n", "<C-s><C-t>", "<cmd>tabnew term://fish<cr><cmd>startinsert<cr>", { desc
 -- === Treesitter ===
 map("n", "<leader>i", "<cmd>InspectTree<cr>", { noremap = true, silent = true, desc = "Show Treesitter Syntax Tree" })
 
--- builtin "Fuzzy" finding
 map("n", "<leader>ff", ":find ", { desc = "Find file" })
 map("n", "<leader>fh", ":help ", { desc = "Find help" })
-map("n", "<leader>fm", ":Man ", { desc = "Find help" })
+map("n", "<leader>fm", ":Man ", { desc = "Find man page" })
 map("n", "<leader>fw", function()
     local search_pattern = vim.fn.input("find pattern: ")
     if search_pattern and search_pattern ~= '' then
@@ -187,7 +167,7 @@ map("n", "<leader>fw", function()
 )
 
 -- === Diff Mode ===
-if opt.diff:get() then
+if vim.opt.diff:get() then
   map('n', ']c', ']czz')
   map('n', '[c', '[czz')
   map('n', '<leader><left>', '<cmd>diffget LOCAL<cr>', { desc = 'Get changes from local', noremap = true })
