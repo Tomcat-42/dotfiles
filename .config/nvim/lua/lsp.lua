@@ -15,6 +15,7 @@ local servers = {
   "ty",
   "yamlls",
   "zls",
+  "rpmspec",
 }
 
 local custom_configs = {
@@ -166,7 +167,9 @@ autocmd("LspAttach", {
     end
 
     if client:supports_method(methods.textDocument_completion) then
-      lsp.completion.enable(true, client.id, bufnr)
+      local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      client.server_capabilities.completionProvider.triggerCharacters = chars
+      lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
 
       map('i', '<cr>', function() return pumvisible() and '<C-y>' or '<cr>' end, { expr = true, buffer = bufnr })
 

@@ -1,5 +1,5 @@
 -- Builtin plugins
-require('vim._extui').enable {}
+require('vim._core.ui2').enable {}
 vim.cmd [[
   packadd nvim.undotree
   packadd nvim.difftool

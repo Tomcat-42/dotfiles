@@ -11,5 +11,7 @@ filetype.add({
   },
   filename = {
     ["Makefile.inc"] = "make",
+    ["go.mod"] = "go",
+    ["go.sum"] = "go",
   },
 })

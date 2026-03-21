@@ -14,6 +14,7 @@ set -gx BAT_THEME base16
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
 set -gx SUDO_EDITOR '/home/phugen/.local/share/bob/nvim-bin/nvim'
 set -gx QMK_HOME "$HOME/dev/qmk_firmware"
+set -gx CHROMIUM_USER_FLAGS "--disable-vulkan --enable-features=UseOzonePlatform,VerticalTabs --ozone-platform=wayland"
 
 set -gx CC /usr/bin/clang
 set -gx CXX "/usr/bin/clang++"

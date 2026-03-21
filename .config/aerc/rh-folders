@@ -6,3 +6,5 @@
 "[spam]" = [Gmail]/Spam
 "[trash]" = [Gmail]/Trash
 "[all]" = [Gmail]/All Mail
+"[linux/live-patching]" = linux/live-patching
+"[linux/kselftest]" = linux/kselftest

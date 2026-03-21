@@ -46,7 +46,10 @@ autocmd({ "BufEnter", "DirChanged", "FocusGained" }, { callback = update_vcs_inf
 
 function _G.statusline_extra()
   local parts = {}
-  local vcs = vcs_cache[vim.api.nvim_get_current_buf()] or ""
+  local bufnr = vim.api.nvim_get_current_buf()
+  local exitcode = require('vim._core.util').term_exitcode()
+  if exitcode ~= '' then parts[#parts + 1] = exitcode end
+  local vcs = vcs_cache[bufnr] or ""
   if vcs ~= "" then parts[#parts + 1] = vcs end
   local clients = vim.lsp.get_clients({ bufnr = 0 })
   if #clients > 0 then

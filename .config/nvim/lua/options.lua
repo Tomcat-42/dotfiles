@@ -126,7 +126,7 @@ opt.smartcase = true
 
 -- === Completion ===
 opt.completeopt = "menu,menuone,noinsert,noselect,popup,fuzzy"
-opt.autocomplete = true
+opt.autocomplete = false
 opt.inccommand = 'split'
 opt.pumheight = 10
 

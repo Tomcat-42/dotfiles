@@ -61,21 +61,21 @@ autocmd("FileType", {
   end,
 })
 
-autocmd('TermClose', {
-  group = user_config_group,
-  pattern = '*',
-  callback = function()
-    vim.schedule(function()
-      if
-          vim.bo.buftype == 'terminal'
-          and vim.v.shell_error == 0
-          and vim.fn.mode() == "t"
-      then
-        vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
-      end
-    end)
-  end,
-})
+-- autocmd('TermClose', {
+--   group = user_config_group,
+--   pattern = '*',
+--   callback = function()
+--     vim.schedule(function()
+--       if
+--           vim.bo.buftype == 'terminal'
+--           and vim.v.shell_error == 0
+--           and vim.fn.mode() == "t"
+--       then
+--         vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
+--       end
+--     end)
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd('TermOpen', {
   group = user_config_group,
