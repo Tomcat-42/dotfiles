@@ -1,3 +1,6 @@
+vim.cmd.packadd("nvim.undotree")
+vim.cmd.packadd("nvim.difftool")
+
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/echasnovski/mini.base16",
@@ -9,10 +12,8 @@ vim.pack.add({
   "https://github.com/theHamsta/nvim-dap-virtual-text",
   "https://github.com/zbirenbaum/copilot.lua",
 })
-vim.cmd.packadd("nvim.undotree")
-vim.cmd.packadd("nvim.difftool")
 
-require("vim._core.ui2").enable {}
+require("plugins.ui2")
 require("plugins.base16")
 require("plugins.diff")
 require("plugins.surround")
