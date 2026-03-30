@@ -1,7 +1,6 @@
-local base16 = require("mini.base16")
 local hl = vim.api.nvim_set_hl
 
-base16.setup({
+require("mini.base16").setup({
   palette = {
     base00 = '#000000', -- Default Background
     base01 = '#000000', -- Darker Background (Status Line, etc.)
@@ -21,20 +20,18 @@ base16.setup({
     base0F = '#d65d0e', -- Magenta
   },
   use_cterm = true,
-  plugins = {
-    default = true
-  },
+  plugins = { default = true },
 })
 
 hl(0, 'VertSplit', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
 hl(0, 'WinSeparator', { fg = "#665c54", bg = nil, attr = nil, sp = nil })
 hl(0, 'ColorColumn', { link = "Visual" })
-hl(0, 'CursorLine', { link = "Visual" })
+hl(0, 'CursorLine', { bg = 'NONE' })
 
-hl(0, '@comment.todo', { fg = '#fabd2f', bold = true })    -- TODO    yellow
-hl(0, '@comment.error', { fg = '#fb4934', bold = true })   -- BUG     red
-hl(0, '@comment.fixme', { fg = '#d65d0e', bold = true })   -- FIXME   magenta
-hl(0, '@comment.warning', { fg = '#fe8019', bold = true })  -- WARN    orange
-hl(0, '@comment.hack', { fg = '#d3869b', bold = true })    -- HACK    purple
-hl(0, '@comment.xxx', { fg = '#8ec07c', bold = true })     -- XXX     cyan
-hl(0, '@comment.note', { fg = '#83a598', bold = true })    -- NOTE    blue
+hl(0, '@comment.todo', { fg = '#fabd2f', bold = true })
+hl(0, '@comment.error', { fg = '#fb4934', bold = true })
+hl(0, '@comment.fixme', { fg = '#d65d0e', bold = true })
+hl(0, '@comment.warning', { fg = '#fe8019', bold = true })
+hl(0, '@comment.hack', { fg = '#d3869b', bold = true })
+hl(0, '@comment.xxx', { fg = '#8ec07c', bold = true })
+hl(0, '@comment.note', { fg = '#83a598', bold = true })

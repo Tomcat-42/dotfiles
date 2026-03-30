@@ -1,7 +1,6 @@
-local copilot = require("copilot")
-
-copilot.setup({
+require("copilot").setup({
   panel = { enabled = false },
+  copilot_model = "gpt-41-copilot",
   suggestion = {
     enabled = true,
     auto_trigger = false,

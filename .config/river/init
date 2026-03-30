@@ -146,4 +146,5 @@ riverctl rule-add -app-id "org.freedesktop.Xwayland" tags $((1 << 7))
 # Environment
 riverctl spawn 'systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP BEMENU_OPTS'
 riverctl spawn 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river'
+riverctl spawn 'systemctl --user import-environment XDG_CURRENT_DESKTOP && /usr/libexec/xdg-desktop-portal &'
 riverctl spawn 'gnome-keyring-daemon --start --components=secrets'

@@ -1,12 +1,11 @@
 local api = vim.api
 local fn = vim.fn
 local cmd = vim.cmd
+local command = api.nvim_create_user_command
 
--- FormatCmd: break long shell commands into readable multi-line form
 cmd([[command! -range=% FormatCmd <line1>,<line2>s/&&/\\\r\&\&/ge|s/--/\\\r --/ge|s/ -\(\w\)/ \\\r -\1/ge]])
 
--- DeleteComments: remove all comments using treesitter
-api.nvim_create_user_command("DeleteComments", function()
+command("DeleteComments", function()
   local ok, parser = pcall(vim.treesitter.get_parser, 0)
   if not ok then return vim.notify("No treesitter parser", vim.log.levels.WARN) end
 
@@ -25,10 +24,9 @@ api.nvim_create_user_command("DeleteComments", function()
   table.sort(ranges, function(a, b) return a[1] > b[1] or (a[1] == b[1] and a[2] > b[2]) end)
 
   for _, r in ipairs(ranges) do
-    local sr, sc, er, ec = table.unpack(r)
+    local sr, sc, er, ec = unpack(r)
     local before = api.nvim_buf_get_lines(0, sr, sr + 1, false)[1]:sub(1, sc)
     local after = api.nvim_buf_get_lines(0, er, er + 1, false)[1]:sub(ec + 1)
-
     if before:match("^%s*$") and after:match("^%s*$") then
       api.nvim_buf_set_lines(0, sr, er + 1, false, {})
     else
@@ -37,10 +35,9 @@ api.nvim_create_user_command("DeleteComments", function()
   end
 end, { desc = "Delete all comments using treesitter" })
 
--- GitBlame: show blame as virtual text
 local blame_ns = api.nvim_create_namespace("GitBlameVirtText")
 
-api.nvim_create_user_command("GitBlame", function(args)
+command("GitBlame", function(args)
   local bufnr = api.nvim_get_current_buf()
   local filename = api.nvim_buf_get_name(bufnr)
   local tick = api.nvim_buf_get_changedtick(bufnr)
@@ -60,15 +57,13 @@ api.nvim_create_user_command("GitBlame", function(args)
     if result.code ~= 0 then
       return vim.notify("GitBlame: " .. (result.stderr or "unknown error"), vim.log.levels.WARN)
     end
-    if not api.nvim_buf_is_valid(bufnr) then return end
-    if api.nvim_buf_get_changedtick(bufnr) ~= tick then
-      return vim.notify("GitBlame: buffer changed, blame discarded", vim.log.levels.INFO)
+    if not api.nvim_buf_is_valid(bufnr) or api.nvim_buf_get_changedtick(bufnr) ~= tick then
+      return
     end
 
-    local blame_lines = vim.split(result.stdout, "\n", { trimempty = true })
     local prev = ""
-    for i, text in ipairs(blame_lines) do
-      local display = (text == prev) and " --" or (" " .. text)
+    for i, text in ipairs(vim.split(result.stdout, "\n", { trimempty = true })) do
+      local display = text == prev and " --" or (" " .. text)
       api.nvim_buf_set_extmark(bufnr, blame_ns, args.line1 - 1 + (i - 1), 0, {
         virt_text = { { display, "Comment" } },
         virt_text_pos = "eol_right_align",
@@ -78,49 +73,44 @@ api.nvim_create_user_command("GitBlame", function(args)
   end))
 end, { range = true, desc = "Show git blame virtual text" })
 
-api.nvim_create_user_command("GitBlameClear", function()
+command("GitBlameClear", function()
   api.nvim_buf_clear_namespace(api.nvim_get_current_buf(), blame_ns, 0, -1)
 end, { desc = "Clear git blame virtual text" })
 
--- Hex: toggle hex dump view
-api.nvim_create_user_command("HexDump", function()
+command("HexDump", function()
   vim.b.hex_original_ft = vim.bo.filetype
   vim.bo.binary = true
   cmd("%!xxd")
   vim.bo.filetype = "xxd"
 end, { desc = "Convert buffer to hex dump" })
 
-api.nvim_create_user_command("HexRestore", function()
+command("HexRestore", function()
   cmd("%!xxd -r")
   vim.bo.filetype = vim.b.hex_original_ft or "binary"
   vim.b.hex_original_ft = nil
 end, { desc = "Restore buffer from hex dump" })
 
-api.nvim_create_user_command("HexToggle", function()
+command("HexToggle", function()
   cmd(fn.getline(1):match("^%x%x%x%x%x%x%x%x:") and "HexRestore" or "HexDump")
 end, { desc = "Toggle hex dump view" })
 
--- Run: run commands asynchronously in a terminal split with quickfix integration
 local prg_map = { make = "makeprg", lmake = "makeprg", grep = "grepprg", lgrep = "grepprg" }
 
 local function expand_cmd(input)
   local current = fn.expand("%:p")
-  local alt = fn.expand("#:p")
-  local expanded = input:gsub("%%%%:p", current):gsub("%%%%", current):gsub("#", alt)
-
+  local expanded = input:gsub("%%%%:p", current):gsub("%%%%", current):gsub("#", fn.expand("#:p"))
   if not expanded:match("^:") then return expanded end
 
-  local vim_cmd = expanded:sub(2)
-  local name, args = vim_cmd:match("^(%S+)%s*(.*)")
+  local name, args = expanded:sub(2):match("^(%S+)%s*(.*)")
   if name == "!" then return args end
   if prg_map[name] then
     local prg = vim.o[prg_map[name]]
     return prg:find("%$%*") and prg:gsub("%$%*", args) or prg .. " " .. args
   end
-  return vim_cmd
+  return expanded:sub(2)
 end
 
-api.nvim_create_user_command("Run", function(opts)
+command("Run", function(opts)
   local run_cmd = expand_cmd(opts.args)
   local efm = vim.o.errorformat
 
@@ -129,7 +119,6 @@ api.nvim_create_user_command("Run", function(opts)
   vim.bo.buftype = "nofile"
   vim.bo.bufhidden = "wipe"
   vim.bo.swapfile = false
-  vim.b.no_auto_close = true
 
   local buf = api.nvim_get_current_buf()
   fn.jobstart(run_cmd, {
@@ -137,17 +126,12 @@ api.nvim_create_user_command("Run", function(opts)
     on_exit = function()
       vim.schedule(function()
         if not api.nvim_buf_is_valid(buf) then return end
-        local lines = api.nvim_buf_get_lines(buf, 0, -1, false)
-        local parsed = fn.getqflist({ efm = efm, lines = lines })
-        local items = parsed.items or {}
-        local has_errors = false
-        for _, item in ipairs(items) do
-          if item.valid == 1 then has_errors = true; break end
-        end
+        local parsed = fn.getqflist({ efm = efm, lines = api.nvim_buf_get_lines(buf, 0, -1, false) })
+        local has_errors = vim.iter(parsed.items or {}):any(function(item) return item.valid == 1 end)
         if has_errors then
           local win = fn.bufwinid(buf)
           if win ~= -1 then api.nvim_win_close(win, true) end
-          fn.setqflist(items, "r")
+          fn.setqflist(parsed.items, "r")
           fn.setqflist({}, "a", { title = run_cmd })
           cmd.copen()
         end
@@ -155,37 +139,37 @@ api.nvim_create_user_command("Run", function(opts)
     end,
   })
 
-  api.nvim_buf_set_keymap(0, "n", "q", ":q<CR>", { noremap = true, silent = true })
+  vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = buf, silent = true })
   api.nvim_create_autocmd("TermClose", {
-    buffer = 0,
+    buffer = buf,
     callback = function()
       pcall(api.nvim_feedkeys, api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), "n", false)
     end,
   })
 end, {
-  desc = "Run a command asynchronously in a terminal split",
   nargs = "+",
+  desc = "Run a command asynchronously in a terminal split",
   complete = function(arg_lead)
     if arg_lead:match("^:") then
-      local results = fn.getcompletion(arg_lead:sub(2), "command")
-      for i, v in ipairs(results) do results[i] = ":" .. v end
-      return results
+      return vim.tbl_map(function(v) return ":" .. v end, fn.getcompletion(arg_lead:sub(2), "command"))
     end
     local seen, results = {}, {}
     for _, type in ipairs({ "shellcmd", "file" }) do
       for _, v in ipairs(fn.getcompletion(arg_lead, type)) do
-        if not seen[v] then seen[v] = true; results[#results + 1] = v end
+        if not seen[v] then
+          seen[v] = true
+          results[#results + 1] = v
+        end
       end
     end
     return results
   end,
 })
 
--- Todo: find TODOs in project, file, or selection
 local todo_keywords = { "TODO", "FIXME", "HACK", "XXX", "BUG", "WARN" }
 local todo_comment_types = { comment = true, line_comment = true, block_comment = true }
 
-api.nvim_create_user_command("Todo", function(args)
+command("Todo", function(args)
   local file = api.nvim_buf_get_name(0)
   local scoped = args.range > 0 and file ~= ""
   local scope = scoped and (args.range == 2 and "selection" or "file") or "project"

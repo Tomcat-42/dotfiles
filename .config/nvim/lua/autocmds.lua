@@ -1,15 +1,10 @@
 local autocmd = vim.api.nvim_create_autocmd
-local keymap = vim.keymap.set
-local input = vim.ui.input
 local augroup = vim.api.nvim_create_augroup
-local opt = vim.opt
-local wo = vim.wo
 
-local user_config_group = augroup('UserConfig', { clear = true })
+local g = augroup('UserConfig', { clear = true })
 
 autocmd('FileType', {
   group = augroup('big_file', { clear = true }),
-  desc = 'Disable features in big files',
   pattern = 'bigfile',
   callback = function(args)
     vim.schedule(function()
@@ -18,86 +13,68 @@ autocmd('FileType', {
   end,
 })
 
-
 autocmd("FileType", {
   pattern = "netrw",
   callback = function()
-    keymap('n', '<C-c>', '<cmd>bd<CR>', { buffer = true, silent = true })
-    keymap('n', '<Tab>', 'mf', { buffer = true, remap = true, silent = true })
-    keymap('n', '<S-Tab>', 'mF', { buffer = true, remap = true, silent = true })
-    keymap('n', '%', function()
+    local map = vim.keymap.set
+    local bopts = { buffer = true, silent = true }
+    map('n', '<C-c>', '<cmd>bd<cr>', bopts)
+    map('n', '<Tab>', 'mf', vim.tbl_extend('force', bopts, { remap = true }))
+    map('n', '<S-Tab>', 'mF', vim.tbl_extend('force', bopts, { remap = true }))
+    map('n', '%', function()
       local dir = vim.b.netrw_curdir or vim.fn.expand('%:p:h')
-      input({ prompt = 'Enter filename: ' }, function(input)
-        if input and input ~= '' then
-          local filepath = dir .. '/' .. input
-          vim.cmd('!touch ' .. vim.fn.shellescape(filepath))
+      vim.ui.input({ prompt = 'Enter filename: ' }, function(name)
+        if name and name ~= '' then
+          vim.cmd('!touch ' .. vim.fn.shellescape(dir .. '/' .. name))
           vim.api.nvim_feedkeys('<C-l>', 'n', false)
         end
       end)
-    end, { buffer = true, silent = true })
-  end
+    end, bopts)
+  end,
 })
 
 autocmd("FileType", {
-  group = user_config_group,
+  group = g,
   pattern = { "help", "man" },
   command = "wincmd L",
 })
 
-
-autocmd('TextYankPost', {
-  callback = function()
-    vim.hl.on_yank()
-  end,
-  group = user_config_group,
-  pattern = '*',
+autocmd("FileType", {
+  group = g,
+  pattern = "qf",
+  callback = function() vim.opt_local.buflisted = false end,
 })
 
 autocmd("FileType", {
-  group = user_config_group,
-  pattern = "qf",
+  group = g,
+  pattern = { "markdown", "text", "gitcommit" },
   callback = function()
-    vim.opt_local.buflisted = false
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.spell = true
   end,
 })
 
--- autocmd('TermClose', {
---   group = user_config_group,
---   pattern = '*',
---   callback = function()
---     vim.schedule(function()
---       if
---           vim.bo.buftype == 'terminal'
---           and vim.v.shell_error == 0
---           and vim.fn.mode() == "t"
---       then
---         vim.cmd('bdelete! ' .. vim.fn.expand('<abuf>'))
---       end
---     end)
---   end,
--- })
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = user_config_group,
-  callback = function()
-    wo.number = true
-    wo.signcolumn = 'number'
-  end
+autocmd('TextYankPost', {
+  group = g,
+  callback = function() vim.hl.on_yank() end,
 })
 
-autocmd("VimResized", {
-  group = user_config_group,
+autocmd("BufReadPost", {
+  group = g,
   callback = function()
-    vim.cmd("tabdo wincmd =")
+    if vim.o.diff then return end
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    if mark[1] >= 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
   end,
 })
-
 
 autocmd("BufWritePre", {
-  group = user_config_group,
+  group = g,
   callback = function()
     if vim.bo.filetype == 'nvim-pack' then return end
-
     local dir = vim.fn.expand('<afile>:p:h')
     if vim.fn.isdirectory(dir) == 0 then
       vim.fn.mkdir(dir, 'p')
@@ -105,13 +82,20 @@ autocmd("BufWritePre", {
   end,
 })
 
-local ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
+autocmd('TermOpen', {
+  group = g,
+  callback = function()
+    vim.wo.number = true
+    vim.wo.signcolumn = 'number'
+  end,
+})
+
+local prompt_ns = vim.api.nvim_create_namespace('terminal_prompt_markers')
 autocmd('TermRequest', {
-  group = user_config_group,
+  group = g,
   callback = function(args)
-    if string.match(args.data.sequence, '^\027]133;A') then
-      local lnum = args.data.cursor[1]
-      vim.api.nvim_buf_set_extmark(args.buf, ns, lnum - 1, 0, {
+    if args.data.sequence:match('^\027]133;A') then
+      vim.api.nvim_buf_set_extmark(args.buf, prompt_ns, args.data.cursor[1] - 1, 0, {
         sign_text = '=>',
         sign_hl_group = 'SpecialChar',
       })
@@ -119,31 +103,34 @@ autocmd('TermRequest', {
   end,
 })
 
-opt.foldopen:remove { "search" }
+autocmd("VimResized", {
+  group = g,
+  callback = function() vim.cmd("tabdo wincmd =") end,
+})
+
+vim.opt.foldopen:remove { "search" }
 vim.keymap.set("n", "/", "zn/", { desc = "Search & Pause Folds" })
 
-local view_group = augroup("auto_view", { clear = true })
+local view_g = augroup("auto_view", { clear = true })
+local view_ignore = { "gitcommit", "gitrebase", "svg", "hgcommit", "nvim-pack" }
 
 autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
-  desc = "Save view with mkview for real files",
-  group = view_group,
+  group = view_g,
   callback = function(args)
-    if vim.b[args.buf].view_activated then vim.cmd.mkview { mods = { emsg_silent = true } } end
-  end,
-})
-autocmd("BufWinEnter", {
-  desc = "Try to load file view if available and enable view saving for real files",
-  group = view_group,
-  callback = function(args)
-    if not vim.b[args.buf].view_activated then
-      local filetype = vim.api.nvim_get_option_value("filetype", { buf = args.buf })
-      local buftype = vim.api.nvim_get_option_value("buftype", { buf = args.buf })
-      local ignore_filetypes = { "gitcommit", "gitrebase", "svg", "hgcommit", "nvim-pack" }
-      if buftype == "" and filetype and filetype ~= "" and not vim.tbl_contains(ignore_filetypes, filetype) then
-        vim.b[args.buf].view_activated = true
-        vim.cmd.loadview { mods = { emsg_silent = true } }
-      end
+    if vim.b[args.buf].view_activated then
+      vim.cmd.mkview { mods = { emsg_silent = true } }
     end
   end,
 })
 
+autocmd("BufWinEnter", {
+  group = view_g,
+  callback = function(args)
+    if vim.b[args.buf].view_activated then return end
+    local ft = vim.bo[args.buf].filetype
+    if vim.bo[args.buf].buftype == "" and ft ~= "" and not vim.tbl_contains(view_ignore, ft) then
+      vim.b[args.buf].view_activated = true
+      vim.cmd.loadview { mods = { emsg_silent = true } }
+    end
+  end,
+})
