@@ -184,6 +184,7 @@ end
 
 vim.o.statusline = table.concat({
   "%{%v:lua._G.statusline_mode()%} %<%f %h%w%m%r",
+  "[%n]",
   "%=",
   "%{%v:lua._G.statusline_extra()%}",
   "%{% &busy > 0 ? '\u{25d0} ' : '' %}",

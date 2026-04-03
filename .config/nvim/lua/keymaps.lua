@@ -29,6 +29,16 @@ map("n", "<leader>e", "<cmd>Ex<cr>", { silent = true, desc = "Open NetRW" })
 map("n", "<leader>u", "<cmd>Undotree<cr>", { silent = true, desc = "Toggle undotree" })
 map("n", "<leader>cd", '<cmd>lua vim.fn.chdir(vim.fn.expand("%:p:h"))<cr>', { silent = true, desc = "cd to file dir" })
 map("n", "<leader>pu", vim.pack.update, { silent = true, desc = "Update plugins" })
+map("n", "<leader>pc", function()
+  vim.pack.del(
+    vim.iter(vim.pack.get())
+    :filter(function(x) return not x.active end)
+    :map(function(x) return x.spec.name end)
+    :totable())
+end, { silent = true, desc = "Clean plugins" })
+map("n", "<leader>pl", function()
+  vim.pack.update(nil, { offline = true })
+end, { silent = true, desc = "List plugins" })
 map("n", "<leader>i", "<cmd>InspectTree<cr>", { silent = true, desc = "Treesitter tree" })
 
 -- === Window Navigation ===
@@ -97,12 +107,8 @@ map("n", "<leader>td", function()
 end, { desc = "Toggle diagnostics" })
 
 -- === Compilation ===
-map('n', '<leader>m', function()
-  vim.cmd('make')
-  if #vim.fn.getqflist() ~= 0 then
-    vim.cmd.copen()
-  end
-end, { silent = true, desc = "Run make" })
+map('n', '<leader>m', '<cmd>Run! :make<cr>', { silent = true, desc = "Build (make)" })
+map('n', '<leader>M', '<cmd>Run!<cr>', { silent = true, desc = "Re-run last command" })
 map("n", "<leader>x", "<cmd>!chmod +x % && ./% %<cr>", { silent = true, desc = "Make executable and run" })
 
 -- === Quickfix & Location Lists ===

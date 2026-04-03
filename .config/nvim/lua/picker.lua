@@ -135,6 +135,16 @@ command("WSymbols", function(opts)
   end)
 end, { nargs = '?' })
 
+command("Bin", function(opts)
+  vim.cmd("Run " .. opts.args)
+end, {
+  nargs = 1,
+  complete = function(lead)
+    local exes = fn.systemlist("find . -type f -executable -not -path '*/.git/*' 2>/dev/null | head -100")
+    return fuzzy(exes, lead)
+  end,
+})
+
 -- Cmdline helpers
 local find_cmds = { find = true, fin = true, sfind = true, tabfind = true }
 map('c', '<m-e>', '<home><s-right><c-w>edit<end>')
@@ -162,3 +172,4 @@ map('n', '<leader>fl', ':LiveGrep ', { desc = 'Live grep' })
 map('n', '<leader>fs', '<cmd>Symbols<cr>', { silent = true, desc = 'Document symbols' })
 map('n', '<leader>fS', ':WSymbols ', { desc = 'Workspace symbols' })
 map('n', '<leader>fm', ':Man ', { desc = 'Man page' })
+map('n', '<leader>fr', ':Bin ', { desc = 'Run executable' })

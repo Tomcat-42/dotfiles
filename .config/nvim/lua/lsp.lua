@@ -27,6 +27,13 @@ local custom_configs = {
         analyses = { unusedparams = true },
         staticcheck = true,
         gofumpt = true,
+        codelenses = {
+          test = true,
+          generate = true,
+          gc_details = true,
+          tidy = true,
+          upgrade_dependency = true,
+        },
       }
     }
   },
@@ -114,6 +121,7 @@ autocmd("LspAttach", {
     map('n', 'gw', lsp.buf.rename, o)
 
     if client:supports_method(lsp.protocol.Methods.textDocument_documentColor) then
+      lsp.document_color.enable(true, { bufnr = bufnr }, { style = "virtual" })
       map({ 'n', 'x' }, 'grc', lsp.document_color.color_presentation, o)
     end
 
@@ -143,6 +151,14 @@ autocmd("LspAttach", {
       lsp.inlay_hint.enable(true)
       map('n', '<leader>th', function()
         lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled { bufnr = bufnr })
+      end, o)
+    end
+
+    if client:supports_method(lsp.protocol.Methods.textDocument_codeLens) then
+      lsp.codelens.enable(true, { bufnr = bufnr })
+      map('n', '<leader>cl', lsp.codelens.run, o)
+      map('n', '<leader>tl', function()
+        lsp.codelens.enable(not lsp.codelens.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
       end, o)
     end
 

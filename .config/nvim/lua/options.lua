@@ -42,7 +42,7 @@ opt.diffopt:append("linematch:60")
 
 -- === Messages ===
 opt.errorbells = false
-opt.shortmess = "atIcWFsO"
+opt.shortmess = "atIcWFsOTC"
 opt.messagesopt = "history:1000,hit-enter"
 
 -- === Folding ===
@@ -81,7 +81,13 @@ opt.inccommand = 'split'
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 
 -- === Completion ===
-opt.completeopt = "menu,menuone,noinsert,noselect,popup,fuzzy"
+opt.completeopt = {
+  "menu",
+  "menuone",
+  "noinsert",
+  "popup",
+  "fuzzy"
+}
 opt.autocomplete = false
 opt.pumheight = 10
 opt.pumblend = 0

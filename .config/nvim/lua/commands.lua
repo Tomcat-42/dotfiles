@@ -5,13 +5,13 @@ local command = api.nvim_create_user_command
 
 cmd([[command! -range=% FormatCmd <line1>,<line2>s/&&/\\\r\&\&/ge|s/--/\\\r --/ge|s/ -\(\w\)/ \\\r -\1/ge]])
 
+local comment_types = { comment = true, line_comment = true, block_comment = true }
+
 command("DeleteComments", function()
   local ok, parser = pcall(vim.treesitter.get_parser, 0)
   if not ok then return vim.notify("No treesitter parser", vim.log.levels.WARN) end
 
-  local comment_types = { comment = true, line_comment = true, block_comment = true }
   local ranges = {}
-
   local function collect(node)
     if comment_types[node:type()] then
       ranges[#ranges + 1] = { node:range() }
@@ -20,11 +20,10 @@ command("DeleteComments", function()
     end
   end
   collect(parser:parse()[1]:root())
-
   table.sort(ranges, function(a, b) return a[1] > b[1] or (a[1] == b[1] and a[2] > b[2]) end)
 
   for _, r in ipairs(ranges) do
-    local sr, sc, er, ec = unpack(r)
+    local sr, sc, er, ec = r[1], r[2], r[3], r[4]
     local before = api.nvim_buf_get_lines(0, sr, sr + 1, false)[1]:sub(1, sc)
     local after = api.nvim_buf_get_lines(0, er, er + 1, false)[1]:sub(ec + 1)
     if before:match("^%s*$") and after:match("^%s*$") then
@@ -57,9 +56,7 @@ command("GitBlame", function(args)
     if result.code ~= 0 then
       return vim.notify("GitBlame: " .. (result.stderr or "unknown error"), vim.log.levels.WARN)
     end
-    if not api.nvim_buf_is_valid(bufnr) or api.nvim_buf_get_changedtick(bufnr) ~= tick then
-      return
-    end
+    if not api.nvim_buf_is_valid(bufnr) or api.nvim_buf_get_changedtick(bufnr) ~= tick then return end
 
     local prev = ""
     for i, text in ipairs(vim.split(result.stdout, "\n", { trimempty = true })) do
@@ -75,24 +72,24 @@ end, { range = true, desc = "Show git blame virtual text" })
 
 command("GitBlameClear", function()
   api.nvim_buf_clear_namespace(api.nvim_get_current_buf(), blame_ns, 0, -1)
-end, { desc = "Clear git blame virtual text" })
+end, {})
 
 command("HexDump", function()
   vim.b.hex_original_ft = vim.bo.filetype
   vim.bo.binary = true
   cmd("%!xxd")
   vim.bo.filetype = "xxd"
-end, { desc = "Convert buffer to hex dump" })
+end, {})
 
 command("HexRestore", function()
   cmd("%!xxd -r")
   vim.bo.filetype = vim.b.hex_original_ft or "binary"
   vim.b.hex_original_ft = nil
-end, { desc = "Restore buffer from hex dump" })
+end, {})
 
 command("HexToggle", function()
   cmd(fn.getline(1):match("^%x%x%x%x%x%x%x%x:") and "HexRestore" or "HexDump")
-end, { desc = "Toggle hex dump view" })
+end, {})
 
 local prg_map = { make = "makeprg", lmake = "makeprg", grep = "grepprg", lgrep = "grepprg" }
 
@@ -100,7 +97,6 @@ local function expand_cmd(input)
   local current = fn.expand("%:p")
   local expanded = input:gsub("%%%%:p", current):gsub("%%%%", current):gsub("#", fn.expand("#:p"))
   if not expanded:match("^:") then return expanded end
-
   local name, args = expanded:sub(2):match("^(%S+)%s*(.*)")
   if name == "!" then return args end
   if prg_map[name] then
@@ -110,45 +106,54 @@ local function expand_cmd(input)
   return expanded:sub(2)
 end
 
-command("Run", function(opts)
-  local run_cmd = expand_cmd(opts.args)
-  local efm = vim.o.errorformat
+local last_run_cmd = nil
 
-  cmd("botright new")
-  cmd("resize " .. math.floor(vim.o.lines / 4))
-  vim.bo.buftype = "nofile"
-  vim.bo.bufhidden = "wipe"
-  vim.bo.swapfile = false
+local function run_in_term(run_cmd, auto_close)
+  local efm = vim.o.errorformat
+  local prev_win = api.nvim_get_current_win()
+
+  cmd("botright new | resize " .. math.floor(vim.o.lines / 4))
+  vim.bo.buftype, vim.bo.bufhidden, vim.bo.swapfile = "nofile", "wipe", false
 
   local buf = api.nvim_get_current_buf()
   fn.jobstart(run_cmd, {
     term = true,
-    on_exit = function()
+    on_exit = function(_, code)
       vim.schedule(function()
         if not api.nvim_buf_is_valid(buf) then return end
-        local parsed = fn.getqflist({ efm = efm, lines = api.nvim_buf_get_lines(buf, 0, -1, false) })
-        local has_errors = vim.iter(parsed.items or {}):any(function(item) return item.valid == 1 end)
-        if has_errors then
-          local win = fn.bufwinid(buf)
+        local win = fn.bufwinid(buf)
+
+        if auto_close and code == 0 then
           if win ~= -1 then api.nvim_win_close(win, true) end
-          fn.setqflist(parsed.items, "r")
+          return vim.notify("OK: " .. run_cmd, vim.log.levels.INFO)
+        end
+
+        fn.setqflist({}, 'r')
+        local items = fn.getqflist({ efm = efm, lines = api.nvim_buf_get_lines(buf, 0, -1, false) }).items or {}
+        if vim.iter(items):any(function(i) return i.valid == 1 end) then
+          if win ~= -1 then api.nvim_win_close(win, true) end
+          fn.setqflist(items, "r")
           fn.setqflist({}, "a", { title = run_cmd })
-          cmd.copen()
+          cmd("copen | cfirst")
+        else
+          pcall(api.nvim_feedkeys, api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), "n", false)
         end
       end)
     end,
   })
 
+  api.nvim_set_current_win(prev_win)
   vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = buf, silent = true })
-  api.nvim_create_autocmd("TermClose", {
-    buffer = buf,
-    callback = function()
-      pcall(api.nvim_feedkeys, api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), "n", false)
-    end,
-  })
+end
+
+command("Run", function(opts)
+  local run_cmd = opts.args ~= '' and expand_cmd(opts.args) or last_run_cmd
+  if not run_cmd then return vim.notify("No command to run", vim.log.levels.WARN) end
+  last_run_cmd = run_cmd
+  run_in_term(run_cmd, opts.bang)
 end, {
-  nargs = "+",
-  desc = "Run a command asynchronously in a terminal split",
+  bang = true,
+  nargs = "*",
   complete = function(arg_lead)
     if arg_lead:match("^:") then
       return vim.tbl_map(function(v) return ":" .. v end, fn.getcompletion(arg_lead:sub(2), "command"))
@@ -228,7 +233,4 @@ command("Todo", function(args)
   if #items == 0 then return print("No TODOs found") end
   fn.setqflist({}, "r", { title = "TODOs (" .. scope .. ")", items = items })
   cmd.copen()
-end, {
-  range = true,
-  desc = ":Todo (project) | :%Todo (file) | :'<,'>Todo (selection)",
-})
+end, { range = true })

@@ -6,7 +6,7 @@ vim.pack.add({
   "https://github.com/echasnovski/mini.base16",
   "https://github.com/echasnovski/mini.diff",
   "https://github.com/echasnovski/mini.surround",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/igorlfs/nvim-dap-view",
   "https://github.com/theHamsta/nvim-dap-virtual-text",
