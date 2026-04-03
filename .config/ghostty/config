@@ -38,6 +38,9 @@ clipboard-paste-protection = false
 clipboard-read = allow
 clipboard-write = allow
 
+keybind = ctrl+slash=text:/
+keybind = shift+ctrl+slash=text:?
+keybind = shift+ctrl+control_right=text:?
 keybind = ctrl+enter=text:\x0a
 keybind = ctrl+j=text:\x0a
 keybind = ctrl+r=text:\x12

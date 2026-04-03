@@ -104,7 +104,9 @@ command("Symbols", function()
           local name = prefix ~= '' and (prefix .. '.' .. s.name) or s.name
           local range = s.selectionRange or s.range
           items[#items + 1] = {
-            bufnr = bufnr, lnum = range.start.line + 1, col = range.start.character + 1,
+            bufnr = bufnr,
+            lnum = range.start.line + 1,
+            col = range.start.character + 1,
             text = (vim.lsp.protocol.SymbolKind[s.kind] or '?') .. ': ' .. name,
           }
           if s.children then flatten(s.children, name) end
@@ -126,7 +128,8 @@ command("WSymbols", function(opts)
     for _, s in ipairs(result) do
       local loc = s.location
       items[#items + 1] = {
-        filename = vim.uri_to_fname(loc.uri), lnum = loc.range.start.line + 1,
+        filename = vim.uri_to_fname(loc.uri),
+        lnum = loc.range.start.line + 1,
         col = loc.range.start.character + 1,
         text = (vim.lsp.protocol.SymbolKind[s.kind] or '?') .. ': ' .. s.name,
       }
