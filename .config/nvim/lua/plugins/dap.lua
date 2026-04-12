@@ -1,9 +1,19 @@
 local map = vim.keymap.set
 local fn = vim.fn
-local dap, dapview, dapvirtual = require("dap"), require("dap-view"), require("nvim-dap-virtual-text")
+local dap = require("dap")
+local dapview = require("dap-view")
+local dap_bps = require("dap.breakpoints")
 
-dapview.setup({ windows = { size = 10 } })
-dapvirtual.setup({ commented = true, virt_text_pos = "eol" })
+dapview.setup({
+  winbar = {
+    sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console", "disassembly" },
+    controls = { enabled = false },
+  },
+  windows = { size = 0.25 },
+  auto_toggle = true,
+  virtual_text = { enabled = true },
+})
+require("dap-disasm").setup({ dapview_register = true })
 
 local function co_input(opts)
   local co = assert(coroutine.running())
@@ -33,14 +43,18 @@ local function get_program()
   "file" })
 end
 
+local last_args = nil
 local function get_args()
-  local input = co_input({ prompt = "Args: ", completion = "shellcmd" })
-  return input ~= "" and vim.split(input, "%s+", { plain = false }) or nil
+  local input = co_input({ prompt = "Args: ", default = last_args and table.concat(last_args, " ") or "", completion =
+  "shellcmd" })
+  last_args = input ~= "" and vim.split(input, "%s+", { plain = false }) or nil
+  return last_args
 end
 
 local function get_pid()
-  local input = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") })
-  return require("dap.utils").pick_process({ filter = input })
+  return require("dap.utils").pick_process({
+    filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") })
+  })
 end
 
 local function get_addr(default)
@@ -57,9 +71,7 @@ local function get_codelldb_init()
   return { "platform select " .. platform, "platform connect connect://" .. addr, "settings set target.inherit-env false" }
 end
 
-
 local bp_file = fn.stdpath("data") .. "/dap_breakpoints.json"
-local dap_bps = require("dap.breakpoints")
 
 local function save_bps()
   local bps = {}
@@ -89,13 +101,6 @@ local function load_bps()
 end
 
 vim.api.nvim_create_autocmd("BufReadPost", { once = true, callback = function() pcall(load_bps) end })
-
-local function log_probe_rs(msg)
-  local f = io.open("probe-rs.log", "a")
-  if f then
-    f:write(msg); f:close()
-  end
-end
 
 dap.adapters = {
   codelldb           = { name = "codelldb", type = "executable", command = "codelldb" },
@@ -136,11 +141,9 @@ vim.list_extend(native_configs, make_configs("gdb", {
   { "connect", { request = "attach", target = get_addr("localhost:1234"), stopAtBeginningOfMainSubprogram = false } },
 }))
 
-dap.configurations.zig = native_configs
-dap.configurations.cpp = native_configs
-dap.configurations.c = native_configs
-dap.configurations.rust = native_configs
-dap.configurations.asm = native_configs
+for _, ft in ipairs({ "zig", "cpp", "c", "rust", "asm" }) do
+  dap.configurations[ft] = native_configs
+end
 
 dap.configurations.sh = { {
   name = "[bashdb]",
@@ -184,18 +187,17 @@ end, { desc = "DAP log point" })
 map("n", "<leader>dB", function()
   dap.clear_breakpoints(); save_bps()
 end, { desc = "DAP clear breakpoints" })
-map("n", "<leader>dz", function() dapview.toggle(true) end, { desc = "DAP view" })
+map("n", "<leader>dz", dapview.toggle, { desc = "DAP view" })
+map("n", "<leader>dv", dapview.virtual_text_toggle, { desc = "DAP virtual text toggle" })
 map({ "n", "v" }, "<leader>dw", dapview.add_expr, { desc = "DAP watch" })
 map("n", "<leader>di", function() require("dap.ui.widgets").hover(nil, { border = "single" }) end, { desc = "DAP hover" })
-map("n", "<leader>ds", function()
-  local w = require("dap.ui.widgets")
-  w.centered_float(w.scopes, { border = "rounded" })
-end, { desc = "DAP scopes" })
 
-dap.listeners.before.attach.dapview_config = dapview.open
-dap.listeners.before.launch.dapview_config = dapview.open
-dap.listeners.before.event_terminated.dapview_config = dapview.close
-dap.listeners.before.event_exited.dapview_config = dapview.close
+local function log_probe_rs(msg)
+  local f = io.open("probe-rs.log", "a")
+  if f then
+    f:write(msg); f:close()
+  end
+end
 
 dap.listeners.before["event_probe-rs-rtt-channel-config"]["plugins.nvim-dap-probe-rs"] = function(session, body)
   local msg = string.format('%s: Opening RTT channel %d with name "%s"!\n',

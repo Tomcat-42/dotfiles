@@ -106,6 +106,15 @@ map("n", "<leader>td", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 
+map("n", "<leader>tt", function()
+  local lsp = vim.lsp
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({ bufnr = 0 }))
+  pcall(function() lsp.codelens.enable(not lsp.codelens.is_enabled({ bufnr = 0 }), { bufnr = 0 }) end)
+  pcall(function() require("dap-view").virtual_text_toggle() end)
+  pcall(function() require("mini.diff").toggle_overlay() end)
+end, { desc = "Toggle all overlays" })
+
 -- === Compilation ===
 map('n', '<leader>m', '<cmd>Run! :make<cr>', { silent = true, desc = "Build (make)" })
 map('n', '<leader>M', '<cmd>Run!<cr>', { silent = true, desc = "Re-run last command" })
@@ -140,7 +149,8 @@ map("n", "<C-s><C-s>", "<cmd>split term://fish<cr><cmd>startinsert<cr>", { silen
 map("n", "<C-s><C-t>", "<cmd>tabnew term://fish<cr><cmd>startinsert<cr>", { silent = true, desc = "Terminal in tab" })
 
 -- === Git Blame ===
-map({ 'n', 'v' }, '<leader>bb', '<cmd>GitBlame<cr>', { silent = true, desc = "Git blame" })
+map('n', '<leader>bb', '<cmd>%GitBlame<cr>', { silent = true, desc = "Git blame" })
+map('v', '<leader>bb', ':GitBlame<cr>', { silent = true, desc = "Git blame (selection)" })
 map('n', '<leader>bc', '<cmd>GitBlameClear<cr>', { silent = true, desc = "Git blame clear" })
 
 -- === Arglist (poor man's harpoon) ===

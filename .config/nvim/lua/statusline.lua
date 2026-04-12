@@ -149,6 +149,9 @@ function _G.statusline_extra()
     parts[#parts + 1] = colored(exitcode == '[Exit: 0]' and 'StlExitOk' or 'StlExitFail', exitcode)
   end
 
+  local ok, d = pcall(require, 'dap')
+  if ok and d.status() ~= '' then parts[#parts + 1] = colored('StlMacro', d.status()) end
+
   local reg = vim.fn.reg_recording()
   if reg ~= '' then
     parts[#parts + 1] = colored('StlMacro', 'recording @' .. reg)

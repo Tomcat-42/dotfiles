@@ -128,9 +128,8 @@ autocmd("BufWinEnter", {
   callback = function(args)
     if vim.b[args.buf].view_activated then return end
     local ft = vim.bo[args.buf].filetype
-    if vim.bo[args.buf].buftype == "" and ft ~= "" and not vim.tbl_contains(view_ignore, ft) then
-      vim.b[args.buf].view_activated = true
-      vim.cmd.loadview { mods = { emsg_silent = true } }
-    end
+    if vim.bo[args.buf].buftype ~= "" or ft == "" or vim.tbl_contains(view_ignore, ft) then return end
+    vim.b[args.buf].view_activated = true
+    vim.cmd.loadview { mods = { emsg_silent = true } }
   end,
 })

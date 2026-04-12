@@ -2,15 +2,15 @@ vim.cmd.packadd("nvim.undotree")
 vim.cmd.packadd("nvim.difftool")
 
 vim.pack.add({
+  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/zbirenbaum/copilot.lua",
   "https://github.com/echasnovski/mini.base16",
   "https://github.com/echasnovski/mini.diff",
   "https://github.com/echasnovski/mini.surround",
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
   "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/igorlfs/nvim-dap-view",
-  "https://github.com/theHamsta/nvim-dap-virtual-text",
-  "https://github.com/zbirenbaum/copilot.lua",
+  "https://codeberg.org/Jorenar/nvim-dap-disasm",
 })
 
 require("plugins.ui2")

@@ -27,7 +27,7 @@ opt.conceallevel = 0
 opt.concealcursor = ""
 opt.fillchars = {
   vert = "│",
-  fold = " ",
+  fold = "·",
   eob = "~",
   diff = "╱",
   msgsep = " ",
@@ -46,6 +46,7 @@ opt.shortmess = "atIcWFsOTC"
 opt.messagesopt = "history:1000,hit-enter"
 
 -- === Folding ===
+opt.viewoptions = "folds,cursor,curdir"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99

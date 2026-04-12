@@ -3,7 +3,24 @@ local fn = vim.fn
 local cmd = vim.cmd
 local command = api.nvim_create_user_command
 
-cmd([[command! -range=% FormatCmd <line1>,<line2>s/&&/\\\r\&\&/ge|s/--/\\\r --/ge|s/ -\(\w\)/ \\\r -\1/ge]])
+command("FormatCmd", function(args)
+  local text = table.concat(api.nvim_buf_get_lines(0, args.line1 - 1, args.line2, false), " ")
+  local out, q = {}, nil
+  for i = 1, #text do
+    local c = text:sub(i, i)
+    if (c == "'" or c == '"') then q = q == c and nil or q or c end
+    local rest = text:sub(i)
+    if not q and (
+          rest:match("^&&") or
+          (rest:match("^%-%-[%w]") and text:sub(i - 1, i - 1) == " ") or
+          (rest:match("^%-[%w]") and not rest:match("^%-%-") and text:sub(i - 1, i - 1) == " ")
+        ) then
+      out[#out + 1] = " \\\n "
+    end
+    out[#out + 1] = c
+  end
+  api.nvim_buf_set_lines(0, args.line1 - 1, args.line2, false, vim.split(table.concat(out), "\n"))
+end, { range = "%" })
 
 local comment_types = { comment = true, line_comment = true, block_comment = true }
 
@@ -41,7 +58,7 @@ command("GitBlame", function(args)
   local filename = api.nvim_buf_get_name(bufnr)
   local tick = api.nvim_buf_get_changedtick(bufnr)
 
-  api.nvim_buf_clear_namespace(bufnr, blame_ns, 0, -1)
+  api.nvim_buf_clear_namespace(bufnr, blame_ns, args.line1 - 1, args.line2)
   vim.system({
     "sh", "-c", [[
       git blame -p -L "$1" "$2" | awk '
