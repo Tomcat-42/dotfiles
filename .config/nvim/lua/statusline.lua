@@ -3,32 +3,6 @@ local fn = vim.fn
 local cmd = vim.cmd
 local autocmd = api.nvim_create_autocmd
 
-local function setup_hls()
-  local hls = {
-    StlModeNORMAL   = "ErrorMsg",
-    StlModeINSERT   = "ModeMsg",
-    StlModeVISUAL   = "Constant",
-    StlModeREPLACE  = "Keyword",
-    StlModeCOMMAND  = "Function",
-    StlModeTERMINAL = "Type",
-    StlModeSELECT   = "Special",
-    StlVcs          = "Added",
-    StlLsp          = "Comment",
-    StlSearch       = "Search",
-    StlMacro        = "ErrorMsg",
-    StlWarn         = "WarningMsg",
-    StlExitOk       = "DiagnosticOk",
-    StlExitFail     = "DiagnosticError",
-    StlFt           = "Visual",
-  }
-  for name, link in pairs(hls) do
-    api.nvim_set_hl(0, name, { link = link })
-  end
-end
-
-setup_hls()
-autocmd("ColorScheme", { callback = setup_hls })
-
 local vcs_cache = {}
 
 local function update_vcs_info()
@@ -42,24 +16,17 @@ local function update_vcs_info()
       function(result)
         vcs_cache[bufnr] = result.code == 0 and vim.trim(result.stdout) or ""
         vim.schedule(cmd.redrawstatus)
-      end
-    )
+      end)
     return
   end
 
   local git_root = vim.fs.root(0, ".git")
   if git_root then
     vim.uv.fs_open(git_root .. "/.git/HEAD", "r", 438, function(err, fd)
-      if err or not fd then
-        vcs_cache[bufnr] = ""
-        return
-      end
+      if err or not fd then vcs_cache[bufnr] = ""; return end
       vim.uv.fs_read(fd, 256, 0, function(err2, data)
         vim.uv.fs_close(fd)
-        if err2 or not data then
-          vcs_cache[bufnr] = ""
-          return
-        end
+        if err2 or not data then vcs_cache[bufnr] = ""; return end
         local line = data:match("^[^\n]+")
         vcs_cache[bufnr] = line and (line:match("ref: refs/heads/(.+)") or line:sub(1, 8)) or ""
         vim.schedule(cmd.redrawstatus)
@@ -75,16 +42,12 @@ autocmd({ "BufEnter", "DirChanged", "FocusGained" }, { callback = update_vcs_inf
 
 local lsp_cache = {}
 
-local function update_lsp_cache(buf)
-  local names = vim.iter(vim.lsp.get_clients({ bufnr = buf }))
-    :map(function(c) return (c.name:gsub("language.server", "ls")) end)
-    :totable()
-  lsp_cache[buf] = #names > 0 and table.concat(names, ", ") or ""
-end
-
 autocmd("LspAttach", {
   callback = function(args)
-    update_lsp_cache(args.buf)
+    local names = vim.iter(vim.lsp.get_clients({ bufnr = args.buf }))
+      :map(function(c) return (c.name:gsub("language.server", "ls")) end)
+      :totable()
+    lsp_cache[args.buf] = #names > 0 and table.concat(names, ", ") or ""
     cmd.redrawstatus()
   end,
 })
@@ -92,9 +55,30 @@ autocmd("LspAttach", {
 autocmd("LspDetach", {
   callback = function(args)
     vim.defer_fn(function()
-      update_lsp_cache(args.buf)
+      local names = vim.iter(vim.lsp.get_clients({ bufnr = args.buf }))
+        :map(function(c) return (c.name:gsub("language.server", "ls")) end)
+        :totable()
+      lsp_cache[args.buf] = #names > 0 and table.concat(names, ", ") or ""
       cmd.redrawstatus()
     end, 100)
+  end,
+})
+
+local lsp_progress = {}
+
+autocmd("LspProgress", {
+  pattern = { "begin", "end" },
+  callback = function(args)
+    if not args.data then return end
+    local value = args.data.params.value
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    lsp_progress.client = client and client.name or nil
+    lsp_progress.title = value.kind ~= "end" and value.title or nil
+    if value.kind == "end" then
+      vim.defer_fn(function() cmd.redrawstatus() end, 3000)
+    else
+      cmd.redrawstatus()
+    end
   end,
 })
 
@@ -106,72 +90,90 @@ autocmd("BufWipeout", {
 })
 
 local mode_map = {
-  n = "NORMAL", i = "INSERT", v = "VISUAL",
-  V = "V-LINE", ["\22"] = "V-BLOCK",
-  c = "COMMAND", s = "SELECT", S = "S-LINE",
-  ["\19"] = "S-BLOCK",
+  n = "NORMAL", i = "INSERT", v = "VISUAL", V = "V-LINE", ["\22"] = "V-BLOCK",
+  c = "COMMAND", s = "SELECT", S = "S-LINE", ["\19"] = "S-BLOCK",
   R = "REPLACE", t = "TERMINAL", nt = "N-TERMINAL",
+  no = "OP-PENDING", nov = "OP-PENDING", noV = "OP-PENDING", ["no\22"] = "OP-PENDING",
 }
 
-local mode_hl_map = {
-  n = "StlModeNORMAL", i = "StlModeINSERT",
-  v = "StlModeVISUAL", V = "StlModeVISUAL", ["\22"] = "StlModeVISUAL",
-  c = "StlModeCOMMAND",
-  s = "StlModeSELECT", S = "StlModeSELECT", ["\19"] = "StlModeSELECT",
-  R = "StlModeREPLACE", t = "StlModeTERMINAL", nt = "StlModeNORMAL",
+local mode_hl = {
+  n = "ErrorMsg", i = "ModeMsg",
+  v = "Constant", V = "Constant", ["\22"] = "Constant",
+  c = "Function", s = "Special", S = "Special", ["\19"] = "Special",
+  R = "Keyword", t = "Type", nt = "ErrorMsg",
+  no = "Comment", nov = "Comment", noV = "Comment", ["no\22"] = "Comment",
 }
 
 local term_exitcode = require("vim._core.util").term_exitcode
 
-local function colored(group, text)
+local function hl(group, text)
   return "%#" .. group .. "#" .. text .. "%#StatusLine#"
 end
 
 function _G.statusline_mode()
   local mode = api.nvim_get_mode().mode
-  return colored(mode_hl_map[mode] or "StlModeNORMAL", " " .. (mode_map[mode] or mode:upper()) .. " ")
+  return hl(mode_hl[mode] or "ErrorMsg", " " .. (mode_map[mode] or mode:upper()) .. " ")
 end
 
 function _G.statusline_extra()
   local parts = {}
   local bufnr = api.nvim_get_current_buf()
   local bo = vim.bo[bufnr]
+  local ft = bo.filetype
 
   local exitcode = term_exitcode()
   if exitcode ~= "" then
-    parts[#parts + 1] = colored(exitcode == "[Exit: 0]" and "StlExitOk" or "StlExitFail", exitcode)
+    parts[#parts + 1] = hl(exitcode == "[Exit: 0]" and "DiagnosticOk" or "DiagnosticError", exitcode)
   end
 
-  local ok, d = pcall(require, "dap")
-  if ok and d.status() ~= "" then parts[#parts + 1] = colored("StlMacro", d.status()) end
+  local dap_ok, d = pcall(require, "dap")
+  if dap_ok and d.status() ~= "" then parts[#parts + 1] = hl("ErrorMsg", d.status()) end
+
+  if lsp_progress.client and lsp_progress.title and not vim.startswith(api.nvim_get_mode().mode, "i") then
+    parts[#parts + 1] = hl("Comment", lsp_progress.client .. ": " .. lsp_progress.title)
+  end
 
   local reg = fn.reg_recording()
-  if reg ~= "" then parts[#parts + 1] = colored("StlMacro", "recording @" .. reg) end
+  if reg ~= "" then parts[#parts + 1] = hl("ErrorMsg", "recording @" .. reg) end
 
   if vim.v.hlsearch == 1 then
     local sc_ok, sc = pcall(fn.searchcount, { maxcount = 999 })
     if sc_ok and sc.total and sc.total > 0 then
-      parts[#parts + 1] = colored("StlSearch", "[" .. sc.current .. "/" .. sc.total .. "]")
+      parts[#parts + 1] = hl("Search", "[" .. sc.current .. "/" .. sc.total .. "]")
     end
   end
 
   local vcs = vcs_cache[bufnr] or ""
-  if vcs ~= "" then parts[#parts + 1] = colored("StlVcs", vcs) end
+  if vcs ~= "" then
+    local diff_ok, diff = pcall(require, "mini.diff")
+    if diff_ok then
+      local buf_data = diff.get_buf_data(bufnr)
+      if buf_data and buf_data.hunks and #buf_data.hunks > 0 then
+        local n = #buf_data.hunks
+        vcs = vcs .. hl("Comment", " (" .. n .. (n == 1 and " hunk)" or " hunks)"))
+      end
+    end
+    parts[#parts + 1] = hl("Added", vcs)
+  end
 
   local lsp = lsp_cache[bufnr] or ""
-  if lsp ~= "" then parts[#parts + 1] = colored("StlLsp", "[" .. lsp .. "]") end
+  if lsp ~= "" then parts[#parts + 1] = hl("Comment", "[" .. lsp .. "]") end
 
-  local ft = bo.filetype
-  if ft ~= "" then parts[#parts + 1] = colored("StlFt", " " .. ft .. " ") end
+  if ft ~= "" then parts[#parts + 1] = hl("Visual", " " .. ft .. " ") end
+
+  if ft == "markdown" or ft == "text" then
+    local wc = api.nvim_buf_call(bufnr, fn.wordcount)
+    local vis = fn.mode():match("^[vV\22]")
+    parts[#parts + 1] = hl("Comment",
+      (vis and wc.visual_words .. "/" or "") .. wc.words .. "w " ..
+      (vis and wc.visual_chars .. "/" or "") .. wc.chars .. "c")
+  end
 
   local warns = {}
-  local enc = bo.fileencoding
-  if enc ~= "" and enc ~= "utf-8" then warns[#warns + 1] = enc end
+  if bo.fileencoding ~= "" and bo.fileencoding ~= "utf-8" then warns[#warns + 1] = bo.fileencoding end
   if bo.fileformat ~= "unix" then warns[#warns + 1] = bo.fileformat end
   if bo.buftype == "" and not bo.expandtab then warns[#warns + 1] = "tabs" end
-  if #warns > 0 then
-    parts[#parts + 1] = colored("StlWarn", "[" .. table.concat(warns, ", ") .. "]")
-  end
+  if #warns > 0 then parts[#parts + 1] = hl("WarningMsg", "[" .. table.concat(warns, ", ") .. "]") end
 
   return #parts > 0 and table.concat(parts, " ") .. " " or ""
 end
