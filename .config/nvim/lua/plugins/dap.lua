@@ -1,7 +1,9 @@
 local map = vim.keymap.set
+local api = vim.api
 local fn = vim.fn
 local dap = require("dap")
 local dapview = require("dap-view")
+local dap_disasm = require("dap-disasm")
 local dap_bps = require("dap.breakpoints")
 
 dapview.setup({
@@ -13,7 +15,8 @@ dapview.setup({
   auto_toggle = true,
   virtual_text = { enabled = true },
 })
-require("dap-disasm").setup({ dapview_register = true })
+
+dap_disasm.setup({ dapview_register = true })
 
 local function co_input(opts)
   local co = assert(coroutine.running())
@@ -32,28 +35,34 @@ local function find_executables()
   local dirs = { "zig-out/bin", "target/debug", "target/release", "build", "bin", "." }
   local paths = vim.iter(dirs):map(function(d) return cwd .. "/" .. d end):join(" ")
   return fn.systemlist("find " ..
-  paths .. " -maxdepth 2 -type f -executable 2>/dev/null | grep -vE '\\.o$|\\.d$' | head -50")
+    paths .. " -maxdepth 2 -type f -executable 2>/dev/null | grep -vE '\\.o$|\\.d$' | head -50")
 end
 
 local function get_program()
   local exes = find_executables()
   if #exes == 1 then return exes[1] end
   if #exes > 1 then return co_select(exes, { prompt = "Executable: " }) end
-  return co_input({ prompt = "Executable: ", default = fn.getcwd() .. "/" .. fn.fnamemodify(fn.getcwd(), ":t"), completion =
-  "file" })
+  return co_input({
+    prompt = "Executable: ",
+    default = fn.getcwd() .. "/" .. fn.fnamemodify(fn.getcwd(), ":t"),
+    completion = "file",
+  })
 end
 
 local last_args = nil
 local function get_args()
-  local input = co_input({ prompt = "Args: ", default = last_args and table.concat(last_args, " ") or "", completion =
-  "shellcmd" })
+  local input = co_input({
+    prompt = "Args: ",
+    default = last_args and table.concat(last_args, " ") or "",
+    completion = "shellcmd",
+  })
   last_args = input ~= "" and vim.split(input, "%s+", { plain = false }) or nil
   return last_args
 end
 
 local function get_pid()
   return require("dap.utils").pick_process({
-    filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") })
+    filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") }),
   })
 end
 
@@ -76,12 +85,13 @@ local bp_file = fn.stdpath("data") .. "/dap_breakpoints.json"
 local function save_bps()
   local bps = {}
   for buf, marks in pairs(dap_bps.get()) do
-    local name = vim.api.nvim_buf_get_name(buf)
-    if name ~= '' then bps[name] = marks end
+    local name = api.nvim_buf_get_name(buf)
+    if name ~= "" then bps[name] = marks end
   end
   local f = io.open(bp_file, "w")
   if f then
-    f:write(vim.json.encode(bps)); f:close()
+    f:write(vim.json.encode(bps))
+    f:close()
   end
 end
 
@@ -100,7 +110,7 @@ local function load_bps()
   end
 end
 
-vim.api.nvim_create_autocmd("BufReadPost", { once = true, callback = function() pcall(load_bps) end })
+api.nvim_create_autocmd("BufReadPost", { once = true, callback = function() pcall(load_bps) end })
 
 dap.adapters = {
   codelldb           = { name = "codelldb", type = "executable", command = "codelldb" },
@@ -175,18 +185,10 @@ map("n", "<leader>dk", dap.step_out, { desc = "DAP step out" })
 map("n", "<leader>dl", dap.step_back, { desc = "DAP step back" })
 map("n", "<leader>dr", dap.restart, { desc = "DAP restart" })
 map("n", "<leader>dx", dap.terminate, { desc = "DAP terminate" })
-map("n", "<leader>db", function()
-  dap.toggle_breakpoint(); save_bps()
-end, { desc = "DAP breakpoint" })
-map("n", "<leader>dp", function()
-  dap.set_breakpoint(fn.input("Condition: ")); save_bps()
-end, { desc = "DAP conditional bp" })
-map("n", "<leader>dL", function()
-  dap.set_breakpoint(nil, nil, fn.input("Log: ")); save_bps()
-end, { desc = "DAP log point" })
-map("n", "<leader>dB", function()
-  dap.clear_breakpoints(); save_bps()
-end, { desc = "DAP clear breakpoints" })
+map("n", "<leader>db", function() dap.toggle_breakpoint(); save_bps() end, { desc = "DAP breakpoint" })
+map("n", "<leader>dp", function() dap.set_breakpoint(fn.input("Condition: ")); save_bps() end, { desc = "DAP conditional bp" })
+map("n", "<leader>dL", function() dap.set_breakpoint(nil, nil, fn.input("Log: ")); save_bps() end, { desc = "DAP log point" })
+map("n", "<leader>dB", function() dap.clear_breakpoints(); save_bps() end, { desc = "DAP clear breakpoints" })
 map("n", "<leader>dz", dapview.toggle, { desc = "DAP view" })
 map("n", "<leader>dv", dapview.virtual_text_toggle, { desc = "DAP virtual text toggle" })
 map({ "n", "v" }, "<leader>dw", dapview.add_expr, { desc = "DAP watch" })
@@ -195,7 +197,8 @@ map("n", "<leader>di", function() require("dap.ui.widgets").hover(nil, { border 
 local function log_probe_rs(msg)
   local f = io.open("probe-rs.log", "a")
   if f then
-    f:write(msg); f:close()
+    f:write(msg)
+    f:close()
   end
 end
 

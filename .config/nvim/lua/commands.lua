@@ -8,12 +8,15 @@ command("FormatCmd", function(args)
   local out, q = {}, nil
   for i = 1, #text do
     local c = text:sub(i, i)
-    if (c == "'" or c == '"') then q = q == c and nil or q or c end
+    if c == "'" or c == '"' then
+      if q == c then q = nil elseif not q then q = c end
+    end
     local rest = text:sub(i)
+    local prev = text:sub(i - 1, i - 1)
     if not q and (
           rest:match("^&&") or
-          (rest:match("^%-%-[%w]") and text:sub(i - 1, i - 1) == " ") or
-          (rest:match("^%-[%w]") and not rest:match("^%-%-") and text:sub(i - 1, i - 1) == " ")
+          (rest:match("^%-%-[%w]") and prev == " ") or
+          (rest:match("^%-[%w]") and not rest:match("^%-%-") and prev == " ")
         ) then
       out[#out + 1] = " \\\n "
     end
@@ -145,7 +148,7 @@ local function run_in_term(run_cmd, auto_close)
           return vim.notify("OK: " .. run_cmd, vim.log.levels.INFO)
         end
 
-        fn.setqflist({}, 'r')
+        fn.setqflist({}, "r")
         local items = fn.getqflist({ efm = efm, lines = api.nvim_buf_get_lines(buf, 0, -1, false) }).items or {}
         if vim.iter(items):any(function(i) return i.valid == 1 end) then
           if win ~= -1 then api.nvim_win_close(win, true) end
@@ -153,18 +156,18 @@ local function run_in_term(run_cmd, auto_close)
           fn.setqflist({}, "a", { title = run_cmd })
           cmd("copen | cfirst")
         else
-          pcall(api.nvim_feedkeys, api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), "n", false)
+          pcall(api.nvim_feedkeys, vim.keycode("<C-\\><C-n>"), "n", false)
         end
       end)
     end,
   })
 
   api.nvim_set_current_win(prev_win)
-  vim.keymap.set("n", "q", "<cmd>q<cr>", { buffer = buf, silent = true })
+  vim.keymap.set("n", "q", function() cmd.quit() end, { buffer = buf, silent = true })
 end
 
 command("Run", function(opts)
-  local run_cmd = opts.args ~= '' and expand_cmd(opts.args) or last_run_cmd
+  local run_cmd = opts.args ~= "" and expand_cmd(opts.args) or last_run_cmd
   if not run_cmd then return vim.notify("No command to run", vim.log.levels.WARN) end
   last_run_cmd = run_cmd
   run_in_term(run_cmd, opts.bang)
@@ -176,8 +179,8 @@ end, {
       return vim.tbl_map(function(v) return ":" .. v end, fn.getcompletion(arg_lead:sub(2), "command"))
     end
     local seen, results = {}, {}
-    for _, type in ipairs({ "shellcmd", "file" }) do
-      for _, v in ipairs(fn.getcompletion(arg_lead, type)) do
+    for _, t in ipairs({ "shellcmd", "file" }) do
+      for _, v in ipairs(fn.getcompletion(arg_lead, t)) do
         if not seen[v] then
           seen[v] = true
           results[#results + 1] = v
@@ -185,6 +188,156 @@ end, {
       end
     end
     return results
+  end,
+})
+
+local function fuzzy(items, lead)
+  return lead == "" and items or fn.matchfuzzy(items, lead)
+end
+
+local function rg(args, limit)
+  return fn.systemlist("rg --vimgrep --no-heading --smart-case -- " .. args .. " | head -" .. limit)
+end
+
+local function parse_vimgrep(lines)
+  local items = {}
+  for _, line in ipairs(lines) do
+    local file, lnum, col, text = line:match("^(.+):(%d+):(%d+):(.*)$")
+    if file then
+      items[#items + 1] = { filename = file, lnum = tonumber(lnum), col = tonumber(col), text = vim.trim(text) }
+    end
+  end
+  return items
+end
+
+local function to_qf(title, items)
+  if #items == 0 then return print("No results found") end
+  fn.setqflist({}, "r", { title = title, items = items })
+  cmd.copen()
+end
+
+assert(fn.executable("rg") == 1)
+
+_G._findfunc = function(cmdarg, _)
+  local fnames = fn.systemlist("rg --files --hidden --color=never --glob='!.git'")
+  return cmdarg == "" and fnames or fn.matchfuzzy(fnames, cmdarg)
+end
+vim.o.findfunc = "v:lua._findfunc"
+
+command("Buffer", function(opts) cmd("buffer " .. opts.args) end, {
+  nargs = 1,
+  complete = function(lead)
+    local names = {}
+    for _, b in ipairs(api.nvim_list_bufs()) do
+      if vim.bo[b].buflisted and api.nvim_buf_get_name(b) ~= "" then
+        names[#names + 1] = fn.fnamemodify(api.nvim_buf_get_name(b), ":~:.")
+      end
+    end
+    return fuzzy(names, lead)
+  end,
+})
+
+command("H", function(opts) cmd.help(opts.args) end, {
+  nargs = 1,
+  complete = function(lead) return fn.getcompletion(lead, "help") end,
+})
+
+command("Recent", function(opts) cmd.edit(opts.args) end, {
+  nargs = 1,
+  complete = function(lead)
+    local files = {}
+    for _, f in ipairs(vim.v.oldfiles) do
+      if vim.uv.fs_stat(f) then files[#files + 1] = fn.fnamemodify(f, ":~:.") end
+    end
+    return fuzzy(files, lead)
+  end,
+})
+
+command("Cmd", function(opts) cmd(opts.args) end, {
+  nargs = 1,
+  complete = function(lead) return fn.getcompletion(lead, "command") end,
+})
+
+command("Grep", function(opts)
+  local items = parse_vimgrep(rg(fn.shellescape(opts.args), 500))
+  to_qf("Grep: " .. opts.args, items)
+end, { nargs = "+" })
+
+command("LiveGrep", function(opts)
+  local file, lnum = opts.args:match("^(.+):(%d+):")
+  if file and lnum then
+    cmd.edit(file)
+    api.nvim_win_set_cursor(0, { tonumber(lnum), 0 })
+  end
+end, {
+  nargs = 1,
+  complete = function(lead)
+    if #lead < 3 then return {} end
+    local items = parse_vimgrep(rg(fn.shellescape(lead), 200))
+    return vim.tbl_map(function(i) return i.filename .. ":" .. i.lnum .. ": " .. i.text end, items)
+  end,
+})
+
+command("Symbols", function()
+  vim.lsp.buf_request(0, "textDocument/documentSymbol",
+    { textDocument = vim.lsp.util.make_text_document_params() },
+    function(err, result)
+      if err or not result or #result == 0 then
+        return vim.notify("No symbols found", vim.log.levels.INFO)
+      end
+      local items, bufnr = {}, api.nvim_get_current_buf()
+      local function flatten(symbols, prefix)
+        for _, s in ipairs(symbols) do
+          local name = prefix ~= "" and (prefix .. "." .. s.name) or s.name
+          local range = s.selectionRange or s.range
+          items[#items + 1] = {
+            bufnr = bufnr,
+            lnum = range.start.line + 1,
+            col = range.start.character + 1,
+            text = (vim.lsp.protocol.SymbolKind[s.kind] or "?") .. ": " .. name,
+          }
+          if s.children then flatten(s.children, name) end
+        end
+      end
+      flatten(result, "")
+      vim.schedule(function() to_qf("Document Symbols", items) end)
+    end)
+end, {})
+
+command("WSymbols", function(opts)
+  local query = opts.args ~= "" and opts.args or fn.input("Symbol query: ")
+  if query == "" then return end
+  vim.lsp.buf_request(0, "workspace/symbol", { query = query }, function(err, result)
+    if err or not result or #result == 0 then
+      return vim.notify("No symbols found", vim.log.levels.INFO)
+    end
+    local items = {}
+    for _, s in ipairs(result) do
+      local loc = s.location
+      items[#items + 1] = {
+        filename = vim.uri_to_fname(loc.uri),
+        lnum = loc.range.start.line + 1,
+        col = loc.range.start.character + 1,
+        text = (vim.lsp.protocol.SymbolKind[s.kind] or "?") .. ": " .. s.name,
+      }
+    end
+    vim.schedule(function() to_qf("Workspace Symbols: " .. query, items) end)
+  end)
+end, { nargs = "?" })
+
+command("Bin", function(opts) cmd("Run " .. opts.args) end, {
+  nargs = 1,
+  complete = function(lead)
+    local exes = fn.systemlist("find . -type f -executable -not -path '*/.git/*' 2>/dev/null | head -100")
+    return fuzzy(exes, lead)
+  end,
+})
+
+command("Keymaps", function() end, {
+  nargs = 1,
+  complete = function(lead)
+    local lines = vim.split(api.nvim_exec2("map", { output = true }).output, "\n", { trimempty = true })
+    return fuzzy(lines, lead)
   end,
 })
 

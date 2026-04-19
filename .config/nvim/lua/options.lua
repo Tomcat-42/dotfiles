@@ -53,6 +53,7 @@ opt.foldlevelstart = 99
 opt.foldnestmax = 99
 opt.foldcolumn = "0"
 opt.foldtext = ""
+opt.foldopen:remove({ "search" })
 vim.wo.foldmethod = "expr"
 
 -- === Indentation ===
@@ -110,7 +111,7 @@ opt.wildignore = {
   "*.patch", "*.diff",
 }
 
--- === Performance ===
+-- === Performance ==={{{
 opt.lazyredraw = true
 opt.redrawtime = 10000
 opt.maxmempattern = 20000
