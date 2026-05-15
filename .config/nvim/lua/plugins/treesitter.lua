@@ -4,6 +4,7 @@ local langs = {
   "zig", "rust", "c", "cpp", "lua", "bash", "sh", "asm",
   "markdown", "json", "xml", "yaml", "fish", "ebnf", "python",
   "make", "diff", "disassembly", "objdump", "p", "tex", "c3", "dart", "go",
+  "cuda",
 }
 
 autocmd("FileType", {
@@ -19,7 +20,9 @@ autocmd("FileType", {
 autocmd("User", {
   pattern = "TSUpdate",
   callback = function()
-    require("nvim-treesitter.parsers").p = {
+    local parsers = require("nvim-treesitter.parsers")
+
+    parsers.p = {
       install_info = {
         path = "~/dev/compilers/p/tools/tree-sitter-p/tools/tree-sitter-p",
         generate = false,
@@ -27,6 +30,33 @@ autocmd("User", {
         queries = "queries/",
       },
     }
+
+    parsers.rpmspec = {
+      install_info = {
+        url = "https://github.com/cryptomilk/tree-sitter-rpmspec",
+        location = "rpmspec",
+        queries = "neovim/queries/rpmspec",
+      },
+    }
+
+    parsers.rpmbash = {
+      install_info = {
+        url = "https://github.com/cryptomilk/tree-sitter-rpmspec",
+        location = "rpmbash",
+        queries = "neovim/queries/rpmbash",
+      },
+    }
+  end,
+})
+
+vim.treesitter.language.register("rpmspec", { "spec" })
+
+autocmd("FileType", {
+  pattern = "spec",
+  callback = function(ev)
+    vim.treesitter.start(ev.buf, "rpmspec")
+    vim.bo.commentstring = "# %s"
+    vim.bo.comments = "b:#"
   end,
 })
 

@@ -1,11 +1,9 @@
 local opt = vim.opt
 local g = vim.g
 
--- === Variables ===
 g.projects_dir = vim.env.HOME .. '/dev'
 g.c_syntax_for_h = 1
 
--- === UI ===
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 1
@@ -33,19 +31,16 @@ opt.fillchars = {
   msgsep = " ",
 }
 
--- === Windows & Splits ===
 opt.splitbelow = true
 opt.splitright = true
 opt.winborder = "single"
 opt.pumborder = "single"
 opt.diffopt:append("linematch:60")
 
--- === Messages ===
 opt.errorbells = false
 opt.shortmess = "atIcWFsOTC"
 opt.messagesopt = "history:1000,hit-enter"
 
--- === Folding ===
 opt.viewoptions = "folds,cursor,curdir"
 opt.foldenable = true
 opt.foldlevel = 99
@@ -56,7 +51,6 @@ opt.foldtext = ""
 opt.foldopen:remove({ "search" })
 vim.wo.foldmethod = "expr"
 
--- === Indentation ===
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
@@ -66,23 +60,20 @@ opt.smartindent = true
 opt.autoindent = true
 opt.breakindent = true
 
--- === Editing ===
 opt.mouse = ""
 opt.backspace = "indent,eol,start"
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 opt.iskeyword:append("-")
 opt.selection = "inclusive"
 opt.modifiable = true
 opt.encoding = "UTF-8"
 opt.path:append("**")
 
--- === Search ===
 opt.ignorecase = true
 opt.smartcase = true
 opt.inccommand = 'split'
 opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
 
--- === Completion ===
 opt.completeopt = {
   "menu",
   "menuone",
@@ -111,7 +102,6 @@ opt.wildignore = {
   "*.patch", "*.diff",
 }
 
--- === Performance ==={{{
 opt.lazyredraw = true
 opt.redrawtime = 10000
 opt.maxmempattern = 20000
@@ -120,7 +110,6 @@ opt.timeoutlen = 500
 opt.ttimeoutlen = 0
 opt.updatetime = 250
 
--- === Backup & Undo ===
 opt.swapfile = false
 opt.backup = false
 opt.undofile = true
@@ -132,7 +121,6 @@ opt.autowrite = false
 opt.hidden = true
 opt.autochdir = false
 
--- === NetRW ===
 g.netrw_banner = 0
 g.netrw_liststyle = 3
 g.netrw_keepdir = 1
@@ -141,7 +129,6 @@ g.netrw_winsize = 25
 g.netrw_localcopydircmd = "cp -r"
 g.netrw_sort_by = "name"
 
--- === Disabled Providers ===
 g.loaded_python3_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0

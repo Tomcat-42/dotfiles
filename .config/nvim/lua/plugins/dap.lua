@@ -3,8 +3,6 @@ local api = vim.api
 local fn = vim.fn
 local dap = require("dap")
 local dapview = require("dap-view")
-local dap_disasm = require("dap-disasm")
-local dap_bps = require("dap.breakpoints")
 
 dapview.setup({
   winbar = {
@@ -16,7 +14,15 @@ dapview.setup({
   virtual_text = { enabled = true },
 })
 
-dap_disasm.setup({ dapview_register = true })
+require("dap-disasm").setup({ dapview_register = true })
+
+for name, sign in pairs({
+  DapBreakpoint          = { texthl = "Special" },
+  DapBreakpointCondition = { texthl = "DiagnosticWarn" },
+  DapLogPoint            = { texthl = "DiagnosticInfo" },
+  DapBreakpointRejected  = { texthl = "Comment" },
+  DapStopped             = { texthl = "DiagnosticOk", linehl = "CursorLine" },
+}) do fn.sign_define(name, sign) end
 
 local function co_input(opts)
   local co = assert(coroutine.running())
@@ -30,26 +36,26 @@ local function co_select(items, opts)
   return coroutine.yield()
 end
 
-local function find_executables()
+local last_program = nil
+
+local function get_program()
   local cwd = fn.getcwd()
   local dirs = { "zig-out/bin", "target/debug", "target/release", "build", "bin", "." }
   local paths = vim.iter(dirs):map(function(d) return cwd .. "/" .. d end):join(" ")
-  return fn.systemlist("find " ..
+  local exes = fn.systemlist("find " ..
     paths .. " -maxdepth 2 -type f -executable 2>/dev/null | grep -vE '\\.o$|\\.d$' | head -50")
-end
-
-local function get_program()
-  local exes = find_executables()
-  if #exes == 1 then return exes[1] end
-  if #exes > 1 then return co_select(exes, { prompt = "Executable: " }) end
-  return co_input({
+  if #exes == 1 then last_program = exes[1]
+  elseif #exes > 1 then last_program = co_select(exes, { prompt = "Executable: " })
+  else last_program = co_input({
     prompt = "Executable: ",
-    default = fn.getcwd() .. "/" .. fn.fnamemodify(fn.getcwd(), ":t"),
+    default = cwd .. "/" .. fn.fnamemodify(cwd, ":t"),
     completion = "file",
-  })
+  }) end
+  return last_program
 end
 
 local last_args = nil
+
 local function get_args()
   local input = co_input({
     prompt = "Args: ",
@@ -60,57 +66,33 @@ local function get_args()
   return last_args
 end
 
-local function get_pid()
-  return require("dap.utils").pick_process({
-    filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") }),
-  })
-end
-
-local function get_addr(default)
-  return function() return co_input({ prompt = "Connect to: ", default = default }) end
-end
-
-local function get_codelldb_init()
-  local platform = co_select({
-    "remote-linux", "remote-android", "remote-freebsd", "remote-gdb-server",
-    "darwin", "remote-ios", "remote-macosx", "host",
-    "remote-netbsd", "remote-openbsd", "qemu-user", "remote-windows",
-  }, { prompt = "Platform: " })
-  local addr = co_input({ prompt = "Connect to: ", default = "localhost:1234" })
-  return { "platform select " .. platform, "platform connect connect://" .. addr, "settings set target.inherit-env false" }
-end
-
-local bp_file = fn.stdpath("data") .. "/dap_breakpoints.json"
-
 local function save_bps()
   local bps = {}
-  for buf, marks in pairs(dap_bps.get()) do
+  for buf, marks in pairs(require("dap.breakpoints").get()) do
     local name = api.nvim_buf_get_name(buf)
     if name ~= "" then bps[name] = marks end
   end
-  local f = io.open(bp_file, "w")
-  if f then
-    f:write(vim.json.encode(bps))
-    f:close()
-  end
+  local f = io.open(fn.stdpath("data") .. "/dap_breakpoints.json", "w")
+  if f then f:write(vim.json.encode(bps)); f:close() end
 end
 
-local function load_bps()
-  local f = io.open(bp_file, "r")
-  if not f then return end
-  local ok, bps = pcall(vim.json.decode, f:read("*a"))
-  f:close()
-  if not ok or not bps then return end
-  for name, marks in pairs(bps) do
-    if fn.bufnr(name) ~= -1 then
-      for _, bp in ipairs(marks) do
-        dap.set_breakpoint(bp.condition, bp.hitCondition, bp.logMessage)
+api.nvim_create_autocmd("BufReadPost", {
+  once = true,
+  callback = function()
+    local f = io.open(fn.stdpath("data") .. "/dap_breakpoints.json", "r")
+    if not f then return end
+    local ok, bps = pcall(vim.json.decode, f:read("*a"))
+    f:close()
+    if not ok or not bps then return end
+    for name, marks in pairs(bps) do
+      if fn.bufnr(name) ~= -1 then
+        for _, bp in ipairs(marks) do
+          dap.set_breakpoint(bp.condition, bp.hitCondition, bp.logMessage)
+        end
       end
     end
-  end
-end
-
-api.nvim_create_autocmd("BufReadPost", { once = true, callback = function() pcall(load_bps) end })
+  end,
+})
 
 dap.adapters = {
   codelldb           = { name = "codelldb", type = "executable", command = "codelldb" },
@@ -124,32 +106,48 @@ dap.adapters = {
   },
 }
 
-local function make_configs(adapter, modes)
-  local result = {}
-  local base = { type = adapter, program = get_program, cwd = "${workspaceFolder}" }
+local native_configs = {}
+
+for adapter, modes in pairs({
+  codelldb = {
+    { "launch",  { args = get_args, stopOnEntry = false } },
+    { "attach",  { pid = function()
+      return require("dap.utils").pick_process({
+        filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") }),
+      })
+    end, stopOnEntry = false } },
+    { "connect", { initCommands = function()
+      local platform = co_select({
+        "remote-linux", "remote-android", "remote-freebsd", "remote-gdb-server",
+        "darwin", "remote-ios", "remote-macosx", "host",
+        "remote-netbsd", "remote-openbsd", "qemu-user", "remote-windows",
+      }, { prompt = "Platform: " })
+      local addr = co_input({ prompt = "Connect to: ", default = "localhost:1234" })
+      return { "platform select " .. platform, "platform connect connect://" .. addr, "settings set target.inherit-env false" }
+    end, stopOnEntry = false } },
+  },
+  lldb = {
+    { "launch", { args = get_args, stopOnEntry = false } },
+  },
+  gdb = {
+    { "launch",  { args = get_args, stopAtBeginningOfMainSubprogram = false } },
+    { "attach",  { pid = function()
+      return require("dap.utils").pick_process({
+        filter = co_input({ prompt = "Filter: ", completion = "shellcmd", default = fn.fnamemodify(fn.getcwd(), ":t") }),
+      })
+    end, stopAtBeginningOfMainSubprogram = false } },
+    { "connect", { request = "attach", target = function()
+      return co_input({ prompt = "Connect to: ", default = "localhost:1234" })
+    end, stopAtBeginningOfMainSubprogram = false } },
+  },
+}) do
   for _, mode in ipairs(modes) do
-    local config = vim.tbl_extend("force", base, mode[2])
+    local config = vim.tbl_extend("force", { type = adapter, program = get_program, cwd = "${workspaceFolder}" }, mode[2])
     config.name = string.format("[%s] [%s]", adapter, mode[1])
     config.request = config.request or (mode[1] == "attach" and "attach" or "launch")
-    result[#result + 1] = config
+    native_configs[#native_configs + 1] = config
   end
-  return result
 end
-
-local native_configs = {}
-vim.list_extend(native_configs, make_configs("codelldb", {
-  { "launch",  { args = get_args, stopOnEntry = false } },
-  { "attach",  { pid = get_pid, stopOnEntry = false } },
-  { "connect", { initCommands = get_codelldb_init, stopOnEntry = false } },
-}))
-vim.list_extend(native_configs, make_configs("lldb", {
-  { "launch", { args = get_args, stopOnEntry = false } },
-}))
-vim.list_extend(native_configs, make_configs("gdb", {
-  { "launch",  { args = get_args, stopAtBeginningOfMainSubprogram = false } },
-  { "attach",  { pid = get_pid, stopAtBeginningOfMainSubprogram = false } },
-  { "connect", { request = "attach", target = get_addr("localhost:1234"), stopAtBeginningOfMainSubprogram = false } },
-}))
 
 for _, ft in ipairs({ "zig", "cpp", "c", "rust", "asm" }) do
   dap.configurations[ft] = native_configs
@@ -177,8 +175,15 @@ dap.configurations.sh = { {
 
 require("dap.ext.vscode").type_to_filetypes["probe-rs-debug"] = { "rust", "zig", "c", "asm" }
 
+local last_config = nil
+dap.listeners.after.event_initialized["cache_config"] = function(session)
+  last_config = vim.deepcopy(session.config)
+end
+
 map("n", "<leader>dc", dap.continue, { desc = "DAP continue" })
-map("n", "<leader>dR", dap.run_last, { desc = "DAP re-run last" })
+map("n", "<leader>dR", function()
+  if last_config then dap.run(last_config) else dap.run_last() end
+end, { desc = "DAP re-run last" })
 map("n", "<leader>dh", dap.step_into, { desc = "DAP step into" })
 map("n", "<leader>dj", dap.step_over, { desc = "DAP step over" })
 map("n", "<leader>dk", dap.step_out, { desc = "DAP step out" })
@@ -196,10 +201,7 @@ map("n", "<leader>di", function() require("dap.ui.widgets").hover(nil, { border 
 
 local function log_probe_rs(msg)
   local f = io.open("probe-rs.log", "a")
-  if f then
-    f:write(msg)
-    f:close()
-  end
+  if f then f:write(msg); f:close() end
 end
 
 dap.listeners.before["event_probe-rs-rtt-channel-config"]["plugins.nvim-dap-probe-rs"] = function(session, body)
