@@ -73,7 +73,7 @@ function git_contribs
         sort -nr
 end
 
-function gcob
+function gitz_checkout
     git branch --sort=-committerdate --format='%(refname:short)' | \
         fzf --height 40% \
         --header 'Checkout branch' \
@@ -82,7 +82,7 @@ function gcob
         | xargs -r git checkout
 end
 
-function gadd
+function gitz_add
     git diff --name-only --diff-filter=ACMR | \
         fzf -m \
         --header 'Stage files (TAB to multi-select)' \
@@ -92,7 +92,7 @@ function gadd
     and git status -s
 end
 
-function glog
+function gitz_log
     git log --oneline --color=always -50 | \
         fzf --ansi \
         --header 'Browse commits (enter to show)' \
@@ -101,7 +101,7 @@ function glog
         --bind 'enter:execute(git show --color=always {1} | less -R)'
 end
 
-function gstash
+function gitz_stash
     git stash list --color=always | \
         fzf --ansi \
         --header 'Stashes (enter to show, ctrl-a to apply, ctrl-d to drop)' \
