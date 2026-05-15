@@ -8,9 +8,8 @@ abbr -a d dragon --and-exit
 abbr -a npager nvim -R
 
 function dnfz
-    # Use cache if fresh (< 1 hour old), otherwise refresh
     set -l cache_file ~/.cache/dnfz_packages
-    set -l cache_age 3600 # 1 hour in seconds
+    set -l cache_age 3600
 
     if test -f $cache_file
         set -l file_age (math (date +%s) - (stat -c %Y $cache_file))
@@ -44,14 +43,16 @@ function c
     cd -- $argv[1]
 end
 
-# Function 'git_gone' to delete merged Git branches except 'master' and 'main'
+function ct
+    cd "$(mktemp -d)"
+end
+
 function git_gone
     for branch in (git branch --merged | string trim | grep -v '^\*' | grep -v -E '^(master|main)$')
         git branch -d $branch
     end
 end
 
-# Function 'git_logmsgs' to display the latest 10 commit messages
 function git_logmsgs
     git log --pretty=format:"%h»¦«%aN»¦«%s»¦«%aD" |
         string split '\n' |
@@ -60,17 +61,55 @@ function git_logmsgs
         end | head -n 10
 end
 
-# Function 'git_contribs' to show a histogram of committers and mergers
 function git_contribs
     git log --pretty=format:"%h»¦«%aN»¦«%s»¦«%aD" |
         string split '\n' |
         while read line
             set parts (echo $line | string split '»¦«')
-            echo $parts[2] # Assuming the committer is the second field
+            echo $parts[2]
         end |
         sort |
         uniq -c |
         sort -nr
+end
+
+function gcob
+    git branch --sort=-committerdate --format='%(refname:short)' | \
+        fzf --height 40% \
+        --header 'Checkout branch' \
+        --preview 'git log --oneline -15 {}' \
+        --preview-window 'right:50%:wrap' \
+        | xargs -r git checkout
+end
+
+function gadd
+    git diff --name-only --diff-filter=ACMR | \
+        fzf -m \
+        --header 'Stage files (TAB to multi-select)' \
+        --preview 'git diff --color=always {}' \
+        --preview-window 'right:60%:wrap' \
+        | xargs -r git add
+    and git status -s
+end
+
+function glog
+    git log --oneline --color=always -50 | \
+        fzf --ansi \
+        --header 'Browse commits (enter to show)' \
+        --preview 'git show --color=always --stat {1}' \
+        --preview-window 'right:60%:wrap' \
+        --bind 'enter:execute(git show --color=always {1} | less -R)'
+end
+
+function gstash
+    git stash list --color=always | \
+        fzf --ansi \
+        --header 'Stashes (enter to show, ctrl-a to apply, ctrl-d to drop)' \
+        --preview 'git stash show --color=always -p (echo {} | grep -o "stash@{[0-9]*}")' \
+        --preview-window 'right:60%:wrap' \
+        --bind 'enter:execute(git stash show --color=always -p (echo {} | grep -o "stash@{[0-9]*}") | less -R)' \
+        --bind 'ctrl-a:execute(git stash apply (echo {} | grep -o "stash@{[0-9]*}"))' \
+        --bind 'ctrl-d:execute(git stash drop (echo {} | grep -o "stash@{[0-9]*}"))'
 end
 
 function ytclip
