@@ -23,10 +23,14 @@ local function update_vcs_info()
   local git_root = vim.fs.root(0, ".git")
   if git_root then
     vim.uv.fs_open(git_root .. "/.git/HEAD", "r", 438, function(err, fd)
-      if err or not fd then vcs_cache[bufnr] = ""; return end
+      if err or not fd then
+        vcs_cache[bufnr] = ""; return
+      end
       vim.uv.fs_read(fd, 256, 0, function(err2, data)
         vim.uv.fs_close(fd)
-        if err2 or not data then vcs_cache[bufnr] = ""; return end
+        if err2 or not data then
+          vcs_cache[bufnr] = ""; return
+        end
         local line = data:match("^[^\n]+")
         vcs_cache[bufnr] = line and (line:match("ref: refs/heads/(.+)") or line:sub(1, 8)) or ""
         vim.schedule(cmd.redrawstatus)
@@ -45,8 +49,8 @@ local lsp_cache = {}
 autocmd("LspAttach", {
   callback = function(args)
     local names = vim.iter(vim.lsp.get_clients({ bufnr = args.buf }))
-      :map(function(c) return (c.name:gsub("language.server", "ls")) end)
-      :totable()
+        :map(function(c) return (c.name:gsub("language.server", "ls")) end)
+        :totable()
     lsp_cache[args.buf] = #names > 0 and table.concat(names, ", ") or ""
     cmd.redrawstatus()
   end,
@@ -56,8 +60,8 @@ autocmd("LspDetach", {
   callback = function(args)
     vim.defer_fn(function()
       local names = vim.iter(vim.lsp.get_clients({ bufnr = args.buf }))
-        :map(function(c) return (c.name:gsub("language.server", "ls")) end)
-        :totable()
+          :map(function(c) return (c.name:gsub("language.server", "ls")) end)
+          :totable()
       lsp_cache[args.buf] = #names > 0 and table.concat(names, ", ") or ""
       cmd.redrawstatus()
     end, 100)
@@ -90,18 +94,41 @@ autocmd("BufWipeout", {
 })
 
 local mode_map = {
-  n = "NORMAL", i = "INSERT", v = "VISUAL", V = "V-LINE", ["\22"] = "V-BLOCK",
-  c = "COMMAND", s = "SELECT", S = "S-LINE", ["\19"] = "S-BLOCK",
-  R = "REPLACE", t = "TERMINAL", nt = "N-TERMINAL",
-  no = "OP-PENDING", nov = "OP-PENDING", noV = "OP-PENDING", ["no\22"] = "OP-PENDING",
+  n = "NORMAL",
+  i = "INSERT",
+  v = "VISUAL",
+  V = "V-LINE",
+  ["\22"] = "V-BLOCK",
+  c = "COMMAND",
+  s = "SELECT",
+  S = "S-LINE",
+  ["\19"] = "S-BLOCK",
+  R = "REPLACE",
+  t = "TERMINAL",
+  nt = "N-TERMINAL",
+  no = "OP-PENDING",
+  nov = "OP-PENDING",
+  noV = "OP-PENDING",
+  ["no\22"] = "OP-PENDING",
 }
 
 local mode_hl = {
-  n = "ErrorMsg", i = "ModeMsg",
-  v = "Constant", V = "Constant", ["\22"] = "Constant",
-  c = "Function", s = "Special", S = "Special", ["\19"] = "Special",
-  R = "Keyword", t = "Type", nt = "ErrorMsg",
-  no = "Comment", nov = "Comment", noV = "Comment", ["no\22"] = "Comment",
+  n = "ErrorMsg",
+  i = "ModeMsg",
+  v = "Constant",
+  V = "Constant",
+  ["\22"] = "Constant",
+  c = "Function",
+  s = "Special",
+  S = "Special",
+  ["\19"] = "Special",
+  R = "Keyword",
+  t = "Type",
+  nt = "ErrorMsg",
+  no = "Comment",
+  nov = "Comment",
+  noV = "Comment",
+  ["no\22"] = "Comment",
 }
 
 local term_exitcode = require("vim._core.util").term_exitcode

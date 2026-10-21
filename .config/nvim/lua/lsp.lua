@@ -18,6 +18,7 @@ local servers = {
   "yamlls",
   "zls",
   "rpmspec",
+  "make_ls",
 }
 
 local custom_configs = {
@@ -164,9 +165,9 @@ autocmd("LspAttach", {
       end, o)
     end
 
-    if client:supports_method(lsp.protocol.Methods.textDocument_foldingRange) then
-      vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
-    end
+    -- if client:supports_method(lsp.protocol.Methods.textDocument_foldingRange) then
+    --   vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+    -- end
 
     if client:supports_method(lsp.protocol.Methods.textDocument_completion) then
       local chars = {}
@@ -196,6 +197,9 @@ autocmd("LspAttach", {
     if client.name == "clangd" then
       map("n", "<leader>ch", function() vim.cmd.LspClangdSwitchSourceHeader() end, o)
       map("n", "<leader>cs", function() vim.cmd.LspClangdShowSymbolInfo() end, o)
+    elseif client.name == "texlab" then
+      map("n", "<leader>lf", function() vim.cmd.LspTexlabForward() end, o)
+      map("n", "<leader>lb", function() vim.cmd.LspTexlabBuild() end, o)
     end
   end,
 })

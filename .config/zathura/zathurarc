@@ -1,6 +1,6 @@
 set synctex true
 set synctex-editor-command "texlab inverse-search -i %{input} -l %{line}"
-set filemonitor "signal"
+set filemonitor "glib"
 set first-page-column 2
 set adjust-open "width"
 
@@ -80,8 +80,8 @@ set inputbar-fg                 "#d5c4a1" # base05 - foreground
 set statusbar-bg                "#000000" # base00 - default background
 set statusbar-fg                "#d5c4a1" # base05 - foreground
 
-set highlight-color             "#fe8019" # base09 - orange
-set highlight-active-color      "#fe8019" # base09 - orange
+set highlight-color             "rgba(204,36,29,0.3)"
+set highlight-active-color      "rgba(251,73,52,0.4)"
 
 set default-bg                  "#000000" # base00 - default background
 set default-fg                  "#d5c4a1" # base05 - foreground

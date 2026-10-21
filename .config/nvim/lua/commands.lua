@@ -114,8 +114,8 @@ end, {})
 local prg_map = { make = "makeprg", lmake = "makeprg", grep = "grepprg", lgrep = "grepprg" }
 
 local function expand_cmd(input)
-  local current = fn.expand("%:p")
-  local expanded = input:gsub("%%:p", current):gsub("%%", current):gsub("#", fn.expand("#:p"))
+  local expanded = input:gsub("%%[:%l]*", function(m) return fn.expand(m) end)
+  expanded = expanded:gsub("#[:%l]*", function(m) return fn.expand(m) end)
   if not expanded:match("^:") then return expanded end
   local name, args = expanded:sub(2):match("^(%S+)%s*(.*)")
   if name == "!" then return args end

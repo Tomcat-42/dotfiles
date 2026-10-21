@@ -32,7 +32,10 @@
 	who = "blame -wCCC"
 	which-tag = "name-rev --tags --name-only"
 	file-added = "log --diff-filter=A --pretty=format:\"%H\""
-
+	cite = "!f(){ git log -1 --format='%h (\"%s\")' $1; };f"
+    nuke = "!f(){ git commit -as --amend --no-edit && git push --force-with-lease; };f"
+	find-merge = "!f() { git log \"$1\"..${2:-master} --ancestry-path --merges --reverse --oneline | head -n 1; }; f"
+	trace = "!f() { git log --graph --oneline --color --pretty=format:\"%C(magenta)%h%Creset %C(cyan)%ad%Creset %s %C(bold yellow)%d%Creset %C(bold black)(%an)%Creset\" --date=short \"$1\"..${2:-master}; }; f"
 
 [gpg]
 	program = gpg2
@@ -139,3 +142,14 @@
 #
 # [url "https://github.com/rust-lang/crates.io-index"]
 # 	insteadOf = https://github.com/rust-lang/crates.io-index
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

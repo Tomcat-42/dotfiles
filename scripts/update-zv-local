@@ -1,136 +1,45 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Update zv with locally built Zig
-# Usage: update-zv-local.sh <zig-source-dir> [--symlink] [--no-build]
-
-ZV_DIR="${ZV_DIR:-$HOME/.zv}"
-VERSIONS_DIR="$ZV_DIR/versions"
-
-USE_SYMLINK=false
+ZV_DIR="${ZV_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/zv}"
+ZIG_DIR="${1:?Usage: $0 <zig-source-dir> [--no-build]}"
 DO_BUILD=true
-ZIG_DIR=""
+[[ "$*" == *--no-build* ]] && DO_BUILD=false
 
-print_usage() {
-    echo "Usage: $0 <zig-source-dir> [--symlink] [--no-build]"
-    echo ""
-    echo "Arguments:"
-    echo "  zig-source-dir  Path to Zig source repository"
-    echo ""
-    echo "Options:"
-    echo "  --symlink       Create symlinks instead of copying files"
-    echo "  --no-build      Skip build, just install existing binary"
-    echo "  --help, -h      Show this help"
-}
-
-for arg in "$@"; do
-    case $arg in
-        --symlink)
-            USE_SYMLINK=true
-            ;;
-        --no-build)
-            DO_BUILD=false
-            ;;
-        --help|-h)
-            print_usage
-            exit 0
-            ;;
-        -*)
-            echo "Unknown option: $arg"
-            print_usage
-            exit 1
-            ;;
-        *)
-            if [[ -z "$ZIG_DIR" ]]; then
-                ZIG_DIR="$arg"
-            else
-                echo "Error: Multiple directories specified"
-                print_usage
-                exit 1
-            fi
-            ;;
-    esac
-done
-
-if [[ -z "$ZIG_DIR" ]]; then
-    echo "Error: Zig source directory required"
-    print_usage
-    exit 1
-fi
-
-# Resolve to absolute path
 ZIG_DIR="$(cd "$ZIG_DIR" && pwd)"
 
-if [[ ! -d "$ZIG_DIR" ]]; then
-    echo "Error: Directory not found: $ZIG_DIR"
-    exit 1
-fi
-
-cd "$ZIG_DIR"
-
-# Detect build directory
-if [[ -f "build/stage3/bin/zig" ]]; then
-    BUILD_DIR="build/stage3"
-    BUILD_TYPE="cmake"
-elif [[ -f "stage3/bin/zig" ]]; then
-    BUILD_DIR="stage3"
-    BUILD_TYPE="zig"
+if [[ -f "$ZIG_DIR/build/stage3/bin/zig" ]]; then
+    BUILD_BIN="$ZIG_DIR/build/stage3/bin/zig"
+    BUILD_CMD=(ninja -C "$ZIG_DIR/build" install)
+elif [[ -f "$ZIG_DIR/stage3/bin/zig" ]]; then
+    BUILD_BIN="$ZIG_DIR/stage3/bin/zig"
+    BUILD_CMD=("$BUILD_BIN" build -p "$ZIG_DIR/stage3" --zig-lib-dir "$ZIG_DIR/lib" -Dno-lib)
 else
-    echo "No existing build found in $ZIG_DIR"
-    echo "Run cmake build first:"
-    echo "  cd $ZIG_DIR"
-    echo "  mkdir -p build && cd build"
-    echo "  cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DZIG_NO_LIB=ON"
-    echo "  ninja install"
+    echo "No build found in $ZIG_DIR. Run cmake or zig build first." >&2
     exit 1
 fi
 
-echo "Found build at: $ZIG_DIR/$BUILD_DIR ($BUILD_TYPE)"
+$DO_BUILD && "${BUILD_CMD[@]}"
 
-if $DO_BUILD; then
-    echo "Rebuilding Zig..."
-    if [[ "$BUILD_TYPE" == "cmake" ]]; then
-        ninja -C build install
-    else
-        "$BUILD_DIR/bin/zig" build -p "$BUILD_DIR" --zig-lib-dir lib -Dno-lib
-    fi
-fi
-
-# Get version from built zig
-VERSION=$("$BUILD_DIR/bin/zig" version)
+VERSION=$("$BUILD_BIN" version)
 LOCAL_VERSION="${VERSION}-local"
+TARGET_DIR="$ZV_DIR/versions/$LOCAL_VERSION"
 
-echo "Built version: $VERSION"
-echo "Installing as: $LOCAL_VERSION"
+rm -rf "$TARGET_DIR" && mkdir -p "$TARGET_DIR"
+ln -sf "$BUILD_BIN" "$TARGET_DIR/zig"
+ln -sf "$ZIG_DIR/lib" "$TARGET_DIR/lib"
 
-mkdir -p "$VERSIONS_DIR"
+echo "Installed: $LOCAL_VERSION"
 
-TARGET_DIR="$VERSIONS_DIR/$LOCAL_VERSION"
-
-if $USE_SYMLINK; then
-    rm -rf "$TARGET_DIR"
-    mkdir -p "$TARGET_DIR"
-
-    ln -s "$ZIG_DIR/$BUILD_DIR/bin/zig" "$TARGET_DIR/zig"
-    ln -s "$ZIG_DIR/lib" "$TARGET_DIR/lib"
-
-    echo "Created symlinks in: $TARGET_DIR"
-    echo "  zig -> $ZIG_DIR/$BUILD_DIR/bin/zig"
-    echo "  lib -> $ZIG_DIR/lib"
-else
-    rm -rf "$TARGET_DIR"
-    mkdir -p "$TARGET_DIR"
-
-    cp "$BUILD_DIR/bin/zig" "$TARGET_DIR/zig"
-    ln -s "$ZIG_DIR/lib" "$TARGET_DIR/lib"
-
-    echo "Installed to: $TARGET_DIR"
-    echo "  zig copied, lib/ symlinked to source"
+read -rp "Set as active zig? [y/N] " confirm
+if [[ "${confirm,,}" == "y" ]]; then
+    ZV_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/zv/zv.toml"
+    awk -v ver="$LOCAL_VERSION" -v path="$TARGET_DIR" '
+        /^\[active_zig\]/ { in_section=1 }
+        in_section && /^version / { print "version = \"" ver "\""; next }
+        in_section && /^path /    { print "path = \""    path "\""; next }
+        /^\[/ && !/^\[active_zig\]/ { in_section=0 }
+        { print }
+    ' "$ZV_CONFIG" > "$ZV_CONFIG.tmp" && mv "$ZV_CONFIG.tmp" "$ZV_CONFIG"
+    echo "Activated."
 fi
-
-echo ""
-echo "Usage:"
-echo "  zig +$LOCAL_VERSION version"
-echo ""
-echo "Or set as default:"
-echo "  zv default $LOCAL_VERSION"

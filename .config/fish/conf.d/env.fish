@@ -3,8 +3,8 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx SYSTEMD_EDITOR nvim
 set -gx SUDO_EDITOR "$HOME/.local/share/bob/nvim-bin/nvim"
-set -gx PAGER "bat --plain"
-set -gx MANPAGER "nvim -c 'Man!' -o -"
+type -q bat && set -gx MANPAGER "bat -plman" && set -gx PAGER "bat --plain"
+type -q nvim && set -gx MANPAGER "nvim -c 'Man!' -o -"
 
 # --- Locale ---
 set -gx LANG "en_US.UTF-8"
@@ -42,6 +42,7 @@ set -gx CXX /usr/bin/clang++
 set -gx GOPATH "$HOME/.local/share/go"
 set -gx DEVKITPRO /opt/devkitpro
 set -gx DEVKITARM $DEVKITPRO/devkitARM
+set -gx DEVKITPPC $DEVKITPRO/devkitPPC
 set -gx ANDROID_HOME "$HOME/.local/opt/android-sdk"
 set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
 set -gx CHROME_EXECUTABLE (command -s chromium-browser)
@@ -50,6 +51,7 @@ set -gx QMK_HOME "$HOME/dev/qmk_firmware"
 set -gx WASMTIME_HOME "$HOME/.wasmtime"
 set -gx KRB5CCNAME "FILE:/tmp/krb5cc_$(id -u)"
 set -gx DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
+set -gx PSPDEV "$HOME/.local/opt/pspdev"
 
 set -gx LUA_PATH "/usr/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?/init.lua;/usr/share/lua/5.4/?/init.lua;/usr/local/lib/lua/5.4/?.lua;/usr/local/lib/lua/5.4/?/init.lua;/usr/lib/lua/5.4/?.lua;/usr/lib/lua/5.4/?/init.lua;./?.lua;./?/init.lua;$HOME/.luarocks/share/lua/5.4/?.lua;$HOME/.luarocks/share/lua/5.4/?/init.lua"
 set -gx LUA_CPATH "/usr/local/lib/lua/5.4/?.so;/usr/lib/lua/5.4/?.so;/usr/local/lib/lua/5.4/loadall.so;/usr/lib/lua/5.4/loadall.so;./?.so;$HOME/.luarocks/lib/lua/5.4/?.so"
@@ -104,6 +106,9 @@ set -gx LIBVIRT_DEFAULT_URI "qemu:///system"
 set -gx PASSWORD_STORE_DIR $HOME/data/documents/other/passwords
 set -gx BAT_THEME base16
 
+# --- Ocaml ---
+test -r '/home/phugen/.opam/opam-init/init.fish' && source '/home/phugen/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+
 # --- PATH ---
 set paths \
     $GOPATH/bin \
@@ -128,6 +133,6 @@ set paths \
     $HOME/.radicle/bin \
     $HOME/.local/opt/ghidra \
     $DEVKITPRO/tools/bin \
-    $WASMTIME_HOME/bin
-
+    $WASMTIME_HOME/bin \
+    $PSPDEV/bin
 fish_add_path $paths

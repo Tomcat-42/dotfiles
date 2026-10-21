@@ -40,7 +40,7 @@ map("n", "<leader>P", '"+P', { silent = true, desc = "Paste before from clipboar
 map("v", "<leader>d", '"+d', { silent = true, desc = "Delete to clipboard" })
 map("n", "<leader>D", '"+D', { silent = true, desc = "Delete to end to clipboard" })
 map("x", "<leader>P", '"_dP', { silent = true, desc = "Paste over without yanking" })
-map("i", "<C-p>", "<C-r>+", { silent = true, desc = "Paste from clipboard (insert)" })
+map("i", "<A-p>", "<C-r>+", { silent = true, desc = "Paste from clipboard (insert)" })
 map({ "n", "v", "x" }, "<C-a>", "gg0vG$", { silent = true, desc = "Select all" })
 
 map("n", "/", "zn/", { desc = "Search & pause folds" })

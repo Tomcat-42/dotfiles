@@ -7,26 +7,34 @@ abbr -a h hx
 abbr -a d dragon --and-exit
 abbr -a npager nvim -R
 
+if type -q bat
+    abbr lscpu "lscpu | bat -Ppl cpuinfo"
+    abbr sensors "sensors | bat -Ppl cpuinfo"
+    abbr lsblk "lsblk | bat -Ppl conf"
+    abbr lsmod "lsmod | bat -Ppl conf"
+end
+
 function dnfz
     set -l cache_file ~/.cache/dnfz_packages
     set -l cache_age 3600
+    set -l use_cache 0
 
     if test -f $cache_file
         set -l file_age (math (date +%s) - (stat -c %Y $cache_file))
         if test $file_age -lt $cache_age
-            set -l use_cache 1
+            set use_cache 1
         end
     end
 
-    if set -q use_cache
+    if test $use_cache -eq 1
         cat $cache_file
     else
-        dnf repoquery --available --queryformat '%{name}\n' -q 2>/dev/null | sort -u | tee $cache_file
+        dnf repoquery --available --queryformat '%{name}\n' -qy 2>/dev/null | sort -u | tee $cache_file
     end | fzf -m \
         --header 'Select packages to install (TAB to multi-select)' \
         --preview 'dnf info {} 2>/dev/null | head -20' \
         --preview-window 'right:50%:wrap' \
-        --bind 'ctrl-r:reload(dnf repoquery --available --queryformat "%{name}\n" -q 2>/dev/null | sort -u | tee ~/.cache/dnfz_packages)' \
+        --bind 'ctrl-r:reload(dnf repoquery --available --queryformat "%{name}\n" -qy 2>/dev/null | sort -u | tee ~/.cache/dnfz_packages)' \
         | xargs -r sudo dnf install -y
 end
 
@@ -74,8 +82,7 @@ function git_contribs
 end
 
 function gitz_checkout
-    git branch --sort=-committerdate --format='%(refname:short)' | \
-        fzf --height 40% \
+    git branch --sort=-committerdate --format='%(refname:short)' | fzf --height 40% \
         --header 'Checkout branch' \
         --preview 'git log --oneline -15 {}' \
         --preview-window 'right:50%:wrap' \
@@ -83,8 +90,7 @@ function gitz_checkout
 end
 
 function gitz_add
-    git diff --name-only --diff-filter=ACMR | \
-        fzf -m \
+    git diff --name-only --diff-filter=ACMR | fzf -m \
         --header 'Stage files (TAB to multi-select)' \
         --preview 'git diff --color=always {}' \
         --preview-window 'right:60%:wrap' \
@@ -93,17 +99,23 @@ function gitz_add
 end
 
 function gitz_log
-    git log --oneline --color=always -50 | \
-        fzf --ansi \
+    git log --oneline --color=always -50 | fzf --ansi \
         --header 'Browse commits (enter to show)' \
         --preview 'git show --color=always --stat {1}' \
         --preview-window 'right:60%:wrap' \
         --bind 'enter:execute(git show --color=always {1} | less -R)'
 end
 
+function gitz_tags
+    git tag --sort=-creatordate | fzf \
+        --header 'Tags (enter to show)' \
+        --preview 'git show --color=always --stat {}' \
+        --preview-window 'right:60%:wrap' \
+        --bind 'enter:execute(git show --color=always {} | less -R)'
+end
+
 function gitz_stash
-    git stash list --color=always | \
-        fzf --ansi \
+    git stash list --color=always | fzf --ansi \
         --header 'Stashes (enter to show, ctrl-a to apply, ctrl-d to drop)' \
         --preview 'git stash show --color=always -p (echo {} | grep -o "stash@{[0-9]*}")' \
         --preview-window 'right:60%:wrap' \
@@ -152,4 +164,25 @@ function ytclip
     else
         mv temp_ytclip.mp3 "$output"
     end
+end
+
+function ytalbum
+    if test (count $argv) -lt 1
+        echo "Usage: ytalbum <url> [output_directory]"
+        echo "Examples:"
+        echo "  ytalbum 'https://youtube.com/playlist?list=...'"
+        echo "  ytalbum 'https://youtube.com/playlist?list=...' my_album"
+        return 1
+    end
+
+    set url $argv[1]
+
+    if test (count $argv) -eq 2
+        set output_dir $argv[2]
+    else
+        set output_dir "yt_album_$(date +%Y%m%d_%H%M%S)"
+    end
+
+    mkdir -p "$output_dir"
+    yt-dlp -x --audio-format mp3 --audio-quality 0 -o "$output_dir/%(title)s.%(ext)s" "$url"
 end

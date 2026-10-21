@@ -1,0 +1,10 @@
+#!/bin/bash
+
+W_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}
+
+exec flatpak run \
+    --socket=wayland \
+    --env=WAYLAND_DISPLAY="$W_DISPLAY" \
+    --env=QT_QPA_PLATFORM=wayland \
+    --env=QT_QPA_PLATFORMTHEME=gtk3 \
+    org.azahar_emu.Azahar "$@" >/dev/null 2>&1

@@ -1,9 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-g.projects_dir = vim.env.HOME .. '/dev'
-g.c_syntax_for_h = 1
-
+opt.cmdheight = 0
 opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 1
@@ -39,9 +37,9 @@ opt.diffopt:append("linematch:60")
 
 opt.errorbells = false
 opt.shortmess = "atIcWFsOTC"
-opt.messagesopt = "history:1000,hit-enter"
+opt.messagesopt = "history:1000,hit-enter,maxheight:50,timeout:4000"
 
-opt.viewoptions = "folds,cursor,curdir"
+opt.viewoptions = "folds,cursor"
 opt.foldenable = true
 opt.foldlevel = 99
 opt.foldlevelstart = 99
@@ -89,17 +87,49 @@ opt.wildoptions = 'pum,fuzzy'
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 opt.wildignore = {
-  "*.o", "*.obj", "*.pyc", "*.pyo",
-  "*.swp", "*.swo",
-  "*.zip", "*.tar.gz", "*.tar.bz2", "*.tar.xz", "*.rar", "*.7z",
-  "*/.git/*", "*/.svn/*", "*/.hg/*", "*/.bzr/*",
-  "*/node_modules/*", "*/bower_components/*", "*/vendor/*",
-  "*/target/*", "*/build/*", "*/zig-out/*", "*/*cache/*", "*/dist/*", "*/__pycache__/*",
+  "*.o",
+  "*.obj",
+  "*.pyc",
+  "*.pyo",
+  "*.swp",
+  "*.swo",
+  "*.zip",
+  "*.tar.gz",
+  "*.tar.bz2",
+  "*.tar.xz",
+  "*.rar",
+  "*.7z",
+  "*/.git/*",
+  "*/.svn/*",
+  "*/.hg/*",
+  "*/.bzr/*",
+  "*/node_modules/*",
+  "*/bower_components/*",
+  "*/vendor/*",
+  "*/target/*",
+  "*/build/*",
+  "*/*cache/*",
+  "*/dist/*",
+  "*/__pycache__/*",
   "*.DS_Store",
-  "*.ko", "*.mod", "*.mod.c", "*.cmd", "*.d", "*.order", "*.symvers",
-  "vmlinux", "System.map", "cscope.*", "tags", "TAGS",
-  ".config", ".config.old",
-  "*.patch", "*.diff",
+  "*.ko",
+  "*.mod",
+  "*.mod.c",
+  "*.cmd",
+  "*.d",
+  "*.order",
+  "*.symvers",
+  "vmlinux",
+  "System.map",
+  "cscope.*",
+  "tags",
+  "TAGS",
+  ".config",
+  ".config.old",
+  "*.patch",
+  "*.diff",
+  "*/zig-pkg/*",
+  "*/zig-out/*",
 }
 
 opt.lazyredraw = true
@@ -128,6 +158,8 @@ g.netrw_localrm = "rm -r"
 g.netrw_winsize = 25
 g.netrw_localcopydircmd = "cp -r"
 g.netrw_sort_by = "name"
+g.netrw_browse_split = 0
+g.netrw_altfile = 1
 
 g.loaded_python3_provider = 0
 g.loaded_ruby_provider = 0

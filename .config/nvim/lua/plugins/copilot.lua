@@ -1,6 +1,6 @@
 require("copilot").setup({
   panel = { enabled = false },
-  copilot_model = "gpt-41-copilot",
+  -- copilot_model = "gpt-41-copilot",
   suggestion = {
     enabled = true,
     auto_trigger = false,
@@ -26,5 +26,14 @@ require("copilot").setup({
     svn = false,
     cvs = false,
     ["."] = false,
+  },
+  nes = {
+    enabled = false,
+    auto_trigger = false,
+    keymap = {
+      accept_and_goto = false,
+      accept = false,
+      dismiss = false,
+    },
   },
 })
